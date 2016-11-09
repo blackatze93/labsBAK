@@ -11,3 +11,9 @@
 /bin/
 /composer.phar
 .c9/*
+.buildpath
+.project
+.settings
+nbproject
+.idea
+.tm_properties

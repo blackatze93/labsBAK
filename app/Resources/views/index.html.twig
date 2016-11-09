@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {{ include('menu.html.twig') }}
+    
+    {{ app.request.get('_route') }}
+    
+{% endblock %}
+
