@@ -9,18 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="inicio")
      */
-    public function indexAction(Request $request)
+    public function inicioAction()
     {
         // replace this example code with whatever you need
         return $this->render('index.html.twig');
     }
     
     /**
-     * @Route ("/vision", name="vision")
+     * @Route ("/nosotros/mision/", name="nosotros_mision")
      */
-    public function visionAction(Request $request) {
+    public function visionAction() {
         
         return $this->render('index.html.twig');
     }
