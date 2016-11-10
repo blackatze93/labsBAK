@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  */
 class ProyectoCurricular
 {
@@ -13,12 +13,12 @@ class ProyectoCurricular
      * @ORM\Id()
      * @ORM\Column()
      */
-    protected $codigo;
+    private $codigo;
 
     /**
      * @ORM\Column()
      */
-    protected $nombre;
+    private $nombre;
 
     /**
      * @return mixed
