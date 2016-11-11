@@ -8,12 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="inicio")
+     * @Route("/", name="index")
      */
-    public function inicioAction()
+    public function indexAction()
     {
         // replace this example code with whatever you need
-        return $this->render('inicio.html.twig');
+        return $this->render('index.html.twig');
     }
     
     /**
@@ -21,7 +21,7 @@ class DefaultController extends Controller
      */
     public function visionAction() {
         
-        return $this->render('inicio.html.twig');
+        return $this->render('index.html.twig');
     }
-
 }
+ 

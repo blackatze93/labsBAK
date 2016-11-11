@@ -9,14 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class UsuarioController extends Controller
 {
     /**
-     * @Route("/usuarios/", name="usuarios_inicio")
+     * @Route("/usuario/", name="usuario_index")
      */
-    public function inicioAction() {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $usuarios = $em->getRepository("AppBundle:Usuario")->findAll();
 
-        return $this->render('usuario/inicio.html.twig', array('usuarios' => $usuarios));
+        return $this->render('usuario/index.html.twig', array('usuarios' => $usuarios));
     }
 
 }

@@ -1,4 +1,4 @@
-{% set ruta = app.request.get('_route') %}
+{% set route = app.request.get('_route') %}
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -16,11 +16,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li {{ ruta == 'inicio' ? 'class="active"' }}><a href="{{ path('inicio') }}">Inicio</a></li>
-                <li class="dropdown {{ ruta starts with 'nosotros' ? 'active' }}">
+                <li {{ route == 'index' ? 'class="active"' }}><a href="{{ path('index') }}">Inicio</a></li>
+                <li class="dropdown {{ route starts with 'nosotros' ? 'active' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nosotros <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li {{ 'mision' in ruta ? 'class="active"' }}><a href="{{ path('nosotros_mision') }}">Mision</a></li>
+                        <li {{ 'mision' in route ? 'class="active"' }}><a href="{{ path('nosotros_mision') }}">Mision</a></li>
                         <li><a href="#">Vision</a></li>
                         <li><a href="#">Objetivos</a></li>
                         <li><a href="#">Elementos de laboratorio</a></li>
@@ -29,7 +29,7 @@
                         <li><a href="#">Horarios</a></li>
                     </ul>
                 </li>
-                <li class="dropdown {{ ruta starts with 'prestamos' ? 'active' }}">
+                <li class="dropdown {{ route starts with 'prestamos' ? 'active' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prestamos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Salas</a></li>
@@ -38,7 +38,7 @@
                         <li><a href="#">Otros elementos</a></li>
                     </ul>
                 </li>
-                <li class="dropdown {{ ruta starts with 'inventario' ? 'active' }}">
+                <li class="dropdown {{ route starts with 'inventario' ? 'active' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Traslados</a></li>
@@ -47,14 +47,14 @@
                         <li><a href="#">Reportes</a></li>
                     </ul>
                 </li>
-                <li class="dropdown {{ ruta starts with 'documentos' ? 'active' }}">
+                <li class="dropdown {{ route starts with 'documentos' ? 'active' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Paz y salvos</a></li>
                         <li><a href="#">Registro morosos</a></li>
                     </ul>
                 </li>
-                <li class="dropdown {{ ruta starts with 'soporte' ? 'active' }}">
+                <li class="dropdown {{ route starts with 'soporte' ? 'active' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Soporte <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Agenda</a></li>
@@ -69,7 +69,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="{{ ruta == 'usuarios_inicio' ? 'active' }}"><a href="{{ path('usuarios_inicio') }}">Usuarios</a></li>
+                <li class="{{ route == 'usuario_index' ? 'active' }}"><a href="{{ path('usuario_index') }}">Usuarios</a></li>
                 <li><a data-toggle="modal" data-target="#myModal" href="#">Iniciar sesion</a></li>
             </ul>
             
