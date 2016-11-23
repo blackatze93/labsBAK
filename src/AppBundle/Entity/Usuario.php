@@ -5,66 +5,56 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Usuario
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column()
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column()
      */
     private $nombre;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="apellido", type="string", length=255)
+     * @ORM\Column()
      */
     private $apellido;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column()
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column()
      */
     private $password;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255)
-     */
-    private $salt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fecha_alta", type="datetimetz")
+     * @ORM\Column(type="datetime")
      */
     private $fechaAlta;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
+     */
+    private $proyectoCurricular;
+
+    public function __construct() {
+        $this->fechaAlta = new \DateTime();
+    }
+
+    public function __toString() {
+        return $this->getNombre().' '.$this->getApellido();
+    }
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @return string
      */
     public function getId()
     {
@@ -72,22 +62,15 @@ class Usuario
     }
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     * @return Usuario
+     * @param string $id
      */
-    public function setNombre($nombre)
+    public function setId($id)
     {
-        $this->nombre = $nombre;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get nombre
-     *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -95,22 +78,15 @@ class Usuario
     }
 
     /**
-     * Set apellido
-     *
-     * @param string $apellido
-     * @return Usuario
+     * @param string $nombre
      */
-    public function setApellido($apellido)
+    public function setNombre($nombre)
     {
-        $this->apellido = $apellido;
-
-        return $this;
+        $this->nombre = $nombre;
     }
 
     /**
-     * Get apellido
-     *
-     * @return string 
+     * @return string
      */
     public function getApellido()
     {
@@ -118,22 +94,15 @@ class Usuario
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Usuario
+     * @param string $apellido
      */
-    public function setEmail($email)
+    public function setApellido($apellido)
     {
-        $this->email = $email;
-
-        return $this;
+        $this->apellido = $apellido;
     }
 
     /**
-     * Get email
-     *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -141,22 +110,15 @@ class Usuario
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     * @return Usuario
+     * @param string $email
      */
-    public function setPassword($password)
+    public function setEmail($email)
     {
-        $this->password = $password;
-
-        return $this;
+        $this->email = $email;
     }
 
     /**
-     * Get password
-     *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -164,58 +126,46 @@ class Usuario
     }
 
     /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return Usuario
+     * @param string $password
      */
-    public function setSalt($salt)
+    public function setPassword($password)
     {
-        $this->salt = $salt;
-
-        return $this;
+        $this->password = $password;
     }
 
     /**
-     * Get salt
-     *
-     * @return string 
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
-     * Set fechaAlta
-     *
-     * @param \DateTime $fechaAlta
-     * @return Usuario
-     */
-    public function setFechaAlta($fechaAlta)
-    {
-        $this->fechaAlta = $fechaAlta;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaAlta
-     *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaAlta()
     {
         return $this->fechaAlta;
     }
 
-    public function __toString()
+    /**
+     * @param \DateTime $fechaAlta
+     */
+    public function setFechaAlta($fechaAlta)
     {
-        return $this->getNombre().' '.$this->getApellido();
+        $this->fechaAlta = $fechaAlta;
     }
 
-    public function __construct()
+    /**
+     * @return ProyectoCurricular
+     */
+    public function getProyectoCurricular()
     {
-        $this->fechaAlta = new \DateTime();
+        return $this->proyectoCurricular;
     }
+
+    /**
+     * @param ProyectoCurricular $proyectoCurricular
+     */
+    public function setProyectoCurricular(ProyectoCurricular $proyectoCurricular)
+    {
+        $this->proyectoCurricular = $proyectoCurricular;
+    }
+
+
+
+
 }

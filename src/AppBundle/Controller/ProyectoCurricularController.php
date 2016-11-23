@@ -4,16 +4,19 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\ProyectoCurricular;
+use Symfony\Component\HttpFoundation\Response;
 
-class ProyectoCurricularController extends Controller
-{
+class ProyectoCurricularController extends Controller {
     /**
      * @Route ("/proyecto/", name="proyecto_index")
      */
      public function indexAction() {
-         
+         //throw $this->createAccessDeniedException("Acceso denegado!");
+         //return $this->redirect('https://google.com');
+         $em = $this->getDoctrine()->getManager();
+         $usuarios = $em->getRepository('AppBundle:ProyectoCurricular')->findUsuarios('068');
+         return new Response(implode($usuarios));
      }
     
 
@@ -36,13 +39,13 @@ class ProyectoCurricularController extends Controller
     }
     
     /**
-     * @Route ("/proyecto/{codigo}", name="proyecto_read", requirements={"codigo": "\d+"})
+     * @Route ("/proyecto/{id}", name="proyecto_read", requirements={"id": "\d+"})
      */
-    public function readAction($codigo) {
+    public function readAction($id) {
         // CONSULTAR PROYECTO
         $em = $this->getDoctrine()->getManager();
 
-        $proyecto = $em->getRepository("AppBundle:ProyectoCurricular")->findOneByCodigo($codigo);
+        $proyecto = $em->getRepository("AppBundle:ProyectoCurricular")->findOneById($id);
 
         if (!$proyecto){
             throw $this->CreateNotFoundException('No se encontró el proyecto curricular');

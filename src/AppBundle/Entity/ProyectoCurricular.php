@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProyectoCurricularRepository")
  */
 class ProyectoCurricular
 {
@@ -13,7 +13,7 @@ class ProyectoCurricular
      * @ORM\Id()
      * @ORM\Column()
      */
-    private $codigo;
+    private $id;
 
     /**
      * @ORM\Column()
@@ -21,23 +21,23 @@ class ProyectoCurricular
     private $nombre;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCodigo()
+    public function getId()
     {
-        return $this->codigo;
+        return $this->id;
     }
 
     /**
-     * @param mixed $codigo
+     * @param string $id
      */
-    public function setCodigo($codigo)
+    public function setId($id)
     {
-        $this->codigo = $codigo;
+        $this->id = $id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNombre()
     {
@@ -45,7 +45,7 @@ class ProyectoCurricular
     }
 
     /**
-     * @param mixed $nombre
+     * @param string $nombre
      */
     public function setNombre($nombre)
     {
