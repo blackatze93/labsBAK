@@ -15,8 +15,8 @@ class ProyectoCurricularController extends Controller {
          //throw $this->createAccessDeniedException("Acceso denegado!");
          //return $this->redirect('https://google.com');
          $em = $this->getDoctrine()->getManager();
-         $usuarios = $em->getRepository('AppBundle:ProyectoCurricular')->findUsuarios('068');
-         return new Response(implode($usuarios));
+         $usuarios = $em->getRepository('AppBundle:ProyectoCurricular')->findUsuarios('sistemas');
+         return new Response(implode('<br>', $usuarios));
      }
     
 
