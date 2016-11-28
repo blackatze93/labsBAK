@@ -70,30 +70,29 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="{{ route == 'usuario_index' ? 'active' }}"><a href="{{ path('usuario_index') }}">Usuarios</a></li>
-                <li><a data-toggle="modal" data-target="#myModal" href="#">Iniciar sesión</a></li>
+                <li><a data-toggle="modal" data-target="#login" href="#">Iniciar sesión</a></li>
             </ul>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Iniciar sesión</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-signin" method="post">
-                                <label for="id" class="sr-only">Identificación</label>
-                                <input type="text" name="id" class="form-control" placeholder="Identificación" required autofocus>
-                                <label for="password" class="sr-only">Contraseña</label>
-                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required><br>
-                                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-             
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginLabel">Iniciar sesión</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-signin" method="post">
+                    <label for="id" class="sr-only">Identificación</label>
+                    <input type="text" name="id" class="form-control" placeholder="Identificación" required autofocus>
+                    <label for="password" class="sr-only">Contraseña</label>
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" required><br>
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

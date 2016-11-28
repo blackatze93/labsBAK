@@ -13,7 +13,17 @@
     </head>
     <body>
         <div  class="container">
-            {% block body %}{% endblock %}
+            <header>
+                {{ include('menu.html.twig') }}
+            </header>
+            <div class="jumbotron">
+                <article>
+                    {% block article %}{% endblock %}
+                </article>
+            </div>
+            <footer>
+                &copy; {{ 'now' | date('Y') }}
+            </footer>
         </div>
         {% block javascripts %}
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
