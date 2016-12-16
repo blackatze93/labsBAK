@@ -3,37 +3,48 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
-     * @ORM\Column()
+     * @ORM\Column(type="string", length=15)
      * @ORM\Id
      */
     private $id;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $nombre;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $apellido;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $email;
 
     /**
-     * @ORM\Column()
+     * @ORM\Column(type="string", length=100)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private $cargo;
+
+    /**
+     * @ORM\Column(type="string", length=45, nullable=true)
+     */
+    private $funciones;
 
     /**
      * @ORM\Column(type="datetime")
@@ -41,17 +52,17 @@ class Usuario
     private $fechaAlta;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      */
-    private $proyectoCurricular;
+    private $dependencia;
 
     public function __construct() {
         $this->fechaAlta = new \DateTime();
     }
 
-    public function __toString() {
-        return $this->getNombre().' '.$this->getApellido();
-    }
+//    public function __toString() {
+//        return $this->getNombre().' '.$this->getApellido();
+//    }
 
     /**
      * @return string
@@ -134,6 +145,38 @@ class Usuario
     }
 
     /**
+     * @return mixed
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * @param mixed $cargo
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFunciones()
+    {
+        return $this->funciones;
+    }
+
+    /**
+     * @param mixed $funciones
+     */
+    public function setFunciones($funciones)
+    {
+        $this->funciones = $funciones;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getFechaAlta()
@@ -150,22 +193,77 @@ class Usuario
     }
 
     /**
-     * @return ProyectoCurricular
+     * @return Dependencia
      */
-    public function getProyectoCurricular()
+    public function getDependencia()
     {
-        return $this->proyectoCurricular;
+        return $this->dependencia;
     }
 
     /**
-     * @param ProyectoCurricular $proyectoCurricular
+     * @param Dependencia %dependencia
      */
-    public function setProyectoCurricular(ProyectoCurricular $proyectoCurricular)
+    public function setDependencia(Dependencia $dependencia)
     {
-        $this->proyectoCurricular = $proyectoCurricular;
+        $this->dependencia = $dependencia;
     }
 
 
+    /**
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+        return array($this->cargo);
+    }
 
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return null;
+    }
 
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        $this->getId();
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+        $this->password = null;
+    }
 }
