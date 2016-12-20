@@ -15,8 +15,9 @@
                     <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Identificación" required autofocus>
                     <label for="password" class="sr-only">Contraseña</label>
                     <input type="password" id="password" name="_password" class="form-control" placeholder="Contraseña" required>
-                    <input type="checkbox" id="no_cerrar" name="_remember_me" checked>
-                    <label for="no_cerrar">No cerrar sesión</label>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="no_cerrar" name="_remember_me" checked>No cerrar sesión</label>
+                    </div>
                     <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
                 </form>
             </div>

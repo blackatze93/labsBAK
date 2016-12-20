@@ -6,13 +6,18 @@
     {% if error %}
         <div class="alert alert-danger">{{ error.message }}</div>
     {% endif %}
-    <form class="form-inline" action="{{ path('usuario_login_check') }}" method="post">
-        <label for="username">Identificación:</label>
-        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required autofocus>
-        <label for="password">Contraseña:</label>
-        <input type="password" class="form-control" id="password" name="_password" required>
-        <input type="checkbox" id="no_cerrar" name="_remember_me" checked>
-        <label for="no_cerrar">No cerrar sesión</label>
-        <input class="btn btn-primary" type="submit" name="login" value="Entrar">
+    <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
+        <div class="form-group">
+            <label for="username">Identificación:</label>
+            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" class="form-control" id="password" name="_password" required>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" id="no_cerrar" name="_remember_me" checked>No cerrar sesión</label>
+        </div>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="login" value="Iniciar sesión">
     </form>
 {% endblock %}

@@ -60,9 +60,9 @@ class Usuario implements UserInterface
         $this->fechaAlta = new \DateTime();
     }
 
-//    public function __toString() {
-//        return $this->getNombre().' '.$this->getApellido();
-//    }
+    public function __toString() {
+        return $this->getNombre().' '.$this->getApellido();
+    }
 
     /**
      * @return string
