@@ -15,7 +15,7 @@ class DependenciaType extends AbstractType
     {
         $builder->add('id')->add('nombre')        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -33,6 +33,4 @@ class DependenciaType extends AbstractType
     {
         return 'appbundle_dependencia';
     }
-
-
 }

@@ -2,9 +2,10 @@
 
 namespace AppBundle\Controller;
 
-
+use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 
 /**
  * @Route("/usuario")
@@ -19,7 +20,9 @@ class UsuarioController extends Controller
 
         $usuarios = $em->getRepository("AppBundle:Usuario")->findAll();
 
-        return $this->render('usuario/index.html.twig', array('usuarios' => $usuarios));
+        return $this->render('usuario/index.html.twig', array(
+            'usuarios' => $usuarios
+        ));
     }
 
     /**
@@ -60,6 +63,18 @@ class UsuarioController extends Controller
         return $this->render('usuario/_modal_login.html.twig', array(
             'last_username' => $authUtils->getLastUsername(),
             'error' => $authUtils->getLastAuthenticationError(),
+        ));
+    }
+
+    /**
+     * @Route("/registro", name="usuario_registro")
+     */
+    public function registroAction() {
+        $usuario = new Usuario();
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
+
+        return $this->render('usuario/registro.html.twig', array(
+            'formulario' => $formulario->createView()
         ));
     }
 }
