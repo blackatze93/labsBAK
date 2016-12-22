@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/usuario")
@@ -69,7 +69,7 @@ class UsuarioController extends Controller
     /**
      * @Route("/registro", name="usuario_registro")
      */
-    public function registroAction() {
+    public function registroAction(Request $request) {
         $usuario = new Usuario();
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
 

@@ -53,6 +53,7 @@ class Usuario implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
+     * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=false)
      */
     private $dependencia;
 

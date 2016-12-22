@@ -12,8 +12,13 @@ class UsuarioType extends AbstractType {
             ->add('id')
             ->add('nombre')
             ->add('apellido')
-            ->add('email')
-            ->add('password')
+            ->add('email', 'email')
+            ->add('password', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Las dos contraseñas deben coincidir',
+                'first_options' => array('label' => 'Contraseña'),
+                'second_options' => array('label' => 'Confirmar Contraseña'),
+            ))
             ->add('cargo')
             ->add('funciones')
             ->add('dependencia')
