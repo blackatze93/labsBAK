@@ -18,9 +18,12 @@ class UsuarioType extends AbstractType {
                 'invalid_message' => 'Las dos contraseñas deben coincidir',
                 'first_options' => array('label' => 'Contraseña'),
                 'second_options' => array('label' => 'Confirmar Contraseña'),
+                'first_name' => 'pass1',
+                'second_name' => 'pass2',
             ))
             ->add('cargo')
             ->add('funciones')
+            ->add('estaActivo', 'checkbox', array('required' => false))
             ->add('dependencia')
             ->add('registrar', 'submit')
         ;

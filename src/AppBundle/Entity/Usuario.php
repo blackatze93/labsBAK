@@ -52,6 +52,11 @@ class Usuario implements UserInterface
     private $fechaAlta;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $estaActivo;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=false)
      */
@@ -59,6 +64,7 @@ class Usuario implements UserInterface
 
     public function __construct() {
         $this->fechaAlta = new \DateTime();
+        $this->estaActivo = false;
     }
 
     public function __toString() {
@@ -191,6 +197,22 @@ class Usuario implements UserInterface
     public function setFechaAlta($fechaAlta)
     {
         $this->fechaAlta = $fechaAlta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstaActivo()
+    {
+        return $this->estaActivo;
+    }
+
+    /**
+     * @param mixed $estaActivo
+     */
+    public function setEstaActivo($estaActivo)
+    {
+        $this->estaActivo = $estaActivo;
     }
 
     /**
