@@ -9,7 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UsuarioType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('id')
+            ->add('id', 'text', array(
+                'label' => 'Identificación',
+            ))
             ->add('nombre')
             ->add('apellido')
             ->add('email', 'email')
@@ -21,11 +23,16 @@ class UsuarioType extends AbstractType {
                 'first_name' => 'pass1',
                 'second_name' => 'pass2',
             ))
-            ->add('cargo')
+            ->add('cargo', 'choice', array(
+                'choices' => array(
+                    'ROLE_USARIO' => 'Usuario',
+                )
+            ))
             ->add('funciones')
             ->add('estaActivo', 'checkbox', array('required' => false))
             ->add('dependencia')
             ->add('registrar', 'submit')
+            ->add('restablecer', 'reset')
         ;
     }
 

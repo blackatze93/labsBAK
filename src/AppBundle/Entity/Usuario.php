@@ -27,7 +27,7 @@ class Usuario implements UserInterface
     private $apellido;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100)
      */
     private $email;
 

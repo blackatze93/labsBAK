@@ -47,6 +47,7 @@
             <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
         </div>
         {{ form_widget(formulario.registrar, {'attr' : {'class' : 'btn btn-lg btn-block btn-success'}}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-lg btn-block btn-danger'}}) }}
 
     {{ form_end(formulario) }}
 {% endblock %}
