@@ -76,6 +76,8 @@ class UsuarioController extends Controller
         $formulario->handleRequest($request);
 
         if ($formulario->isValid()) {
+            $this->addFlash('success', 'Se ha registrado correctamente');
+
             $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
             $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), null);
             $usuario->setPassword($passwordCodificado);
@@ -84,7 +86,7 @@ class UsuarioController extends Controller
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirectToRoute('usuario_index');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('usuario/registro.html.twig', array(

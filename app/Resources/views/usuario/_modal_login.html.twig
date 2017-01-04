@@ -8,7 +8,10 @@
             </div>
             <div class="modal-body">
                 {% if error %}
-                    <div class="alert alert-danger">{{ error.message }}</div>
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{{ error.message }}</strong>
+                    </div>
                 {% endif %}
                 <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
                     <label for="id" class="sr-only">Identificación</label>
