@@ -60,8 +60,8 @@
             <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
         </div>
 
-        {{ form_widget(formulario.registrar, {'attr' : {'class' : 'btn btn-block btn-success'}}) }}
-        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-block btn-danger'}}) }}
+        {{ form_widget(formulario.registrar, {'attr' : {'class' : 'btn btn-block btn-lg btn-primary'}}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-block btn-lg btn-danger'}}) }}
 
     {{ form_end(formulario) }}
 {% endblock %}

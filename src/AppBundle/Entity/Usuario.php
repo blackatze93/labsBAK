@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -18,21 +19,25 @@ class Usuario implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\NotBlank()
      */
     private $apellido;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(min = 6)
      */
     private $password;
 

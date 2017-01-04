@@ -6,7 +6,7 @@
     {% if error %}
         <div class="alert alert-danger alert-dismissable fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>{{ error.message }}</strong>
+            <strong>{{ error.message | replace({"Bad credentials." : "Nombre de usuario o contraseña inválidos."}) }}</strong>
         </div>
     {% endif %}
     <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
