@@ -73,6 +73,20 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
 
+        $formulario->handleRequest($request);
+
+        if ($formulario->isValid()) {
+            $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), null);
+            $usuario->setPassword($passwordCodificado);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            return $this->redirectToRoute('usuario_index');
+        }
+
         return $this->render('usuario/registro.html.twig', array(
             'formulario' => $formulario->createView()
         ));

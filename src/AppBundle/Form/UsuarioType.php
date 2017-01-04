@@ -9,9 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UsuarioType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('id', 'text', array(
-                'label' => 'Identificación',
-            ))
+            ->add('id', 'number')
             ->add('nombre')
             ->add('apellido')
             ->add('email', 'email')
@@ -25,7 +23,7 @@ class UsuarioType extends AbstractType {
             ))
             ->add('cargo', 'choice', array(
                 'choices' => array(
-                    'ROLE_USARIO' => 'Usuario',
+                    'ROLE_USUARIO' => 'Usuario',
                 )
             ))
             ->add('funciones')
@@ -43,6 +41,6 @@ class UsuarioType extends AbstractType {
     }
 
     public function getBlockPrefix() {
-        return 'uauario';
+        return 'usuario';
     }
 }

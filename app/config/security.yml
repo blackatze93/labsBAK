@@ -37,4 +37,4 @@ security:
             entity: { class: AppBundle\Entity\Usuario, property: id }
 
     encoders:
-        AppBundle\Entity\Usuario: plaintext
+        AppBundle\Entity\Usuario: bcrypt
