@@ -3,28 +3,31 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
+ * @DoctrineAssert\UniqueEntity("id")
  */
 class Usuario implements UserInterface
 {
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=15, unique=true)
      * @ORM\Id
+     * @Assert\NotBlank()
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
      */
     private $apellido;
@@ -32,44 +35,50 @@ class Usuario implements UserInterface
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Email()
+     * @Assert\NotBlank()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string")
      * @Assert\Length(min = 6)
+     * @Assert\NotBlank()
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank()
      */
     private $cargo;
 
     /**
-     * @ORM\Column(type="string", length=45, nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $funciones;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $fechaAlta;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
      */
     private $estaActivo;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\Dependencia")
+     * @Assert\NotBlank()
      */
     private $dependencia;
 
     public function __construct() {
         $this->fechaAlta = new \DateTime();
-        $this->estaActivo = false;
     }
 
     public function __toString() {
