@@ -71,7 +71,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="{{ route == 'usuario_index' ? 'active' }}"><a href="{{ path('usuario_index') }}">Usuarios</a></li>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li><a href="#">{{ app.user }}</a></li>
+                    <li class="{{ route == 'usuario_perfil' ? 'active' }}"><a href="{{ path('usuario_perfil') }}">{{ app.user }}</a></li>
                     <li><a href="{{ path('usuario_logout') }}">Salir</a></li>
                 {% else %}
                     <li><a data-toggle="modal" data-target="#login" href="#">Iniciar sesión</a></li>

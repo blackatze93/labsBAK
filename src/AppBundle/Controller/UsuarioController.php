@@ -73,11 +73,12 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
 
+        $formulario
+            ->add('registrar', 'submit');
+
         $formulario->handleRequest($request);
 
         if ($formulario->isValid()) {
-            $this->addFlash('success', 'Se ha registrado correctamente');
-
             $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
             $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), null);
             $usuario->setPassword($passwordCodificado);
@@ -86,10 +87,36 @@ class UsuarioController extends Controller
             $em->persist($usuario);
             $em->flush();
 
+            $this->addFlash('success', 'Se ha registrado correctamente');
+
             return $this->redirectToRoute('index');
         }
 
         return $this->render('usuario/registro.html.twig', array(
+            'formulario' => $formulario->createView()
+        ));
+    }
+
+    /**
+     * @Route("/perfil", name="usuario_perfil")
+     */
+    public function perfilAction(Request $request) {
+        $usuario = $this->getUser();
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
+        $formulario->add('guardar', 'submit');
+
+        $formulario->handleRequest($request);
+
+        if ($formulario->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            $this->addFlash('success', 'Se actualizó el perfil correctamente');
+        }
+
+        return $this->render('usuario/perfil.html.twig', array(
+            'usuario' => $usuario,
             'formulario' => $formulario->createView()
         ));
     }

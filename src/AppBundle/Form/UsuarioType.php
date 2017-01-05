@@ -24,12 +24,13 @@ class UsuarioType extends AbstractType {
             ->add('cargo', 'choice', array(
                 'choices' => array(
                     'ROLE_USUARIO' => 'Usuario',
+                    'ROLE_DOCENTE' => 'Docente',
+                    'ROLE_ADMINISTRATIVO' => 'Administrativo',
                 )
             ))
             ->add('funciones')
-            ->add('estaActivo', 'checkbox', array('required' => false))
             ->add('dependencia')
-            ->add('registrar', 'submit')
+            ->add('estaActivo', 'checkbox', array('required' => false))
             ->add('restablecer', 'reset')
         ;
     }
