@@ -12,7 +12,7 @@
     {% endif %}
     <div class="form-group">
         {{ form_label(formulario.id, 'Identificación') }}
-        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control', 'disabled' : 'disabled'}}) }}
+        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control'}}) }}
         <span class="text-danger">{{ form_errors(formulario.id) }}</span>
     </div>
     <div class="form-group">
@@ -42,7 +42,7 @@
     </div>
     <div class="form-group">
         {{ form_label(formulario.cargo) }}
-        {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control', 'disabled' : 'disabled'}}) }}
+        {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
         <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
     </div>
     <div class="form-group">
@@ -56,10 +56,7 @@
         <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
     </div>
     <div class="checkbox">
-        <label>
-            {{ form_widget(formulario.estaActivo, {'attr' : {'disabled' : 'disabled'}}) }}
-            {{ form_label(formulario.estaActivo) }}
-        </label>
+        <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
         <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
     </div>
 

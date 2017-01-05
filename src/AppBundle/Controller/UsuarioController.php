@@ -71,10 +71,9 @@ class UsuarioController extends Controller
      */
     public function registroAction(Request $request) {
         $usuario = new Usuario();
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
-
-        $formulario
-            ->add('registrar', 'submit');
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
+            'accion' => 'crear_usuario',
+        ));
 
         $formulario->handleRequest($request);
 
@@ -102,8 +101,9 @@ class UsuarioController extends Controller
      */
     public function perfilAction(Request $request) {
         $usuario = $this->getUser();
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
-        $formulario->add('guardar', 'submit');
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
+            'accion' => 'modificar_perfil',
+        ));
 
         $formulario->handleRequest($request);
 

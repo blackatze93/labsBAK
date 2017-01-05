@@ -33,11 +33,23 @@ class UsuarioType extends AbstractType {
             ->add('estaActivo', 'checkbox', array('required' => false))
             ->add('restablecer', 'reset')
         ;
+
+        if ($options['accion'] === 'crear_usuario') {
+            $builder
+                ->add('registrar', 'submit')
+            ;
+        } else if ($options['accion'] === 'modificar_perfil') {
+            $builder
+                ->add('guardar', 'submit')
+            ;
+        }
+
     }
 
     public function configureOptions(OptionsResolver $resolver) {
         $resolver ->setDefaults(array(
-           'data_class' => 'AppBundle\Entity\Usuario',
+            'data_class' => 'AppBundle\Entity\Usuario',
+            'accion' => 'modificar_perfil',
         ));
     }
 
