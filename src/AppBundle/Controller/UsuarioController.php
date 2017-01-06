@@ -73,13 +73,14 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
             'accion' => 'crear_usuario',
+            'validation_groups' => array('Default', 'registro'),
         ));
 
         $formulario->handleRequest($request);
 
         if ($formulario->isValid()) {
             $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
-            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), null);
+            $passwordCodificado = $encoder->encodePassword($usuario->getPasswordEnClaro(), null);
             $usuario->setPassword($passwordCodificado);
 
             $em = $this->getDoctrine()->getManager();
@@ -108,6 +109,12 @@ class UsuarioController extends Controller
         $formulario->handleRequest($request);
 
         if ($formulario->isValid()) {
+            if ($usuario->getPasswordEnClaro() !== null) {
+                $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+                $passwordCodificado = $encoder->encodePassword($usuario->getPasswordEnClaro(), null);
+                $usuario->setPassword($passwordCodificado);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
             $em->flush();

@@ -40,9 +40,13 @@ class Usuario implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string")
      * @Assert\Length(min = 6)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"registro"})
+     */
+    private $passwordEnClaro;
+
+    /**
+     * @ORM\Column(type="string")
      */
     private $password;
 
@@ -147,6 +151,22 @@ class Usuario implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordEnClaro()
+    {
+        return $this->passwordEnClaro;
+    }
+
+    /**
+     * @param mixed $passwordEnClaro
+     */
+    public function setPasswordEnClaro($passwordEnClaro)
+    {
+        $this->passwordEnClaro = $passwordEnClaro;
     }
 
     /**
@@ -301,6 +321,6 @@ class Usuario implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
-        $this->password = null;
+        $this->passwordEnClaro = null;
     }
 }
