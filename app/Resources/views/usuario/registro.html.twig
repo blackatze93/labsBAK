@@ -41,6 +41,11 @@
             <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
         </div>
         <div class="form-group">
+            {{ form_label(formulario.dependencia) }}
+            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
+        </div>
+        <div class="form-group">
             {{ form_label(formulario.cargo) }}
             {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
@@ -49,11 +54,6 @@
             {{ form_label(formulario.funciones) }}
             {{ form_widget(formulario.funciones, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.funciones) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.dependencia) }}
-            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
         </div>
         <div class="checkbox">
             <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>

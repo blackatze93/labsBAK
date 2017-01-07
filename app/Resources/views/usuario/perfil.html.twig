@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Registro de nuevo usuario{% endblock %}
+{% block title %}Perfil del usuario{% endblock %}
 
 {% block article %}
     {{ form_start(formulario) }}
@@ -12,7 +12,7 @@
     {% endif %}
     <div class="form-group">
         {{ form_label(formulario.id, 'Identificación') }}
-        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control'}}) }}
+        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
         <span class="text-danger">{{ form_errors(formulario.id) }}</span>
     </div>
     <div class="form-group">
@@ -33,12 +33,18 @@
     <div class="form-group">
         {{ form_label(formulario.passwordEnClaro.pass1) }}
         {{ form_widget(formulario.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="help-block">Ingrese una nueva contraseña para modificar la actual.</span>
         <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass1) }}</span>
     </div>
     <div class="form-group">
         {{ form_label(formulario.passwordEnClaro.pass2) }}
         {{ form_widget(formulario.passwordEnClaro.pass2, {'attr' : {'class' : 'form-control'}}) }}
         <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.dependencia) }}
+        {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
     </div>
     <div class="form-group">
         {{ form_label(formulario.cargo) }}
@@ -50,11 +56,6 @@
         {{ form_widget(formulario.funciones, {'attr' : {'class' : 'form-control'}}) }}
         <span class="text-danger">{{ form_errors(formulario.funciones) }}</span>
     </div>
-    <div class="form-group">
-        {{ form_label(formulario.dependencia) }}
-        {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
-        <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
-    </div>
     <div class="checkbox">
         <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
         <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
@@ -64,4 +65,31 @@
     {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-block btn-lg btn-danger'}}) }}
 
     {{ form_end(formulario) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        // Funciones para hacer los selects y el checkbox readonly
+        $(function(){
+            $('#usuario_cargo').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+
+            $('#usuario_dependencia').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+
+            $('#usuario_estaActivo').each(function(){
+                $(this)
+                    .hide()
+                    .after('<input type="checkbox" value="' + $(this).val() + '" disabled>')
+            });
+        })
+    </script>
 {% endblock %}
