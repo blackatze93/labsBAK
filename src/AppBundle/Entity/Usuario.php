@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @DoctrineAssert\UniqueEntity("id")
  */
-class Usuario implements UserInterface
+class Usuario implements AdvancedUserInterface
 {
     /**
      * @var string
@@ -353,4 +353,42 @@ class Usuario implements UserInterface
         // TODO: Implement eraseCredentials() method.
         $this->passwordEnClaro = null;
     }
+
+    /**
+     * (@inheritdoc)
+     */
+    public function isAccountNonExpired()
+    {
+        // TODO: Implement isAccountNonExpired() method.
+        return true;
+    }
+
+    /**
+     * (@inheritdoc)
+     */
+    public function isAccountNonLocked()
+    {
+        // TODO: Implement isAccountNonLocked() method.
+        return true;
+    }
+
+    /**
+     * (@inheritdoc)
+     */
+    public function isCredentialsNonExpired()
+    {
+        // TODO: Implement isCredentialsNonExpired() method.
+        return true;
+    }
+
+    /**
+     * (@inheritdoc)
+     */
+    public function isEnabled()
+    {
+        // TODO: Implement isEnabled() method.
+        return $this->estaActivo;
+    }
+
+
 }
