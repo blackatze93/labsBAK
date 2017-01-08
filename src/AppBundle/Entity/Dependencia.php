@@ -3,19 +3,23 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Dependencia
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
+ * @DoctrineAssert\UniqueEntity("id")
  */
 class Dependencia
 {
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, unique=true)
      * @ORM\Id
+     * @Assert\NotBlank()
      */
     private $id;
 
@@ -23,11 +27,12 @@ class Dependencia
      * @var string
      *
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
-     * @param int $id
+     * @param string $id
      */
     public function setId($id)
     {
@@ -37,7 +42,7 @@ class Dependencia
     /**
      * Get id
      *
-     * @return integer 
+     * @return string
      */
     public function getId()
     {
@@ -67,8 +72,10 @@ class Dependencia
         return $this->nombre;
     }
 
+    /**
+     * @return string
+     */
     public function __toString() {
         return $this->getNombre();
     }
-
 }

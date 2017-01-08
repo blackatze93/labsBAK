@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class DependenciaType
+ * @package AppBundle\Form
+ */
 class DependenciaType extends AbstractType
 {
     /**
@@ -13,7 +17,9 @@ class DependenciaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('id')->add('nombre')        ;
+        $builder
+            ->add('id', 'number')
+            ->add('nombre')        ;
     }
 
     /**
@@ -31,6 +37,6 @@ class DependenciaType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_dependencia';
+        return 'dependencia';
     }
 }

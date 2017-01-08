@@ -8,12 +8,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * Usuario
+ *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @DoctrineAssert\UniqueEntity("id")
  */
 class Usuario implements UserInterface
 {
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=15, unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
@@ -21,18 +25,24 @@ class Usuario implements UserInterface
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
      */
     private $apellido;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=100)
      * @Assert\Email()
      * @Assert\NotBlank()
@@ -40,40 +50,54 @@ class Usuario implements UserInterface
     private $email;
 
     /**
+     * @var string
+     *
      * @Assert\Length(min = 6)
      * @Assert\NotBlank(groups={"registro"})
      */
     private $passwordEnClaro;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
      */
     private $cargo;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=60, nullable=true)
      */
     private $funciones;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(type="datetime")
      * @Assert\DateTime()
      */
     private $fechaAlta;
 
     /**
+     * @var boolean
+     *
      * @ORM\Column(type="boolean")
      * @Assert\Type(type="bool")
      */
     private $estaActivo;
 
     /**
+     * @var Dependencia
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Dependencia")
@@ -81,10 +105,16 @@ class Usuario implements UserInterface
      */
     private $dependencia;
 
+    /**
+     * Usuario constructor.
+     */
     public function __construct() {
         $this->fechaAlta = new \DateTime();
     }
 
+    /**
+     * @return string
+     */
     public function __toString() {
         return $this->getNombre().' '.$this->getApellido();
     }
@@ -154,7 +184,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPasswordEnClaro()
     {
@@ -162,7 +192,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @param mixed $passwordEnClaro
+     * @param string $passwordEnClaro
      */
     public function setPasswordEnClaro($passwordEnClaro)
     {
@@ -186,7 +216,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCargo()
     {
@@ -194,7 +224,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @param mixed $cargo
+     * @param string $cargo
      */
     public function setCargo($cargo)
     {
@@ -202,7 +232,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFunciones()
     {
@@ -210,7 +240,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @param mixed $funciones
+     * @param string $funciones
      */
     public function setFunciones($funciones)
     {
@@ -234,7 +264,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
     public function getEstaActivo()
     {
@@ -242,7 +272,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * @param mixed $estaActivo
+     * @param boolean $estaActivo
      */
     public function setEstaActivo($estaActivo)
     {
@@ -309,7 +339,7 @@ class Usuario implements UserInterface
     public function getUsername()
     {
         // TODO: Implement getUsername() method.
-        $this->getId();
+        return $this->getId();
     }
 
     /**

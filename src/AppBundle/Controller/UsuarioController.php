@@ -8,11 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Class UsuarioController
+ * @package AppBundle\Controller
+ *
  * @Route("/usuario")
  */
 class UsuarioController extends Controller
 {
     /**
+     * Metodo que lista los usuarios de la aplicacion
+     *
      * @Route("/", name="usuario_index")
      */
     public function indexAction() {
@@ -26,6 +31,8 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Metodo que genera el formulario de login
+     *
      * @Route("/login", name="usuario_login")
      */
     public function loginAction() {
@@ -39,25 +46,29 @@ class UsuarioController extends Controller
     }
 
     /**
+     * El "login check" lo hace Symfony automáticamente, por lo que
+     * no hay que añadir ningún código en este método
+     *
      * @Route("/login_check", name="usuario_login_check")
      */
     public function loginCheckAction() {
-        // el "login check" lo hace Symfony automáticamente, por lo que
-        // no hay que añadir ningún código en este método
     }
 
     /**
+     * El logout lo hace Symfony automáticamente, por lo que
+     * no hay que añadir ningún código en este método
+     *
      * @Route("/logout", name="usuario_logout")
      */
     public function logoutAction() {
-        // el logout lo hace Symfony automáticamente, por lo que
-        // no hay que añadir ningún código en este método
     }
 
+    /**
+     * Metodo que genera el modal login en el menu principal
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function modalLoginAction() {
-        // el logout lo hace Symfony automáticamente, por lo que
-        // no hay que añadir ningún código en este método
-        // crear aqui el formulario de login
         $authUtils = $this->get('security.authentication_utils');
 
         return $this->render('usuario/_modal_login.html.twig', array(
@@ -67,37 +78,55 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Metodo que genera la pagina de registro y procesa los datos
+     *
      * @Route("/registro", name="usuario_registro")
      */
     public function registroAction(Request $request) {
+        //Se crea la nueva entidad sobre la cual se guardaran los datos
         $usuario = new Usuario();
+
+        // Se genera el formulario por medio de la clase UsuarioType que ya tiene todos los campos
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
             'accion' => 'crear_usuario',
             'validation_groups' => array('Default', 'registro'),
         ));
 
+        // Cuando se hace el post se invoca el metodo handleRequest que procesa la informacion del request
         $formulario->handleRequest($request);
 
+        // Si el formulario contiene informacion valida y sin ningun error de validacion se guardan los datos
         if ($formulario->isValid()) {
+            // Se obtiene el encoder, que es el metodo de encriptacion de la entidad usuario
             $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+            // Se codifica el password mediante el encoder
             $passwordCodificado = $encoder->encodePassword($usuario->getPasswordEnClaro(), null);
+            // Se establece el password en la entidad mediante el medoto setPassword
             $usuario->setPassword($passwordCodificado);
 
+            // Se obtiene el entity manager de doctrine para generar el guardado
             $em = $this->getDoctrine()->getManager();
+            // Se genera el codigo SQL para poder guardar los datos en la BD
             $em->persist($usuario);
+            // Se ejecuta el codigo SQL generado por Doctrine con la instruccion anterior
             $em->flush();
 
+            // Se agrega un mensaje para que pueda ser leido por el motor de plantillas twig
             $this->addFlash('success', 'Se ha registrado correctamente');
 
+            // Por ultimo se redirecciona a la pagina principal
             return $this->redirectToRoute('index');
         }
 
+        // Muestra el formulario mediante la accion createView de la variable formulario
         return $this->render('usuario/registro.html.twig', array(
             'formulario' => $formulario->createView()
         ));
     }
 
     /**
+     * Metodo que permite ver el perfil de un usuario y modificarlo
+     *
      * @Route("/perfil", name="usuario_perfil")
      */
     public function perfilAction(Request $request) {

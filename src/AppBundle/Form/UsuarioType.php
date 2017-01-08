@@ -6,7 +6,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UsuarioType
+ * @package AppBundle\Form
+ */
 class UsuarioType extends AbstractType {
+    /**
+     * Metodo para crear el formulario de la entidad Usuario con los campos requeridos
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id', 'number')
@@ -36,6 +46,7 @@ class UsuarioType extends AbstractType {
             ->add('restablecer', 'reset')
         ;
 
+        // Dependiendo del tipo de formulario si es registro o modificcacion se agrega el boton
         if ($options['accion'] === 'crear_usuario') {
             $builder
                 ->add('registrar', 'submit')
@@ -48,6 +59,11 @@ class UsuarioType extends AbstractType {
 
     }
 
+    /**
+     * Metodo que configura las opciones por defecto que tendra el formulario
+     *
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver ->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Usuario',
@@ -55,6 +71,11 @@ class UsuarioType extends AbstractType {
         ));
     }
 
+    /**
+     * Metodo que configura el prefijo que tendran los campos del formulario
+     *
+     * @return string
+     */
     public function getBlockPrefix() {
         return 'usuario';
     }
