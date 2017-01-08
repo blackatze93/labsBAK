@@ -11,7 +11,7 @@
             </div>
         {% endif %}
         <div class="form-group">
-            {{ form_label(formulario.id, 'Identificación') }}
+            {{ form_label(formulario.id) }}
             {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.id) }}</span>
         </div>

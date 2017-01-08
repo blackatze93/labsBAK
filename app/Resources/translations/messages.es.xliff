@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Id</source>
+                <target>Identificación</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Nombre</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Apellido</source>
+                <target>Apellido</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Email</source>
+                <target>Correo Electrónico</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Contraseña</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Confirmar Contraseña</source>
+                <target>Confirmar Contraseña</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Dependencia</source>
+                <target>Dependencia</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Cargo</source>
+                <target>Cargo</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Funciones</source>
+                <target>Funciones</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Esta activo</source>
+                <target>Está Activo</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Registrar</source>
+                <target>Registrar</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Restablecer</source>
+                <target>Restablecer</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Guardar</source>
+                <target>Guardar</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source></source>
+                <target></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
