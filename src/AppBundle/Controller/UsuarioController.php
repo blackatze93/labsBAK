@@ -158,7 +158,7 @@ class UsuarioController extends Controller
     /**
      * Metodo que permite ver el perfil de un usuario y modificarlo
      *
-     * @Route("/edit/{id}", name="usuario_edit")
+     * @Route("/{id}/edit", name="usuario_edit")
      */
     public function editAction(Request $request, Usuario $usuario) {
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
@@ -183,5 +183,36 @@ class UsuarioController extends Controller
             'usuario' => $usuario,
             'formulario' => $formulario->createView()
         ));
+    }
+
+    /**
+     * Metodo que permite ver el perfil de un usuario
+     *
+     * @Route("/{id}", name="usuario_show")
+     */
+    public function showAction(Usuario $usuario) {
+        return $this->render('usuario/show.html.twig', array(
+            'usuario' => $usuario,
+        ));
+    }
+
+
+    /**
+     * Metodo para eliminar un usuario
+     *
+     * @Route("/{id}/delete", name="usuario_delete")
+     */
+    public function deleteAction(Usuario $usuario) {
+        if ($usuario != null) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($usuario);
+            $em->flush();
+
+            $this->addFlash('success', 'Se elimino el usuario correctamente');
+
+            return $this->redirectToRoute('usuario_index');
+        } else {
+            throw $this->createNotFoundException('No se encontró el usuario');
+        }
     }
 }

@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme formulario 'form/fields.html.twig' %}
 
 {% block title %}Perfil del Usuario{% endblock %}
 
@@ -60,10 +61,10 @@
         <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
         <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
     </div>
-
-    {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-block btn-lg btn-primary'}}) }}
-    {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-block btn-lg btn-danger'}}) }}
-
+    <div class="text-center">
+        {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+    </div>
     {{ form_end(formulario) }}
 {% endblock %}
 

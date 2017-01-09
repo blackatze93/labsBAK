@@ -43,8 +43,8 @@
                 <target>Está Activo</target>
             </trans-unit>
             <trans-unit id="11">
-                <source>Registrar</source>
-                <target>Registrar</target>
+                <source>Crear</source>
+                <target>Crear</target>
             </trans-unit>
             <trans-unit id="12">
                 <source>Restablecer</source>
@@ -55,16 +55,16 @@
                 <target>Guardar</target>
             </trans-unit>
             <trans-unit id="14">
-                <source></source>
-                <target></target>
+                <source>Administrador</source>
+                <target>Administrador</target>
             </trans-unit>
             <trans-unit id="15">
-                <source></source>
-                <target></target>
+                <source>Docente</source>
+                <target>Docente</target>
             </trans-unit>
             <trans-unit id="16">
-                <source></source>
-                <target></target>
+                <source>Administrativo</source>
+                <target>Administrativo</target>
             </trans-unit>
             <trans-unit id="17">
                 <source></source>
