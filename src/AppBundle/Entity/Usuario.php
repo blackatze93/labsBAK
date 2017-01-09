@@ -16,11 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Usuario implements AdvancedUserInterface
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(type="string", length=15, unique=true)
+     * @ORM\Column(type="bigint", unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
+     * @Assert\Range(min="0")
      */
     private $id;
 
@@ -29,6 +30,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
+     * @Assert\Length(max="60")
      */
     private $nombre;
 
@@ -37,6 +39,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
+     * @Assert\Length(max="60")
      */
     private $apellido;
 
@@ -46,6 +49,7 @@ class Usuario implements AdvancedUserInterface
      * @ORM\Column(type="string", length=100)
      * @Assert\Email()
      * @Assert\NotBlank()
+     * @Assert\Length(max="100")
      */
     private $email;
 
@@ -69,6 +73,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $cargo;
 
@@ -76,6 +81,7 @@ class Usuario implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\Length(max="60")
      */
     private $funciones;
 

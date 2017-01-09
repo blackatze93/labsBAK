@@ -15,11 +15,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 class Dependencia
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(type="string", length=10, unique=true)
+     * @ORM\Column(type="integer", unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
+     * @Assert\Range(min="0")
      */
     private $id;
 
@@ -28,6 +29,7 @@ class Dependencia
      *
      * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $nombre;
 

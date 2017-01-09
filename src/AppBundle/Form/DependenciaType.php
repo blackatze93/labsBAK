@@ -18,7 +18,7 @@ class DependenciaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'number')
+            ->add('id')
             ->add('nombre')        ;
     }
 

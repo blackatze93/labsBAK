@@ -147,6 +147,8 @@ class UsuarioController extends Controller
             $em->flush();
 
             $this->addFlash('success', 'Se actualizó el perfil correctamente');
+
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('usuario/perfil.html.twig', array(
@@ -177,6 +179,8 @@ class UsuarioController extends Controller
             $em->flush();
 
             $this->addFlash('success', 'Se edito el usuario correctamente');
+
+            return $this->redirectToRoute('usuario_index');
         }
 
         return $this->render('usuario/edit.html.twig', array(
