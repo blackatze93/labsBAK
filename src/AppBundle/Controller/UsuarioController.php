@@ -78,18 +78,18 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Metodo que genera la pagina de registro y procesa los datos
+     * Metodo que genera la pagina de nuevo usuario y procesa los datos
      *
-     * @Route("/registro", name="usuario_registro")
+     * @Route("/new", name="usuario_new")
      */
-    public function registroAction(Request $request) {
+    public function newAction(Request $request) {
         //Se crea la nueva entidad sobre la cual se guardaran los datos
         $usuario = new Usuario();
 
         // Se genera el formulario por medio de la clase UsuarioType que ya tiene todos los campos
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
-            'accion' => 'crear_usuario',
-            'validation_groups' => array('Default', 'registro'),
+            'accion' => 'new_usuario',
+            'validation_groups' => array('Default', 'new'),
         ));
 
         // Cuando se hace el post se invoca el metodo handleRequest que procesa la informacion del request
@@ -112,14 +112,14 @@ class UsuarioController extends Controller
             $em->flush();
 
             // Se agrega un mensaje para que pueda ser leido por el motor de plantillas twig
-            $this->addFlash('success', 'Se ha registrado correctamente');
+            $this->addFlash('success', 'Se agregó el usuario correctamente');
 
-            // Por ultimo se redirecciona a la pagina principal
-            return $this->redirectToRoute('index');
+            // Por ultimo se redirecciona a la pagina de usuarios
+            return $this->redirectToRoute('usuario_index');
         }
 
         // Muestra el formulario mediante la accion createView de la variable formulario
-        return $this->render('usuario/registro.html.twig', array(
+        return $this->render('usuario/new.html.twig', array(
             'formulario' => $formulario->createView()
         ));
     }

@@ -53,14 +53,14 @@ class Usuario implements AdvancedUserInterface
      * @var string
      *
      * @Assert\Length(min = 6)
-     * @Assert\NotBlank(groups={"registro"})
+     * @Assert\NotBlank(groups={"new"})
      */
     private $passwordEnClaro;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=100)
      */
     private $password;
 

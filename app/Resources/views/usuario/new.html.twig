@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Registro de nuevo usuario{% endblock %}
+{% block title %}Nuevo Usuario{% endblock %}
 
 {% block article %}
     {{ form_start(formulario) }}
@@ -60,7 +60,7 @@
             <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
         </div>
 
-        {{ form_widget(formulario.registrar, {'attr' : {'class' : 'btn btn-block btn-lg btn-primary'}}) }}
+        {{ form_widget(formulario.crear, {'attr' : {'class' : 'btn btn-block btn-lg btn-primary'}}) }}
         {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-block btn-lg btn-danger'}}) }}
 
     {{ form_end(formulario) }}

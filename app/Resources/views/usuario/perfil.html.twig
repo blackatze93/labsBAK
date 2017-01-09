@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perfil del usuario{% endblock %}
+{% block title %}Perfil del Usuario{% endblock %}
 
 {% block article %}
     {{ form_start(formulario) }}
@@ -87,12 +87,7 @@
 
             $('#usuario_estaActivo').each(function(){
                 $(this)
-                    .hide();
-                    if ($(this).val() == 1) {
-                        $(this).after('<input type="checkbox" checked="checked" value="' + $(this).val() + '" disabled>');
-                    } else {
-                        $(this).after('<input type="checkbox" value="' + $(this).val() + '" disabled>');
-                    }
+                    .parent().hide()
             });
         })
     </script>

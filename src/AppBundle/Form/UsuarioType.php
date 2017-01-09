@@ -34,7 +34,7 @@ class UsuarioType extends AbstractType {
             ))
             ->add('cargo', 'choice', array(
                 'choices' => array(
-                    'Usuario' => 'ROLE_USUARIO',
+                    'Administrador' => 'ROLE_ADMIN',
                     'Docente' => 'ROLE_DOCENTE',
                     'Administrativo' => 'ROLE_ADMINISTRATIVO',
                 ),
@@ -46,10 +46,10 @@ class UsuarioType extends AbstractType {
             ->add('restablecer', 'reset')
         ;
 
-        // Dependiendo del tipo de formulario si es registro o modificcacion se agrega el boton
-        if ($options['accion'] === 'crear_usuario') {
+        // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
+        if ($options['accion'] === 'new_usuario') {
             $builder
-                ->add('registrar', 'submit')
+                ->add('crear', 'submit')
             ;
         } else if ($options['accion'] === 'modificar_perfil') {
             $builder

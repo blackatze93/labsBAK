@@ -30,8 +30,7 @@ security:
 
     access_control:
         - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/*, roles: ROLE_USUARIO }
+        - { path: ^/usuario/*, roles: ROLE_ADMIN }
 
     providers:
         usuarios:
