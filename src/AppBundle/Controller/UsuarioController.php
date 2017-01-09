@@ -131,9 +131,7 @@ class UsuarioController extends Controller
      */
     public function perfilAction(Request $request) {
         $usuario = $this->getUser();
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
-            'accion' => 'modificar_perfil',
-        ));
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
 
         $formulario->handleRequest($request);
 
@@ -152,6 +150,36 @@ class UsuarioController extends Controller
         }
 
         return $this->render('usuario/perfil.html.twig', array(
+            'usuario' => $usuario,
+            'formulario' => $formulario->createView()
+        ));
+    }
+
+    /**
+     * Metodo que permite ver el perfil de un usuario y modificarlo
+     *
+     * @Route("/edit/{id}", name="usuario_edit")
+     */
+    public function editAction(Request $request, Usuario $usuario) {
+        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
+
+        $formulario->handleRequest($request);
+
+        if ($formulario->isValid()) {
+            if ($usuario->getPasswordEnClaro() !== null) {
+                $encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+                $passwordCodificado = $encoder->encodePassword($usuario->getPasswordEnClaro(), null);
+                $usuario->setPassword($passwordCodificado);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($usuario);
+            $em->flush();
+
+            $this->addFlash('success', 'Se edito el usuario correctamente');
+        }
+
+        return $this->render('usuario/edit.html.twig', array(
             'usuario' => $usuario,
             'formulario' => $formulario->createView()
         ));
