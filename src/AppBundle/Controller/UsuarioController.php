@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Usuario;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,10 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
  * Class UsuarioController
  * @package AppBundle\Controller
  *
- * @Route("usuario")
+ * @Route("/usuario")
  */
-class UsuarioController extends Controller
-{
+class UsuarioController extends Controller {
     /**
      * Metodo que lista los usuarios de la aplicacion
      *
@@ -83,7 +82,7 @@ class UsuarioController extends Controller
     /**
      * Metodo que permite ver el perfil de un usuario
      *
-     * @Route("/{id}", name="usuario_show")
+     * @Route("/{id}", name="usuario_show", requirements={"id": "\d+"})
      * @Method("GET")
      */
     public function showAction(Usuario $usuario) {
@@ -98,7 +97,7 @@ class UsuarioController extends Controller
     /**
      * Metodo que permite ver el perfil de un usuario y modificarlo
      *
-     * @Route("/{id}/edit", name="usuario_edit")
+     * @Route("/{id}/edit", name="usuario_edit", requirements={"id": "\d+"})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Usuario $usuario) {
@@ -132,7 +131,7 @@ class UsuarioController extends Controller
     /**
      * Metodo para eliminar un usuario
      *
-     * @Route("/{id}", name="usuario_delete")
+     * @Route("/{id}", name="usuario_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Usuario $usuario) {
@@ -213,6 +212,20 @@ class UsuarioController extends Controller
     }
 
     /**
+     * Metodo que genera el modal login en el menu principal
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function modalLoginAction() {
+        $authUtils = $this->get('security.authentication_utils');
+
+        return $this->render('usuario/_modal_login.html.twig', array(
+            'last_username' => $authUtils->getLastUsername(),
+            'error' => $authUtils->getLastAuthenticationError(),
+        ));
+    }
+
+    /**
      * El "login check" lo hace Symfony automáticamente, por lo que
      * no hay que añadir ningún código en este método
      *
@@ -228,19 +241,5 @@ class UsuarioController extends Controller
      * @Route("/logout", name="usuario_logout")
      */
     public function logoutAction() {
-    }
-
-    /**
-     * Metodo que genera el modal login en el menu principal
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function modalLoginAction() {
-        $authUtils = $this->get('security.authentication_utils');
-
-        return $this->render('usuario/_modal_login.html.twig', array(
-            'last_username' => $authUtils->getLastUsername(),
-            'error' => $authUtils->getLastAuthenticationError(),
-        ));
     }
 }

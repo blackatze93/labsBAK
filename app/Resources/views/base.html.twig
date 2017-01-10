@@ -18,13 +18,12 @@
             </header>
             <div class="jumbotron">
                 <article>
-                    {% for tipo, mensajes in app.session.flashbag.all() %}
-                        {% for mensaje in mensajes %}
-                            <div class="alert alert-{{ tipo }} alert-dismissable fade in">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>{{ mensaje }}</strong>
-                            </div>
-                        {% endfor %}
+                    {% for mensaje in app.session.flashBag.get('success') %}
+                        <div class="alert alert-success alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            <strong>{{ mensaje }}</strong>
+                        </div>
                     {% endfor %}
                     {% block article %}{% endblock %}
                 </article>

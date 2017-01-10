@@ -6,6 +6,7 @@
     {% if error %}
         <div class="alert alert-danger alert-dismissable fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             <strong>
                 {{ error.message | replace({
                     "Bad credentials." : "Nombre de usuario o contraseña inválidos.",
