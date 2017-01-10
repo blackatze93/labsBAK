@@ -64,15 +64,19 @@
     <div class="text-center">
         {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
         {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
-        <a href="{{ path('usuario_delete', {'id': usuario.id}) }}" onclick="return confirm('¿Está seguro?')" title="Eliminar" class="btn btn-danger">
+    </div>
+
+    {{ form_end(formulario) }}
+    <div class="text-center">
+        {{ form_start(delete_form) }}
+        <button type="submit" onclick="return confirm('¿Está seguro?')" class="btn btn-danger">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             Eliminar
-        </a>
+        </button>
         <a href="{{ path('usuario_index') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Volver
         </a>
+        {{ form_end(delete_form) }}
     </div>
-
-    {{ form_end(formulario) }}
 {% endblock %}
