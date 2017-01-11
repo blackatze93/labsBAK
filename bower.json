@@ -1,0 +1,23 @@
+{
+    "name": "labs",
+    "authors": [
+        "Beelab <info@bee-lab.net>",
+        "Andres Sanchez <afsanchez93@gmail.com>",
+        null
+    ],
+    "private": true,
+    "dependencies": {
+        "html5shiv": "*",
+        "respond": "*",
+        "jquery": "*",
+        "moment": "*",
+        "bootstrap": "*",
+        "bootstrap-daterangepicker": "*",
+        "datatables.net": "*",
+        "bootstrap-slider": "*",
+        "x-editable": "*",
+        "featherlight": "*",
+        "sandbox.js": "*",
+        "select2": "*"
+    }
+}
