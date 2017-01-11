@@ -96,9 +96,6 @@ class UsuarioDatatable extends AbstractDatatableView
             ->add('email', 'column', array(
                 'title' => 'Email',
             ))
-            ->add('password', 'column', array(
-                'title' => 'Password',
-            ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
             ))
@@ -111,11 +108,8 @@ class UsuarioDatatable extends AbstractDatatableView
             ->add('estaActivo', 'boolean', array(
                 'title' => 'EstaActivo',
             ))
-            ->add('dependencia.id', 'column', array(
-                'title' => 'Dependencia Id',
-            ))
             ->add('dependencia.nombre', 'column', array(
-                'title' => 'Dependencia Nombre',
+                'title' => 'Dependencia',
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),

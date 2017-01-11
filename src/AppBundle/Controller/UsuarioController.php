@@ -93,7 +93,7 @@ class UsuarioController extends Controller {
     /**
      * Metodo que permite ver el perfil de un usuario
      *
-     * @Route("/{id}", name="usuario_show", requirements={"id": "\d+"})
+     * @Route("/{id}", name="usuario_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      */
     public function showAction(Usuario $usuario) {
@@ -108,7 +108,7 @@ class UsuarioController extends Controller {
     /**
      * Metodo que permite ver el perfil de un usuario y modificarlo
      *
-     * @Route("/{id}/edit", name="usuario_edit", requirements={"id": "\d+"})
+     * @Route("/{id}/edit", name="usuario_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Usuario $usuario) {
