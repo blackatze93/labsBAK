@@ -9,6 +9,16 @@
             <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
         {% endblock %}
+        {% block javascripts %}
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+            <script src="{{ asset('js/html5shiv.min.js') }}"></script>
+            <script src="{{ asset('js/respond.min.js') }}"></script>
+            <![endif]-->
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -29,19 +39,9 @@
                 </article>
             </div>
             <footer>
-                &copy; {{ 'now' | date('Y') }}
+                <div class="text-center">&copy; {{ 'now' | date('Y') }}</div>
             </footer>
         </div>
-        {% block javascripts %}
-            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-            <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-            <script src="{{ asset('js/jquery.min.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        {% endblock %}
     </body>
 </html>
 

@@ -22,13 +22,31 @@ class UsuarioController extends Controller {
      * @Method("GET")
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $usuarios = $em->getRepository("AppBundle:Usuario")->findAll();
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $usuarios = $em->getRepository("AppBundle:Usuario")->findAll();
+//
+//        return $this->render('usuario/index.html.twig', array(
+//            'usuarios' => $usuarios
+//        ));
+        $datatable = $this->get('app.datatable.usuario');
+        $datatable->buildDatatable();
 
         return $this->render('usuario/index.html.twig', array(
-            'usuarios' => $usuarios
+           'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="usuario_results")
+     */
+    public function indexResultsAction() {
+        $datatable = $this->get('app.datatable.usuario');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
