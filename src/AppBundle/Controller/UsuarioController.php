@@ -22,13 +22,6 @@ class UsuarioController extends Controller {
      * @Method("GET")
      */
     public function indexAction() {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $usuarios = $em->getRepository("AppBundle:Usuario")->findAll();
-//
-//        return $this->render('usuario/index.html.twig', array(
-//            'usuarios' => $usuarios
-//        ));
         $datatable = $this->get('app.datatable.usuario');
         $datatable->buildDatatable();
 

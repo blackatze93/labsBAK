@@ -14,10 +14,8 @@
         "bootstrap": "*",
         "bootstrap-daterangepicker": "*",
         "datatables.net": "*",
-        "bootstrap-slider": "*",
         "x-editable": "*",
         "featherlight": "*",
-        "sandbox.js": "*",
         "select2": "*"
     }
 }
