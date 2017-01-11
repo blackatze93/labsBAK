@@ -28,7 +28,7 @@ class UsuarioDatatable extends AbstractDatatableView
                     'attributes' => array(
                         'rel' => 'tooltip',
                         'title' => $this->translator->trans('datatables.actions.new'),
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-success',
                         'role' => 'button'
                     ),
                 )
@@ -86,30 +86,39 @@ class UsuarioDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'editable' => true,
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
+                'editable' => true,
             ))
             ->add('apellido', 'column', array(
                 'title' => 'Apellido',
+                'editable' => true,
             ))
             ->add('email', 'column', array(
                 'title' => 'Email',
+                'editable' => true,
             ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
+                'editable' => true,
             ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
+                'editable' => true,
             ))
             ->add('fechaAlta', 'datetime', array(
                 'title' => 'FechaAlta',
+                'editable' => true,
             ))
             ->add('estaActivo', 'boolean', array(
                 'title' => 'EstaActivo',
+                'editable' => true,
             ))
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
+                'editable' => true,
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
@@ -138,7 +147,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-primary btn-xs',
+                            'class' => 'btn btn-warning btn-xs',
                             'role' => 'button'
                         ),
                     )
