@@ -100,6 +100,10 @@ class UsuarioDatatable extends AbstractDatatableView
                 'title' => 'Email',
                 'editable' => true,
             ))
+            ->add('dependencia.nombre', 'column', array(
+                'title' => 'Dependencia',
+                'editable' => true,
+            ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
                 'editable' => true,
@@ -114,10 +118,6 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('estaActivo', 'boolean', array(
                 'title' => 'EstaActivo',
-                'editable' => true,
-            ))
-            ->add('dependencia.nombre', 'column', array(
-                'title' => 'Dependencia',
                 'editable' => true,
             ))
             ->add(null, 'action', array(

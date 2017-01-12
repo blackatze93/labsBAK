@@ -8,9 +8,13 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}">
-
+            <link rel="stylesheet" href="{{ asset('vendor/font-awesome-bower/css/font-awesome.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/featherlight/release/featherlight.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.min.css') }}">
         {% endblock %}
         {% block javascripts %}
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,9 +26,14 @@
             <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
             <script src="{{ asset('vendor/moment/min/moment-with-locales.min.js') }}"></script>
             <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
             <script src="{{ asset('vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
             <script src="{{ asset('vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
+            <script src="{{ asset('vendor/featherlight/release/featherlight.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.highlight.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap-slider/dist/bootstrap-slider.min.js') }}"></script>
+            <script src="{{ asset('vendor/select2/dist/js/select2.full.min.js') }}"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         {% endblock %}
