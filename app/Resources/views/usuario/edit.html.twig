@@ -63,18 +63,19 @@
         <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
     </div>
     <div class="text-center">
-        {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
-        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+        {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success btn-edit'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning btn-edit'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
     </div>
 
     {{ form_end(formulario) }}
+    <hr style="height:1px; visibility:hidden; margin-bottom:-18px;">
     <div class="text-center">
         {{ form_start(delete_form) }}
-        <button type="submit" onclick="return confirm('¿Está seguro?')" class="btn btn-danger">
+        <button type="submit" onclick="return confirm('¿Está seguro?')" class="btn btn-danger btn-edit">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             Eliminar
         </button>
-        <a href="{{ path('usuario_index') }}" class="btn btn-primary">
+        <a href="{{ path('usuario_index') }}" class="btn btn-primary btn-edit">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Volver
         </a>

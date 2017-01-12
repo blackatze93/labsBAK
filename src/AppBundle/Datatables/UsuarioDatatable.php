@@ -18,16 +18,16 @@ class UsuarioDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-3">',
-            'end_html' => '<hr></div></div>',
+            'start_html' => '<div class="text-right">',
+            'end_html' => '<br><br></div>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('usuario_new'),
-                    'label' => $this->translator->trans('datatables.actions.new'),
+                    'label' => 'Nuevo Usuario',
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
                         'rel' => 'tooltip',
-                        'title' => $this->translator->trans('datatables.actions.new'),
+                        'title' => 'Nuevo Usuario',
                         'class' => 'btn btn-success',
                         'role' => 'button'
                     ),
@@ -50,8 +50,8 @@ class UsuarioDatatable extends AbstractDatatableView
             'state_save' => false,
             'delay' => 0,
             'extensions' => array(),
-            'highlight' => false,
-            'highlight_color' => 'red'
+            'highlight' => true,
+            'highlight_color' => '#ffefc6'
         ));
 
         $this->ajax->set(array(
@@ -86,7 +86,6 @@ class UsuarioDatatable extends AbstractDatatableView
         $this->columnBuilder
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'editable' => true,
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
@@ -102,22 +101,16 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
-                'editable' => true,
             ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
-                'editable' => true,
             ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
                 'editable' => true,
             ))
-            ->add('fechaAlta', 'datetime', array(
-                'title' => 'FechaAlta',
-                'editable' => true,
-            ))
             ->add('estaActivo', 'boolean', array(
-                'title' => 'EstaActivo',
+                'title' => 'Activo',
                 'editable' => true,
             ))
             ->add(null, 'action', array(
@@ -133,7 +126,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-primary btn-xs',
+                            'class' => 'btn btn-primary btn-sm btn-block',
                             'role' => 'button'
                         ),
                     ),
@@ -147,7 +140,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-warning btn-xs',
+                            'class' => 'btn btn-warning btn-sm btn-block',
                             'role' => 'button'
                         ),
                     )
