@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="login" role="dialog" aria-labelledby="loginLabel">
+<div class="modal fade" id="login" role="dialog" tabindex="-1" aria-labelledby="loginLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,11 +15,11 @@
                 {% endif %}
                 <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
                     <label for="id" class="sr-only">Identificación</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Identificación" required autofocus>
+                    <input type="text" id="username_modal" name="_username" value="{{ last_username }}" class="form-control" placeholder="Identificación" required autofocus>
                     <label for="password" class="sr-only">Contraseña</label>
-                    <input type="password" id="password" name="_password" class="form-control" placeholder="Contraseña" required>
+                    <input type="password" id="password_modal" name="_password" class="form-control" placeholder="Contraseña" required>
                     <div class="checkbox">
-                        <label><input type="checkbox" id="no_cerrar" name="_remember_me" checked>No cerrar sesión</label>
+                        <label><input type="checkbox" id="no_cerrar_modal" name="_remember_me" checked>No cerrar sesión</label>
                     </div>
                     <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
                 </form>

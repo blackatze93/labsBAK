@@ -18,8 +18,8 @@ class UsuarioDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="text-right">',
-            'end_html' => '<br><br></div>',
+            'start_html' => '<div class="row"><div class="col-sm-12 text-right">',
+            'end_html' => '<br><br></div></div>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('usuario_new'),
@@ -64,7 +64,7 @@ class UsuarioDatatable extends AbstractDatatableView
             'display_start' => 0,
             'defer_loading' => -1,
             'dom' => 'lfrtip',
-            'length_menu' => array(10, 25, 50, 100),
+            'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
             'order' => array(array(0, 'asc')),
             'order_multi' => true,
@@ -97,13 +97,9 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('email', 'column', array(
                 'title' => 'Email',
-                'editable' => true,
             ))
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
-            ))
-            ->add('cargo', 'column', array(
-                'title' => 'Cargo',
             ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
@@ -113,13 +109,16 @@ class UsuarioDatatable extends AbstractDatatableView
                 'title' => 'Activo',
                 'editable' => true,
             ))
+            ->add('fechaAlta', 'timeago', array(
+                'title' => 'Creado',
+            ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
                         'route' => 'usuario_show',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
