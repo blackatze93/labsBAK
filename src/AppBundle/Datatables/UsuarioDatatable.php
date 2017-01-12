@@ -84,6 +84,27 @@ class UsuarioDatatable extends AbstractDatatableView
         ));
 
         $this->columnBuilder
+            ->add(null, 'multiselect', array(
+                'start_html' => '<div class="wrapper" id="testwrapper">',
+                'end_html' => '</div>',
+                'attributes' => array(
+                    'class' => 'testclass',
+                    'name' => 'testname',
+                ),
+                'actions' => array(
+                    array(
+                        'route' => 'usuario_bulk_delete',
+                        'label' => 'Eliminar',
+                        'icon' => 'glyphicon glyphicon-remove',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Eliminar',
+                            'class' => 'btn btn-danger',
+                            'role' => 'button'
+                        ),
+                    )
+                )
+            ))
             ->add('id', 'column', array(
                 'title' => 'Id',
             ))
