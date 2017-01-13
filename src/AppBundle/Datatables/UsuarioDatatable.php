@@ -49,7 +49,32 @@ class UsuarioDatatable extends AbstractDatatableView
             'searching' => true,
             'state_save' => false,
             'delay' => 0,
-            'extensions' => array(),
+            'extensions' => array(
+                'buttons' =>
+                    array(
+                        'colvis',
+                        'excel',
+                        'pdf' => array(
+                            'extend' => 'pdf',
+                            'exportOptions' => array(
+                                // show only the following columns:
+                                'columns' => array(
+                                    '1',
+                                    '2',
+                                    '3',
+                                    '4',
+                                    '5',
+                                    '6',
+                                    '7',
+                                    '8',
+                                    '9',
+                                )
+                            )
+                        ),
+                    ),
+                'responsive' => true,
+                'fixedHeader' => true,
+            ),
             'highlight' => true,
             'highlight_color' => '#ffefc6'
         ));
@@ -57,7 +82,7 @@ class UsuarioDatatable extends AbstractDatatableView
         $this->ajax->set(array(
             'url' => $this->router->generate('usuario_results'),
             'type' => 'GET',
-            'pipeline' => 0
+            'pipeline' => 5
         ));
 
         $this->options->set(array(
@@ -66,7 +91,7 @@ class UsuarioDatatable extends AbstractDatatableView
             'dom' => 'lfrtip',
             'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
-            'order' => array(array(0, 'asc')),
+            'order' => array(array(1, 'asc')),
             'order_multi' => true,
             'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
@@ -93,6 +118,28 @@ class UsuarioDatatable extends AbstractDatatableView
                 ),
                 'actions' => array(
                     array(
+                        'route' => 'usuario_bulk_enable',
+                        'label' => 'Activar',
+                        'icon' => 'glyphicon glyphicon-plus',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Activar',
+                            'class' => 'btn btn-success',
+                            'role' => 'button'
+                        ),
+                    ),
+                    array(
+                        'route' => 'usuario_bulk_disable',
+                        'label' => 'Desactivar',
+                        'icon' => 'glyphicon glyphicon-minus',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Desactivar',
+                            'class' => 'btn btn-warning',
+                            'role' => 'button'
+                        ),
+                    ),
+                    array(
                         'route' => 'usuario_bulk_delete',
                         'label' => 'Eliminar',
                         'icon' => 'glyphicon glyphicon-remove',
@@ -102,7 +149,7 @@ class UsuarioDatatable extends AbstractDatatableView
                             'class' => 'btn btn-danger',
                             'role' => 'button'
                         ),
-                    )
+                    ),
                 )
             ))
             ->add('id', 'column', array(
@@ -110,11 +157,9 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
-                'editable' => true,
             ))
             ->add('apellido', 'column', array(
                 'title' => 'Apellido',
-                'editable' => true,
             ))
             ->add('email', 'column', array(
                 'title' => 'Email',
@@ -122,13 +167,14 @@ class UsuarioDatatable extends AbstractDatatableView
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
             ))
+            ->add('cargo', 'column', array(
+                'title' => 'Cargo',
+            ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
-                'editable' => true,
             ))
             ->add('estaActivo', 'boolean', array(
                 'title' => 'Activo',
-                'editable' => true,
             ))
             ->add('fechaAlta', 'timeago', array(
                 'title' => 'Creado',

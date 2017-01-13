@@ -17,45 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UsuarioController extends Controller {
     /**
-     * Bulk delete action.
-     *
-     * @param Request $request
-     *
-     * @Route("/bulk/delete", name="usuario_bulk_delete")
-     * @Method("POST")
-     *
-     * @return Response
-     */
-    public function bulkDeleteAction(Request $request)
-    {
-        $isAjax = $request->isXmlHttpRequest();
-
-        if ($isAjax) {
-            $choices = $request->request->get('data');
-            $token = $request->request->get('token');
-
-            if (!$this->isCsrfTokenValid('multiselect', $token)) {
-                throw new AccessDeniedException('The CSRF token is invalid.');
-            }
-
-            $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('AppBundle:Usuario');
-
-            foreach ($choices as $choice) {
-                $entity = $repository->find($choice['value']);
-                $em->remove($entity);
-            }
-
-            $em->flush();
-
-            return new Response('Success', 200);
-        }
-
-        return new Response('Bad Request', 400);
-    }
-
-
-    /**
      * Metodo que lista los usuarios de la aplicacion
      *
      * @Route("/", name="usuario_index")
@@ -71,7 +32,7 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * @Route("/results", name="usuario_results", options={"expose"=true})
+     * @Route("/results", name="usuario_results")
      */
     public function indexResultsAction() {
         $datatable = $this->get('app.datatable.usuario');
@@ -293,4 +254,121 @@ class UsuarioController extends Controller {
      */
     public function logoutAction() {
     }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/delete", name="usuario_bulk_delete")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDeleteAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Usuario');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $em->remove($entity);
+            }
+
+            $em->flush();
+
+            return new Response('Success', 200);
+        }
+
+        return new Response('Bad Request', 400);
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/enable", name="usuario_bulk_enable")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkEnableAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Usuario');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $entity->setEstaActivo(true);
+                $em->persist($entity);
+            }
+
+            $em->flush();
+
+            return new Response('Success', 200);
+        }
+
+        return new Response('Bad Request', 400);
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/disable", name="usuario_bulk_disable")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDisableAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Usuario');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $entity->setEstaActivo(false);
+                $em->persist($entity);
+            }
+
+            $em->flush();
+
+            return new Response('Success', 200);
+        }
+
+        return new Response('Bad Request', 400);
+    }
+
 }

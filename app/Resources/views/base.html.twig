@@ -7,34 +7,35 @@
         <title>{% block title %}{% endblock %} - Laboratorios de Informática - Facultad Tecnológica</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/font-awesome-bower/css/font-awesome.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/featherlight/release/featherlight.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.min.css') }}">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/fc-3.2.2/fh-3.1.2/r-2.1.0/datatables.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.5.0/featherlight.gallery.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
         {% endblock %}
         {% block javascripts %}
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
-            <script src="{{ asset('vendor/html5shiv/dist/html5shiv.min.js') }}"></script>
-            <script src="{{ asset('vendor/respond/dest/respond.min.js') }}"></script>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
-            <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
-            <script src="{{ asset('vendor/moment/min/moment-with-locales.min.js') }}"></script>
-            <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-            <script src="{{ asset('vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-            <script src="{{ asset('vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
-            <script src="{{ asset('vendor/featherlight/release/featherlight.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/fc-3.2.2/fh-3.1.2/r-2.1.0/datatables.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.5.0/featherlight.gallery.min.js"></script>
             <script src="{{ asset('js/jquery.highlight.js') }}"></script>
-            <script src="{{ asset('vendor/bootstrap-slider/dist/bootstrap-slider.min.js') }}"></script>
-            <script src="{{ asset('vendor/select2/dist/js/select2.full.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         {% endblock %}
