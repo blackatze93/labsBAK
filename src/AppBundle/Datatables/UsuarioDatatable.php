@@ -231,7 +231,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-primary btn-sm btn-block',
+                            'class' => 'btn btn-primary btn-sm',
                             'role' => 'button'
                         ),
                     ),
@@ -245,7 +245,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-warning btn-sm btn-block',
+                            'class' => 'btn btn-warning btn-sm',
                             'role' => 'button'
                         ),
                     )

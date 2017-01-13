@@ -55,16 +55,16 @@
                 <target>Guardar</target>
             </trans-unit>
             <trans-unit id="14">
-                <source>Administrador</source>
+                <source>ROLE_ADMIN</source>
                 <target>Administrador</target>
             </trans-unit>
             <trans-unit id="15">
-                <source>Docente</source>
+                <source>ROLE_DOCENTE</source>
                 <target>Docente</target>
             </trans-unit>
             <trans-unit id="16">
-                <source>Administrativo</source>
-                <target>Administrativo</target>
+                <source>ROLE_FUNCIONARIO</source>
+                <target>Funcionario</target>
             </trans-unit>
             <trans-unit id="17">
                 <source></source>

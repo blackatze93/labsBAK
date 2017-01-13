@@ -28,11 +28,7 @@
                 </tr>
                 <tr>
                     <th>{{ "Cargo"|trans }}</th>
-                    <td>{{ usuario.cargo | replace({
-                            "ROLE_ADMIN" : "Administrador",
-                            "ROLE_DOCENTE" : "Docente",
-                            "ROLE_ADMINISTRATIVO" : "Administrativo"})
-                        }}
+                    <td>{{ usuario.cargo|trans }}
                     </td>
                 </tr>
                 <tr>

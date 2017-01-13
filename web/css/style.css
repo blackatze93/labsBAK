@@ -3,5 +3,6 @@
 }
 
 .encabezado {
-    margin: 0px;
+    margin: inherit;
+
 }
