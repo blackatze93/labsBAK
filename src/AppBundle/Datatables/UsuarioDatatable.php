@@ -17,8 +17,10 @@ class UsuarioDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = array())
     {
+        // Acciones del encabezado de la tabla
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-12 text-right">',
+            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Usuarios</h3></div>' .
+                            '<div class="col-sm-6 text-right">',
             'end_html' => '<br><br></div></div>',
             'actions' => array(
                 array(
@@ -28,13 +30,14 @@ class UsuarioDatatable extends AbstractDatatableView
                     'attributes' => array(
                         'rel' => 'tooltip',
                         'title' => 'Nuevo Usuario',
-                        'class' => 'btn btn-success',
+                        'class' => 'btn btn-info',
                         'role' => 'button'
                     ),
                 )
             )
         ));
 
+        // Opciones generales del bundle datatables
         $this->features->set(array(
             'auto_width' => true,
             'defer_render' => false,
@@ -52,7 +55,10 @@ class UsuarioDatatable extends AbstractDatatableView
             'extensions' => array(
                 'buttons' =>
                     array(
-                        'colvis',
+                        'colvis' => array(
+                            'text' => 'Columnas visibles',
+                            'extend' => 'colvis',
+                        ),
                         'excel',
                         'pdf' => array(
                             'extend' => 'pdf',
@@ -79,16 +85,20 @@ class UsuarioDatatable extends AbstractDatatableView
             'highlight_color' => '#ffefc6'
         ));
 
+        // Opciones ajax del datatable
         $this->ajax->set(array(
             'url' => $this->router->generate('usuario_results'),
             'type' => 'GET',
             'pipeline' => 5
         ));
 
+        // Opciones generales de datatables
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'dom' => 'lfrtip',
+            'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" .
+                "<'row'<'col-sm-12'tr>>" .
+                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
             'order' => array(array(1, 'asc')),
@@ -101,21 +111,20 @@ class UsuarioDatatable extends AbstractDatatableView
             'state_duration' => 7200,
             'stripe_classes' => array(),
             'class' => Style::BOOTSTRAP_3_STYLE,
-            'individual_filtering' => false,
+            'individual_filtering' => true,
             'individual_filtering_position' => 'head',
             'use_integration_options' => true,
-            'force_dom' => false,
+            'force_dom' => true,
             'row_id' => 'id'
         ));
 
+        // Campos necesarios para generar las listas de filtro
+        $dependencia = $this->em->getRepository('AppBundle:Dependencia')->findAll();
+        $usuario = $this->em->getRepository('AppBundle:Usuario')->findAll();
+
+        // Columnas que se generan en la tabla
         $this->columnBuilder
             ->add(null, 'multiselect', array(
-                'start_html' => '<div class="wrapper" id="testwrapper">',
-                'end_html' => '</div>',
-                'attributes' => array(
-                    'class' => 'testclass',
-                    'name' => 'testname',
-                ),
                 'actions' => array(
                     array(
                         'route' => 'usuario_bulk_enable',
@@ -154,30 +163,60 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
+                'editable' => true,
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('apellido', 'column', array(
                 'title' => 'Apellido',
+                'editable' => true,
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('email', 'column', array(
                 'title' => 'Email',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($dependencia, 'nombre', 'nombre'),
+                ))
             ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($usuario, 'cargo', 'cargo'),
+                ))
             ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('estaActivo', 'boolean', array(
                 'title' => 'Activo',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'Todos', '1' => 'Si', '0' => 'No'),
+                ))
             ))
-            ->add('fechaAlta', 'timeago', array(
-                'title' => 'Creado',
+            ->add('fechaAlta', 'datetime', array(
+                'title' => 'Fecha Alta',
+                'filter' => array('daterange', array()),
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
