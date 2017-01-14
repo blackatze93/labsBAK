@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * Class UsuarioController
  * @package AppBundle\Controller
  *
- * @Route("/usuario")
+ * @Route("usuario")
  */
 class UsuarioController extends Controller {
     /**
@@ -152,10 +152,18 @@ class UsuarioController extends Controller {
         $deleteForm->handleRequest($request);
 
         if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($usuario);
-            $em->flush($usuario);
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($usuario);
+                $em->flush($usuario);
+
+                $this->addFlash('success', 'Se eliminó correctamente la entidad');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo eliminar la entidad');
+            }
         }
+
+
 
         return $this->redirectToRoute('usuario_index');
     }

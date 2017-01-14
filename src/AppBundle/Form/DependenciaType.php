@@ -6,10 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class DependenciaType
- * @package AppBundle\Form
- */
 class DependenciaType extends AbstractType
 {
     /**
@@ -19,16 +15,30 @@ class DependenciaType extends AbstractType
     {
         $builder
             ->add('id')
-            ->add('nombre')        ;
-    }
+            ->add('nombre')
+            ->add('restablecer', 'reset')
+        ;
 
+        // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
+        if ($options['accion'] === 'new_dependencia') {
+            $builder
+                ->add('crear', 'submit')
+            ;
+        } else if ($options['accion'] === 'edit_dependencia') {
+            $builder
+                ->add('guardar', 'submit')
+            ;
+        }
+    }
+    
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Dependencia'
+            'data_class' => 'AppBundle\Entity\Dependencia',
+            'accion' => 'edit_dependencia',
         ));
     }
 
@@ -39,4 +49,6 @@ class DependenciaType extends AbstractType
     {
         return 'dependencia';
     }
+
+
 }

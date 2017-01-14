@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
  * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Dependencia
 {
@@ -27,7 +28,7 @@ class Dependencia
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */

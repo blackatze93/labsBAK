@@ -20,10 +20,11 @@ class UsuarioDatatable extends AbstractDatatableView
     {
         $formatter = function($line){
             $ruta_usuario = $this->router->generate('usuario_show', array('id' => $line['id']));
+            $ruta_dependencia = $this->router->generate('dependencia_show', array('id' => $line['dependencia']['id']));
 
 
             $line['id'] = '<a href="' . $ruta_usuario . '"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> ' . $line['id'] . '</a>';
-            $line['dependencia']['nombre'] = '<a href="' . $ruta_usuario . '"></span> ' . $line['dependencia']['nombre'] . '</a>';
+            $line['dependencia']['nombre'] = '<a href="' . $ruta_dependencia . '"></span> ' . $line['dependencia']['nombre'] . '</a>';
             $line['cargo'] = $this->translator->trans($line['cargo']);
 
             return $line;
@@ -135,7 +136,7 @@ class UsuarioDatatable extends AbstractDatatableView
         $this->ajax->set(array(
             'url' => $this->router->generate('usuario_results'),
             'type' => 'GET',
-            'pipeline' => 5
+            'pipeline' => 0
         ));
 
         // Opciones generales de datatables

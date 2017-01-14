@@ -4,6 +4,7 @@
 {% block title %}Editar Usuario{% endblock %}
 
 {% block article %}
+    <h3 class="encabezado">Editar Usuario</h3><br>
     {{ form_start(formulario) }}
     {% if not formulario.vars.valid %}
         <div class="alert alert-danger alert-dismissable fade in">

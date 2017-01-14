@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% form_theme formulario 'form/fields.html.twig' %}
+
+{% block title %}Nueva Dependencia{% endblock %}
+
+{% block article %}
+    <h3 class="encabezado">Nueva Dependencia</h3><br>
+    {{ form_start(formulario) }}
+    {% if not formulario.vars.valid %}
+        <div class="alert alert-danger alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <strong>Hay errores en el formulario</strong>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        {{ form_label(formulario.id) }}
+        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.id) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.nombre) }}
+        {{ form_widget(formulario.nombre, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.nombre) }}</span>
+    </div>
+    <div class="text-center">
+        {{ form_widget(formulario.crear, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Crear'}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+        <a href="{{ path('dependencia_index') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Volver
+        </a>
+    </div>
+    {{ form_end(formulario) }}
+{% endblock %}
