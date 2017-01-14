@@ -4,6 +4,7 @@ namespace AppBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Class UsuarioDatatable
@@ -12,6 +13,25 @@ use Sg\DatatablesBundle\Datatable\View\Style;
  */
 class UsuarioDatatable extends AbstractDatatableView
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getLineFormatter()
+    {
+        $formatter = function($line){
+            $ruta_usuario = $this->router->generate('usuario_show', array('id' => $line['id']));
+
+
+            $line['id'] = '<a href="' . $ruta_usuario . '"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> ' . $line['id'] . '</a>';
+            $line['dependencia']['nombre'] = '<a href="' . $ruta_usuario . '"></span> ' . $line['dependencia']['nombre'] . '</a>';
+            $line['cargo'] = $this->translator->trans($line['cargo']);
+
+            return $line;
+        };
+
+        return $formatter;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -58,8 +78,34 @@ class UsuarioDatatable extends AbstractDatatableView
                         'colvis' => array(
                             'text' => 'Columnas visibles',
                             'extend' => 'colvis',
+                            'columns' => array(
+                                '2',
+                                '3',
+                                '4',
+                                '5',
+                                '6',
+                                '7',
+                                '8',
+                                '9',
+                            )
                         ),
-                        'excel',
+                        'excel' => array(
+                            'extend' => 'excel',
+                            'exportOptions' => array(
+                                // show only the following columns:
+                                'columns' => array(
+                                    '1',
+                                    '2',
+                                    '3',
+                                    '4',
+                                    '5',
+                                    '6',
+                                    '7',
+                                    '8',
+                                    '9',
+                                )
+                            )
+                        ),
                         'pdf' => array(
                             'extend' => 'pdf',
                             'exportOptions' => array(
@@ -169,14 +215,12 @@ class UsuarioDatatable extends AbstractDatatableView
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
-                'editable' => true,
                 'filter' => array('text', array(
                     'search_type' => 'like',
                 ))
             ))
             ->add('apellido', 'column', array(
                 'title' => 'Apellido',
-                'editable' => true,
                 'filter' => array('text', array(
                     'search_type' => 'like',
                 ))
@@ -198,7 +242,7 @@ class UsuarioDatatable extends AbstractDatatableView
                 'title' => 'Cargo',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($usuario, 'cargo', 'cargo'),
+                    'select_options' => array('' => 'Todos') + $this->getListaCargos($usuario, 'cargo', 'cargo'),
                 ))
             ))
             ->add('funciones', 'column', array(
@@ -218,41 +262,33 @@ class UsuarioDatatable extends AbstractDatatableView
                 'title' => 'Fecha Alta',
                 'filter' => array('daterange', array()),
             ))
-            ->add(null, 'action', array(
-                'title' => $this->translator->trans('datatables.actions.title'),
-                'actions' => array(
-                    array(
-                        'route' => 'usuario_show',
-                        'route_parameters' => array(
-                            'id' => 'id',
-                        ),
-                        'label' => $this->translator->trans('datatables.actions.show'),
-                        'icon' => 'glyphicon glyphicon-eye-open',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.show'),
-                            'class' => 'btn btn-primary btn-sm',
-                            'role' => 'button'
-                        ),
-                    ),
-                    array(
-                        'route' => 'usuario_edit',
-                        'route_parameters' => array(
-                            'id' => 'id'
-                        ),
-                        'label' => $this->translator->trans('datatables.actions.edit'),
-                        'icon' => 'glyphicon glyphicon-edit',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => $this->translator->trans('datatables.actions.edit'),
-                            'class' => 'btn btn-warning btn-sm',
-                            'role' => 'button'
-                        ),
-                    )
-                )
-            ))
         ;
     }
+
+    /**
+     * Obtiene un array con los elementos traducidos para el campo cargo
+     *
+     * @param ArrayCollection $entitiesCollection
+     * @param string          $keyPropertyName
+     * @param string          $valuePropertyName
+     *
+     * @return array
+     */
+    public function getListaCargos($entitiesCollection, $keyPropertyName = 'id', $valuePropertyName = 'name')
+    {
+        $options = array();
+
+        foreach ($entitiesCollection as $entity) {
+            $keyPropertyName = Container::camelize($keyPropertyName);
+            $keyGetter = 'get' . ucfirst($keyPropertyName);
+            $valuePropertyName = Container::camelize($valuePropertyName);
+            $valueGetter = 'get' . ucfirst($valuePropertyName);
+            $options[$entity->$keyGetter()] = $this->translator->trans($entity->$valueGetter());
+        }
+
+        return $options;
+    }
+
 
     /**
      * {@inheritdoc}
