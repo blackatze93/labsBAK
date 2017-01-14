@@ -10,3 +10,7 @@ services:
     app.datatable.usuario:
         class: AppBundle\Datatables\UsuarioDatatable
         parent: sg_datatables.datatable.abstract
+
+    app.datatable.dependencia:
+            class: AppBundle\Datatables\DependenciaDatatable
+            parent: sg_datatables.datatable.abstract

@@ -180,7 +180,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => 'Activar',
-                            'class' => 'btn btn-success',
+                            'class' => 'btn btn-success btn-sm',
                             'role' => 'button'
                         ),
                     ),
@@ -191,7 +191,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => 'Desactivar',
-                            'class' => 'btn btn-warning',
+                            'class' => 'btn btn-warning btn-sm',
                             'role' => 'button'
                         ),
                     ),
@@ -202,7 +202,7 @@ class UsuarioDatatable extends AbstractDatatableView
                         'attributes' => array(
                             'rel' => 'tooltip',
                             'title' => 'Eliminar',
-                            'class' => 'btn btn-danger',
+                            'class' => 'btn btn-danger btn-sm',
                             'role' => 'button'
                         ),
                     ),

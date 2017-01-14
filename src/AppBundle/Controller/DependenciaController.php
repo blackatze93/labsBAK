@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Dependencia;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Dependencia controller.
@@ -15,20 +18,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class DependenciaController extends Controller
 {
     /**
-     * Lists all dependencia entities.
+     * Metodo que lista las dependencias de la aplicacion
      *
      * @Route("/", name="dependencia_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $dependencias = $em->getRepository('AppBundle:Dependencia')->findAll();
+    public function indexAction() {
+        $datatable = $this->get('app.datatable.dependencia');
+        $datatable->buildDatatable();
 
         return $this->render('dependencia/index.html.twig', array(
-            'dependencias' => $dependencias,
+            'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="dependencia_results")
+     */
+    public function indexResultsAction() {
+        $datatable = $this->get('app.datatable.dependencia');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
@@ -64,7 +77,7 @@ class DependenciaController extends Controller
     /**
      * Finds and displays a dependencia entity.
      *
-     * @Route("/{id}", name="dependencia_show")
+     * @Route("/{id}", name="dependencia_show", options={"expose"=true})
      * @Method("GET")
      */
     public function showAction(Dependencia $dependencia)
@@ -80,7 +93,7 @@ class DependenciaController extends Controller
     /**
      * Displays a formulario to edit an existing dependencia entity.
      *
-     * @Route("/{id}/edit", name="dependencia_edit")
+     * @Route("/{id}/edit", name="dependencia_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Dependencia $dependencia) {
@@ -145,5 +158,43 @@ class DependenciaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/delete", name="dependencia_bulk_delete")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDeleteAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Dependencia');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $em->remove($entity);
+            }
+
+            $em->flush();
+
+            return new Response('Success', 200);
+        }
+
+        return new Response('Bad Request', 400);
     }
 }
