@@ -4,5 +4,11 @@
 
 .encabezado {
     margin: inherit;
+}
 
+.notifications {
+    position: relative;
+    z-index: 9999;
+    font-weight: bold;
+    margin-bottom: 5px;
 }

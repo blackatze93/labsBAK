@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("dependencia")
  */
+// TODO: Crear try y catch para todos los metodos que ejecutan en la  bd
 class DependenciaController extends Controller
 {
     /**
@@ -189,12 +190,12 @@ class DependenciaController extends Controller
                 $entity = $repository->find($choice['value']);
                 $em->remove($entity);
             }
-
-            $em->flush();
-
-            return new Response('Success', 200);
+            try {
+                $em->flush();
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
         }
-
-        return new Response('Bad Request', 400);
     }
 }

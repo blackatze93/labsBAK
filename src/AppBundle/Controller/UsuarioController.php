@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("usuario")
  */
+// TODO: Arreglar problema con las bulk actions
 class UsuarioController extends Controller {
     /**
      * Metodo que lista los usuarios de la aplicacion
@@ -162,9 +163,6 @@ class UsuarioController extends Controller {
                 $this->addFlash('danger', 'No se pudo eliminar la entidad');
             }
         }
-
-
-
         return $this->redirectToRoute('usuario_index');
     }
 
@@ -294,12 +292,13 @@ class UsuarioController extends Controller {
                 $em->remove($entity);
             }
 
-            $em->flush();
-
-            return new Response('Success', 200);
+            try {
+                $em->flush();
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
         }
-
-        return new Response('Bad Request', 400);
     }
 
     /**
@@ -333,12 +332,13 @@ class UsuarioController extends Controller {
                 $em->persist($entity);
             }
 
-            $em->flush();
-
-            return new Response('Success', 200);
+            try {
+                $em->flush();
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
         }
-
-        return new Response('Bad Request', 400);
     }
 
     /**
@@ -372,12 +372,13 @@ class UsuarioController extends Controller {
                 $em->persist($entity);
             }
 
-            $em->flush();
-
-            return new Response('Success', 200);
+            try {
+                $em->flush();
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
         }
-
-        return new Response('Bad Request', 400);
     }
 
 }

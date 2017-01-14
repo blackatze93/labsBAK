@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        {#TODO: Cambiar la forma de mostrar las notificaciones por eventos javascript#}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +29,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
             <script src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/fc-3.2.2/fh-3.1.2/r-2.1.0/datatables.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
@@ -48,19 +50,14 @@
             </header>
             <div class="jumbotron">
                 <article>
-                    {% for mensaje in app.session.flashBag.get('success') %}
-                        <div class="alert alert-success alert-dismissable fade in">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            <strong>{{ mensaje }}</strong>
-                        </div>
-                    {% endfor %}
-                    {% for mensaje in app.session.flashBag.get('danger') %}
-                        <div class="alert alert-danger alert-dismissable fade in">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            <strong>{{ mensaje }}</strong>
-                        </div>
+                    <div class='notifications'></div>
+                    {% for tipo, mensajes in app.session.flashbag.all() %}
+                        {% for mensaje in mensajes %}
+                            <div class="alert alert-{{ tipo }} alert-dismissable fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>{{ mensaje }}</strong>
+                            </div>
+                        {% endfor %}
                     {% endfor %}
                     {% block article %}{% endblock %}
                 </article>
