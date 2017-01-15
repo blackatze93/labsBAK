@@ -42,15 +42,11 @@ install:
 # Run script
 script:
   - phpunit -c app
-  - phpunit -c app --coverage-clover=coverage.xml
-  
+
 # After a build, send email notification with the build results
 notifications:
   email: afsanchez93@gmail.com
 
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
-
 addons:
     code_climate:
-        repo_token: eabdf8d3f85049f21da454a68af44067fc2302005c952df2b1fbef0ad8e9bd7a
+        repo_token: 84fbdbd0e2f252fed2c3747753d86388a5e0fb8a878bf79449d7846312f88db0
