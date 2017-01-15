@@ -11,19 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Class UsuarioController
- * @package AppBundle\Controller
+ * Class UsuarioController.
  *
  * @Route("usuario")
  */
-class UsuarioController extends Controller {
+class UsuarioController extends Controller
+{
     /**
-     * Metodo que lista los usuarios de la aplicacion
+     * Metodo que lista los usuarios de la aplicacion.
      *
      * @Route("/", name="usuario_index")
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $datatable = $this->get('app.datatable.usuario');
         $datatable->buildDatatable();
 
@@ -35,7 +36,8 @@ class UsuarioController extends Controller {
     /**
      * @Route("/results", name="usuario_results")
      */
-    public function indexResultsAction() {
+    public function indexResultsAction()
+    {
         $datatable = $this->get('app.datatable.usuario');
         $datatable->buildDatatable();
 
@@ -45,15 +47,17 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * Metodo que genera la pagina de nuevo usuario y procesa los datos
+     * Metodo que genera la pagina de nuevo usuario y procesa los datos.
      *
      * @Route("/new", name="usuario_new")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function newAction(Request $request) {
+    public function newAction(Request $request)
+    {
         //Se crea la nueva entidad sobre la cual se guardaran los datos
         $usuario = new Usuario();
 
@@ -95,20 +99,22 @@ class UsuarioController extends Controller {
 
         // Muestra el formulario mediante la accion createView de la variable formulario
         return $this->render('usuario/new.html.twig', array(
-            'formulario' => $formulario->createView()
+            'formulario' => $formulario->createView(),
         ));
     }
 
     /**
-     * Metodo que permite ver el perfil de un usuario
+     * Metodo que permite ver el perfil de un usuario.
      *
      * @Route("/{id}", name="usuario_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      *
      * @param Usuario $usuario
+     *
      * @return Response
      */
-    public function showAction(Usuario $usuario) {
+    public function showAction(Usuario $usuario)
+    {
         $deleteForm = $this->createDeleteForm($usuario);
 
         return $this->render('usuario/show.html.twig', array(
@@ -118,16 +124,18 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * Metodo que permite ver el perfil de un usuario y modificarlo
+     * Metodo que permite ver el perfil de un usuario y modificarlo.
      *
      * @Route("/{id}/edit", name="usuario_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
      * @param Request $request
      * @param Usuario $usuario
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function editAction(Request $request, Usuario $usuario) {
+    public function editAction(Request $request, Usuario $usuario)
+    {
         $deleteForm = $this->createDeleteForm($usuario);
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $formulario->handleRequest($request);
@@ -160,16 +168,18 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * Metodo para eliminar un usuario
+     * Metodo para eliminar un usuario.
      *
      * @Route("/{id}", name="usuario_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
      * @param Request $request
      * @param Usuario $usuario
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, Usuario $usuario) {
+    public function deleteAction(Request $request, Usuario $usuario)
+    {
         $deleteForm = $this->createDeleteForm($usuario);
         $deleteForm->handleRequest($request);
 
@@ -184,6 +194,7 @@ class UsuarioController extends Controller {
                 $this->addFlash('danger', 'No se pudo eliminar la entidad');
             }
         }
+
         return $this->redirectToRoute('usuario_index');
     }
 
@@ -194,7 +205,8 @@ class UsuarioController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Usuario $usuario) {
+    private function createDeleteForm(Usuario $usuario)
+    {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
             ->setMethod('DELETE')
@@ -203,15 +215,17 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * Metodo que permite ver el perfil de un usuario y modificarlo
+     * Metodo que permite ver el perfil de un usuario y modificarlo.
      *
      * @Route("/perfil", name="usuario_perfil")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function perfilAction(Request $request) {
+    public function perfilAction(Request $request)
+    {
         $usuario = $this->getUser();
 
         $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
@@ -238,16 +252,17 @@ class UsuarioController extends Controller {
 
         return $this->render('usuario/perfil.html.twig', array(
             'usuario' => $usuario,
-            'formulario' => $formulario->createView()
+            'formulario' => $formulario->createView(),
         ));
     }
 
     /**
-     * Metodo que genera el formulario de login
+     * Metodo que genera el formulario de login.
      *
      * @Route("/login", name="usuario_login")
      */
-    public function loginAction() {
+    public function loginAction()
+    {
         // crear aqui el formulario de login
         $authUtils = $this->get('security.authentication_utils');
 
@@ -258,11 +273,12 @@ class UsuarioController extends Controller {
     }
 
     /**
-     * Metodo que genera el modal login en el menu principal
+     * Metodo que genera el modal login en el menu principal.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function modalLoginAction() {
+    public function modalLoginAction()
+    {
         $authUtils = $this->get('security.authentication_utils');
 
         return $this->render('usuario/_modal_login.html.twig', array(
@@ -273,20 +289,22 @@ class UsuarioController extends Controller {
 
     /**
      * El "login check" lo hace Symfony automáticamente, por lo que
-     * no hay que añadir ningún código en este método
+     * no hay que añadir ningún código en este método.
      *
      * @Route("/login_check", name="usuario_login_check")
      */
-    public function loginCheckAction() {
+    public function loginCheckAction()
+    {
     }
 
     /**
      * El logout lo hace Symfony automáticamente, por lo que
-     * no hay que añadir ningún código en este método
+     * no hay que añadir ningún código en este método.
      *
      * @Route("/logout", name="usuario_logout")
      */
-    public function logoutAction() {
+    public function logoutAction()
+    {
     }
 
     /**
@@ -321,11 +339,13 @@ class UsuarioController extends Controller {
 
             try {
                 $em->flush();
+
                 return new Response('Success', 200);
             } catch (\Exception $e) {
                 return new Response('Bad Request', 400);
             }
         }
+
         return new Response('Bad Request', 400);
     }
 
@@ -362,11 +382,13 @@ class UsuarioController extends Controller {
 
             try {
                 $em->flush();
+
                 return new Response('Success', 200);
             } catch (\Exception $e) {
                 return new Response('Bad Request', 400);
             }
         }
+
         return new Response('Bad Request', 400);
     }
 
@@ -403,11 +425,13 @@ class UsuarioController extends Controller {
 
             try {
                 $em->flush();
+
                 return new Response('Success', 200);
             } catch (\Exception $e) {
                 return new Response('Bad Request', 400);
             }
         }
+
         return new Response('Bad Request', 400);
     }
 }
