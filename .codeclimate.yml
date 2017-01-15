@@ -16,6 +16,11 @@ engines:
     enabled: true
   phpmd:
     enabled: true
+    checks:
+      Naming/ShortVariable:
+        enabled: false
+      CleanCode/BooleanArgumentFlag:
+        enabled: false
 ratings:
   paths:
   - "**.css"
