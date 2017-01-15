@@ -2,18 +2,16 @@
 
 namespace AppBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
 /**
- * Class DependenciaControllerTest
- * @package AppBundle\Tests\Controller
+ * Class DependenciaControllerTest.
  */
 class DependenciaControllerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Un test de prueba
+     * Un test de prueba.
      */
-    public function testPrueba() {
+    public function testPrueba()
+    {
         $this->assertEquals(1, 1);
     }
 

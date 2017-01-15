@@ -7,9 +7,7 @@ use Sg\DatatablesBundle\Datatable\View\Style;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
- * Class UsuarioDatatable
- *
- * @package AppBundle\Datatables
+ * Class UsuarioDatatable.
  */
 class UsuarioDatatable extends AbstractDatatableView
 {
@@ -18,10 +16,10 @@ class UsuarioDatatable extends AbstractDatatableView
      */
     public function getLineFormatter()
     {
-        $formatter = function($line){
+        $formatter = function ($line) {
             $ruta_dependencia = $this->router->generate('dependencia_show', array('id' => $line['dependencia']['id']));
 
-            $line['dependencia']['nombre'] = '<a href="' . $ruta_dependencia . '"></span> ' . $line['dependencia']['nombre'] . '</a>';
+            $line['dependencia']['nombre'] = '<a href="'.$ruta_dependencia.'"></span> '.$line['dependencia']['nombre'].'</a>';
             $line['cargo'] = $this->translator->trans($line['cargo']);
 
             return $line;
@@ -37,7 +35,7 @@ class UsuarioDatatable extends AbstractDatatableView
     {
         // Acciones del encabezado de la tabla
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Usuarios</h3></div>' .
+            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Usuarios</h3></div>'.
                             '<div class="col-sm-6 text-right">',
             'end_html' => '<br><br></div></div>',
             'actions' => array(
@@ -49,10 +47,10 @@ class UsuarioDatatable extends AbstractDatatableView
                         'rel' => 'tooltip',
                         'title' => 'Nuevo Usuario',
                         'class' => 'btn btn-info',
-                        'role' => 'button'
+                        'role' => 'button',
                     ),
-                )
-            )
+                ),
+            ),
         ));
 
         // Opciones generales del bundle datatables
@@ -71,8 +69,7 @@ class UsuarioDatatable extends AbstractDatatableView
             'state_save' => false,
             'delay' => 0,
             'extensions' => array(
-                'buttons' =>
-                    array(
+                'buttons' => array(
                         'colvis' => array(
                             'text' => 'Columnas visibles',
                             'extend' => 'colvis',
@@ -91,8 +88,8 @@ class UsuarioDatatable extends AbstractDatatableView
                                     '7',
                                     '8',
                                     '9',
-                                )
-                            )
+                                ),
+                            ),
                         ),
                         'pdf' => array(
                             'extend' => 'pdf',
@@ -108,30 +105,30 @@ class UsuarioDatatable extends AbstractDatatableView
                                     '7',
                                     '8',
                                     '9',
-                                )
-                            )
+                                ),
+                            ),
                         ),
                     ),
                 'responsive' => true,
                 'fixedHeader' => true,
             ),
             'highlight' => true,
-            'highlight_color' => '#ffefc6'
+            'highlight_color' => '#ffefc6',
         ));
 
         // Opciones ajax del datatable
         $this->ajax->set(array(
             'url' => $this->router->generate('usuario_results'),
             'type' => 'GET',
-            'pipeline' => 0
+            'pipeline' => 0,
         ));
 
         // Opciones generales de datatables
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" .
-                "<'row'<'col-sm-12'tr>>" .
+            'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>".
+                "<'row'<'col-sm-12'tr>>".
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
@@ -149,7 +146,7 @@ class UsuarioDatatable extends AbstractDatatableView
             'individual_filtering_position' => 'head',
             'use_integration_options' => true,
             'force_dom' => true,
-            'row_id' => 'id'
+            'row_id' => 'id',
         ));
 
         // Campos necesarios para generar las listas de filtro
@@ -168,7 +165,7 @@ class UsuarioDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => 'Activar',
                             'class' => 'btn btn-success btn-sm',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
@@ -179,7 +176,7 @@ class UsuarioDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => 'Desactivar',
                             'class' => 'btn btn-warning btn-sm',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
@@ -190,61 +187,61 @@ class UsuarioDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => 'Eliminar',
                             'class' => 'btn btn-danger btn-sm',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
-                )
+                ),
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('apellido', 'column', array(
                 'title' => 'Apellido',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('email', 'column', array(
                 'title' => 'Email',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('dependencia.nombre', 'column', array(
                 'title' => 'Dependencia',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
                     'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($dependencia, 'nombre', 'nombre'),
-                ))
+                )),
             ))
             ->add('cargo', 'column', array(
                 'title' => 'Cargo',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
                     'select_options' => array('' => 'Todos') + $this->getListaCargos($usuario, 'cargo', 'cargo'),
-                ))
+                )),
             ))
             ->add('funciones', 'column', array(
                 'title' => 'Funciones',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('estaActivo', 'boolean', array(
                 'title' => 'Activo',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
                     'select_options' => array('' => 'Todos', '1' => 'Si', '0' => 'No'),
-                ))
+                )),
             ))
             ->add('fechaAlta', 'datetime', array(
                 'title' => 'Fecha Alta',
@@ -256,7 +253,7 @@ class UsuarioDatatable extends AbstractDatatableView
                     array(
                         'route' => 'usuario_show',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
@@ -264,13 +261,13 @@ class UsuarioDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
                             'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
                         'route' => 'usuario_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
@@ -278,16 +275,16 @@ class UsuarioDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
                             'class' => 'btn btn-warning btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
-                    )
-                )
+                    ),
+                ),
             ))
         ;
     }
 
     /**
-     * Obtiene un array con los elementos traducidos para el campo cargo
+     * Obtiene un array con los elementos traducidos para el campo cargo.
      *
      * @param ArrayCollection $entitiesCollection
      * @param string          $keyPropertyName
@@ -301,15 +298,14 @@ class UsuarioDatatable extends AbstractDatatableView
 
         foreach ($entitiesCollection as $entity) {
             $keyPropertyName = Container::camelize($keyPropertyName);
-            $keyGetter = 'get' . ucfirst($keyPropertyName);
+            $keyGetter = 'get'.ucfirst($keyPropertyName);
             $valuePropertyName = Container::camelize($valuePropertyName);
-            $valueGetter = 'get' . ucfirst($valuePropertyName);
+            $valueGetter = 'get'.ucfirst($valuePropertyName);
             $options[$entity->$keyGetter()] = $this->translator->trans($entity->$valueGetter());
         }
 
         return $options;
     }
-
 
     /**
      * {@inheritdoc}

@@ -18,12 +18,13 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class DependenciaController extends Controller
 {
     /**
-     * Metodo que lista las dependencias de la aplicacion
+     * Metodo que lista las dependencias de la aplicacion.
      *
      * @Route("/", name="dependencia_index")
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $datatable = $this->get('app.datatable.dependencia');
         $datatable->buildDatatable();
 
@@ -35,7 +36,8 @@ class DependenciaController extends Controller
     /**
      * @Route("/results", name="dependencia_results")
      */
-    public function indexResultsAction() {
+    public function indexResultsAction()
+    {
         $datatable = $this->get('app.datatable.dependencia');
         $datatable->buildDatatable();
 
@@ -51,6 +53,7 @@ class DependenciaController extends Controller
      * @Method({"GET", "POST"})
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
@@ -88,6 +91,7 @@ class DependenciaController extends Controller
      * @Method("GET")
      *
      * @param Dependencia $dependencia
+     *
      * @return Response
      */
     public function showAction(Dependencia $dependencia)
@@ -106,11 +110,13 @@ class DependenciaController extends Controller
      * @Route("/{id}/edit", name="dependencia_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      *
-     * @param Request $request
+     * @param Request     $request
      * @param Dependencia $dependencia
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function editAction(Request $request, Dependencia $dependencia) {
+    public function editAction(Request $request, Dependencia $dependencia)
+    {
         $deleteForm = $this->createDeleteForm($dependencia);
         $formulario = $this->createForm('AppBundle\Form\DependenciaType', $dependencia);
         $formulario->handleRequest($request);
@@ -142,8 +148,9 @@ class DependenciaController extends Controller
      * @Route("/{id}", name="dependencia_delete")
      * @Method("DELETE")
      *
-     * @param Request $request
+     * @param Request     $request
      * @param Dependencia $dependencia
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Dependencia $dependencia)
@@ -213,11 +220,13 @@ class DependenciaController extends Controller
             }
             try {
                 $em->flush();
+
                 return new Response('Success', 200);
             } catch (\Exception $e) {
                 return new Response('Bad Request', 400);
             }
         }
+
         return new Response('Bad Request', 400);
     }
 }
