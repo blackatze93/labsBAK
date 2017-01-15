@@ -50,3 +50,7 @@ notifications:
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
+
+addons:
+    code_climate:
+        repo_token: eabdf8d3f85049f21da454a68af44067fc2302005c952df2b1fbef0ad8e9bd7a
