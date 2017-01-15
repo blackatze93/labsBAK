@@ -8,8 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * Class DependenciaControllerTest
  * @package AppBundle\Tests\Controller
  */
-class DependenciaControllerTest extends WebTestCase
+class DependenciaControllerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Un test de prueba
+     */
+    public function testPrueba() {
+        $this->assertEquals(1, 1);
+    }
+
     /*
     public function testCompleteScenario()
     {
