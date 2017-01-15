@@ -41,7 +41,8 @@ install:
 
 # Run script
 script:
-  - phpunit --coverage-clover=coverage.xml
+  - phpunit -c app
+  - phpunit -c app --coverage-clover=coverage.xml
   
 # After a build, send email notification with the build results
 notifications:
