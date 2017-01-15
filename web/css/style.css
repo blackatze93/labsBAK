@@ -1,9 +1,9 @@
 .btn-editar {
-    width: 125px !important;
+    width: 125px;
 }
 
 .encabezado {
-    margin: inherit;
+    margin: 0px;
 }
 
 .notifications {

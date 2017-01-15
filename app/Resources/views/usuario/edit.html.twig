@@ -2,9 +2,9 @@
 {% form_theme formulario 'form/fields.html.twig' %}
 
 {% block title %}Editar Usuario{% endblock %}
+{% block encabezado %}Editar Usuario{% endblock %}
 
 {% block article %}
-    <h3 class="encabezado">Editar Usuario</h3><br>
     {{ form_start(formulario) }}
     {% if not formulario.vars.valid %}
         <div class="alert alert-danger alert-dismissable fade in">
