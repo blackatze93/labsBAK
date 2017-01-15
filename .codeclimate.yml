@@ -21,6 +21,8 @@ engines:
         enabled: false
       CleanCode/BooleanArgumentFlag:
         enabled: false
+      Naming/BooleanGetMethodName:
+        enabled: false
 ratings:
   paths:
   - "**.css"

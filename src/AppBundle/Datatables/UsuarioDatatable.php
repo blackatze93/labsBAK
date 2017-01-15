@@ -17,9 +17,9 @@ class UsuarioDatatable extends AbstractDatatableView
     public function getLineFormatter()
     {
         $formatter = function ($line) {
-            $ruta_dependencia = $this->router->generate('dependencia_show', array('id' => $line['dependencia']['id']));
+            $rutaDependencia = $this->router->generate('dependencia_show', array('id' => $line['dependencia']['id']));
 
-            $line['dependencia']['nombre'] = '<a href="'.$ruta_dependencia.'"></span> '.$line['dependencia']['nombre'].'</a>';
+            $line['dependencia']['nombre'] = '<a href="'.$rutaDependencia.'"></span> '.$line['dependencia']['nombre'].'</a>';
             $line['cargo'] = $this->translator->trans($line['cargo']);
 
             return $line;
