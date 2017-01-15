@@ -56,11 +56,6 @@ class DependenciaDatatable extends AbstractDatatableView
                         'colvis' => array(
                             'text' => 'Columnas visibles',
                             'extend' => 'colvis',
-                            'columns' => array(
-                                '1',
-                                '2',
-                                '3',
-                            )
                         ),
                         'excel' => array(
                             'extend' => 'excel',

@@ -19,11 +19,8 @@ class UsuarioDatatable extends AbstractDatatableView
     public function getLineFormatter()
     {
         $formatter = function($line){
-            $ruta_usuario = $this->router->generate('usuario_show', array('id' => $line['id']));
             $ruta_dependencia = $this->router->generate('dependencia_show', array('id' => $line['dependencia']['id']));
 
-
-            $line['id'] = '<a href="' . $ruta_usuario . '"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> ' . $line['id'] . '</a>';
             $line['dependencia']['nombre'] = '<a href="' . $ruta_dependencia . '"></span> ' . $line['dependencia']['nombre'] . '</a>';
             $line['cargo'] = $this->translator->trans($line['cargo']);
 
@@ -79,16 +76,6 @@ class UsuarioDatatable extends AbstractDatatableView
                         'colvis' => array(
                             'text' => 'Columnas visibles',
                             'extend' => 'colvis',
-                            'columns' => array(
-                                '2',
-                                '3',
-                                '4',
-                                '5',
-                                '6',
-                                '7',
-                                '8',
-                                '9',
-                            )
                         ),
                         'excel' => array(
                             'extend' => 'excel',
@@ -262,6 +249,39 @@ class UsuarioDatatable extends AbstractDatatableView
             ->add('fechaAlta', 'datetime', array(
                 'title' => 'Fecha Alta',
                 'filter' => array('daterange', array()),
+            ))
+            ->add(null, 'action', array(
+                'title' => $this->translator->trans('datatables.actions.title'),
+                'actions' => array(
+                    array(
+                        'route' => 'usuario_show',
+                        'route_parameters' => array(
+                            'id' => 'id'
+                        ),
+                        'label' => $this->translator->trans('datatables.actions.show'),
+                        'icon' => 'glyphicon glyphicon-eye-open',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => $this->translator->trans('datatables.actions.show'),
+                            'class' => 'btn btn-primary btn-xs',
+                            'role' => 'button'
+                        ),
+                    ),
+                    array(
+                        'route' => 'usuario_edit',
+                        'route_parameters' => array(
+                            'id' => 'id'
+                        ),
+                        'label' => $this->translator->trans('datatables.actions.edit'),
+                        'icon' => 'glyphicon glyphicon-edit',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => $this->translator->trans('datatables.actions.edit'),
+                            'class' => 'btn btn-warning btn-xs',
+                            'role' => 'button'
+                        ),
+                    )
+                )
             ))
         ;
     }

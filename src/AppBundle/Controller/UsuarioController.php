@@ -16,7 +16,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("usuario")
  */
-// TODO: Arreglar problema con las bulk actions
 class UsuarioController extends Controller {
     /**
      * Metodo que lista los usuarios de la aplicacion
