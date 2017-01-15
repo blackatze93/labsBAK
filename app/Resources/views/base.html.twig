@@ -59,6 +59,12 @@
                             </div>
                         {% endfor %}
                     {% endfor %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="encabezado">{% block encabezado %}{% endblock %}</h3>
+                        </div>
+                    </div>
+                    <br>
                     {% block article %}{% endblock %}
                 </article>
             </div>

@@ -35,9 +35,8 @@ class UsuarioDatatable extends AbstractDatatableView
     {
         // Acciones del encabezado de la tabla
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Usuarios</h3></div>'.
-                            '<div class="col-sm-6 text-right">',
-            'end_html' => '<br><br></div></div>',
+            'start_html' => '<div class="row"><div class="col-sm-12">',
+            'end_html' => '</div></div><br>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('usuario_new'),

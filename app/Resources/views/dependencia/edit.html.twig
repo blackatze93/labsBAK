@@ -1,11 +1,11 @@
+{#TODO: Error en la edicion cuando tiene asignados usuarios la dependencia#}
 {% extends 'base.html.twig' %}
 {% form_theme formulario 'form/fields.html.twig' %}
 
 {% block title %}Editar Dependencia{% endblock %}
+{% block encabezado %}Editar Dependencia{% endblock %}
 
 {% block article %}
-    {#TODO: Error en la edicion cuando tiene asignados usuarios la dependencia#}
-    <h3 class="encabezado">Editar Dependencia</h3><br>
     {{ form_start(formulario) }}
     {% if not formulario.vars.valid %}
         <div class="alert alert-danger alert-dismissable fade in">

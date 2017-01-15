@@ -16,9 +16,8 @@ class DependenciaDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Dependencias</h3></div>'.
-                '<div class="col-sm-6 text-right">',
-            'end_html' => '<br><br></div></div>',
+            'start_html' => '<div class="row"><div class="col-sm-12">',
+            'end_html' => '</div></div><br>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('dependencia_new'),
