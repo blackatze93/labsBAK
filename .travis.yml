@@ -41,11 +41,11 @@ install:
 
 # Run script
 script:
-  - phpunit -c app
-  
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - phpunit --coverage-clover=coverage.xml
   
 # After a build, send email notification with the build results
 notifications:
   email: afsanchez93@gmail.com
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
