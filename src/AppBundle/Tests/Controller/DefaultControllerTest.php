@@ -17,8 +17,18 @@ class DefaultControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /");
 
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Inicio"')->count());
+        $link = $crawler
+            ->filter('a:contains("Inicio")')
+            ->eq(0)
+            ->link
+        ;
+
+        $crawler = $client->click($link);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /");
+
+
     }
 
     /*
