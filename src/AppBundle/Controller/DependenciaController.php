@@ -15,7 +15,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("dependencia")
  */
-// TODO: Crear try y catch para todos los metodos que ejecutan en la  bd
 class DependenciaController extends Controller
 {
     /**
@@ -62,9 +61,13 @@ class DependenciaController extends Controller
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($dependencia);
-            $em->flush();
 
-            $this->addFlash('success', 'Se agregó la dependencia correctamente');
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se agregó la dependencia correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo agregar la dependencia');
+            }
 
             return $this->redirectToRoute('dependencia_index');
         }
@@ -105,9 +108,13 @@ class DependenciaController extends Controller
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($dependencia);
-            $em->flush();
 
-            $this->addFlash('success', 'Se edito la dependencia correctamente');
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se edito la dependencia correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo editar la dependencia');
+            }
 
             return $this->redirectToRoute('dependencia_index');
         }

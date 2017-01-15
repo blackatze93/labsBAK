@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Usuario;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,11 +76,15 @@ class UsuarioController extends Controller {
             $em = $this->getDoctrine()->getManager();
             // Se genera el codigo SQL para poder guardar los datos en la BD
             $em->persist($usuario);
-            // Se ejecuta el codigo SQL generado por Doctrine con la instruccion anterior
-            $em->flush();
 
-            // Se agrega un mensaje para que pueda ser leido por el motor de plantillas twig
-            $this->addFlash('success', 'Se agregó el usuario correctamente');
+            // Se ejecuta el codigo SQL generado por Doctrine con la instruccion anterior
+            try {
+                $em->flush();
+                // Se agrega un mensaje para que pueda ser leido por el motor de plantillas twig
+                $this->addFlash('success', 'Se agregó el usuario correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo agregar el usuario');
+            }
 
             // Por ultimo se redirecciona a la pagina de usuarios
             return $this->redirectToRoute('usuario_index');
@@ -127,9 +131,13 @@ class UsuarioController extends Controller {
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
-            $em->flush();
 
-            $this->addFlash('success', 'Se edito el usuario correctamente');
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se edito el usuario correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo editar el usuario');
+            }
 
             return $this->redirectToRoute('usuario_index');
         }
@@ -155,7 +163,7 @@ class UsuarioController extends Controller {
             try {
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($usuario);
-                $em->flush($usuario);
+                $em->flush();
 
                 $this->addFlash('success', 'Se eliminó correctamente la entidad');
             } catch (\Exception $e) {
@@ -201,9 +209,12 @@ class UsuarioController extends Controller {
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
-            $em->flush();
-
-            $this->addFlash('success', 'Se actualizó el perfil correctamente');
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se actualizó el perfil correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'No se pudo actualizar el perfil');
+            }
 
             return $this->redirectToRoute('index');
         }
@@ -298,6 +309,7 @@ class UsuarioController extends Controller {
                 return new Response('Bad Request', 400);
             }
         }
+        return new Response('Bad Request', 400);
     }
 
     /**
@@ -338,6 +350,7 @@ class UsuarioController extends Controller {
                 return new Response('Bad Request', 400);
             }
         }
+        return new Response('Bad Request', 400);
     }
 
     /**
@@ -378,6 +391,6 @@ class UsuarioController extends Controller {
                 return new Response('Bad Request', 400);
             }
         }
+        return new Response('Bad Request', 400);
     }
-
 }

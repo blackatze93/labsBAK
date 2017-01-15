@@ -318,9 +318,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles()
-    {
-        // TODO: Implement getRoles() method.
+    public function getRoles() {
         return array($this->cargo);
     }
 
@@ -331,9 +329,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @return string|null The salt
      */
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
+    public function getSalt() {
         return null;
     }
 
@@ -342,9 +338,7 @@ class Usuario implements AdvancedUserInterface
      *
      * @return string The username
      */
-    public function getUsername()
-    {
-        // TODO: Implement getUsername() method.
+    public function getUsername() {
         return $this->getId();
     }
 
@@ -354,47 +348,35 @@ class Usuario implements AdvancedUserInterface
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
      */
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
+    public function eraseCredentials() {
         $this->passwordEnClaro = null;
     }
 
     /**
      * (@inheritdoc)
      */
-    public function isAccountNonExpired()
-    {
-        // TODO: Implement isAccountNonExpired() method.
+    public function isAccountNonExpired() {
         return true;
     }
 
     /**
      * (@inheritdoc)
      */
-    public function isAccountNonLocked()
-    {
-        // TODO: Implement isAccountNonLocked() method.
+    public function isAccountNonLocked() {
         return true;
     }
 
     /**
      * (@inheritdoc)
      */
-    public function isCredentialsNonExpired()
-    {
-        // TODO: Implement isCredentialsNonExpired() method.
+    public function isCredentialsNonExpired() {
         return true;
     }
 
     /**
      * (@inheritdoc)
      */
-    public function isEnabled()
-    {
-        // TODO: Implement isEnabled() method.
+    public function isEnabled() {
         return $this->estaActivo;
     }
-
-
 }
