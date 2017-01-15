@@ -2,27 +2,16 @@
 engines:
   csslint:
     enabled: true
-  duplication:
-    enabled: true
-    config:
-      languages:
-      - ruby
-      - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
+  phpcodesniffer:
+    enabled: true
   phpmd:
     enabled: true
-    checks:
-      Naming/ShortVariable:
-        enabled: false
-      CleanCode/BooleanArgumentFlag:
-        enabled: false
-      Naming/BooleanGetMethodName:
-        enabled: false
+    config:
+      rulesets: "unusedcode,codesize,naming,design,cleancode"
 ratings:
   paths:
   - "**.css"
@@ -31,6 +20,4 @@ ratings:
   - "**.jsx"
   - "**.module"
   - "**.php"
-  - "**.py"
-  - "**.rb"
 exclude_paths: []
