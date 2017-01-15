@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/blackatze93/labs.svg?branch=master)](https://travis-ci.org/blackatze93/labs)
+
 Symfony Standard Edition
 ========================
 
