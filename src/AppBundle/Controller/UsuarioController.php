@@ -49,6 +49,9 @@ class UsuarioController extends Controller {
      *
      * @Route("/new", name="usuario_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request) {
         //Se crea la nueva entidad sobre la cual se guardaran los datos
@@ -101,6 +104,9 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}", name="usuario_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
+     *
+     * @param Usuario $usuario
+     * @return Response
      */
     public function showAction(Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
@@ -116,6 +122,10 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}/edit", name="usuario_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param Usuario $usuario
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
@@ -154,6 +164,10 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}", name="usuario_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
+     *
+     * @param Request $request
+     * @param Usuario $usuario
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
@@ -193,6 +207,9 @@ class UsuarioController extends Controller {
      *
      * @Route("/perfil", name="usuario_perfil")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function perfilAction(Request $request) {
         $usuario = $this->getUser();

@@ -3,9 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Dependencia;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -49,6 +49,9 @@ class DependenciaController extends Controller
      *
      * @Route("/new", name="dependencia_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
@@ -83,6 +86,9 @@ class DependenciaController extends Controller
      *
      * @Route("/{id}", name="dependencia_show", options={"expose"=true})
      * @Method("GET")
+     *
+     * @param Dependencia $dependencia
+     * @return Response
      */
     public function showAction(Dependencia $dependencia)
     {
@@ -99,6 +105,10 @@ class DependenciaController extends Controller
      *
      * @Route("/{id}/edit", name="dependencia_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param Dependencia $dependencia
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Dependencia $dependencia) {
         $deleteForm = $this->createDeleteForm($dependencia);
@@ -131,6 +141,10 @@ class DependenciaController extends Controller
      *
      * @Route("/{id}", name="dependencia_delete")
      * @Method("DELETE")
+     *
+     * @param Request $request
+     * @param Dependencia $dependencia
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Dependencia $dependencia)
     {
@@ -141,7 +155,7 @@ class DependenciaController extends Controller
             try {
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($dependencia);
-                $em->flush($dependencia);
+                $em->flush();
 
                 $this->addFlash('success', 'Se eliminó correctamente la entidad');
             } catch (\Exception $e) {
@@ -204,5 +218,6 @@ class DependenciaController extends Controller
                 return new Response('Bad Request', 400);
             }
         }
+        return new Response('Bad Request', 400);
     }
 }
