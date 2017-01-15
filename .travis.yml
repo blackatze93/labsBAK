@@ -48,5 +48,5 @@ notifications:
   email: afsanchez93@gmail.com
 
 addons:
-    code_climate:
-        repo_token: 84fbdbd0e2f252fed2c3747753d86388a5e0fb8a878bf79449d7846312f88db0
+  code_climate:
+    repo_token: 84fbdbd0e2f252fed2c3747753d86388a5e0fb8a878bf79449d7846312f88db0
