@@ -1,9 +1,6 @@
 
 [![Build Status](https://travis-ci.org/blackatze93/labs.svg?branch=master)](https://travis-ci.org/blackatze93/labs)
 [![StyleCI](https://styleci.io/repos/72900789/shield?branch=master)](https://styleci.io/repos/72900789)
-[![Code Climate](https://codeclimate.com/github/blackatze93/labs/badges/gpa.svg)](https://codeclimate.com/github/blackatze93/labs)
-[![Test Coverage](https://codeclimate.com/github/blackatze93/labs/badges/coverage.svg)](https://codeclimate.com/github/blackatze93/labs/coverage)
-[![Issue Count](https://codeclimate.com/github/blackatze93/labs/badges/issue_count.svg)](https://codeclimate.com/github/blackatze93/labs)
 
 Symfony Standard Edition
 ========================
