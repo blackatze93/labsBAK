@@ -1,18 +1,27 @@
 <?php
 
-namespace AppBundle\Tests;
+namespace Appbundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
-class ApplicationAvailabilityFunctionalTest extends WebTestCase
+class DefaultControllerTest extends WebTestCase
 {
     private $client = null;
 
     public function setUp()
     {
         $this->client = static::createClient();
+    }
+
+    public function testSecuredHello()
+    {
+        $this->logIn();
+
+        $crawler = $this->client->request('GET', '/usuario');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
     private function logIn()
@@ -28,26 +37,5 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
 
         $cookie = new Cookie($session->getName(), $session->getId());
         $this->client->getCookieJar()->set($cookie);
-    }
-
-    /**
-    * @dataProvider urlProvider
-    */
-    public function testPageIsSuccessful($url)
-    {
-        $this->logIn();
-
-        $this->client->request('GET', $url);
-
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-    }
-
-    public function urlProvider()
-    {
-        return array(
-        array('/'),
-        array('/usuario'),
-        array('/dependencia'),
-    );
     }
 }
