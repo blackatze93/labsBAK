@@ -15,27 +15,10 @@ class DefaultControllerTest extends WebTestCase
         $this->client = static::createClient();
     }
 
-    public function testSecuredHello()
+    public function testIndex()
     {
-        $this->logIn();
-
-        $crawler = $this->client->request('GET', '/usuario');
+        $this->client->request('GET', '/');
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-    }
-
-    private function logIn()
-    {
-        $session = $this->client->getContainer()->get('session');
-
-        // the firewall context (defaults to the firewall name)
-        $firewall = 'secured_area';
-
-        $token = new UsernamePasswordToken('admin', null, $firewall, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
     }
 }

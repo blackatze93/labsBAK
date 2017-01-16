@@ -12,6 +12,8 @@ engines:
     enabled: true
     config:
       rulesets: "unusedcode,codesize,naming,design,cleancode"
+    Naming/ShortVariable:
+      enabled: false
 ratings:
   paths:
   - "**.css"
