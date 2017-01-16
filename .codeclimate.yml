@@ -22,4 +22,5 @@ ratings:
   - "**.jsx"
   - "**.module"
   - "**.php"
-exclude_paths: []
+exclude_paths:
+  - "app/"
