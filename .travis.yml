@@ -1,0 +1,52 @@
+# Project language
+language: php
+
+php:
+  - '5.3'
+  - '5.4'
+  - '5.5'
+  - '5.6'
+  - '7.0'
+  - '7.1'
+  - hhvm
+  - nightly
+
+# Allows use container-based infrastructure
+sudo: false
+
+# Start mysql service
+services:
+  - mysql
+
+# Cache composer packages so "composer install" is faster
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+# Define an environment variable
+env:
+  - SYMFONY_VERSION="2.8.*" DB=mysql
+
+# Update composer
+before-install:
+  - composer self-update
+
+# Install composer dependencies,
+# Create database, schema and fixtures
+install:
+  - composer install
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
+  - php app/console doctrine:database:create --env=test
+  - php app/console doctrine:schema:create --env=test
+
+# Run script
+script:
+  - phpunit -c app
+
+# After a build, send email notification with the build results
+notifications:
+  email: afsanchez93@gmail.com
+
+addons:
+  code_climate:
+    repo_token: 223819bee6f19c59053531182500053052208e155fda82b69602a466d3af78fb

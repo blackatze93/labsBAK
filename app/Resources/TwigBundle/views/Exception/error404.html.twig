@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error {{ status_code }}{% endblock %}
+
+{% block article %}
+    <h1 class="text-center"><i class="fa fa-frown-o" style="color:#d9534f;"></i> {{ status_code }} {{ status_text }}</h1>
+    <h2 class="text-center">We couldn't find what you're looking for.</h2><br>
+{% endblock %}

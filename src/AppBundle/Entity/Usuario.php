@@ -3,13 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Usuario
+ * Usuario.
  *
+ * @ORM\Table(name="usuario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @DoctrineAssert\UniqueEntity("id")
  */
@@ -94,7 +95,7 @@ class Usuario implements AdvancedUserInterface
     private $fechaAlta;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean")
      * @Assert\Type(type="bool")
@@ -114,14 +115,16 @@ class Usuario implements AdvancedUserInterface
     /**
      * Usuario constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->fechaAlta = new \DateTime();
     }
 
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getNombre().' '.$this->getApellido();
     }
 
@@ -270,7 +273,7 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEstaActivo()
     {
@@ -278,7 +281,7 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @param boolean $estaActivo
+     * @param bool $estaActivo
      */
     public function setEstaActivo($estaActivo)
     {
@@ -301,7 +304,6 @@ class Usuario implements AdvancedUserInterface
         $this->dependencia = $dependencia;
     }
 
-
     /**
      * Returns the roles granted to the user.
      *
@@ -316,11 +318,10 @@ class Usuario implements AdvancedUserInterface
      * and populated in any number of different ways when the user object
      * is created.
      *
-     * @return (Role|string)[] The user roles
+     * @return array (Role|string)[] The user roles
      */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
         return array($this->cargo);
     }
 
@@ -333,8 +334,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
-        return null;
+        return;
     }
 
     /**
@@ -344,7 +344,6 @@ class Usuario implements AdvancedUserInterface
      */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
         return $this->getId();
     }
 
@@ -356,45 +355,38 @@ class Usuario implements AdvancedUserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
         $this->passwordEnClaro = null;
     }
 
     /**
-     * (@inheritdoc)
+     * ({@inheritdoc}).
      */
     public function isAccountNonExpired()
     {
-        // TODO: Implement isAccountNonExpired() method.
         return true;
     }
 
     /**
-     * (@inheritdoc)
+     * ({@inheritdoc}).
      */
     public function isAccountNonLocked()
     {
-        // TODO: Implement isAccountNonLocked() method.
         return true;
     }
 
     /**
-     * (@inheritdoc)
+     * ({@inheritdoc}).
      */
     public function isCredentialsNonExpired()
     {
-        // TODO: Implement isCredentialsNonExpired() method.
         return true;
     }
 
     /**
-     * (@inheritdoc)
+     * ({@inheritdoc}).
      */
     public function isEnabled()
     {
-        // TODO: Implement isEnabled() method.
         return $this->estaActivo;
     }
-
-
 }

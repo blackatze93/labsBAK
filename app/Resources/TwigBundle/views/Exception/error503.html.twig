@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error {{ status_code }}{% endblock %}
+
+{% block article %}
+    <h1 class="text-center"><i class="fa fa-exclamation-triangle" style="color:#f0ad4e;"></i> {{ status_code }} {{ status_text }}</h1>
+    <h2 class="text-center">The web server is returning an unexpected temporary error.</h2><br>
+{% endblock %}

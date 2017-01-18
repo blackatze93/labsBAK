@@ -6,9 +6,7 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class DependenciaDatatable
- *
- * @package AppBundle\Datatables
+ * Class DependenciaDatatable.
  */
 class DependenciaDatatable extends AbstractDatatableView
 {
@@ -18,9 +16,8 @@ class DependenciaDatatable extends AbstractDatatableView
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
-            'start_html' => '<div class="row"><div class="col-sm-6"><h3 class="encabezado">Lista de Dependencias</h3></div>' .
-                '<div class="col-sm-6 text-right">',
-            'end_html' => '<br><br></div></div>',
+            'start_html' => '<div class="row"><div class="col-sm-12">',
+            'end_html' => '</div></div><br>',
             'actions' => array(
                 array(
                     'route' => $this->router->generate('dependencia_new'),
@@ -30,10 +27,10 @@ class DependenciaDatatable extends AbstractDatatableView
                         'rel' => 'tooltip',
                         'title' => 'Nueva Dependencia',
                         'class' => 'btn btn-info',
-                        'role' => 'button'
+                        'role' => 'button',
                     ),
-                )
-            )
+                ),
+            ),
         ));
 
         $this->features->set(array(
@@ -51,16 +48,10 @@ class DependenciaDatatable extends AbstractDatatableView
             'state_save' => false,
             'delay' => 0,
             'extensions' => array(
-                'buttons' =>
-                    array(
+                'buttons' => array(
                         'colvis' => array(
                             'text' => 'Columnas visibles',
                             'extend' => 'colvis',
-                            'columns' => array(
-                                '1',
-                                '2',
-                                '3',
-                            )
                         ),
                         'excel' => array(
                             'extend' => 'excel',
@@ -69,8 +60,8 @@ class DependenciaDatatable extends AbstractDatatableView
                                 'columns' => array(
                                     '1',
                                     '2',
-                                )
-                            )
+                                ),
+                            ),
                         ),
                         'pdf' => array(
                             'extend' => 'pdf',
@@ -79,28 +70,28 @@ class DependenciaDatatable extends AbstractDatatableView
                                 'columns' => array(
                                     '1',
                                     '2',
-                                )
-                            )
+                                ),
+                            ),
                         ),
                     ),
                 'responsive' => true,
                 'fixedHeader' => true,
             ),
             'highlight' => true,
-            'highlight_color' => '#ffefc6'
+            'highlight_color' => '#ffefc6',
         ));
 
         $this->ajax->set(array(
             'url' => $this->router->generate('dependencia_results'),
             'type' => 'GET',
-            'pipeline' => 0
+            'pipeline' => 0,
         ));
 
         $this->options->set(array(
             'display_start' => 0,
             'defer_loading' => -1,
-            'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" .
-                "<'row'<'col-sm-12'tr>>" .
+            'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>".
+                "<'row'<'col-sm-12'tr>>".
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
@@ -118,7 +109,7 @@ class DependenciaDatatable extends AbstractDatatableView
             'individual_filtering_position' => 'head',
             'use_integration_options' => true,
             'force_dom' => true,
-            'row_id' => 'id'
+            'row_id' => 'id',
         ));
 
         $this->columnBuilder
@@ -132,22 +123,22 @@ class DependenciaDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => 'Eliminar',
                             'class' => 'btn btn-danger btn-sm',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
-                )
+                ),
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('nombre', 'column', array(
                 'title' => 'Nombre',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
@@ -155,7 +146,7 @@ class DependenciaDatatable extends AbstractDatatableView
                     array(
                         'route' => 'dependencia_show',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
@@ -163,13 +154,13 @@ class DependenciaDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
                             'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
                         'route' => 'dependencia_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
@@ -177,10 +168,10 @@ class DependenciaDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
                             'class' => 'btn btn-warning btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
-                    )
-                )
+                    ),
+                ),
             ))
         ;
     }

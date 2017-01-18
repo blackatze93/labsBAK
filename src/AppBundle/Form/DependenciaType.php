@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class DependenciaType.
+ */
 class DependenciaType extends AbstractType
 {
     /**
@@ -24,13 +27,13 @@ class DependenciaType extends AbstractType
             $builder
                 ->add('crear', 'submit')
             ;
-        } else if ($options['accion'] === 'edit_dependencia') {
+        } elseif ($options['accion'] === 'edit_dependencia') {
             $builder
                 ->add('guardar', 'submit')
             ;
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -49,6 +52,4 @@ class DependenciaType extends AbstractType
     {
         return 'dependencia';
     }
-
-
 }

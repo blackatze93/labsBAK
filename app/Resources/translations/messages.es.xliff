@@ -67,40 +67,12 @@
                 <target>Funcionario</target>
             </trans-unit>
             <trans-unit id="17">
-                <source></source>
-                <target></target>
+                <source>Bad credentials.</source>
+                <target>Nombre de usuario o contraseña inválidos.</target>
             </trans-unit>
             <trans-unit id="18">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="19">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="20">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="21">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="22">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="23">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="24">
-                <source></source>
-                <target></target>
-            </trans-unit>
-            <trans-unit id="25">
-                <source></source>
-                <target></target>
+                <source>User account is disabled.</source>
+                <target>La cuenta no está activa.</target>
             </trans-unit>
         </body>
     </file>

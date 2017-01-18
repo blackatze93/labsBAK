@@ -7,8 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Dependencia
+ * Dependencia.
  *
+ * @ORM\Table(name="dependencia")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
  * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity("nombre")
@@ -43,7 +44,7 @@ class Dependencia
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return string
      */
@@ -53,9 +54,10 @@ class Dependencia
     }
 
     /**
-     * Set nombre
+     * Set nombre.
      *
      * @param string $nombre
+     *
      * @return Dependencia
      */
     public function setNombre($nombre)
@@ -66,9 +68,9 @@ class Dependencia
     }
 
     /**
-     * Get nombre
+     * Get nombre.
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -78,7 +80,8 @@ class Dependencia
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getNombre();
     }
 }

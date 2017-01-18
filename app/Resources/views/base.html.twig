@@ -7,35 +7,62 @@
         <title>{% block title %}{% endblock %} - Laboratorios de Informática - Facultad Tecnológica</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-            <link rel="stylesheet" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/fc-3.2.2/fh-3.1.2/r-2.1.0/datatables.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.5.0/featherlight.gallery.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fullcalendar/dist/fullcalendar.min.css') }}">
+            {#TODO: incluir el formato de impresion de fullcalendar#}
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fullcalendar-scheduler/dist/scheduler.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-fixedcolumns-bs/css/fixedColumns.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-daterangepicker/daterangepicker.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/featherlight/release/featherlight.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/featherlight/release/featherlight.gallery.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
         {% endblock %}
         {% block javascripts %}
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <script src="{{ asset('assets/vendor/html5shiv/dist/html5shiv.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/respond/dest/respond.min.js') }}"></script>
             <![endif]-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <script src="https://cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/fc-3.2.2/fh-3.1.2/r-2.1.0/datatables.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.0/featherlight.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.5.0/featherlight.gallery.min.js"></script>
+            <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/moment/min/moment.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/fullcalendar-scheduler/dist/scheduler.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/fullcalendar/dist/locale/es.js') }}"></script>
+            <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/jszip/dist/jszip.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/pdfmake/build/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('assets/vendor/noty/js/noty/packaged/jquery.noty.packaged.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+            <script src="{{ asset('assets/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/featherlight/release/featherlight.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/featherlight/release/featherlight.gallery.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/select2/dist/js/select2.full.min.js') }}"></script>
             <script src="{{ asset('js/jquery.highlight.js') }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+            <script src="{{ asset('js/noty-settings.js') }}"></script>
+            <script src="{{ asset('js/calendar-settings.js') }}"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         {% endblock %}
@@ -48,20 +75,19 @@
             </header>
             <div class="jumbotron">
                 <article>
-                    {% for mensaje in app.session.flashBag.get('success') %}
-                        <div class="alert alert-success alert-dismissable fade in">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            <strong>{{ mensaje }}</strong>
-                        </div>
+                    {% for tipo, mensajes in app.session.flashbag.all() %}
+                        {% for mensaje in mensajes %}
+                            <script>
+                                notificacion({{ mensaje|json_encode()|raw }}, {{ tipo|json_encode()|raw }});
+                            </script>
+                        {% endfor %}
                     {% endfor %}
-                    {% for mensaje in app.session.flashBag.get('danger') %}
-                        <div class="alert alert-danger alert-dismissable fade in">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            <strong>{{ mensaje }}</strong>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="encabezado">{% block encabezado %}{% endblock %}</h3>
                         </div>
-                    {% endfor %}
+                    </div>
+                    <br>
                     {% block article %}{% endblock %}
                 </article>
             </div>

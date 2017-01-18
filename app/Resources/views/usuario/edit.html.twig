@@ -2,16 +2,14 @@
 {% form_theme formulario 'form/fields.html.twig' %}
 
 {% block title %}Editar Usuario{% endblock %}
+{% block encabezado %}Editar Usuario{% endblock %}
 
 {% block article %}
-    <h3 class="encabezado">Editar Usuario</h3><br>
     {{ form_start(formulario) }}
     {% if not formulario.vars.valid %}
-        <div class="alert alert-danger alert-dismissable fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            <strong>Hay errores en el formulario</strong>
-        </div>
+        <script>
+            notificacion('Hay errores en el formulario', 'error');
+        </script>
     {% endif %}
     <div class="form-group">
         {{ form_label(formulario.id) }}

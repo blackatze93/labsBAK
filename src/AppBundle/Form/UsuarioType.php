@@ -7,17 +7,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UsuarioType
- * @package AppBundle\Form
+ * Class UsuarioType.
  */
-class UsuarioType extends AbstractType {
+class UsuarioType extends AbstractType
+{
     /**
-     * Metodo para crear el formulario de la entidad Usuario con los campos requeridos
+     * Metodo para crear el formulario de la entidad Usuario con los campos requeridos.
      *
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
             ->add('id')
             ->add('nombre')
@@ -51,32 +52,33 @@ class UsuarioType extends AbstractType {
             $builder
                 ->add('crear', 'submit')
             ;
-        } else if ($options['accion'] === 'modificar_perfil') {
+        } elseif ($options['accion'] === 'modificar_perfil') {
             $builder
                 ->add('guardar', 'submit')
             ;
         }
-
     }
 
     /**
-     * Metodo que configura las opciones por defecto que tendra el formulario
+     * Metodo que configura las opciones por defecto que tendra el formulario.
      *
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver) {
-        $resolver ->setDefaults(array(
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Usuario',
             'accion' => 'modificar_perfil',
         ));
     }
 
     /**
-     * Metodo que configura el prefijo que tendran los campos del formulario
+     * Metodo que configura el prefijo que tendran los campos del formulario.
      *
      * @return string
      */
-    public function getBlockPrefix() {
+    public function getBlockPrefix()
+    {
         return 'usuario';
     }
 }

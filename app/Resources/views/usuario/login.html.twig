@@ -1,19 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ingreso al sistema{% endblock %}
+{% block encabezado %}Ingreso al sistema{% endblock %}
 
 {% block article %}
     {% if error %}
-        <div class="alert alert-danger alert-dismissable fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            <strong>
-                {{ error.message | replace({
-                    "Bad credentials." : "Nombre de usuario o contraseña inválidos.",
-                    "User account is disabled." : "La cuenta no está activa." })
-                }}
-            </strong>
-        </div>
+        <script>
+            notificacion({{ error.message | trans | json_encode() | raw }}, 'error');
+        </script>
     {% endif %}
     <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
         <div class="form-group">
