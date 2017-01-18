@@ -128,15 +128,15 @@ class DependenciaController extends Controller
             try {
                 $em->flush();
                 $this->addFlash('success', 'Se edito la dependencia correctamente');
+
                 return $this->redirectToRoute('dependencia_index');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'No se pudo editar la dependencia');
+
                 return $this->redirectToRoute('dependencia_edit', array(
                     'id' => $request->get('id'),
                 ));
             }
-
-
         }
 
         return $this->render('dependencia/edit.html.twig', array(

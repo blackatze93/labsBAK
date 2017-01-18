@@ -29,7 +29,6 @@ class CalendarEventListener
         $request = $calendarEvent->getRequest();
         $filter = $request->get('filter');
 
-
         // load events using your custom logic here,
         // for instance, retrieving events from a repository
 
@@ -48,7 +47,7 @@ class CalendarEventListener
         // from your own entities/database values.
         // TODO: configurar eventos si tienen duracion de todo el dia
 
-        foreach($clases as $clase) {
+        foreach ($clases as $clase) {
             // create an event with a start/end time
             $eventEntity = new EventEntity($clase->getMateria(), $clase->getFechaInicio(), $clase->getFechaFin());
 
