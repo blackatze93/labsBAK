@@ -3,11 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Lugar
+ * Lugar.
  *
  * @ORM\Table(name="lugar")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LugarRepository")
@@ -45,11 +43,10 @@ class Lugar
      */
     private $descripcion;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -57,9 +54,10 @@ class Lugar
     }
 
     /**
-     * Set nombre
+     * Set nombre.
      *
      * @param string $nombre
+     *
      * @return Lugar
      */
     public function setNombre($nombre)
@@ -70,9 +68,9 @@ class Lugar
     }
 
     /**
-     * Get nombre
+     * Get nombre.
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -80,9 +78,10 @@ class Lugar
     }
 
     /**
-     * Set capacidad
+     * Set capacidad.
      *
-     * @param integer $capacidad
+     * @param int $capacidad
+     *
      * @return Lugar
      */
     public function setCapacidad($capacidad)
@@ -93,9 +92,9 @@ class Lugar
     }
 
     /**
-     * Get capacidad
+     * Get capacidad.
      *
-     * @return integer 
+     * @return int
      */
     public function getCapacidad()
     {
@@ -103,9 +102,10 @@ class Lugar
     }
 
     /**
-     * Set descripcion
+     * Set descripcion.
      *
      * @param string $descripcion
+     *
      * @return Lugar
      */
     public function setDescripcion($descripcion)
@@ -116,9 +116,9 @@ class Lugar
     }
 
     /**
-     * Get descripcion
+     * Get descripcion.
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {

@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Clase
+ * Clase.
  *
  * @ORM\Table(name="clase")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClaseRepository")
@@ -65,9 +65,9 @@ class Clase
     private $observaciones;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -107,9 +107,10 @@ class Clase
     }
 
     /**
-     * Set estado
+     * Set estado.
      *
      * @param string $estado
+     *
      * @return Clase
      */
     public function setEstado($estado)
@@ -120,9 +121,9 @@ class Clase
     }
 
     /**
-     * Get estado
+     * Get estado.
      *
-     * @return string 
+     * @return string
      */
     public function getEstado()
     {
@@ -130,9 +131,10 @@ class Clase
     }
 
     /**
-     * Set materia
+     * Set materia.
      *
      * @param string $materia
+     *
      * @return Clase
      */
     public function setMateria($materia)
@@ -143,9 +145,9 @@ class Clase
     }
 
     /**
-     * Get materia
+     * Get materia.
      *
-     * @return string 
+     * @return string
      */
     public function getMateria()
     {
@@ -153,9 +155,10 @@ class Clase
     }
 
     /**
-     * Set grupo
+     * Set grupo.
      *
-     * @param integer $grupo
+     * @param int $grupo
+     *
      * @return Clase
      */
     public function setGrupo($grupo)
@@ -166,9 +169,9 @@ class Clase
     }
 
     /**
-     * Get grupo
+     * Get grupo.
      *
-     * @return integer 
+     * @return int
      */
     public function getGrupo()
     {
@@ -176,9 +179,10 @@ class Clase
     }
 
     /**
-     * Set observaciones
+     * Set observaciones.
      *
      * @param string $observaciones
+     *
      * @return Clase
      */
     public function setObservaciones($observaciones)
@@ -189,9 +193,9 @@ class Clase
     }
 
     /**
-     * Get observaciones
+     * Get observaciones.
      *
-     * @return string 
+     * @return string
      */
     public function getObservaciones()
     {

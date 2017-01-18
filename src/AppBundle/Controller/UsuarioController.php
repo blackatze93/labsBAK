@@ -153,15 +153,15 @@ class UsuarioController extends Controller
             try {
                 $em->flush();
                 $this->addFlash('success', 'Se edito el usuario correctamente');
+
                 return $this->redirectToRoute('usuario_index');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'No se pudo editar el usuario');
+
                 return $this->redirectToRoute('usuario_edit', array(
                     'id' => $request->get('id'),
                 ));
             }
-
-
         }
 
         return $this->render('usuario/edit.html.twig', array(
