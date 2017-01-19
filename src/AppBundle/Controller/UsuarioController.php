@@ -29,7 +29,7 @@ class UsuarioController extends Controller
         $datatable->buildDatatable();
 
         return $this->render('usuario/index.html.twig', array(
-           'datatable' => $datatable,
+            'datatable' => $datatable,
         ));
     }
 
@@ -354,7 +354,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Bulk delete action.
+     * Bulk enable action.
      *
      * @param Request $request
      *
@@ -397,7 +397,7 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Bulk delete action.
+     * Bulk disable action.
      *
      * @param Request $request
      *

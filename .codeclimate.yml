@@ -25,3 +25,5 @@ ratings:
   - "**.php"
 exclude_paths:
   - "app/"
+  - "web/config.php"
+  - "web/js/jquery.highlight.js"

@@ -6,10 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class DependenciaType.
- */
-class DependenciaType extends AbstractType
+class LugarType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,15 +16,18 @@ class DependenciaType extends AbstractType
         $builder
             ->add('id')
             ->add('nombre')
+            ->add('capacidad')
+            ->add('visible', 'checkbox', array('required' => false))
+            ->add('descripcion')
             ->add('restablecer', 'reset')
         ;
 
-        // Dependiendo del tipo de formulario si es nueva dependencia o modificcacion se agrega el boton
-        if ($options['accion'] === 'new_dependencia') {
+        // Dependiendo del tipo de formulario si es nuevo lugar o modificcacion se agrega el boton
+        if ($options['accion'] === 'new_lugar') {
             $builder
                 ->add('crear', 'submit')
             ;
-        } elseif ($options['accion'] === 'edit_dependencia') {
+        } elseif ($options['accion'] === 'edit_lugar') {
             $builder
                 ->add('guardar', 'submit')
             ;
@@ -40,8 +40,8 @@ class DependenciaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Dependencia',
-            'accion' => 'edit_dependencia',
+            'data_class' => 'AppBundle\Entity\Lugar',
+            'accion' => 'edit_lugar',
         ));
     }
 
@@ -50,6 +50,8 @@ class DependenciaType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'dependencia';
+        return 'lugar';
     }
+
+
 }

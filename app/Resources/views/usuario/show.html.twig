@@ -7,43 +7,48 @@
     <div class="table-responsive">
         <table class="table table-hover">
             <tbody>
-                <tr>
-                    <th>{{ "Id"|trans }}</th>
-                    <td>{{ usuario.id }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Nombre"|trans }}</th>
-                    <td>{{ usuario.nombre }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Apellido"|trans }}</th>
-                    <td>{{ usuario.apellido }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Email"|trans }}</th>
-                    <td>{{ usuario.email }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Dependencia"|trans }}</th>
-                    <td>{{ usuario.dependencia }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Cargo"|trans }}</th>
-                    <td>{{ usuario.cargo|trans }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>{{ "Funciones"|trans }}</th>
-                    <td>{{ usuario.funciones }}</td>
-                </tr>
-                <tr>
-                    <th>Fecha de Alta</th>
-                    <td>{{ usuario.fechaAlta|date("H:i:s d-m-Y") }}</td>
-                </tr>
-                <tr>
-                    <th>{{ "Esta activo"|trans }}</th>
-                    <td>{{ usuario.estaActivo }}</td>
-                </tr>
+            <tr>
+                <th>{{ "Id"|trans }}</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Nombre"|trans }}</th>
+                <td>{{ usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Apellido"|trans }}</th>
+                <td>{{ usuario.apellido }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Email"|trans }}</th>
+                <td>{{ usuario.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Dependencia"|trans }}</th>
+                <td><a href="{{ path('dependencia_show', {'id': usuario.dependencia.id}) }}">{{ usuario.dependencia }}</a></td>
+            </tr>
+            <tr>
+                <th>{{ "Cargo"|trans }}</th>
+                <td>{{ usuario.cargo|trans }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Funciones"|trans }}</th>
+                <td>{{ usuario.funciones }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Alta</th>
+                <td>{{ usuario.fechaAlta|date("H:i:s d-m-Y") }}</td>
+            </tr>
+            <tr>
+                <th>{{ "Esta activo"|trans }}</th>
+                <td>
+                    {% if usuario.estaActivo is empty %}
+                        No
+                    {% else %}
+                        Si
+                    {% endif %}
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

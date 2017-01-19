@@ -11,8 +11,8 @@ $(function () {
             right: 'agendaDay, agendaWeek, month'
         },
         // Agenda options
-        minTime: '06:00:00',
-        maxTime: '22:00:00',
+        // minTime: '06:00:00',
+        // maxTime: '22:00:00',
         // Current date options
         nowIndicator: true,
         // Clicking & Hovering
@@ -32,11 +32,9 @@ $(function () {
             }
         ],
         // Resource Data options
-        // resources: [
-        //     { id: 'a', title: 'Room A' },
-        //     { id: 'b', title: 'Room B' },
-        //     { id: 'c', title: 'Room C' },
-        //     { id: 'd', title: 'Room D' }
-        // ]
+        // resources: {
+        //     url: Routing.generate('fullcalendar_lugares'),
+        //     type: 'POST'
+        // }
     });
 });
