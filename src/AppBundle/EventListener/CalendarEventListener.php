@@ -32,14 +32,14 @@ class CalendarEventListener
         // load events using your custom logic here,
         // for instance, retrieving events from a repository
 
-        $clases = $this->entityManager->getRepository('AppBundle:Clase')
-            ->createQueryBuilder('clases')
-            ->where('clases.fecha_inicio BETWEEN :startDate and :endDate')
+        $eventos = $this->entityManager->getRepository('AppBundle:Evento')
+            ->createQueryBuilder('eventos')
+            ->where('eventos.fecha_inicio BETWEEN :startDate and :endDate')
             ->setParameter('startDate', $startDate->format('Y-m-d H:i:s'))
             ->setParameter('endDate', $endDate->format('Y-m-d H:i:s'))
             ->getQuery()->getResult();
 
-        // $clases and $clase in this example
+        // $eventos and $evento in this example
         // represent entities from your database, NOT instances of EventEntity
         // within this bundle.
         //
@@ -47,9 +47,9 @@ class CalendarEventListener
         // from your own entities/database values.
         // TODO: configurar eventos si tienen duracion de todo el dia
 
-        foreach ($clases as $clase) {
+        foreach ($eventos as $evento) {
             // create an event with a start/end time
-            $eventEntity = new EventEntity($clase->getMateria(), $clase->getFechaInicio(), $clase->getFechaFin());
+            $eventEntity = new EventEntity($evento->getMateria(), $evento->getFechaInicio(), $evento->getFechaFin());
 
             //optional calendar event settings
 //            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event

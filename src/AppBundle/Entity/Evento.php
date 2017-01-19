@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Clase.
+ * Evento.
  *
- * @ORM\Table(name="clase")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ClaseRepository")
+ * @ORM\Table(name="evento")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  */
 // TODO: configurar las relaciones y los constraints de la entidad
-class Clase
+class Evento
 {
     /**
      * @var int
@@ -111,7 +111,7 @@ class Clase
      *
      * @param string $estado
      *
-     * @return Clase
+     * @return Evento
      */
     public function setEstado($estado)
     {
@@ -135,7 +135,7 @@ class Clase
      *
      * @param string $materia
      *
-     * @return Clase
+     * @return Evento
      */
     public function setMateria($materia)
     {
@@ -159,7 +159,7 @@ class Clase
      *
      * @param int $grupo
      *
-     * @return Clase
+     * @return Evento
      */
     public function setGrupo($grupo)
     {
@@ -183,7 +183,7 @@ class Clase
      *
      * @param string $observaciones
      *
-     * @return Clase
+     * @return Evento
      */
     public function setObservaciones($observaciones)
     {
