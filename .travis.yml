@@ -43,10 +43,6 @@ install:
 script:
   - phpunit -c app
 
-# After a build, send email notification with the build results
-notifications:
-  email: afsanchez93@gmail.com
-
 addons:
   code_climate:
     repo_token: 223819bee6f19c59053531182500053052208e155fda82b69602a466d3af78fb

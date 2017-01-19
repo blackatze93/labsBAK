@@ -32,9 +32,9 @@ $(function () {
             }
         ],
         // Resource Data options
-        // resources: {
-        //     url: Routing.generate('fullcalendar_lugares'),
-        //     type: 'POST'
-        // }
+        resources: {
+            url: Routing.generate('fullcalendar_lugares'),
+            type: 'POST'
+        }
     });
 });

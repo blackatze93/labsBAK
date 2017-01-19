@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class LugarRepository extends EntityRepository
 {
+    public function finAllVisibles()
+    {
+        return $this
+            ->createQueryBuilder('lugares')
+            ->where('lugares.visible = 1')
+            ->orderBy('lugares.nombre', 'ASC')
+            ->getQuery()->getResult();
+    }
 }

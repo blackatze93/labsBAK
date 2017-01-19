@@ -137,7 +137,7 @@ class Lugar
     /**
      * @return bool
      */
-    public function isVisible()
+    public function getVisible()
     {
         return $this->visible;
     }
