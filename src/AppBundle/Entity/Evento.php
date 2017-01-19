@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Evento.
@@ -26,6 +28,7 @@ class Evento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="datetime", unique=true)
+     * @Assert\DateTime()
      */
     private $fecha_inicio;
 
@@ -33,34 +36,39 @@ class Evento
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_fin", type="datetime", unique=true)
+     * @Assert\DateTime()
      */
     private $fecha_fin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=255)
+     * @ORM\Column(name="tipo", type="string", length=15)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="15")
      */
-    private $estado;
+    private $tipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="materia", type="string", length=45)
+     * @ORM\Column(name="materia", type="string", length=45, unique=false, nullable=true)
+     * @Assert\Length(max="45")
      */
     private $materia;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="grupo", type="integer")
+     * @ORM\Column(name="grupo", type="integer", unique=false, nullable=true)
      */
     private $grupo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255)
+     * @ORM\Column(name="observaciones", type="string", length=255, unique=false, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $observaciones;
 
@@ -107,27 +115,27 @@ class Evento
     }
 
     /**
-     * Set estado.
+     * Set tipo.
      *
-     * @param string $estado
+     * @param string $tipo
      *
      * @return Evento
      */
-    public function setEstado($estado)
+    public function setTipo($tipo)
     {
-        $this->estado = $estado;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get estado.
+     * Get tipo.
      *
      * @return string
      */
-    public function getEstado()
+    public function getTipo()
     {
-        return $this->estado;
+        return $this->tipo;
     }
 
     /**
