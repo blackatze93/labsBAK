@@ -16,26 +16,28 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 class Evento
 {
     /**
-     * @var int
+     * @var Lugar
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\Lugar")
+     * @Assert\NotBlank()
      */
-    private $id;
+    private $lugar;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha_inicio", type="datetime", unique=true)
+     * @ORM\Id
+     * @ORM\Column(name="fecha_inicio", type="string", unique=true, nullable=false)
      * @Assert\DateTime()
      */
     private $fecha_inicio;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha_fin", type="datetime", unique=true)
+     * @ORM\Column(name="fecha_fin", type="string", unique=true, nullable=false)
      * @Assert\DateTime()
      */
     private $fecha_fin;
@@ -73,17 +75,32 @@ class Evento
     private $observaciones;
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @param Lugar $lugar
      */
-    public function getId()
+    public function setLugar($lugar)
     {
-        return $this->id;
+        $this->lugar = $lugar;
     }
 
     /**
-     * @param \DateTime $fecha_inicio
+     * @return Lugar
+     */
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
+
+//    TODO: configurar los setters o el constructor para que sean fechas validas, solo aceptar fechas, con assert
+//    /**
+//     * @param \DateTime $date
+//     */
+//    public function __construct(\DateTime $date)
+//    {
+//        $this->date = $date->format(''Y-m-d H:i:s'');
+//    }
+//
+    /**
+     * @param string $fecha_inicio
      */
     public function setFechaInicio($fecha_inicio)
     {
@@ -95,11 +112,11 @@ class Evento
      */
     public function getFechaInicio()
     {
-        return $this->fecha_inicio;
+        return \DateTime::createFromFormat('Y-m-d H:i:s', $this->fecha_inicio);
     }
 
     /**
-     * @param \DateTime $fecha_fin
+     * @param string $fecha_fin
      */
     public function setFechaFin($fecha_fin)
     {
@@ -111,7 +128,7 @@ class Evento
      */
     public function getFechaFin()
     {
-        return $this->fecha_fin;
+        return \DateTime::createFromFormat('Y-m-d H:i:s', $this->fecha_fin);
     }
 
     /**
