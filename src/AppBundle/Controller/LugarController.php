@@ -303,7 +303,7 @@ class LugarController extends Controller
     }
 
     /**
-     * Return a Response with the resources of the calendar
+     * Return a Response with the resources of the calendar.
      *
      * @param Request $request
      *
@@ -322,7 +322,7 @@ class LugarController extends Controller
 
         $return_lugares = array();
 
-        foreach($lugares as $lugar) {
+        foreach ($lugares as $lugar) {
             $return_lugares[] = $lugar->toArray();
         }
 

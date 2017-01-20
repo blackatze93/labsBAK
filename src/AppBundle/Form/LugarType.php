@@ -52,6 +52,4 @@ class LugarType extends AbstractType
     {
         return 'lugar';
     }
-
-
 }

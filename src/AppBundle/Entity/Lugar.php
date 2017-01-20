@@ -167,7 +167,7 @@ class Lugar
     }
 
     /**
-     * Convert lugar details to an array to use in calendar
+     * Convert lugar details to an array to use in calendar.
      *
      * @return array $lugar
      */

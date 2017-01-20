@@ -43,7 +43,7 @@ class EventoType extends AbstractType
             ;
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -62,6 +62,4 @@ class EventoType extends AbstractType
     {
         return 'evento';
     }
-
-
 }

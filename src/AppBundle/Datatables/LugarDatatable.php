@@ -6,9 +6,7 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class LugarDatatable
- *
- * @package AppBundle\Datatables
+ * Class LugarDatatable.
  */
 class LugarDatatable extends AbstractDatatableView
 {
@@ -29,10 +27,10 @@ class LugarDatatable extends AbstractDatatableView
                         'rel' => 'tooltip',
                         'title' => 'Nuevo Lugar',
                         'class' => 'btn btn-info',
-                        'role' => 'button'
+                        'role' => 'button',
                     ),
-                )
-            )
+                ),
+            ),
         ));
 
         $this->features->set(array(
@@ -92,7 +90,7 @@ class LugarDatatable extends AbstractDatatableView
         $this->ajax->set(array(
             'url' => $this->router->generate('lugar_results'),
             'type' => 'GET',
-            'pipeline' => 0
+            'pipeline' => 0,
         ));
 
         $this->options->set(array(
@@ -195,7 +193,7 @@ class LugarDatatable extends AbstractDatatableView
                     array(
                         'route' => 'lugar_show',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
@@ -203,13 +201,13 @@ class LugarDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
                             'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
                         'route' => 'lugar_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
@@ -217,10 +215,10 @@ class LugarDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
                             'class' => 'btn btn-warning btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
-                    )
-                )
+                    ),
+                ),
             ))
         ;
     }
