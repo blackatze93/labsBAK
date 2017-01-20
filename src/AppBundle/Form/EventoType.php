@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LugarType extends AbstractType
+class EventoType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,19 +15,30 @@ class LugarType extends AbstractType
     {
         $builder
             ->add('id')
-            ->add('nombre')
-            ->add('capacidad')
-            ->add('visible', 'checkbox', array('required' => false))
-            ->add('descripcion')
+            ->add('lugar')
+            ->add('fecha_inicio', 'datetime')
+            ->add('fecha_fin', 'datetime')
+            ->add('tipo', 'choice', array(
+                'choices' => array(
+                    'Practica Libre' => 'Practica Libre',
+                    'Clase' => 'Clase',
+                    'Mantenimiento' => 'Mantenimiento',
+                    'Otro' => 'Otro',
+                ),
+                'choices_as_values' => true,
+            ))
+            ->add('materia')
+            ->add('grupo')
+            ->add('observaciones')
             ->add('restablecer', 'reset')
         ;
 
         // Dependiendo del tipo de formulario si es nuevo lugar o modificcacion se agrega el boton
-        if ($options['accion'] === 'new_lugar') {
+        if ($options['accion'] === 'new_evento') {
             $builder
                 ->add('crear', 'submit')
             ;
-        } elseif ($options['accion'] === 'edit_lugar') {
+        } elseif ($options['accion'] === 'edit_evento') {
             $builder
                 ->add('guardar', 'submit')
             ;
@@ -40,8 +51,8 @@ class LugarType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Lugar',
-            'accion' => 'edit_lugar',
+            'data_class' => 'AppBundle\Entity\Evento',
+            'accion' => 'edit_evento',
         ));
     }
 
@@ -50,6 +61,6 @@ class LugarType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'lugar';
+        return 'evento';
     }
 }

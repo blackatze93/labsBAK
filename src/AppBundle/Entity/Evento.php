@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Evento.
@@ -12,9 +11,19 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Table(name="evento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  */
-// TODO: configurar las relaciones y los constraints de la entidad
+// TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
+// TODO: Agregar un nuevo campo id para las consultas crud, sera autogenerado
 class Evento
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
     /**
      * @var Lugar
      *
@@ -28,7 +37,6 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Id
      * @ORM\Column(name="fecha_inicio", type="string", unique=true, nullable=false)
      * @Assert\DateTime()
      */
@@ -75,6 +83,16 @@ class Evento
     private $observaciones;
 
     /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @param Lugar $lugar
      */
     public function setLugar($lugar)
@@ -90,21 +108,12 @@ class Evento
         return $this->lugar;
     }
 
-//    TODO: configurar los setters o el constructor para que sean fechas validas, solo aceptar fechas, con assert
-//    /**
-//     * @param \DateTime $date
-//     */
-//    public function __construct(\DateTime $date)
-//    {
-//        $this->date = $date->format(''Y-m-d H:i:s'');
-//    }
-//
     /**
-     * @param string $fecha_inicio
+     * @param \DateTime $fecha_inicio
      */
-    public function setFechaInicio($fecha_inicio)
+    public function setFechaInicio(\DateTime $fecha_inicio)
     {
-        $this->fecha_inicio = $fecha_inicio;
+        $this->fecha_inicio = $fecha_inicio->format('Y-m-d H:i:s');
     }
 
     /**
@@ -116,11 +125,11 @@ class Evento
     }
 
     /**
-     * @param string $fecha_fin
+     * @param \DateTime $fecha_fin
      */
-    public function setFechaFin($fecha_fin)
+    public function setFechaFin(\DateTime $fecha_fin)
     {
-        $this->fecha_fin = $fecha_fin;
+        $this->fecha_fin = $fecha_fin->format('Y-m-d H:i:s');
     }
 
     /**
