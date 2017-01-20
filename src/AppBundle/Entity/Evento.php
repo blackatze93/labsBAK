@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Table(name="evento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  */
-// TODO: configurar las relaciones y los constraints de la entidad
+// TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
 class Evento
 {
     /**
@@ -90,21 +90,12 @@ class Evento
         return $this->lugar;
     }
 
-//    TODO: configurar los setters o el constructor para que sean fechas validas, solo aceptar fechas, con assert
-//    /**
-//     * @param \DateTime $date
-//     */
-//    public function __construct(\DateTime $date)
-//    {
-//        $this->date = $date->format(''Y-m-d H:i:s'');
-//    }
-//
     /**
-     * @param string $fecha_inicio
+     * @param \DateTime $fecha_inicio
      */
-    public function setFechaInicio($fecha_inicio)
+    public function setFechaInicio(\DateTime $fecha_inicio)
     {
-        $this->fecha_inicio = $fecha_inicio;
+        $this->fecha_inicio = $fecha_inicio->format('Y-m-d H:i:s');
     }
 
     /**
@@ -116,11 +107,11 @@ class Evento
     }
 
     /**
-     * @param string $fecha_fin
+     * @param \DateTime $fecha_fin
      */
-    public function setFechaFin($fecha_fin)
+    public function setFechaFin(\DateTime $fecha_fin)
     {
-        $this->fecha_fin = $fecha_fin;
+        $this->fecha_fin = $fecha_fin->format('Y-m-d H:i:s');
     }
 
     /**
