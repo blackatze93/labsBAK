@@ -40,10 +40,10 @@ class EventoController extends Controller
     public function newAction(Request $request)
     {
         $evento = new Evento();
-        $form = $this->createForm('AppBundle\Form\EventoType', $evento);
-        $form->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento);
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($evento);
             $em->flush($evento);
@@ -53,7 +53,7 @@ class EventoController extends Controller
 
         return $this->render('evento/new.html.twig', array(
             'evento' => $evento,
-            'form' => $form->createView(),
+            'form' => $formulario->createView(),
         ));
     }
 
@@ -82,10 +82,10 @@ class EventoController extends Controller
     public function editAction(Request $request, Evento $evento)
     {
         $deleteForm = $this->createDeleteForm($evento);
-        $editForm = $this->createForm('AppBundle\Form\EventoType', $evento);
-        $editForm->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento);
+        $formulario->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('evento_edit', array('id' => $evento->getId()));
@@ -93,7 +93,7 @@ class EventoController extends Controller
 
         return $this->render('evento/edit.html.twig', array(
             'evento' => $evento,
-            'edit_form' => $editForm->createView(),
+            'formulario' => $formulario->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -106,10 +106,10 @@ class EventoController extends Controller
      */
     public function deleteAction(Request $request, Evento $evento)
     {
-        $form = $this->createDeleteForm($evento);
-        $form->handleRequest($request);
+        $formulario = $this->createDeleteForm($evento);
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($evento);
             $em->flush($evento);

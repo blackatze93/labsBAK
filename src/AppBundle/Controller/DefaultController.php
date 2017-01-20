@@ -24,33 +24,6 @@ class DefaultController extends Controller
     }
 
 
-    /**
-     * Return a Response with the resources of the calendar
-     *
-     * @param Request $request
-     *
-     * @Route("/fc-load-lugares", name="fullcalendar_lugares", options={"expose"=true})
-     * @Method("POST")
-     *
-     * @return Response
-     */
-    public function cargarLugaresAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $lugares = $em->getRepository('AppBundle:Lugar')->finAllVisibles();
 
-        $response = new \Symfony\Component\HttpFoundation\Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        $return_lugares = array();
-
-        foreach($lugares as $lugar) {
-            $return_lugares[] = $lugar->toArray();
-        }
-
-        $response->setContent(json_encode($return_lugares));
-
-        return $response;
-    }
 
 }

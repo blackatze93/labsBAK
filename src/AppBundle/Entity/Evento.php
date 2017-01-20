@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  */
 // TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
+// TODO: Agregar un nuevo campo id para las consultas crud, sera autogenerado
 class Evento
 {
     /**
