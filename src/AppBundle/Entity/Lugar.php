@@ -202,4 +202,11 @@ class Lugar
 
         return $lugar;
     }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
+
 }

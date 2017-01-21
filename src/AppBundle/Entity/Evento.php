@@ -35,17 +35,17 @@ class Evento
     private $lugar;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="fecha_inicio", type="string", unique=true, nullable=false)
+     * @ORM\Column(name="fecha_inicio", type="datetime", unique=true)
      * @Assert\DateTime()
      */
     private $fecha_inicio;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="fecha_fin", type="string", unique=true, nullable=false)
+     * @ORM\Column(name="fecha_fin", type="datetime", unique=true)
      * @Assert\DateTime()
      */
     private $fecha_fin;
@@ -111,9 +111,9 @@ class Evento
     /**
      * @param \DateTime $fecha_inicio
      */
-    public function setFechaInicio(\DateTime $fecha_inicio)
+    public function setFechaInicio($fecha_inicio)
     {
-        $this->fecha_inicio = $fecha_inicio->format('Y-m-d H:i:s');
+        $this->fecha_inicio = $fecha_inicio;
     }
 
     /**
@@ -121,15 +121,15 @@ class Evento
      */
     public function getFechaInicio()
     {
-        return \DateTime::createFromFormat('Y-m-d H:i:s', $this->fecha_inicio);
+        return $this->fecha_inicio;
     }
 
     /**
      * @param \DateTime $fecha_fin
      */
-    public function setFechaFin(\DateTime $fecha_fin)
+    public function setFechaFin($fecha_fin)
     {
-        $this->fecha_fin = $fecha_fin->format('Y-m-d H:i:s');
+        $this->fecha_fin = $fecha_fin;
     }
 
     /**
@@ -137,7 +137,7 @@ class Evento
      */
     public function getFechaFin()
     {
-        return \DateTime::createFromFormat('Y-m-d H:i:s', $this->fecha_fin);
+        return $this->fecha_fin;
     }
 
     /**
