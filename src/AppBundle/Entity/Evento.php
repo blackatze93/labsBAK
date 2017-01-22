@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Evento.
  *
  * @ORM\Table(name="evento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
+ * @DoctrineAssert\UniqueEntity(fields={"fecha_inicio", "lugar"})
  */
 // TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
 // TODO: Agregar un nuevo campo id para las consultas crud, sera autogenerado
@@ -28,7 +30,7 @@ class Evento
      * @var Lugar
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
-     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()
      */
@@ -37,7 +39,7 @@ class Evento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_inicio", type="datetime", unique=true)
+     * @ORM\Column(name="fecha_inicio", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
      */
     private $fecha_inicio;
@@ -45,7 +47,7 @@ class Evento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_fin", type="datetime", unique=true)
+     * @ORM\Column(name="fecha_fin", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
      */
     private $fecha_fin;
@@ -53,7 +55,7 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=15)
+     * @ORM\Column(name="tipo", type="string", length=15, nullable=false, unique=false)
      * @Assert\NotBlank()
      * @Assert\Length(max="15")
      */

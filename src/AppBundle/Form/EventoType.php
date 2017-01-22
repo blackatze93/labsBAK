@@ -14,7 +14,6 @@ class EventoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id')
             ->add('lugar')
             ->add('fecha_inicio', 'datetime')
             ->add('fecha_fin', 'datetime')

@@ -57,7 +57,7 @@ class CalendarEventListener
             $eventEntity->setFgColor('#FFFFFF'); //set the foreground color of the event's label
             $eventEntity->setUrl($this->router->generate('index')); // url to send user to when event label is clicked
             $eventEntity->setCssClass('my-custom-class'); // a custom class you may want to apply to event labels
-            $eventEntity->addField('resourceId', '9');
+            $eventEntity->addField('resourceId', $evento->getLugar()->getId());
 
             //finally, add the event to the CalendarEvent for displaying on the calendar
             $calendarEvent->addEvent($eventEntity);
