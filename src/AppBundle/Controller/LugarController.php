@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class LugarController extends Controller
 {
     /**
-     * Metodo que lista las dependencias de la aplicacion.
+     * Metodo que lista los lugares de la aplicacion.
      *
      * @Route("/", name="lugar_index")
      * @Method("GET")

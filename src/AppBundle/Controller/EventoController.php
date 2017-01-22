@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Evento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Evento controller.
@@ -15,20 +18,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class EventoController extends Controller
 {
     /**
-     * Lists all evento entities.
+     * Metodo que lista los eventos de la aplicacion.
      *
      * @Route("/", name="evento_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $eventos = $em->getRepository('AppBundle:Evento')->findAll();
+        $datatable = $this->get('app.datatable.evento');
+        $datatable->buildDatatable();
 
         return $this->render('evento/index.html.twig', array(
-            'eventos' => $eventos,
+            'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="evento_results")
+     */
+    public function indexResultsAction()
+    {
+        $datatable = $this->get('app.datatable.evento');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
@@ -60,7 +75,7 @@ class EventoController extends Controller
     /**
      * Finds and displays a evento entity.
      *
-     * @Route("/{id}", name="evento_show")
+     * @Route("/{id}", name="evento_show", options={"expose"=true})
      * @Method("GET")
      */
     public function showAction(Evento $evento)
@@ -76,7 +91,7 @@ class EventoController extends Controller
     /**
      * Displays a form to edit an existing evento entity.
      *
-     * @Route("/{id}/edit", name="evento_edit")
+     * @Route("/{id}/edit", name="evento_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Evento $evento)

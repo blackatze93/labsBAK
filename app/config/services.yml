@@ -24,3 +24,7 @@ services:
     app.datatable.lugar:
         class: AppBundle\Datatables\LugarDatatable
         parent: sg_datatables.datatable.abstract
+
+    app.datatable.evento:
+        class: AppBundle\Datatables\EventoDatatable
+        parent: sg_datatables.datatable.abstract
