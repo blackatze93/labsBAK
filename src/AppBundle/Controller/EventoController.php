@@ -55,20 +55,28 @@ class EventoController extends Controller
     public function newAction(Request $request)
     {
         $evento = new Evento();
-        $form = $this->createForm('AppBundle\Form\EventoType', $evento);
-        $form->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento, array(
+            'accion' => 'new_evento',
+        ));
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($evento);
-            $em->flush($evento);
 
-            return $this->redirectToRoute('evento_show', array('id' => $evento->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se agregó el evento correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo agregar el evento');
+            }
+
+            return $this->redirectToRoute('evento_index');
         }
 
         return $this->render('evento/new.html.twig', array(
             'evento' => $evento,
-            'form' => $form->createView(),
+            'form' => $formulario->createView(),
         ));
     }
 
@@ -97,18 +105,30 @@ class EventoController extends Controller
     public function editAction(Request $request, Evento $evento)
     {
         $deleteForm = $this->createDeleteForm($evento);
-        $editForm = $this->createForm('AppBundle\Form\EventoType', $evento);
-        $editForm->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento);
+        $formulario->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($evento);
 
-            return $this->redirectToRoute('evento_edit', array('id' => $evento->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se edito el evento correctamente');
+
+                return $this->redirectToRoute('evento_index');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo editar el evento');
+
+                return $this->redirectToRoute('evento_edit', array(
+                    'id' => $request->get('id'),
+                ));
+            }
         }
 
         return $this->render('evento/edit.html.twig', array(
             'evento' => $evento,
-            'edit_form' => $editForm->createView(),
+            'formulario' => $formulario->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -121,13 +141,19 @@ class EventoController extends Controller
      */
     public function deleteAction(Request $request, Evento $evento)
     {
-        $form = $this->createDeleteForm($evento);
-        $form->handleRequest($request);
+        $formulario = $this->createDeleteForm($evento);
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($evento);
-            $em->flush($evento);
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($evento);
+                $em->flush();
+
+                $this->addFlash('success', 'Se eliminó correctamente la entidad');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo eliminar la entidad');
+            }
         }
 
         return $this->redirectToRoute('evento_index');
@@ -147,5 +173,46 @@ class EventoController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/delete", name="evento_bulk_delete")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDeleteAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Evento');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $em->remove($entity);
+            }
+            try {
+                $em->flush();
+
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
+        }
+
+        return new Response('Bad Request', 400);
     }
 }

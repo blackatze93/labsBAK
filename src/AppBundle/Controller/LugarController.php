@@ -97,7 +97,7 @@ class LugarController extends Controller
     }
 
     /**
-     * Displays a formulario to edit an existing lugar entity.
+     * Displays a form to edit an existing lugar entity.
      *
      * @Route("/{id}/edit", name="lugar_edit", options={"expose"=true})
      * @Method({"GET", "POST"})

@@ -3,8 +3,6 @@
 {% block title %}Consultar Lugar{% endblock %}
 {% block encabezado %}Consultar Lugar{% endblock %}
 
-{#TODO: Agregar un campo para ver si es visible o no#}
-
 {% block article %}
     <div class="table-responsive">
         <table class="table table-hover">
@@ -20,6 +18,16 @@
             <tr>
                 <th>Capacidad</th>
                 <td>{{ lugar.capacidad }}</td>
+            </tr>
+            <tr>
+                <th>Visible</th>
+                <td>
+                    {% if lugar.visible is empty %}
+                        No
+                    {% else %}
+                        Si
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Descripción</th>
