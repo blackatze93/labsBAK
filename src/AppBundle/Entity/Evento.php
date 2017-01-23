@@ -41,6 +41,7 @@ class Evento
      *
      * @ORM\Column(name="fecha_inicio", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
+     * @Assert\Range(min="now")
      */
     private $fecha_inicio;
 
@@ -49,6 +50,10 @@ class Evento
      *
      * @ORM\Column(name="fecha_fin", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getFechaInicio() < this.getFechaFin()",
+     *     message="La fecha final debe ser mayor a la fecha de inicio"
+     * )
      */
     private $fecha_fin;
 

@@ -15,8 +15,14 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('lugar')
-            ->add('fecha_inicio', 'datetime')
-            ->add('fecha_fin', 'datetime')
+            ->add('fecha_inicio', 'datetime', array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+            ))
+            ->add('fecha_fin', 'datetime', array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+            ))
             ->add('tipo', 'choice', array(
                 'choices' => array(
                     'Practica Libre' => 'Practica Libre',

@@ -76,7 +76,7 @@ class EventoController extends Controller
 
         return $this->render('evento/new.html.twig', array(
             'evento' => $evento,
-            'form' => $formulario->createView(),
+            'formulario' => $formulario->createView(),
         ));
     }
 
