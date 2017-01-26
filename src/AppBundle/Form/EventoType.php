@@ -1,5 +1,7 @@
 <?php
 
+//TODO: asterico en campos obligatorios en los type
+
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -17,16 +19,16 @@ class EventoType extends AbstractType
             ->add('lugar')
             ->add('fecha_inicio', 'datetime', array(
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'format' => 'yyyy-MM-dd HH:mm',
             ))
             ->add('fecha_fin', 'datetime', array(
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'format' => 'yyyy-MM-dd HH:mm',
             ))
             ->add('tipo', 'choice', array(
                 'choices' => array(
-                    'Practica Libre' => 'Practica Libre',
                     'Clase' => 'Clase',
+                    'Practica Libre' => 'Practica Libre',
                     'Mantenimiento' => 'Mantenimiento',
                     'Otro' => 'Otro',
                 ),

@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @DoctrineAssert\UniqueEntity(fields={"fecha_inicio", "lugar"})
  */
 // TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
-// TODO: Agregar un nuevo campo id para las consultas crud, sera autogenerado
+// TODO: grupos de validacion como en la entidad usuario para las fechas
 class Evento
 {
     /**
