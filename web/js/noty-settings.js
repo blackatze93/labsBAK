@@ -4,6 +4,7 @@ function notificacion(text, type) {
         type        : type,
         dismissQueue: true,
         timeout     : 5000,
+        progressBar : true,
         closeWith   : ['click'],
         layout      : 'topCenter',
         modal       : false,

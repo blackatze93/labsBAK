@@ -8,11 +8,26 @@ $(function () {
         header: {
             left: 'prev, next, today',
             center: 'title',
-            right: 'agendaDay, agendaWeek, month'
+            right: 'agendaDay, timelineWeek, timelineMonth'
+        },
+        allDaySlot: false,
+        views: {
+            timelineWeek: {
+                type: 'timeline',
+                resourceAreaWidth: '15%',
+                resourceLabelText: 'Lugares',
+                slotWidth: '50'
+            },
+            timelineMonth: {
+                type: 'timeline',
+                resourceAreaWidth: '15%',
+                resourceLabelText: 'Lugares',
+                slotWidth: '150'
+            }
         },
         // Agenda options
-        // minTime: '06:00:00',
-        // maxTime: '22:00:00',
+        minTime: '06:00:00',
+        maxTime: '22:00:00',
         // Current date options
         nowIndicator: true,
         // Clicking & Hovering
@@ -36,5 +51,6 @@ $(function () {
             url: Routing.generate('fullcalendar_lugares'),
             type: 'POST'
         }
+        // TODO: agregar tooltip cuando se ponga sobre el evento
     });
 });
