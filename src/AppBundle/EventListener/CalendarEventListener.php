@@ -17,6 +17,7 @@ class CalendarEventListener
 
     /**
      * CalendarEventListener constructor.
+     *
      * @param EntityManager $entityManager
      * @param Router        $router
      */
