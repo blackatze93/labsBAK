@@ -51,7 +51,9 @@ class EventoController extends Controller
      *
      * @Route("/new", name="evento_new")
      * @Method({"GET", "POST"})
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
@@ -88,7 +90,9 @@ class EventoController extends Controller
      *
      * @Route("/{id}", name="evento_show", options={"expose"=true})
      * @Method("GET")
+     *
      * @param Evento $evento
+     *
      * @return Response
      */
     public function showAction(Evento $evento)
@@ -106,8 +110,10 @@ class EventoController extends Controller
      *
      * @Route("/{id}/edit", name="evento_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
      * @param Request $request
-     * @param Evento $evento
+     * @param Evento  $evento
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Evento $evento)
@@ -146,8 +152,10 @@ class EventoController extends Controller
      *
      * @Route("/{id}", name="evento_delete")
      * @Method("DELETE")
+     *
      * @param Request $request
-     * @param Evento $evento
+     * @param Evento  $evento
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Evento $evento)

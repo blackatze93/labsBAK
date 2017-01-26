@@ -51,7 +51,9 @@ class LugarController extends Controller
      *
      * @Route("/new", name="lugar_new")
      * @Method({"GET", "POST"})
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
@@ -87,7 +89,9 @@ class LugarController extends Controller
      *
      * @Route("/{id}", name="lugar_show", options={"expose"=true})
      * @Method("GET")
+     *
      * @param Lugar $lugar
+     *
      * @return Response
      */
     public function showAction(Lugar $lugar)
@@ -105,8 +109,10 @@ class LugarController extends Controller
      *
      * @Route("/{id}/edit", name="lugar_edit", options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
      * @param Request $request
-     * @param Lugar $lugar
+     * @param Lugar   $lugar
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Lugar $lugar)
@@ -145,8 +151,10 @@ class LugarController extends Controller
      *
      * @Route("/{id}", name="lugar_delete")
      * @Method("DELETE")
+     *
      * @param Request $request
-     * @param Lugar $lugar
+     * @param Lugar   $lugar
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Lugar $lugar)
@@ -314,12 +322,13 @@ class LugarController extends Controller
 
     /**
      * Return a Response with the resources of the calendar.
+     *
      * @return Response
+     *
      * @internal param Request $request
      *
      * @Route("/fc-load-lugares", name="fullcalendar_lugares", options={"expose"=true})
      * @Method("POST")
-     *
      */
     public function cargarLugaresAction()
     {
