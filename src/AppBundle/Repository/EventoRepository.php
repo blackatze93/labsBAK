@@ -9,4 +9,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventoRepository extends EntityRepository
 {
+    public function finAllTipos()
+    {
+        return $this
+            ->createQueryBuilder('eventos')
+            ->distinct('tipo')
+            ->getQuery()->getResult();
+    }
 }
