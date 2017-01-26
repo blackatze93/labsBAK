@@ -41,7 +41,7 @@ class Evento
      *
      * @ORM\Column(name="fecha_inicio", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
-     * @Assert\Range(min="now")
+     * @Assert\Range(min="now", groups={"new"})
      */
     private $fecha_inicio;
 

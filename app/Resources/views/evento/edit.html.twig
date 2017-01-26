@@ -1,21 +1,121 @@
 {% extends 'base.html.twig' %}
+{% form_theme formulario 'form/fields.html.twig' %}
+
+{% block title %}Editar Evento{% endblock %}
+{% block encabezado %}Editar Evento{% endblock %}
 
 {% block article %}
-    <h1>Evento edit</h1>
+    {{ form_start(formulario) }}
+    {% if not formulario.vars.valid %}
+        <script>
+            notificacion('Hay errores en el formulario', 'error');
+        </script>
+    {% endif %}
+    <div class="form-group">
+        {{ form_label(formulario.lugar) }}
+        {{ form_widget(formulario.lugar, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.lugar) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.fecha_inicio) }}
+        <div class='input-group'>
+            {{ form_widget(formulario.fecha_inicio, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <span class="text-danger">{{ form_errors(formulario.fecha_inicio) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.fecha_fin) }}
+        <div class='input-group'>
+            {{ form_widget(formulario.fecha_fin, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <span class="text-danger">{{ form_errors(formulario.fecha_fin) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.tipo) }}
+        {{ form_widget(formulario.tipo, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.tipo) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.materia) }}
+        {{ form_widget(formulario.materia, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.materia) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.grupo) }}
+        {{ form_widget(formulario.grupo, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.grupo) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.observaciones) }}
+        {{ form_widget(formulario.observaciones, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.observaciones) }}</span>
+    </div>
+    <div class="text-center">
+        {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success btn-editar'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Crear'}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning btn-editar'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+    </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_end(formulario) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('evento_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <hr style="height:1px; visibility:hidden; margin-bottom:-18px;">
+    <div class="text-center">
+        {{ form_start(delete_form) }}
+        <button type="submit" onclick="return confirm('¿Está seguro?')" class="btn btn-danger btn-editar">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            Eliminar
+        </button>
+        <a href="{{ path('evento_index') }}" class="btn btn-primary btn-editar">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            Lista
+        </a>
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            try {
+                $("#evento_fecha_inicio").daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    timePicker: true,
+                    timePicker24Hour: true,
+                    locale: {
+                        format: "YYYY-MM-DD HH:mm",
+                        applyLabel: "Aplicar",
+                        cancelLabel: "Cancelar",
+                        daysOfWeek: moment.weekdaysMin(),
+                        monthNames: moment.monthsShort(),
+                        firstDay: moment.localeData().firstDayOfWeek()
+                    }
+                });
+
+                $("#evento_fecha_fin").daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    timePicker: true,
+                    timePicker24Hour: true,
+                    locale: {
+                        format: "YYYY-MM-DD HH:mm",
+                        applyLabel: "Aplicar",
+                        cancelLabel: "Cancelar",
+                        daysOfWeek: moment.weekdaysMin(),
+                        monthNames: moment.monthsShort(),
+                        firstDay: moment.localeData().firstDayOfWeek()
+                    }
+                });
+            } catch (e) {
+                console.log(e.message);
+            }
+        });
+    </script>
 {% endblock %}

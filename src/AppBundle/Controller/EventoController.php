@@ -57,6 +57,7 @@ class EventoController extends Controller
         $evento = new Evento();
         $formulario = $this->createForm('AppBundle\Form\EventoType', $evento, array(
             'accion' => 'new_evento',
+            'validation_groups' => array('Default', 'new'),
         ));
         $formulario->handleRequest($request);
 

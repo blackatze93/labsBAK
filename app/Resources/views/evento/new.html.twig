@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 {% form_theme formulario 'form/fields.html.twig' %}
 
-{#TODO: Crear los timepicker para los campos#}
-
 {% block title %}Nuevo Evento{% endblock %}
 {% block encabezado %}Nuevo Evento{% endblock %}
 
@@ -61,7 +59,7 @@
     <div class="text-center">
         {{ form_widget(formulario.crear, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Crear'}) }}
         {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
-        <a href="{{ path('lugar_index') }}" class="btn btn-primary">
+        <a href="{{ path('evento_index') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             Lista
         </a>
