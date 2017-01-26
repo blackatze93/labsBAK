@@ -8,7 +8,7 @@
         <table class="table table-hover">
             <tbody>
             <tr>
-                <th>{{ "Id"|trans }}</th>
+                <th>Id</th>
                 <td>{{ lugar.id }}</td>
             </tr>
             <tr>
@@ -47,8 +47,8 @@
             Eliminar
         </button>
         <a href="{{ path('lugar_index') }}" class="btn btn-primary">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            Volver
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            Lista
         </a>
         {{ form_end(delete_form) }}
     </div>
