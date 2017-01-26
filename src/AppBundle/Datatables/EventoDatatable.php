@@ -6,7 +6,7 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class EventoDatatable
+ * Class EventoDatatable.
  */
 class EventoDatatable extends AbstractDatatableView
 {

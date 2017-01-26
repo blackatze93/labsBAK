@@ -12,6 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class LugarRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
     public function finAllVisibles()
     {
         return $this

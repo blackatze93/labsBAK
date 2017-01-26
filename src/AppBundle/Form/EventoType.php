@@ -8,6 +8,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class EventoType.
+ */
 class EventoType extends AbstractType
 {
     /**
@@ -70,4 +73,5 @@ class EventoType extends AbstractType
     {
         return 'evento';
     }
+
 }

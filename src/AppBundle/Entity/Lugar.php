@@ -203,10 +203,13 @@ class Lugar
         return $lugar;
     }
 
-    function __toString()
+    /**
+     * {@inheritdoc}
+     *
+     * @return string
+     */
+    public function __toString()
     {
         return $this->getNombre();
     }
-
-
 }

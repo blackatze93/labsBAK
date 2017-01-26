@@ -1,6 +1,9 @@
 <?php
+
 namespace AppBundle\Repository;
+
 use Doctrine\ORM\EntityRepository;
+
 /**
  * ClaseRepository.
  *
@@ -9,6 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventoRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
     public function finAllTipos()
     {
         return $this

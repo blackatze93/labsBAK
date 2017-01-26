@@ -13,8 +13,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  * @DoctrineAssert\UniqueEntity(fields={"fecha_inicio", "lugar"})
  */
-// TODO: configurar las relaciones y los constraints de la entidad, la llave primaria
-// TODO: grupos de validacion como en la entidad usuario para las fechas
 class Evento
 {
     /**

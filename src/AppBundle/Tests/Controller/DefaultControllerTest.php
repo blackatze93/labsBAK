@@ -11,13 +11,10 @@ class DefaultControllerTest extends WebTestCase
 {
     private $client = null;
 
-    public function setUp()
-    {
-        $this->client = self::createClient();
-    }
-
     public function testIndex()
     {
+        $this->client = self::createClient();
+
         $this->client->request('GET', '/');
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
