@@ -60,8 +60,10 @@ class CalendarEventListener
         // TODO: configurar eventos si tienen duracion de todo el dia
 
         foreach ($eventos as $evento) {
+            $title = $evento->getTipo() . " " . $evento->getMateria();
+
             // create an event with a start/end time
-            $eventEntity = new EventEntity($evento->getTipo(), $evento->getFechaInicio(), $evento->getFechaFin());
+            $eventEntity = new EventEntity($title, $evento->getFechaInicio(), $evento->getFechaFin());
 
             //optional calendar event settings
 //            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event
