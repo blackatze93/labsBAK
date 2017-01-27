@@ -1,7 +1,5 @@
 <?php
 
-//TODO: asterico en campos obligatorios en los type
-
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;

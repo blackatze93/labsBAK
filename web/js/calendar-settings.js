@@ -1,5 +1,4 @@
 $(function () {
-    // TODO: eliminar o comprobar el encabezado de todo el dia, dependiendo si hay eventos asi
     $('#calendar-holder').fullCalendar({
         locale: 'es',
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
@@ -14,8 +13,8 @@ $(function () {
         views: {
             timeline: {
                 resourceAreaWidth: '15%',
-                resourceLabelText: 'Lugares',
-            },
+                resourceLabelText: 'Lugares'
+            }
         },
         // Agenda options
         // minTime: '06:00:00',
@@ -43,8 +42,9 @@ $(function () {
             url: Routing.generate('fullcalendar_lugares'),
             type: 'POST'
         },
+        // Eventos
         eventRender: function(event, element) {
             $(element).tooltip({title: event.title, placement: 'bottom'});
-        },
+        }
     });
 });

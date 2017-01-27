@@ -57,10 +57,9 @@ class CalendarEventListener
         //
         // Create EventEntity instances and populate it's properties with data
         // from your own entities/database values.
-        // TODO: configurar eventos si tienen duracion de todo el dia
 
         foreach ($eventos as $evento) {
-            $title = $evento->getTipo() . " " . $evento->getMateria();
+            $title = $evento->getTipo().' '.$evento->getMateria();
 
             // create an event with a start/end time
             $eventEntity = new EventEntity($title, $evento->getFechaInicio(), $evento->getFechaFin());

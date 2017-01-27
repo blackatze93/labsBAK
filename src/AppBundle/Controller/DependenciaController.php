@@ -15,7 +15,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @Route("dependencia")
  */
-//TODO: Commprobar los requirements de todas las url
 class DependenciaController extends Controller
 {
     /**
@@ -88,7 +87,7 @@ class DependenciaController extends Controller
     /**
      * Finds and displays a dependencia entity.
      *
-     * @Route("/{id}", name="dependencia_show", options={"expose"=true})
+     * @Route("/{id}", name="dependencia_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      *
      * @param Dependencia $dependencia
@@ -108,7 +107,7 @@ class DependenciaController extends Controller
     /**
      * Displays a formulario to edit an existing dependencia entity.
      *
-     * @Route("/{id}/edit", name="dependencia_edit", options={"expose"=true})
+     * @Route("/{id}/edit", name="dependencia_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
      * @param Request     $request
@@ -150,7 +149,7 @@ class DependenciaController extends Controller
     /**
      * Deletes a dependencia entity.
      *
-     * @Route("/{id}", name="dependencia_delete")
+     * @Route("/{id}", name="dependencia_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
      * @param Request     $request

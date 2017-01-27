@@ -88,7 +88,7 @@ class EventoController extends Controller
     /**
      * Finds and displays a evento entity.
      *
-     * @Route("/{id}", name="evento_show", options={"expose"=true})
+     * @Route("/{id}", name="evento_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      *
      * @param Evento $evento
@@ -108,7 +108,7 @@ class EventoController extends Controller
     /**
      * Displays a form to edit an existing evento entity.
      *
-     * @Route("/{id}/edit", name="evento_edit", options={"expose"=true})
+     * @Route("/{id}/edit", name="evento_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -150,7 +150,7 @@ class EventoController extends Controller
     /**
      * Deletes a evento entity.
      *
-     * @Route("/{id}", name="evento_delete")
+     * @Route("/{id}", name="evento_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
      * @param Request $request

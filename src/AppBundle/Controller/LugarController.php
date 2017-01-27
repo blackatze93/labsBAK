@@ -87,7 +87,7 @@ class LugarController extends Controller
     /**
      * Finds and displays a lugar entity.
      *
-     * @Route("/{id}", name="lugar_show", options={"expose"=true})
+     * @Route("/{id}", name="lugar_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      *
      * @param Lugar $lugar
@@ -107,7 +107,7 @@ class LugarController extends Controller
     /**
      * Displays a form to edit an existing lugar entity.
      *
-     * @Route("/{id}/edit", name="lugar_edit", options={"expose"=true})
+     * @Route("/{id}/edit", name="lugar_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -149,7 +149,7 @@ class LugarController extends Controller
     /**
      * Deletes a lugar entity.
      *
-     * @Route("/{id}", name="lugar_delete")
+     * @Route("/{id}", name="lugar_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
      * @param Request $request
