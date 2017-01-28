@@ -68,6 +68,8 @@ class CalendarEventListener
 //            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event
 //            $eventEntity->setBgColor('#FF0000'); //set the background color of the event's label
 //            $eventEntity->setFgColor('#FFFFFF'); //set the foreground color of the event's label
+            // TODO: agregar condicion para mostrar solo url a los autenticados con permisos
+            // TODO: formulario para eventos multiples, con lunes de 6 a 8 ejemplo
             $eventEntity->setUrl($this->router->generate('evento_show', array('id' => $evento->getId()))); // url to send user to when event label is clicked
 //            $eventEntity->setCssClass('my-custom-class'); // a custom class you may want to apply to event labels
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());

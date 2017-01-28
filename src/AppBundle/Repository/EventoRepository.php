@@ -20,6 +20,19 @@ class EventoRepository extends EntityRepository
         return $this
             ->createQueryBuilder('eventos')
             ->distinct('tipo')
-            ->getQuery()->getResult();
+            ->getQuery()->getResult()
+        ;
+    }
+
+    public function findRangoEventos(array $criteria)
+    {
+        return $this
+            ->createQueryBuilder('eventos')
+            ->where('eventos.fecha_inicio BETWEEN :fecha_inicio and :fecha_fin')
+            ->orWhere('eventos.fecha_fin BETWEEN :fecha_inicio and :fecha_fin')
+            ->andWhere('eventos.lugar = :lugar')
+            ->setParameters($criteria)
+            ->getQuery()->getResult()
+        ;
     }
 }

@@ -11,7 +11,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Table(name="evento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
- * @DoctrineAssert\UniqueEntity(fields={"fecha_inicio", "lugar"})
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha_inicio", "fecha_fin"}, repositoryMethod="findRangoEventos",
+ *     message="Ya existe un evento asociado a esa fecha y lugar.")
  */
 class Evento
 {
