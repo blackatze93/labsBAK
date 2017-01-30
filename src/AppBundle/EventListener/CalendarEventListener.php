@@ -59,10 +59,8 @@ class CalendarEventListener
         // from your own entities/database values.
 
         foreach ($eventos as $evento) {
-            $title = $evento->getEstado().' '.$evento->getMateria();
-
             // create an event with a start/end time
-            $eventEntity = new EventEntity($title, $evento->getFechaInicio(), $evento->getFechaFin());
+            $eventEntity = new EventEntity($evento->getMateria(), $evento->getFechaInicio(), $evento->getFechaFin());
 
             //optional calendar event settings
 //            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event
@@ -73,6 +71,12 @@ class CalendarEventListener
             $eventEntity->setUrl($this->router->generate('evento_show', array('id' => $evento->getId()))); // url to send user to when event label is clicked
 //            $eventEntity->setCssClass('my-custom-class'); // a custom class you may want to apply to event labels
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());
+
+            $eventEntity->addField('estado', $evento->getEstado());
+
+            $eventEntity->addField('grupo', $evento->getGrupo());
+
+            $eventEntity->addField('observaciones', $evento->getObservaciones());
 
             //finally, add the event to the CalendarEvent for displaying on the calendar
             $calendarEvent->addEvent($eventEntity);

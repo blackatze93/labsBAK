@@ -28,11 +28,11 @@ class EventoType extends AbstractType
             ))
             ->add('estado', 'choice', array(
                 'choices' => array(
-                    'Clase' => 'Clase',
-                'Cancelado' => 'Cancelado',
+                    'Activo' => 'Activo',
+                    'Cancelado' => 'Cancelado',
                     'Practica Libre' => 'Practica Libre',
                     'Mantenimiento' => 'Mantenimiento',
-                    'No disponible' => 'No disponible',
+                    'Otro' => 'Otro',
                 ),
                 'choices_as_values' => true,
             ))

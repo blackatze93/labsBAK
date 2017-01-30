@@ -18,8 +18,8 @@ $(function () {
             }
         },
         // Agenda options
-        minTime: '06:00:00',
-        maxTime: '22:00:00',
+        // minTime: '06:00:00',
+        // maxTime: '22:00:00',
         // Current date options
         nowIndicator: true,
         // Clicking & Hovering
@@ -45,7 +45,30 @@ $(function () {
         },
         // Eventos
         eventRender: function(event, element) {
-            $(element).tooltip({title: event.title, placement: 'bottom'});
+            var texto = '';
+
+            texto += '<b>Materia:</b> ';
+            texto += event.title ? event.title : 'Ninguna';
+
+            texto +='<br><b>Grupo:</b> ';
+            texto += event.grupo ? event.grupo : 'Ninguno';
+
+            texto += '<br><b>Estado:</b> ' + event.estado;
+
+            texto += '<br><b>Observaciones:</b> ';
+            texto += event.observaciones ? event.observaciones : 'Ninguna';
+
+            $(element).mouseenter(function() {
+                var n = noty({
+                    text        : texto,
+                    type        : 'information',
+                    dismissQueue: false,
+                    layout      : 'center',
+                    theme       : 'bootstrapTheme'
+                });
+            }).mouseleave(function () {
+                $.noty.closeAll(); // Close all notifications
+            });
         }
     });
 });

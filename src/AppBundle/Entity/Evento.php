@@ -16,7 +16,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  */
 class Evento
 {
-    // TODO: agregar campo de estado del evento, activo, cancelado, practica libre
     /**
      * @var int
      *
@@ -77,7 +76,8 @@ class Evento
     /**
      * @var int
      *
-     * @ORM\Column(name="grupo", type="integer", unique=false, nullable=true)
+     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=true)
+     * @Assert\Length(max="10")
      */
     private $grupo;
 
