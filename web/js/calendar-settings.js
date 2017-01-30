@@ -18,8 +18,8 @@ $(function () {
             }
         },
         // Agenda options
-        // minTime: '06:00:00',
-        // maxTime: '22:00:00',
+        minTime: '06:00:00',
+        maxTime: '22:00:00',
         // Current date options
         nowIndicator: true,
         // Clicking & Hovering

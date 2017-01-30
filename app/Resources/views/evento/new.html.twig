@@ -76,7 +76,6 @@
             try {
                 $("#evento_fecha_inicio").daterangepicker({
                     startDate: moment().startOf('minute').add(5, 'minutes'),
-                    minDate: moment().startOf('minute').add(5, 'minutes'),
                     singleDatePicker: true,
                     showDropdowns: true,
                     timePicker: true,
@@ -93,7 +92,6 @@
 
                 $("#evento_fecha_fin").daterangepicker({
                     startDate: moment().startOf('minute').add(2, 'hours').add(5, 'minutes'),
-                    minDate: moment().startOf('minute').add(10, 'minutes'),
                     singleDatePicker: true,
                     showDropdowns: true,
                     timePicker: true,

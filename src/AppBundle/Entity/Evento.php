@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Evento.
@@ -46,7 +47,6 @@ class Evento
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="fecha_fin", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
      * @Assert\Expression(
@@ -241,5 +241,34 @@ class Evento
     public function getObservaciones()
     {
         return $this->observaciones;
+    }
+
+    /**
+     * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
+     */
+    public function validarHoras(ExecutionContextInterface $context) {
+        $horaInicio = $this->getFechaInicio()->format('H:i');
+
+        $horaFin = $this->getFechaFin()->format('H:i');
+
+        $horaMin = new \DateTime('06:00');
+        $horaMin = $horaMin->format('H:i');
+
+        $horaMax = new \DateTime('22:00');
+        $horaMax = $horaMax->format('H:i');
+
+        if ($horaInicio < $horaMin || $horaInicio > $horaMax) {
+            $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
+                ->atPath('fecha_inicio')
+                ->addViolation()
+            ;
+        } elseif ($horaFin < $horaMin || $horaFin > $horaMax) {
+            $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
+                ->atPath('fecha_fin')
+                ->addViolation()
+            ;
+        }
     }
 }
