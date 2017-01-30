@@ -158,6 +158,28 @@ class ClaseDatatable extends AbstractDatatableView
             ->add(null, 'multiselect', array(
                 'actions' => array(
                     array(
+                        'route' => 'clase_bulk_activate',
+                        'label' => 'Activar',
+                        'icon' => 'glyphicon glyphicon-plus',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Activar',
+                            'class' => 'btn btn-success btn-sm',
+                            'role' => 'button',
+                        ),
+                    ),
+                    array(
+                        'route' => 'clase_bulk_cancel',
+                        'label' => 'Cancelar',
+                        'icon' => 'glyphicon glyphicon-minus',
+                        'attributes' => array(
+                            'rel' => 'tooltip',
+                            'title' => 'Cancelar',
+                            'class' => 'btn btn-warning btn-sm',
+                            'role' => 'button',
+                        ),
+                    ),
+                    array(
                         'route' => 'clase_bulk_delete',
                         'label' => 'Eliminar',
                         'icon' => 'glyphicon glyphicon-remove',

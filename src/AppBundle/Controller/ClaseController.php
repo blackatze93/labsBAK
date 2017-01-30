@@ -233,4 +233,90 @@ class ClaseController extends Controller
 
         return new Response('Bad Request', 400);
     }
+
+    /**
+     * Bulk activate action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/activate", name="clase_bulk_activate")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkActivateAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Clase');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $entity->setEstado('Activa');
+                $em->persist($entity);
+            }
+
+            try {
+                $em->flush();
+
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
+        }
+
+        return new Response('Bad Request', 400);
+    }
+
+    /**
+     * Bulk cancel action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/cancel", name="clase_bulk_cancel")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkCancelAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Clase');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $entity->setEstado('Cancelada');
+                $em->persist($entity);
+            }
+
+            try {
+                $em->flush();
+
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
+        }
+
+        return new Response('Bad Request', 400);
+    }
 }
