@@ -59,7 +59,7 @@ class CalendarEventListener
         // from your own entities/database values.
 
         foreach ($eventos as $evento) {
-            $title = $evento->getTipo().' '.$evento->getMateria();
+            $title = $evento->getEstado().' '.$evento->getMateria();
 
             // create an event with a start/end time
             $eventEntity = new EventEntity($title, $evento->getFechaInicio(), $evento->getFechaFin());

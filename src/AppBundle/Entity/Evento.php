@@ -16,6 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  */
 class Evento
 {
+    // TODO: agregar campo de estado del evento, activo, cancelado, practica libre
     /**
      * @var int
      *
@@ -59,11 +60,11 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=15, nullable=false, unique=false)
+     * @ORM\Column(name="estado", type="string", length=15, nullable=false, unique=false)
      * @Assert\NotBlank()
      * @Assert\Length(max="15")
      */
-    private $tipo;
+    private $estado;
 
     /**
      * @var string
@@ -147,27 +148,27 @@ class Evento
     }
 
     /**
-     * Set tipo.
+     * Set estado.
      *
-     * @param string $tipo
+     * @param string $estado
      *
      * @return Evento
      */
-    public function setTipo($tipo)
+    public function setEstado($estado)
     {
-        $this->tipo = $tipo;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get tipo.
+     * Get estado.
      *
      * @return string
      */
-    public function getTipo()
+    public function getEstado()
     {
-        return $this->tipo;
+        return $this->estado;
     }
 
     /**

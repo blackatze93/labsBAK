@@ -152,7 +152,7 @@ class EventoDatatable extends AbstractDatatableView
         ));
 
         $lugar = $this->em->getRepository('AppBundle:Lugar')->findAll();
-        $evento = $this->em->getRepository('AppBundle:Evento')->finAllTipos();
+        $evento = $this->em->getRepository('AppBundle:Evento')->finAllEstados();
 
         $this->columnBuilder
             ->add(null, 'multiselect', array(
@@ -191,11 +191,11 @@ class EventoDatatable extends AbstractDatatableView
                 'title' => 'Fecha Fin',
                 'filter' => array('daterange', array()),
             ))
-            ->add('tipo', 'column', array(
-                'title' => 'Tipo',
+            ->add('estado', 'column', array(
+                'title' => 'Estado',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($evento, 'tipo', 'tipo'),
+                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($evento, 'estado', 'estado'),
                 )),
             ))
             ->add('materia', 'column', array(

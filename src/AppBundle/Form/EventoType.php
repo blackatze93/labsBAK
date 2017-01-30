@@ -26,12 +26,13 @@ class EventoType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd HH:mm',
             ))
-            ->add('tipo', 'choice', array(
+            ->add('estado', 'choice', array(
                 'choices' => array(
                     'Clase' => 'Clase',
+                'Cancelado' => 'Cancelado',
                     'Practica Libre' => 'Practica Libre',
                     'Mantenimiento' => 'Mantenimiento',
-                    'Otro' => 'Otro',
+                    'No disponible' => 'No disponible',
                 ),
                 'choices_as_values' => true,
             ))

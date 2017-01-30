@@ -15,11 +15,11 @@ class EventoRepository extends EntityRepository
     /**
      * @return array
      */
-    public function finAllTipos()
+    public function finAllEstados()
     {
         return $this
             ->createQueryBuilder('eventos')
-            ->distinct('tipo')
+            ->distinct('estado')
             ->getQuery()->getResult()
         ;
     }
