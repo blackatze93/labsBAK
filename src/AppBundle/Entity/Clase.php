@@ -8,14 +8,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * Evento.
+ * Clase.
  *
- * @ORM\Table(name="evento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
- * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha_inicio", "fecha_fin"}, repositoryMethod="findRangoEventos",
- *     message="Ya existe un evento asociado a esa fecha y lugar.")
+ * @ORM\Table(name="clase")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ClaseRepository")
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha_inicio", "fecha_fin"}, repositoryMethod="findRangoClases",
+ *     message="Ya existe una clase asociada a esa fecha y lugar.")
  */
-class Evento
+class Clase
 {
     /**
      * @var int
@@ -41,7 +41,6 @@ class Evento
      *
      * @ORM\Column(name="fecha_inicio", type="datetime", nullable=false, unique=false)
      * @Assert\DateTime()
-     * @Assert\Range(min="now", groups={"new"})
      */
     private $fecha_inicio;
 
@@ -152,7 +151,7 @@ class Evento
      *
      * @param string $estado
      *
-     * @return Evento
+     * @return Clase
      */
     public function setEstado($estado)
     {
@@ -176,7 +175,7 @@ class Evento
      *
      * @param string $materia
      *
-     * @return Evento
+     * @return Clase
      */
     public function setMateria($materia)
     {
@@ -200,7 +199,7 @@ class Evento
      *
      * @param int $grupo
      *
-     * @return Evento
+     * @return Clase
      */
     public function setGrupo($grupo)
     {
@@ -224,7 +223,7 @@ class Evento
      *
      * @param string $observaciones
      *
-     * @return Evento
+     * @return Clase
      */
     public function setObservaciones($observaciones)
     {

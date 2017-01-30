@@ -73,7 +73,7 @@
                     {% if (route starts with 'usuario' or
                     route starts with 'dependencia' or
                     route starts with 'lugar' or
-                    route starts with 'evento') and
+                    route starts with 'clase') and
                     route != 'usuario_perfil'%}
                         {% set entidad = 'active' %}
                     {% endif %}
@@ -84,7 +84,7 @@
                             <li class="{{ route starts with 'usuario' and route != 'usuario_perfil' ? 'active' }}"><a href="{{ path('usuario_index') }}">Usuarios</a></li>
                             <li class="{{ route starts with 'dependencia' ? 'active' }}"><a href="{{ path('dependencia_index') }}">Dependencias</a></li>
                             <li class="{{ route starts with 'lugar' ? 'active' }}"><a href="{{ path('lugar_index') }}">Lugares</a></li>
-                            <li class="{{ route starts with 'evento' ? 'active' }}"><a href="{{ path('evento_index') }}">Eventos</a></li>
+                            <li class="{{ route starts with 'clase' ? 'active' }}"><a href="{{ path('clase_index') }}">Clases</a></li>
                         </ul>
                     </li>
 

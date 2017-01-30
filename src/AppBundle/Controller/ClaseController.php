@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Evento;
+use AppBundle\Entity\Clase;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,34 +11,34 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Evento controller.
+ * Clase controller.
  *
- * @Route("evento")
+ * @Route("clase")
  */
-class EventoController extends Controller
+class ClaseController extends Controller
 {
     /**
-     * Metodo que lista los eventos de la aplicacion.
+     * Metodo que lista los clases de la aplicacion.
      *
-     * @Route("/", name="evento_index")
+     * @Route("/", name="clase_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $datatable = $this->get('app.datatable.evento');
+        $datatable = $this->get('app.datatable.clase');
         $datatable->buildDatatable();
 
-        return $this->render('evento/index.html.twig', array(
+        return $this->render('clase/index.html.twig', array(
             'datatable' => $datatable,
         ));
     }
 
     /**
-     * @Route("/results", name="evento_results")
+     * @Route("/results", name="clase_results")
      */
     public function indexResultsAction()
     {
-        $datatable = $this->get('app.datatable.evento');
+        $datatable = $this->get('app.datatable.clase');
         $datatable->buildDatatable();
 
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
@@ -47,9 +47,9 @@ class EventoController extends Controller
     }
 
     /**
-     * Creates a new evento entity.
+     * Creates a new clase entity.
      *
-     * @Route("/new", name="evento_new")
+     * @Route("/new", name="clase_new")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -58,115 +58,114 @@ class EventoController extends Controller
      */
     public function newAction(Request $request)
     {
-        $evento = new Evento();
-        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento, array(
-            'accion' => 'new_evento',
-            'validation_groups' => array('Default', 'new'),
+        $clase = new Clase();
+        $formulario = $this->createForm('AppBundle\Form\ClaseType', $clase, array(
+            'accion' => 'new_clase',
         ));
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($evento);
+            $em->persist($clase);
 
             try {
                 $em->flush();
-                $this->addFlash('success', 'Se agregó el evento correctamente');
+                $this->addFlash('success', 'Se agregó la clase correctamente');
             } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo agregar el evento');
+                $this->addFlash('error', 'No se pudo agregar la clase');
             }
 
-            return $this->redirectToRoute('evento_index');
+            return $this->redirectToRoute('clase_index');
         }
 
-        return $this->render('evento/new.html.twig', array(
-            'evento' => $evento,
+        return $this->render('clase/new.html.twig', array(
+            'clase' => $clase,
             'formulario' => $formulario->createView(),
         ));
     }
 
     /**
-     * Finds and displays a evento entity.
+     * Finds and displays a clase entity.
      *
-     * @Route("/{id}", name="evento_show", requirements={"id": "\d+"}, options={"expose"=true})
+     * @Route("/{id}", name="clase_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
      *
-     * @param Evento $evento
+     * @param Clase $clase
      *
      * @return Response
      */
-    public function showAction(Evento $evento)
+    public function showAction(Clase $clase)
     {
-        $deleteForm = $this->createDeleteForm($evento);
+        $deleteForm = $this->createDeleteForm($clase);
 
-        return $this->render('evento/show.html.twig', array(
-            'evento' => $evento,
+        return $this->render('clase/show.html.twig', array(
+            'clase' => $clase,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing evento entity.
+     * Displays a form to edit an existing clase entity.
      *
-     * @Route("/{id}/edit", name="evento_edit", requirements={"id": "\d+"}, options={"expose"=true})
+     * @Route("/{id}/edit", name="clase_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
      * @param Request $request
-     * @param Evento  $evento
+     * @param Clase  $clase
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function editAction(Request $request, Evento $evento)
+    public function editAction(Request $request, Clase $clase)
     {
-        $deleteForm = $this->createDeleteForm($evento);
-        $formulario = $this->createForm('AppBundle\Form\EventoType', $evento);
+        $deleteForm = $this->createDeleteForm($clase);
+        $formulario = $this->createForm('AppBundle\Form\ClaseType', $clase);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($evento);
+            $em->persist($clase);
 
             try {
                 $em->flush();
-                $this->addFlash('success', 'Se edito el evento correctamente');
+                $this->addFlash('success', 'Se edito la clase correctamente');
 
-                return $this->redirectToRoute('evento_index');
+                return $this->redirectToRoute('clase_index');
             } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo editar el evento');
+                $this->addFlash('error', 'No se pudo editar la clase');
 
-                return $this->redirectToRoute('evento_edit', array(
+                return $this->redirectToRoute('clase_edit', array(
                     'id' => $request->get('id'),
                 ));
             }
         }
 
-        return $this->render('evento/edit.html.twig', array(
-            'evento' => $evento,
+        return $this->render('clase/edit.html.twig', array(
+            'clase' => $clase,
             'formulario' => $formulario->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a evento entity.
+     * Deletes a clase entity.
      *
-     * @Route("/{id}", name="evento_delete", requirements={"id": "\d+"})
+     * @Route("/{id}", name="clase_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
      * @param Request $request
-     * @param Evento  $evento
+     * @param Clase  $clase
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, Evento $evento)
+    public function deleteAction(Request $request, Clase $clase)
     {
-        $formulario = $this->createDeleteForm($evento);
+        $formulario = $this->createDeleteForm($clase);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             try {
                 $em = $this->getDoctrine()->getManager();
-                $em->remove($evento);
+                $em->remove($clase);
                 $em->flush();
 
                 $this->addFlash('success', 'Se eliminó correctamente la entidad');
@@ -175,20 +174,20 @@ class EventoController extends Controller
             }
         }
 
-        return $this->redirectToRoute('evento_index');
+        return $this->redirectToRoute('clase_index');
     }
 
     /**
-     * Creates a form to delete a evento entity.
+     * Creates a form to delete a clase entity.
      *
-     * @param Evento $evento The evento entity
+     * @param Clase $clase The clase entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Evento $evento)
+    private function createDeleteForm(Clase $clase)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('evento_delete', array('id' => $evento->getId())))
+            ->setAction($this->generateUrl('clase_delete', array('id' => $clase->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
@@ -199,7 +198,7 @@ class EventoController extends Controller
      *
      * @param Request $request
      *
-     * @Route("/bulk/delete", name="evento_bulk_delete")
+     * @Route("/bulk/delete", name="clase_bulk_delete")
      * @Method("POST")
      *
      * @return Response
@@ -217,7 +216,7 @@ class EventoController extends Controller
             }
 
             $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('AppBundle:Evento');
+            $repository = $em->getRepository('AppBundle:Clase');
 
             foreach ($choices as $choice) {
                 $entity = $repository->find($choice['value']);

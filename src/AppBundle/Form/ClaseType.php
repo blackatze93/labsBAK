@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class EventoType.
+ * Class ClaseType.
  */
-class EventoType extends AbstractType
+class ClaseType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -28,8 +28,8 @@ class EventoType extends AbstractType
             ))
             ->add('estado', 'choice', array(
                 'choices' => array(
-                    'Activo' => 'Activo',
-                    'Cancelado' => 'Cancelado',
+                    'Activa' => 'Activa',
+                    'Cancelada' => 'Cancelada',
                     'Practica Libre' => 'Practica Libre',
                     'Mantenimiento' => 'Mantenimiento',
                     'Otro' => 'Otro',
@@ -43,11 +43,11 @@ class EventoType extends AbstractType
         ;
 
         // Dependiendo del tipo de formulario si es nuevo lugar o modificcacion se agrega el boton
-        if ($options['accion'] === 'new_evento') {
+        if ($options['accion'] === 'new_clase') {
             $builder
                 ->add('crear', 'submit')
             ;
-        } elseif ($options['accion'] === 'edit_evento') {
+        } elseif ($options['accion'] === 'edit_clase') {
             $builder
                 ->add('guardar', 'submit')
             ;
@@ -60,8 +60,8 @@ class EventoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Evento',
-            'accion' => 'edit_evento',
+            'data_class' => 'AppBundle\Entity\Clase',
+            'accion' => 'edit_clase',
         ));
     }
 
@@ -70,6 +70,6 @@ class EventoType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'evento';
+        return 'clase';
     }
 }

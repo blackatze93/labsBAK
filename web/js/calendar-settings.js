@@ -43,7 +43,7 @@ $(function () {
             url: Routing.generate('fullcalendar_lugares'),
             type: 'POST'
         },
-        // Eventos
+        // Clases
         eventRender: function(event, element) {
             var texto = '';
 
@@ -59,7 +59,7 @@ $(function () {
             texto += event.observaciones ? event.observaciones : 'Ninguna';
 
             $(element).mouseenter(function() {
-                var n = noty({
+               noty({
                     text        : texto,
                     type        : 'information',
                     dismissQueue: false,
