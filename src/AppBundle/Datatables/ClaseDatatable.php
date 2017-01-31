@@ -46,17 +46,6 @@ class ClaseDatatable extends AbstractDatatableView
                         'role' => 'button',
                     ),
                 ),
-                array(
-                    'route' => $this->router->generate('clase_new'),
-                    'label' => 'Agregar Clases',
-                    'icon' => 'glyphicon glyphicon-plus',
-                    'attributes' => array(
-                        'rel' => 'tooltip',
-                        'title' => 'Agregar Clases',
-                        'class' => 'btn btn-success',
-                        'role' => 'button',
-                    ),
-                ),
             ),
         ));
 

@@ -45,6 +45,9 @@ class ClaseType extends AbstractType
         // Dependiendo del tipo de formulario si es nuevo lugar o modificcacion se agrega el boton
         if ($options['accion'] === 'new_clase') {
             $builder
+                ->add('semanas', 'integer', array(
+                    'attr' => ['value' => '1'],
+                ))
                 ->add('crear', 'submit')
             ;
         } elseif ($options['accion'] === 'edit_clase') {

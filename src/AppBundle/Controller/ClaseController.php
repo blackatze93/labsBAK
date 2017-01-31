@@ -61,6 +61,7 @@ class ClaseController extends Controller
         $clase = new Clase();
         $formulario = $this->createForm('AppBundle\Form\ClaseType', $clase, array(
             'accion' => 'new_clase',
+            'validation_groups' => array('Default', 'new'),
         ));
         $formulario->handleRequest($request);
 
@@ -111,7 +112,7 @@ class ClaseController extends Controller
      * @Method({"GET", "POST"})
      *
      * @param Request $request
-     * @param Clase  $clase
+     * @param Clase   $clase
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -153,7 +154,7 @@ class ClaseController extends Controller
      * @Method("DELETE")
      *
      * @param Request $request
-     * @param Clase  $clase
+     * @param Clase   $clase
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */

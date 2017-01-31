@@ -15,6 +15,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha_inicio", "fecha_fin"}, repositoryMethod="findRangoClases",
  *     message="Ya existe una clase asociada a esa fecha y lugar.")
  */
+
+// TODO: modificar fecha inicio y fecha fin para solo una fecha y dos horas hora inicio hora fin
 class Clase
 {
     /**
@@ -56,6 +58,14 @@ class Clase
     private $fecha_fin;
 
     /**
+     * @var int
+     *
+     * @Assert\NotBlank(groups={"new"})
+     * @Assert\Range(min="1", max="50")
+     */
+    private $semanas;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=15, nullable=false, unique=false)
@@ -73,7 +83,7 @@ class Clase
     private $materia;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=true)
      * @Assert\Length(max="10")
@@ -147,6 +157,22 @@ class Clase
     }
 
     /**
+     * @param int $semanas
+     */
+    public function setSemanas($semanas)
+    {
+        $this->semanas = $semanas;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSemanas()
+    {
+        return $this->semanas;
+    }
+
+    /**
      * Set estado.
      *
      * @param string $estado
@@ -197,7 +223,7 @@ class Clase
     /**
      * Set grupo.
      *
-     * @param int $grupo
+     * @param string $grupo
      *
      * @return Clase
      */
@@ -211,7 +237,7 @@ class Clase
     /**
      * Get grupo.
      *
-     * @return int
+     * @return string
      */
     public function getGrupo()
     {
@@ -247,7 +273,8 @@ class Clase
      *
      * @param ExecutionContextInterface $context
      */
-    public function validarHoras(ExecutionContextInterface $context) {
+    public function validarHoras(ExecutionContextInterface $context)
+    {
         $horaInicio = $this->getFechaInicio()->format('H:i');
 
         $horaFin = $this->getFechaFin()->format('H:i');

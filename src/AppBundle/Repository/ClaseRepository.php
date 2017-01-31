@@ -26,6 +26,7 @@ class ClaseRepository extends EntityRepository
 
     /**
      * @param array $criteria
+     *
      * @return array
      */
     public function findRangoClases(array $criteria)
