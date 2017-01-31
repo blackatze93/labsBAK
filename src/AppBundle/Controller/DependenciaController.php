@@ -59,7 +59,7 @@ class DependenciaController extends Controller
     public function newAction(Request $request)
     {
         $dependencia = new Dependencia();
-        $formulario = $this->createForm('AppBundle\Form\DependenciaType', $dependencia, array(
+        $formulario = $this->createForm('AppBundle\Form\Type\DependenciaType', $dependencia, array(
             'accion' => 'new_dependencia',
         ));
         $formulario->handleRequest($request);
@@ -117,7 +117,7 @@ class DependenciaController extends Controller
     public function editAction(Request $request, Dependencia $dependencia)
     {
         $deleteForm = $this->createDeleteForm($dependencia);
-        $formulario = $this->createForm('AppBundle\Form\DependenciaType', $dependencia);
+        $formulario = $this->createForm('AppBundle\Form\Type\DependenciaType', $dependencia);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {

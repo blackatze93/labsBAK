@@ -59,7 +59,7 @@ class LugarController extends Controller
     public function newAction(Request $request)
     {
         $lugar = new Lugar();
-        $formulario = $this->createForm('AppBundle\Form\LugarType', $lugar, array(
+        $formulario = $this->createForm('AppBundle\Form\Type\LugarType', $lugar, array(
             'accion' => 'new_lugar',
         ));
         $formulario->handleRequest($request);
@@ -117,7 +117,7 @@ class LugarController extends Controller
     public function editAction(Request $request, Lugar $lugar)
     {
         $deleteForm = $this->createDeleteForm($lugar);
-        $formulario = $this->createForm('AppBundle\Form\LugarType', $lugar);
+        $formulario = $this->createForm('AppBundle\Form\Type\LugarType', $lugar);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {

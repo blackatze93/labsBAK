@@ -58,8 +58,7 @@ class ClaseController extends Controller
      */
     public function newAction(Request $request)
     {
-        $clase = new Clase();
-        $formulario = $this->createForm('AppBundle\Form\ClaseType', $clase, array(
+        $formulario = $this->createForm('AppBundle\Form\Type\ClaseType', null, array(
             'accion' => 'new_clase',
             'validation_groups' => array('Default', 'new'),
         ));
@@ -67,10 +66,26 @@ class ClaseController extends Controller
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($clase);
+
+            for ($i = 0; $i < $formulario->getData()->getSemanas(); $i++) {
+                $clase = new Clase;
+                $fechaAux = clone $formulario->getData()->getFecha();
+
+                $clase->setLugar($formulario->getData()->getLugar());
+                $clase->setFecha($fechaAux->modify('+'.$i.' week'));
+                $clase->setHoraInicio($formulario->getData()->getHoraInicio());
+                $clase->setHoraFin($formulario->getData()->getHoraFin());
+                $clase->setEstado($formulario->getData()->getEstado());
+                $clase->setMateria($formulario->getData()->getMateria());
+                $clase->setGrupo($formulario->getData()->getGrupo());
+                $clase->setObservaciones($formulario->getData()->getObservaciones());
+
+                $em->persist($clase);
+            }
 
             try {
                 $em->flush();
+                $em->clear();
                 $this->addFlash('success', 'Se agregó la clase correctamente');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'No se pudo agregar la clase');
@@ -118,7 +133,7 @@ class ClaseController extends Controller
     public function editAction(Request $request, Clase $clase)
     {
         $deleteForm = $this->createDeleteForm($clase);
-        $formulario = $this->createForm('AppBundle\Form\ClaseType', $clase);
+        $formulario = $this->createForm('AppBundle\Form\Type\ClaseType', $clase);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {

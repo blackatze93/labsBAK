@@ -62,7 +62,7 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
 
         // Se genera el formulario por medio de la clase UsuarioType que ya tiene todos los campos
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario, array(
+        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario, array(
             'accion' => 'new_usuario',
             'validation_groups' => array('Default', 'new'),
         ));
@@ -137,7 +137,7 @@ class UsuarioController extends Controller
     public function editAction(Request $request, Usuario $usuario)
     {
         $deleteForm = $this->createDeleteForm($usuario);
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
+        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
@@ -232,7 +232,7 @@ class UsuarioController extends Controller
     {
         $usuario = $this->getUser();
 
-        $formulario = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
+        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario);
         $formulario->handleRequest($request);
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {

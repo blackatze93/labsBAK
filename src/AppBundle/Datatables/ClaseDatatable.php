@@ -202,14 +202,14 @@ class ClaseDatatable extends AbstractDatatableView
                 'date_format' => 'HH:mm',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('horaFin', 'datetime', array(
                 'title' => 'Hora Fin',
                 'date_format' => 'HH:mm',
                 'filter' => array('text', array(
                     'search_type' => 'like',
-                ))
+                )),
             ))
             ->add('estado', 'column', array(
                 'title' => 'Estado',
