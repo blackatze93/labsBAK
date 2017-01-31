@@ -17,24 +17,34 @@
         <span class="text-danger">{{ form_errors(formulario.lugar) }}</span>
     </div>
     <div class="form-group">
-        {{ form_label(formulario.fecha_inicio) }}
+        {{ form_label(formulario.fecha) }}
         <div class='input-group'>
-            {{ form_widget(formulario.fecha_inicio, {'attr' : {'class' : 'form-control'}}) }}
+            {{ form_widget(formulario.fecha, {'attr' : {'class' : 'form-control'}}) }}
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
         </div>
-        <span class="text-danger">{{ form_errors(formulario.fecha_inicio) }}</span>
+        <span class="text-danger">{{ form_errors(formulario.fecha) }}</span>
     </div>
     <div class="form-group">
-        {{ form_label(formulario.fecha_fin) }}
+        {{ form_label(formulario.horaInicio) }}
         <div class='input-group'>
-            {{ form_widget(formulario.fecha_fin, {'attr' : {'class' : 'form-control'}}) }}
+            {{ form_widget(formulario.horaInicio, {'attr' : {'class' : 'form-control'}}) }}
             <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-time"></span>
             </span>
         </div>
-        <span class="text-danger">{{ form_errors(formulario.fecha_fin) }}</span>
+        <span class="text-danger">{{ form_errors(formulario.horaInicio) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.horaFin) }}
+        <div class='input-group'>
+            {{ form_widget(formulario.horaFin, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div>
+        <span class="text-danger">{{ form_errors(formulario.horaFin) }}</span>
     </div>
     <div class="form-group">
         {{ form_label(formulario.estado) }}
@@ -84,13 +94,11 @@
     <script>
         $(function() {
             try {
-                $("#clase_fecha_inicio").daterangepicker({
+                $("#clase_fecha").daterangepicker({
                     singleDatePicker: true,
                     showDropdowns: true,
-                    timePicker: true,
-                    timePicker24Hour: true,
                     locale: {
-                        format: "YYYY-MM-DD HH:mm",
+                        format: "YYYY-MM-DD",
                         applyLabel: "Aplicar",
                         cancelLabel: "Cancelar",
                         daysOfWeek: moment.weekdaysMin(),
@@ -99,19 +107,12 @@
                     }
                 });
 
-                $("#clase_fecha_fin").daterangepicker({
-                    singleDatePicker: true,
-                    showDropdowns: true,
-                    timePicker: true,
-                    timePicker24Hour: true,
-                    locale: {
-                        format: "YYYY-MM-DD HH:mm",
-                        applyLabel: "Aplicar",
-                        cancelLabel: "Cancelar",
-                        daysOfWeek: moment.weekdaysMin(),
-                        monthNames: moment.monthsShort(),
-                        firstDay: moment.localeData().firstDayOfWeek()
-                    }
+                $("#clase_horaInicio, #clase_horaFin").timepicker({
+                    'className' : 'form-control',
+                    'minTime' : '06:00',
+                    'maxTime' : '22:00',
+                    'scrollDefault': 'now',
+                    'timeFormat': 'H:i'
                 });
             } catch (e) {
                 console.log(e.message);

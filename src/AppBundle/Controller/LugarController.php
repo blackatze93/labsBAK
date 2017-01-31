@@ -79,7 +79,6 @@ class LugarController extends Controller
         }
 
         return $this->render('lugar/new.html.twig', array(
-            'lugar' => $lugar,
             'formulario' => $formulario->createView(),
         ));
     }

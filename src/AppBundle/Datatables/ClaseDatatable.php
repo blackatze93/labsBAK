@@ -183,9 +183,7 @@ class ClaseDatatable extends AbstractDatatableView
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
-                )),
+                'searchable' => false,
             ))
             ->add('lugar.nombre', 'column', array(
                 'title' => 'Lugar',
@@ -194,13 +192,24 @@ class ClaseDatatable extends AbstractDatatableView
                     'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($lugar, 'nombre', 'nombre'),
                 )),
             ))
-            ->add('fecha_inicio', 'datetime', array(
-                'title' => 'Fecha Inicio',
+            ->add('fecha', 'datetime', array(
+                'title' => 'Fecha',
+                'date_format' => 'll',
                 'filter' => array('daterange', array()),
             ))
-            ->add('fecha_fin', 'datetime', array(
-                'title' => 'Fecha Fin',
-                'filter' => array('daterange', array()),
+            ->add('horaInicio', 'datetime', array(
+                'title' => 'Hora Inicio',
+                'date_format' => 'HH:mm',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
+            ))
+            ->add('horaFin', 'datetime', array(
+                'title' => 'Hora Fin',
+                'date_format' => 'HH:mm',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                ))
             ))
             ->add('estado', 'column', array(
                 'title' => 'Estado',

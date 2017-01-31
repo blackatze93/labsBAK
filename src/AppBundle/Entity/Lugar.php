@@ -178,28 +178,6 @@ class Lugar
         $lugar['id'] = $this->id;
         $lugar['title'] = $this->nombre;
 
-//        if ($this->url !== null) {
-//            $event['url'] = $this->url;
-//        }
-//
-//        if ($this->bgColor !== null) {
-//            $event['backgroundColor'] = $this->bgColor;
-//            $event['borderColor'] = $this->bgColor;
-//        }
-//
-//        if ($this->fgColor !== null) {
-//            $event['textColor'] = $this->fgColor;
-//        }
-//
-//        if ($this->cssClass !== null) {
-//            $event['className'] = $this->cssClass;
-//        }
-//
-//
-//        foreach ($this->otherFields as $field => $value) {
-//            $event[$field] = $value;
-//        }
-
         return $lugar;
     }
 

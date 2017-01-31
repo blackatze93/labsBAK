@@ -80,7 +80,6 @@ class ClaseController extends Controller
         }
 
         return $this->render('clase/new.html.twig', array(
-            'clase' => $clase,
             'formulario' => $formulario->createView(),
         ));
     }

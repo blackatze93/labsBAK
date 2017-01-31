@@ -16,12 +16,16 @@
                 <td>{{ clase.lugar }}</td>
             </tr>
             <tr>
-                <th>Fecha Inicio</th>
-                <td>{{ clase.fechaInicio | date('Y-m-d H:i') }}</td>
+                <th>Fecha</th>
+                <td>{{ clase.fecha | date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>Fecha Fin</th>
-                <td>{{ clase.fechaFin | date('Y-m-d H:i') }}</td>
+                <th>Hora Inicio</th>
+                <td>{{ clase.horaInicio | date('H:i') }}</td>
+            </tr>
+            <tr>
+                <th>Hora Fin</th>
+                <td>{{ clase.horaFin | date('H:i') }}</td>
             </tr>
             <tr>
                 <th>Estado</th>

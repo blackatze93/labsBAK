@@ -29,13 +29,14 @@ class ClaseRepository extends EntityRepository
      *
      * @return array
      */
-    public function findRangoClases(array $criteria)
+    public function findRangoClase(array $criteria)
     {
         return $this
             ->createQueryBuilder('clases')
-            ->where('clases.fecha_inicio BETWEEN :fecha_inicio and :fecha_fin')
-            ->orWhere('clases.fecha_fin BETWEEN :fecha_inicio and :fecha_fin')
+            ->where(':horaInicio BETWEEN clases.horaInicio AND clases.horaFin')
+            ->orWhere(':horaFin BETWEEN clases.horaInicio AND clases.horaFin')
             ->andWhere('clases.lugar = :lugar')
+            ->andWhere('clases.fecha = :fecha')
             ->setParameters($criteria)
             ->getQuery()->getResult()
         ;

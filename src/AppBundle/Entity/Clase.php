@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @ORM\Table(name="clase")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClaseRepository")
- * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha_inicio", "fecha_fin"}, repositoryMethod="findRangoClases",
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoClase",
  *     message="Ya existe una clase asociada a esa fecha y lugar.")
  */
 
@@ -41,21 +41,29 @@ class Clase
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_inicio", type="datetime", nullable=false, unique=false)
-     * @Assert\DateTime()
+     * @ORM\Column(name="fecha", type="date", nullable=false, unique=false)
+     * @Assert\Date()
      */
-    private $fecha_inicio;
+    private $fecha;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="fecha_fin", type="datetime", nullable=false, unique=false)
-     * @Assert\DateTime()
+     *
+     * @ORM\Column(name="hora_inicio", type="time", nullable=false, unique=false)
+     * @Assert\Time()
+     */
+    private $horaInicio;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="hora_fin", type="time", nullable=false, unique=false)
+     * @Assert\Time()
      * @Assert\Expression(
-     *     "this.getFechaInicio() < this.getFechaFin()",
+     *     "this.getHoraInicio() < this.getHoraFin()",
      *     message="La fecha final debe ser mayor a la fecha de inicio"
      * )
      */
-    private $fecha_fin;
+    private $horaFin;
 
     /**
      * @var int
@@ -125,35 +133,51 @@ class Clase
     }
 
     /**
-     * @param \DateTime $fecha_inicio
+     * @param \DateTime $fecha
      */
-    public function setFechaInicio($fecha_inicio)
+    public function setFecha($fecha)
     {
-        $this->fecha_inicio = $fecha_inicio;
+        $this->fecha = $fecha;
     }
 
     /**
      * @return \DateTime
      */
-    public function getFechaInicio()
+    public function getFecha()
     {
-        return $this->fecha_inicio;
+        return $this->fecha;
     }
 
     /**
-     * @param \DateTime $fecha_fin
+     * @param \DateTime $horaInicio
      */
-    public function setFechaFin($fecha_fin)
+    public function setHoraInicio($horaInicio)
     {
-        $this->fecha_fin = $fecha_fin;
+        $this->horaInicio = $horaInicio;
     }
 
     /**
      * @return \DateTime
      */
-    public function getFechaFin()
+    public function getHoraInicio()
     {
-        return $this->fecha_fin;
+        return $this->horaInicio;
+    }
+
+    /**
+     * @param \DateTime $horaFin
+     */
+    public function setHoraFin($horaFin)
+    {
+        $this->horaFin = $horaFin;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHoraFin()
+    {
+        return $this->horaFin;
     }
 
     /**
@@ -275,9 +299,10 @@ class Clase
      */
     public function validarHoras(ExecutionContextInterface $context)
     {
-        $horaInicio = $this->getFechaInicio()->format('H:i');
+        // TODO: mirar si se puede reemplazar el format y dejarlo vacio
+        $horaInicio = $this->getHoraInicio()->format('H:i');
 
-        $horaFin = $this->getFechaFin()->format('H:i');
+        $horaFin = $this->getHoraFin()->format('H:i');
 
         $horaMin = new \DateTime('06:00');
         $horaMin = $horaMin->format('H:i');
@@ -287,12 +312,12 @@ class Clase
 
         if ($horaInicio < $horaMin || $horaInicio > $horaMax) {
             $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
-                ->atPath('fecha_inicio')
+                ->atPath('horaInicio')
                 ->addViolation()
             ;
         } elseif ($horaFin < $horaMin || $horaFin > $horaMax) {
             $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
-                ->atPath('fecha_fin')
+                ->atPath('horaFin')
                 ->addViolation()
             ;
         }

@@ -46,7 +46,7 @@ class CalendarEventListener
 
         $clases = $this->entityManager->getRepository('AppBundle:Clase')
             ->createQueryBuilder('clases')
-            ->where('clases.fecha_inicio BETWEEN :startDate and :endDate')
+            ->where('clases.fecha BETWEEN :startDate and :endDate')
             ->setParameter('startDate', $startDate->format('Y-m-d'))
             ->setParameter('endDate', $endDate->format('Y-m-d'))
             ->getQuery()->getResult();
@@ -59,8 +59,14 @@ class CalendarEventListener
         // from your own entities/database values.
 
         foreach ($clases as $clase) {
+            $fecha = $clase->getFecha();
+            $horaInicio = $clase->getHoraInicio();
+            $horaFin = $clase->getHoraFin();
+            $fechaInicio = new \DateTime($fecha->format('Y-m-d').' '.$horaInicio->format('H:i'));
+            $fechaFin = new \DateTime($fecha->format('Y-m-d').' '.$horaFin->format('H:i'));
+
             // create an event with a start/end time
-            $eventEntity = new EventEntity($clase->getMateria(), $clase->getFechaInicio(), $clase->getFechaFin());
+            $eventEntity = new EventEntity($clase->getMateria(), $fechaInicio, $fechaFin);
 
             //optional calendar event settings
 //            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event

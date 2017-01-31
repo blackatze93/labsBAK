@@ -18,13 +18,18 @@ class ClaseType extends AbstractType
     {
         $builder
             ->add('lugar')
-            ->add('fecha_inicio', 'datetime', array(
+            ->add('fecha', 'date', array(
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd HH:mm',
+                'html5' => false,
+                'format' => 'yyyy-MM-dd',
             ))
-            ->add('fecha_fin', 'datetime', array(
+            ->add('horaInicio', 'time', array(
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd HH:mm',
+                'html5' => false,
+            ))
+            ->add('horaFin', 'time', array(
+                'widget' => 'single_text',
+                'html5' => false,
             ))
             ->add('estado', 'choice', array(
                 'choices' => array(

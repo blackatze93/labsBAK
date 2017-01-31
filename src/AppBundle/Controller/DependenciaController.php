@@ -79,7 +79,6 @@ class DependenciaController extends Controller
         }
 
         return $this->render('dependencia/new.html.twig', array(
-            'dependencia' => $dependencia,
             'formulario' => $formulario->createView(),
         ));
     }
