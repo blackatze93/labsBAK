@@ -64,7 +64,6 @@ class CalendarEventListener
 
             //optional calendar event settings
             // TODO: agregar condicion para mostrar solo url a los autenticados con permisos
-            // TODO: formulario para clases multiples, con lunes de 6 a 8 ejemplo
             $eventEntity->setUrl($this->router->generate('clase_show', array('id' => $clase->getId()))); // url to send user to when event label is clicked
             $eventEntity->addField('resourceId', $clase->getLugar()->getId());
 

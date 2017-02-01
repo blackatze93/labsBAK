@@ -16,7 +16,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *     message="Ya existe una clase asociada a esa fecha y lugar.")
  */
 
-// TODO: modificar fecha inicio y fecha fin para solo una fecha y dos horas hora inicio hora fin
 class Clase
 {
     /**
@@ -299,7 +298,6 @@ class Clase
      */
     public function validarHoras(ExecutionContextInterface $context)
     {
-        // TODO: mirar si se puede reemplazar el format y dejarlo vacio
         $horaInicio = $this->getHoraInicio()->format('H:i');
 
         $horaFin = $this->getHoraFin()->format('H:i');
