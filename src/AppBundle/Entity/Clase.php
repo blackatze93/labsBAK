@@ -85,7 +85,7 @@ class Clase
     /**
      * @var string
      *
-     * @ORM\Column(name="materia", type="string", length=45, unique=false, nullable=true)
+     * @ORM\Column(name="materia", type="string", length=45, unique=false, nullable=false)
      * @Assert\Length(max="45")
      */
     private $materia;
@@ -93,7 +93,7 @@ class Clase
     /**
      * @var string
      *
-     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=true)
+     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=false)
      * @Assert\Length(max="10")
      */
     private $grupo;

@@ -121,11 +121,11 @@ class ClaseDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>".
                 "<'row'<'col-sm-12'tr>>".
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100, -1),
+            'length_menu' => array(50, 100, 500, -1),
             'order_classes' => true,
             'order' => array(array(1, 'asc')),
             'order_multi' => true,
-            'page_length' => 10,
+            'page_length' => 50,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
             'renderer' => '',
             'scroll_collapse' => false,

@@ -110,9 +110,6 @@
                     'scrollDefault': 'now',
                     'timeFormat': 'H:i'
                 });
-                $("#clase_horaInicio").timepicker('setTime', moment().toDate());
-                $("#clase_horaFin").timepicker('setTime', moment().add(2, 'hours').toDate());
-
             } catch (e) {
                 console.log(e.message);
             }
