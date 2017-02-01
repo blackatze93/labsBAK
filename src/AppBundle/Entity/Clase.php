@@ -3,8 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
@@ -85,6 +85,7 @@ class Clase
      * @var string
      *
      * @ORM\Column(name="materia", type="string", length=45, unique=false, nullable=false)
+     * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
     private $materia;
@@ -93,6 +94,7 @@ class Clase
      * @var string
      *
      * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=false)
+     * @Assert\NotBlank()
      * @Assert\Length(max="10")
      */
     private $grupo;
