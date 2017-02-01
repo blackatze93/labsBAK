@@ -66,9 +66,10 @@ class ClaseController extends Controller
 
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $semanas = $formulario->getData()->getSemanas();
 
-            for ($i = 0; $i < $formulario->getData()->getSemanas(); $i++) {
-                $clase = new Clase;
+            for ($i = 0; $i < $semanas; $i++) {
+                $clase = new Clase();
                 $fechaAux = clone $formulario->getData()->getFecha();
 
                 $clase->setLugar($formulario->getData()->getLugar());

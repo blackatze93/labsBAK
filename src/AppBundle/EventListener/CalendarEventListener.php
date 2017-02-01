@@ -35,12 +35,6 @@ class CalendarEventListener
         $startDate = $calendarEvent->getStartDatetime();
         $endDate = $calendarEvent->getEndDatetime();
 
-        // The original request so you can get filters from the calendar
-        // Use the filter in your query for example
-
-//        $request = $calendarEvent->getRequest();
-//        $filter = $request->get('filter');
-
         // load events using your custom logic here,
         // for instance, retrieving events from a repository
 
@@ -69,13 +63,9 @@ class CalendarEventListener
             $eventEntity = new EventEntity($clase->getMateria(), $fechaInicio, $fechaFin);
 
             //optional calendar event settings
-//            $eventEntity->setAllDay(true); // default is false, set to true if this is an all day event
-//            $eventEntity->setBgColor('#FF0000'); //set the background color of the event's label
-//            $eventEntity->setFgColor('#FFFFFF'); //set the foreground color of the event's label
             // TODO: agregar condicion para mostrar solo url a los autenticados con permisos
             // TODO: formulario para clases multiples, con lunes de 6 a 8 ejemplo
             $eventEntity->setUrl($this->router->generate('clase_show', array('id' => $clase->getId()))); // url to send user to when event label is clicked
-//            $eventEntity->setCssClass('my-custom-class'); // a custom class you may want to apply to event labels
             $eventEntity->addField('resourceId', $clase->getLugar()->getId());
 
             $eventEntity->addField('estado', $clase->getEstado());
