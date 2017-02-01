@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/554e7c2fadf34873838c03b811a08040)](https://www.codacy.com/app/blackatze93/labs?utm_source=github.com&utm_medium=referral&utm_content=blackatze93/labs&utm_campaign=badger)
 [![StyleCI](https://styleci.io/repos/72900789/shield?branch=master)](https://styleci.io/repos/72900789)
 
 Symfony Standard Edition
