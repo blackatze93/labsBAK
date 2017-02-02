@@ -86,8 +86,12 @@ class FacultadController extends Controller
     /**
      * Finds and displays a facultad entity.
      *
-     * @Route("/{id}", name="facultad_show")
+     * @Route("/{id}", name="facultad_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
+     *
+     * @param Facultad $facultad
+     *
+     * @return Response
      */
     public function showAction(Facultad $facultad)
     {
@@ -100,26 +104,43 @@ class FacultadController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing facultad entity.
+     * Displays a formulario to edit an existing facultad entity.
      *
-     * @Route("/{id}/edit", name="facultad_edit")
+     * @Route("/{id}/edit", name="facultad_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
+     * @param Request     $request
+     * @param Facultad $facultad
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function editAction(Request $request, Facultad $facultad)
     {
         $deleteForm = $this->createDeleteForm($facultad);
-        $editForm = $this->createForm('AppBundle\Form\FacultadType', $facultad);
-        $editForm->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\Type\FacultadType', $facultad);
+        $formulario->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($facultad);
 
-            return $this->redirectToRoute('facultad_edit', array('id' => $facultad->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se edito la facultad correctamente');
+
+                return $this->redirectToRoute('facultad_index');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo editar la facultad');
+
+                return $this->redirectToRoute('facultad_edit', array(
+                    'id' => $request->get('id'),
+                ));
+            }
         }
 
         return $this->render('facultad/edit.html.twig', array(
             'facultad' => $facultad,
-            'edit_form' => $editForm->createView(),
+            'formulario' => $formulario->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -127,29 +148,40 @@ class FacultadController extends Controller
     /**
      * Deletes a facultad entity.
      *
-     * @Route("/{id}", name="facultad_delete")
+     * @Route("/{id}", name="facultad_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
+     *
+     * @param Request     $request
+     * @param Facultad $facultad
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Facultad $facultad)
     {
-        $form = $this->createDeleteForm($facultad);
-        $form->handleRequest($request);
+        $formulario = $this->createDeleteForm($facultad);
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($facultad);
-            $em->flush($facultad);
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($facultad);
+                $em->flush();
+
+                $this->addFlash('success', 'Se eliminó correctamente la entidad');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo eliminar la entidad');
+            }
         }
 
         return $this->redirectToRoute('facultad_index');
     }
 
     /**
-     * Creates a form to delete a facultad entity.
+     * Creates a formulario to delete a facultad entity.
      *
      * @param Facultad $facultad The facultad entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form The formulario
      */
     private function createDeleteForm(Facultad $facultad)
     {
@@ -157,6 +189,47 @@ class FacultadController extends Controller
             ->setAction($this->generateUrl('facultad_delete', array('id' => $facultad->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/delete", name="facultad_bulk_delete")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDeleteAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:Facultad');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $em->remove($entity);
+            }
+            try {
+                $em->flush();
+
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
+        }
+
+        return new Response('Bad Request', 400);
     }
 }
