@@ -28,10 +28,7 @@ class FacultadType extends AbstractType
             ;
         } elseif ($options['accion'] === 'edit_facultad') {
             $builder
-                // TODO: comprobar si se puede agregar este campo
-//                ->add('id', 'integer', array(
-//                    'attr' => array('readonly' => true)
-//                ))
+                ->add('id', 'integer')
                 ->add('guardar', 'submit')
             ;
         }

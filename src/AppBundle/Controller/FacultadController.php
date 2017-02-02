@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Facultad;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Facultad controller.
@@ -15,20 +18,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class FacultadController extends Controller
 {
     /**
-     * Lists all facultad entities.
+     * Metodo que lista las facultades de la aplicacion.
      *
      * @Route("/", name="facultad_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $facultads = $em->getRepository('AppBundle:Facultad')->findAll();
+        $datatable = $this->get('app.datatable.facultad');
+        $datatable->buildDatatable();
 
         return $this->render('facultad/index.html.twig', array(
-            'facultads' => $facultads,
+            'datatable' => $datatable,
         ));
+    }
+
+    /**
+     * @Route("/results", name="facultad_results")
+     */
+    public function indexResultsAction()
+    {
+        $datatable = $this->get('app.datatable.facultad');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
@@ -36,24 +51,35 @@ class FacultadController extends Controller
      *
      * @Route("/new", name="facultad_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
         $facultad = new Facultad();
-        $form = $this->createForm('AppBundle\Form\FacultadType', $facultad);
-        $form->handleRequest($request);
+        $formulario = $this->createForm('AppBundle\Form\Type\FacultadType', $facultad, array(
+            'accion' => 'new_facultad',
+        ));
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($facultad);
-            $em->flush($facultad);
 
-            return $this->redirectToRoute('facultad_show', array('id' => $facultad->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se agregó la facultad correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo agregar la facultad');
+            }
+
+            return $this->redirectToRoute('facultad_index');
         }
 
         return $this->render('facultad/new.html.twig', array(
-            'facultad' => $facultad,
-            'form' => $form->createView(),
+            'formulario' => $formulario->createView(),
         ));
     }
 
