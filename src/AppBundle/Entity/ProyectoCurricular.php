@@ -7,19 +7,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Dependencia.
+ * ProyectoCurricular.
  *
- * @ORM\Table(name="dependencia")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
+ * @ORM\Table(name="proyecto_curricular")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProyectoCurricularRepository")
  * @DoctrineAssert\UniqueEntity("id")
- * @DoctrineAssert\UniqueEntity("nombre")
+ * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
-class Dependencia
+class ProyectoCurricular
 {
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(name="id", type="integer", unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
@@ -29,11 +29,20 @@ class Dependencia
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45, unique=true)
+     * @ORM\Column(name="nombre", type="string", length=45, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facultad", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
+     */
+    private $facultad;
 
     /**
      * @param int $id
@@ -44,7 +53,7 @@ class Dependencia
     }
 
     /**
-     * Get id.
+     * Get id..
      *
      * @return int
      */
@@ -58,7 +67,7 @@ class Dependencia
      *
      * @param string $nombre
      *
-     * @return Dependencia
+     * @return ProyectoCurricular
      */
     public function setNombre($nombre)
     {
@@ -75,6 +84,30 @@ class Dependencia
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set facultad.
+     *
+     * @param string $facultad
+     *
+     * @return ProyectoCurricular
+     */
+    public function setFacultad($facultad)
+    {
+        $this->facultad = $facultad;
+
+        return $this;
+    }
+
+    /**
+     * Get facultad.
+     *
+     * @return string
+     */
+    public function getFacultad()
+    {
+        return $this->facultad;
     }
 
     /**

@@ -129,7 +129,7 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -137,7 +137,7 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id)
     {

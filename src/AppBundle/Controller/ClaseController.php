@@ -68,7 +68,7 @@ class ClaseController extends Controller
             $em = $this->getDoctrine()->getManager();
             $semanas = $formulario->getData()->getSemanas();
 
-            for ($i = 0; $i < $semanas; $i++) {
+            for ($i = 0; $i < $semanas; ++$i) {
                 $clase = new Clase();
                 $fechaAux = clone $formulario->getData()->getFecha();
 

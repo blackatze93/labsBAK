@@ -15,7 +15,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoClase",
  *     message="Ya existe una clase asociada a esa fecha y lugar.")
  */
-
 class Clase
 {
     /**
