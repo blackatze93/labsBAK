@@ -109,7 +109,7 @@ class FacultadController extends Controller
      * @Route("/{id}/edit", name="facultad_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
-     * @param Request     $request
+     * @param Request  $request
      * @param Facultad $facultad
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -151,7 +151,7 @@ class FacultadController extends Controller
      * @Route("/{id}", name="facultad_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
-     * @param Request     $request
+     * @param Request  $request
      * @param Facultad $facultad
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

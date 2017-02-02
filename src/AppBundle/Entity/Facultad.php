@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Facultad
+ * Facultad.
  *
  * @ORM\Table(name="facultad")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FacultadRepository")
@@ -33,11 +33,10 @@ class Facultad
      */
     private $nombre;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -45,9 +44,10 @@ class Facultad
     }
 
     /**
-     * Set nombre
+     * Set nombre.
      *
      * @param string $nombre
+     *
      * @return Facultad
      */
     public function setNombre($nombre)
@@ -58,9 +58,9 @@ class Facultad
     }
 
     /**
-     * Get nombre
+     * Get nombre.
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {

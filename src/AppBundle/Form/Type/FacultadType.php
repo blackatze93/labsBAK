@@ -33,7 +33,7 @@ class FacultadType extends AbstractType
             ;
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -52,6 +52,4 @@ class FacultadType extends AbstractType
     {
         return 'facultad';
     }
-
-
 }

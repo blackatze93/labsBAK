@@ -154,13 +154,13 @@ class FacultadDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
                             'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
                         'route' => 'facultad_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
@@ -170,8 +170,8 @@ class FacultadDatatable extends AbstractDatatableView
                             'class' => 'btn btn-warning btn-xs',
                             'role' => 'button',
                         ),
-                    )
-                )
+                    ),
+                ),
             ))
         ;
     }
