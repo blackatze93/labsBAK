@@ -32,3 +32,7 @@ services:
     app.datatable.proyectocurricular:
         class: AppBundle\Datatables\ProyectoCurricularDatatable
         parent: sg_datatables.datatable.abstract
+        
+    app.datatable.estudiante:
+        class: AppBundle\Datatables\EstudianteDatatable
+        parent: sg_datatables.datatable.abstract
