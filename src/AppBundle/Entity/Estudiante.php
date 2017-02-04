@@ -3,21 +3,25 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Estudiante
+ * Estudiante.
  *
  * @ORM\Table(name="estudiante")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EstudianteRepository")
+ * @DoctrineAssert\UniqueEntity("id")
  */
 class Estudiante
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="bigint", unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
      */
     private $id;
 
@@ -25,6 +29,8 @@ class Estudiante
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=60)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="60")
      */
     private $nombre;
 
@@ -32,6 +38,8 @@ class Estudiante
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=60)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="60")
      */
     private $apellido;
 
@@ -39,6 +47,8 @@ class Estudiante
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     * @Assert\Email()
+     * @Assert\Length(max="100")
      */
     private $email;
 
@@ -46,21 +56,33 @@ class Estudiante
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $estado;
 
     /**
-     * @var string
+     * @var ProyectoCurricular
      *
-     * @ORM\Column(name="proyectocurricular", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
+     * @ORM\JoinColumn(name="proyectocurricular_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
+     * @Assert\NotBlank()
      */
     private $proyectocurricular;
 
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -160,25 +182,26 @@ class Estudiante
     }
 
     /**
-     * Set proyectocurricular
-     *
-     * @param string $proyectocurricular
-     * @return Estudiante
+     * @param ProyectoCurricular $proyectocurricular
      */
     public function setProyectocurricular($proyectocurricular)
     {
         $this->proyectocurricular = $proyectocurricular;
-
-        return $this;
     }
 
     /**
-     * Get proyectocurricular
-     *
-     * @return string 
+     * @return ProyectoCurricular
      */
     public function getProyectocurricular()
     {
         return $this->proyectocurricular;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre().' '.$this->getApellido();
     }
 }
