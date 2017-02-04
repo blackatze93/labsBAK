@@ -13,18 +13,6 @@ use Doctrine\ORM\EntityRepository;
 class ClaseRepository extends EntityRepository
 {
     /**
-     * @return array
-     */
-    public function findAllEstados()
-    {
-        return $this
-            ->createQueryBuilder('clases')
-            ->distinct('estado')
-            ->getQuery()->getResult()
-        ;
-    }
-
-    /**
      * @param array $criteria
      *
      * @return array

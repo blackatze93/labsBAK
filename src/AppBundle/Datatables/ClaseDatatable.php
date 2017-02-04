@@ -143,7 +143,7 @@ class ClaseDatatable extends AbstractDatatableView
         ));
 
         $lugar = $this->em->getRepository('AppBundle:Lugar')->findAll();
-        $clase = $this->em->getRepository('AppBundle:Clase')->findAllEstados();
+        $clase = $this->em->getRepository('AppBundle:Clase')->findAll();
 
         $this->columnBuilder
             ->add(null, 'multiselect', array(

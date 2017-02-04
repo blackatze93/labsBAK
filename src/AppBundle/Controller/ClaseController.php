@@ -120,6 +120,7 @@ class ClaseController extends Controller
         ));
     }
 
+    // TODO: en la edicion de clases comprobar que funcione
     /**
      * Displays a form to edit an existing clase entity.
      *

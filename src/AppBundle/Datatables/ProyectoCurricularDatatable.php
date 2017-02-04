@@ -114,7 +114,7 @@ class ProyectoCurricularDatatable extends AbstractDatatableView
             'row_id' => 'id',
         ));
 
-        $proyectocurricular = $this->em->getRepository('AppBundle:ProyectoCurricular')->findAllFacultades();
+        $proyectocurricular = $this->em->getRepository('AppBundle:ProyectoCurricular')->findAll();
 
         $this->columnBuilder
             ->add(null, 'multiselect', array(
