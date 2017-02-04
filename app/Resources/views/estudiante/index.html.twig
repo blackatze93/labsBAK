@@ -1,45 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Estudiantes list</h1>
+{% block title %}Lista de Estudiantes{% endblock %}
+{% block encabezado %}Lista de Estudiantes{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Estado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for estudiante in estudiantes %}
-            <tr>
-                <td><a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">{{ estudiante.id }}</a></td>
-                <td>{{ estudiante.nombre }}</td>
-                <td>{{ estudiante.apellido }}</td>
-                <td>{{ estudiante.email }}</td>
-                <td>{{ estudiante.estado }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('estudiante_show', { 'id': estudiante.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('estudiante_edit', { 'id': estudiante.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('estudiante_new') }}">Create a new estudiante</a>
-        </li>
-    </ul>
+{% block article %}
+    {{ datatable_render(datatable) }}
 {% endblock %}
