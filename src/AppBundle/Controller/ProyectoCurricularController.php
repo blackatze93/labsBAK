@@ -3,134 +3,233 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ProyectoCurricular;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Proyectocurricular controller.
+ * ProyectoCurricular controller.
  *
  * @Route("proyectocurricular")
  */
 class ProyectoCurricularController extends Controller
 {
     /**
-     * Lists all proyectoCurricular entities.
+     * Metodo que lista las proyectocurriculars de la aplicacion.
      *
      * @Route("/", name="proyectocurricular_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $proyectoCurriculars = $em->getRepository('AppBundle:ProyectoCurricular')->findAll();
+        $datatable = $this->get('app.datatable.proyectocurricular');
+        $datatable->buildDatatable();
 
         return $this->render('proyectocurricular/index.html.twig', array(
-            'proyectoCurriculars' => $proyectoCurriculars,
+            'datatable' => $datatable,
         ));
     }
 
     /**
-     * Creates a new proyectoCurricular entity.
+     * @Route("/results", name="proyectocurricular_results")
+     */
+    public function indexResultsAction()
+    {
+        $datatable = $this->get('app.datatable.proyectocurricular');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
+    }
+
+    /**
+     * Creates a new proyectocurricular entity.
      *
      * @Route("/new", name="proyectocurricular_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
-        $proyectoCurricular = new Proyectocurricular();
-        $form = $this->createForm('AppBundle\Form\ProyectoCurricularType', $proyectoCurricular);
-        $form->handleRequest($request);
+        $proyectocurricular = new ProyectoCurricular();
+        $formulario = $this->createForm('AppBundle\Form\Type\ProyectoCurricularType', $proyectocurricular, array(
+            'accion' => 'new_proyectocurricular',
+        ));
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($proyectoCurricular);
-            $em->flush($proyectoCurricular);
+            $em->persist($proyectocurricular);
 
-            return $this->redirectToRoute('proyectocurricular_show', array('id' => $proyectoCurricular->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se agregó la proyectocurricular correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo agregar la proyectocurricular');
+            }
+
+            return $this->redirectToRoute('proyectocurricular_index');
         }
 
         return $this->render('proyectocurricular/new.html.twig', array(
-            'proyectoCurricular' => $proyectoCurricular,
-            'form' => $form->createView(),
+            'formulario' => $formulario->createView(),
         ));
     }
 
     /**
-     * Finds and displays a proyectoCurricular entity.
+     * Finds and displays a proyectocurricular entity.
      *
-     * @Route("/{id}", name="proyectocurricular_show")
+     * @Route("/{id}", name="proyectocurricular_show", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method("GET")
+     *
+     * @param ProyectoCurricular $proyectocurricular
+     *
+     * @return Response
      */
-    public function showAction(ProyectoCurricular $proyectoCurricular)
+    public function showAction(ProyectoCurricular $proyectocurricular)
     {
-        $deleteForm = $this->createDeleteForm($proyectoCurricular);
+        $deleteForm = $this->createDeleteForm($proyectocurricular);
 
         return $this->render('proyectocurricular/show.html.twig', array(
-            'proyectoCurricular' => $proyectoCurricular,
+            'proyectocurricular' => $proyectocurricular,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing proyectoCurricular entity.
+     * Displays a formulario to edit an existing proyectocurricular entity.
      *
-     * @Route("/{id}/edit", name="proyectocurricular_edit")
+     * @Route("/{id}/edit", name="proyectocurricular_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
+     *
+     * @param Request     $request
+     * @param ProyectoCurricular $proyectocurricular
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function editAction(Request $request, ProyectoCurricular $proyectoCurricular)
+    public function editAction(Request $request, ProyectoCurricular $proyectocurricular)
     {
-        $deleteForm = $this->createDeleteForm($proyectoCurricular);
-        $editForm = $this->createForm('AppBundle\Form\ProyectoCurricularType', $proyectoCurricular);
-        $editForm->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($proyectocurricular);
+        $formulario = $this->createForm('AppBundle\Form\Type\ProyectoCurricularType', $proyectocurricular);
+        $formulario->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($proyectocurricular);
 
-            return $this->redirectToRoute('proyectocurricular_edit', array('id' => $proyectoCurricular->getId()));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se edito la proyectocurricular correctamente');
+
+                return $this->redirectToRoute('proyectocurricular_index');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo editar la proyectocurricular');
+
+                return $this->redirectToRoute('proyectocurricular_edit', array(
+                    'id' => $request->get('id'),
+                ));
+            }
         }
 
         return $this->render('proyectocurricular/edit.html.twig', array(
-            'proyectoCurricular' => $proyectoCurricular,
-            'edit_form' => $editForm->createView(),
+            'proyectocurricular' => $proyectocurricular,
+            'formulario' => $formulario->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a proyectoCurricular entity.
+     * Deletes a proyectocurricular entity.
      *
-     * @Route("/{id}", name="proyectocurricular_delete")
+     * @Route("/{id}", name="proyectocurricular_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
+     *
+     * @param Request     $request
+     * @param ProyectoCurricular $proyectocurricular
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction(Request $request, ProyectoCurricular $proyectoCurricular)
+    public function deleteAction(Request $request, ProyectoCurricular $proyectocurricular)
     {
-        $form = $this->createDeleteForm($proyectoCurricular);
-        $form->handleRequest($request);
+        $formulario = $this->createDeleteForm($proyectocurricular);
+        $formulario->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($proyectoCurricular);
-            $em->flush($proyectoCurricular);
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($proyectocurricular);
+                $em->flush();
+
+                $this->addFlash('success', 'Se eliminó correctamente la entidad');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo eliminar la entidad');
+            }
         }
 
         return $this->redirectToRoute('proyectocurricular_index');
     }
 
     /**
-     * Creates a form to delete a proyectoCurricular entity.
+     * Creates a formulario to delete a proyectocurricular entity.
      *
-     * @param ProyectoCurricular $proyectoCurricular The proyectoCurricular entity
+     * @param ProyectoCurricular $proyectocurricular The proyectocurricular entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form The formulario
      */
-    private function createDeleteForm(ProyectoCurricular $proyectoCurricular)
+    private function createDeleteForm(ProyectoCurricular $proyectocurricular)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('proyectocurricular_delete', array('id' => $proyectoCurricular->getId())))
+            ->setAction($this->generateUrl('proyectocurricular_delete', array('id' => $proyectocurricular->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
+    }
+
+    /**
+     * Bulk delete action.
+     *
+     * @param Request $request
+     *
+     * @Route("/bulk/delete", name="proyectocurricular_bulk_delete")
+     * @Method("POST")
+     *
+     * @return Response
+     */
+    public function bulkDeleteAction(Request $request)
+    {
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($isAjax) {
+            $choices = $request->request->get('data');
+            $token = $request->request->get('token');
+
+            if (!$this->isCsrfTokenValid('multiselect', $token)) {
+                throw new AccessDeniedException('The CSRF token is invalid.');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('AppBundle:ProyectoCurricular');
+
+            foreach ($choices as $choice) {
+                $entity = $repository->find($choice['value']);
+                $em->remove($entity);
+            }
+            try {
+                $em->flush();
+
+                return new Response('Success', 200);
+            } catch (\Exception $e) {
+                return new Response('Bad Request', 400);
+            }
+        }
+
+        return new Response('Bad Request', 400);
     }
 }

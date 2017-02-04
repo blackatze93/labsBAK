@@ -1,41 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Proyectocurriculars list</h1>
+{% block title %}Lista de Proyectos Curriculares{% endblock %}
+{% block encabezado %}Lista de Proyectos Curriculares{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Facultad</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for proyectoCurricular in proyectoCurriculars %}
-            <tr>
-                <td><a href="{{ path('proyectocurricular_show', { 'id': proyectoCurricular.id }) }}">{{ proyectoCurricular.id }}</a></td>
-                <td>{{ proyectoCurricular.nombre }}</td>
-                <td>{{ proyectoCurricular.facultad }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('proyectocurricular_show', { 'id': proyectoCurricular.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('proyectocurricular_edit', { 'id': proyectoCurricular.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('proyectocurricular_new') }}">Create a new proyectoCurricular</a>
-        </li>
-    </ul>
+{% block article %}
+    {{ datatable_render(datatable) }}
 {% endblock %}
