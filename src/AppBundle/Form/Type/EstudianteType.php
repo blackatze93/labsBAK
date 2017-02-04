@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class EstudianteType.
+ */
 class EstudianteType extends AbstractType
 {
     /**
@@ -13,7 +16,36 @@ class EstudianteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('id')->add('nombre')->add('apellido')->add('email')->add('estado')->add('proyectocurricular')        ;
+        $builder
+            ->add('id')
+            ->add('nombre')
+            ->add('apellido')
+            ->add('email', 'email', array(
+                'required' => false
+            ))
+            ->add('estado', 'choice', array(
+                'choices' => array(
+                    'Matriculado' => 'Matriculado',
+                    'Deudor' => 'Deudor',
+                ),
+                'choices_as_values' => true,
+            ))
+            ->add('proyectocurricular', 'entity', array(
+                'label' => 'Proyecto Curricular',
+                'class' => 'AppBundle:ProyectoCurricular'
+            ))
+            ->add('restablecer', 'reset')
+        ;
+
+        if ($options['accion'] === 'new_estudiante') {
+            $builder
+                ->add('crear', 'submit')
+            ;
+        } elseif ($options['accion'] === 'edit_estudiante') {
+            $builder
+                ->add('guardar', 'submit')
+            ;
+        }
     }
     
     /**
@@ -22,7 +54,8 @@ class EstudianteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Estudiante'
+            'data_class' => 'AppBundle\Entity\Estudiante',
+            'accion' => 'edit_estudiante'
         ));
     }
 
@@ -31,7 +64,7 @@ class EstudianteType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_estudiante';
+        return 'estudiante';
     }
 
 

@@ -318,33 +318,4 @@ class EstudianteController extends Controller
 
         return new Response('Bad Request', 400);
     }
-
-    /**
-     * Return a Response with the resources of the calendar.
-     *
-     * @return Response
-     *
-     * @internal param Request $request
-     *
-     * @Route("/fc-load-estudiantees", name="fullcalendar_estudiantees", options={"expose"=true})
-     * @Method("POST")
-     */
-    public function cargarEstudianteesAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $estudiantees = $em->getRepository('AppBundle:Estudiante')->findAllVisibles();
-
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        $return_estudiantees = array();
-
-        foreach ($estudiantees as $estudiante) {
-            $return_estudiantees[] = $estudiante->toArray();
-        }
-
-        $response->setContent(json_encode($return_estudiantees));
-
-        return $response;
-    }
 }

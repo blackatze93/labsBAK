@@ -1,16 +1,54 @@
 {% extends 'base.html.twig' %}
+{% form_theme formulario 'form/fields.html.twig' %}
 
-{% block body %}
-    <h1>Estudiante creation</h1>
+{% block title %}Nuevo Estudiante{% endblock %}
+{% block encabezado %}Nuevo Estudiante{% endblock %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+{% block article %}
+    {{ form_start(formulario) }}
+    {% if not formulario.vars.valid %}
+        <script>
+            notificacion('Hay errores en el formulario', 'error');
+        </script>
+    {% endif %}
+    <div class="form-group">
+        {{ form_label(formulario.id) }}
+        {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.id) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.nombre) }}
+        {{ form_widget(formulario.nombre, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.nombre) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.apellido) }}
+        {{ form_widget(formulario.apellido, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.apellido) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.email) }}
+        {{ form_widget(formulario.email, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.email) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.estado) }}
+        {{ form_widget(formulario.estado, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.estado) }}</span>
+    </div>
+    <div class="form-group">
+        {{ form_label(formulario.proyectocurricular) }}
+        {{ form_widget(formulario.proyectocurricular, {'attr' : {'class' : 'form-control'}}) }}
+        <span class="text-danger">{{ form_errors(formulario.proyectocurricular) }}</span>
+    </div>
+    <div class="text-center">
+        {{ form_widget(formulario.crear, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Crear'}) }}
+        {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+        <a href="{{ path('estudiante_index') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            Lista
+        </a>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('estudiante_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    {{ form_end(formulario) }}
 {% endblock %}
