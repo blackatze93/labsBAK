@@ -15,7 +15,7 @@ class LugarRepository extends EntityRepository
     /**
      * @return array
      */
-    public function finAllVisibles()
+    public function findAllVisibles()
     {
         return $this
             ->createQueryBuilder('lugares')

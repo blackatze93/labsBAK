@@ -332,7 +332,7 @@ class LugarController extends Controller
     public function cargarLugaresAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $lugares = $em->getRepository('AppBundle:Lugar')->finAllVisibles();
+        $lugares = $em->getRepository('AppBundle:Lugar')->findAllVisibles();
 
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');

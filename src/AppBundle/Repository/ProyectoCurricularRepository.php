@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProyectoCurricularRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function findAllFacultades()
+    {
+        return $this
+            ->createQueryBuilder('proyectocurricular')
+            ->distinct('facultad')
+            ->getQuery()->getResult()
+            ;
+    }
 }

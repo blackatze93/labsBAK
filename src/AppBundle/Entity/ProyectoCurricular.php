@@ -29,7 +29,7 @@ class ProyectoCurricular
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=45, unique=true)
+     * @ORM\Column(name="nombre", type="string", length=45)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */

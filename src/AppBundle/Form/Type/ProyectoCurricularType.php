@@ -21,11 +21,11 @@ class ProyectoCurricularType extends AbstractType
             ->add('nombre')
             ->add('facultad', 'choice', array(
                 'choices' => array(
-                    'Facultad Tecnológica' => 'Tecnologica',
-                    'Facultad del Medio Ambiente' => 'Medio Ambiente',
-                    'Facultad de Ingeniería' => 'Ingenieria',
-                    'Facultad de Ciencias y Educación' => 'Ciencias y Educacion',
-                    'Facultad de Artes - ASAB' => 'ASAB',
+                    'Facultad Tecnológica' => 'Facultad Tecnológica',
+                    'Facultad del Medio Ambiente' => 'Facultad del Medio Ambiente',
+                    'Facultad de Ingeniería' => 'Facultad de Ingeniería',
+                    'Facultad de Ciencias y Educación' => 'Facultad de Ciencias y Educación',
+                    'Facultad de Artes - ASAB' => 'Facultad de Artes - ASAB',
                 ),
                 'choices_as_values' => true,
             ))

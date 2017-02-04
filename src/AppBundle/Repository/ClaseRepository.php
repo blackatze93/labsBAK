@@ -15,7 +15,7 @@ class ClaseRepository extends EntityRepository
     /**
      * @return array
      */
-    public function finAllEstados()
+    public function findAllEstados()
     {
         return $this
             ->createQueryBuilder('clases')

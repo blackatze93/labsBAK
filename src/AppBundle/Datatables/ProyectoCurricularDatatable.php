@@ -6,26 +6,10 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class ClaseDatatable.
+ * Class ProyectoCurricularDatatable.
  */
-class ClaseDatatable extends AbstractDatatableView
+class ProyectoCurricularDatatable extends AbstractDatatableView
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getLineFormatter()
-    {
-        $formatter = function ($line) {
-            $rutaLugar = $this->router->generate('lugar_show', array('id' => $line['lugar']['id']));
-
-            $line['lugar']['nombre'] = '<a href="'.$rutaLugar.'"></span> '.$line['lugar']['nombre'].'</a>';
-
-            return $line;
-        };
-
-        return $formatter;
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -36,12 +20,12 @@ class ClaseDatatable extends AbstractDatatableView
             'end_html' => '</div></div><br>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('clase_new'),
-                    'label' => 'Nueva Clase',
+                    'route' => $this->router->generate('proyectocurricular_new'),
+                    'label' => 'Nuevo Proyecto Curricular',
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
                         'rel' => 'tooltip',
-                        'title' => 'Nueva Clase',
+                        'title' => 'Nuevo Proyecto Curricular',
                         'class' => 'btn btn-info',
                         'role' => 'button',
                     ),
@@ -77,12 +61,6 @@ class ClaseDatatable extends AbstractDatatableView
                                 '1',
                                 '2',
                                 '3',
-                                '4',
-                                '5',
-                                '6',
-                                '7',
-                                '8',
-                                '9',
                             ),
                         ),
                     ),
@@ -94,12 +72,6 @@ class ClaseDatatable extends AbstractDatatableView
                                 '1',
                                 '2',
                                 '3',
-                                '4',
-                                '5',
-                                '6',
-                                '7',
-                                '8',
-                                '9',
                             ),
                         ),
                     ),
@@ -112,7 +84,7 @@ class ClaseDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('clase_results'),
+            'url' => $this->router->generate('proyectocurricular_results'),
             'type' => 'GET',
             'pipeline' => 0,
         ));
@@ -123,11 +95,11 @@ class ClaseDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>".
                 "<'row'<'col-sm-12'tr>>".
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(50, 100, 500, -1),
+            'length_menu' => array(10, 25, 50, 100, -1),
             'order_classes' => true,
             'order' => array(array(1, 'asc')),
             'order_multi' => true,
-            'page_length' => 50,
+            'page_length' => 10,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
             'renderer' => '',
             'scroll_collapse' => false,
@@ -142,36 +114,13 @@ class ClaseDatatable extends AbstractDatatableView
             'row_id' => 'id',
         ));
 
-        $lugar = $this->em->getRepository('AppBundle:Lugar')->findAll();
-        $clase = $this->em->getRepository('AppBundle:Clase')->findAllEstados();
+        $proyectocurricular = $this->em->getRepository('AppBundle:ProyectoCurricular')->findAllFacultades();
 
         $this->columnBuilder
             ->add(null, 'multiselect', array(
                 'actions' => array(
                     array(
-                        'route' => 'clase_bulk_activate',
-                        'label' => 'Activar',
-                        'icon' => 'glyphicon glyphicon-plus',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => 'Activar',
-                            'class' => 'btn btn-success btn-sm',
-                            'role' => 'button',
-                        ),
-                    ),
-                    array(
-                        'route' => 'clase_bulk_cancel',
-                        'label' => 'Cancelar',
-                        'icon' => 'glyphicon glyphicon-minus',
-                        'attributes' => array(
-                            'rel' => 'tooltip',
-                            'title' => 'Cancelar',
-                            'class' => 'btn btn-warning btn-sm',
-                            'role' => 'button',
-                        ),
-                    ),
-                    array(
-                        'route' => 'clase_bulk_delete',
+                        'route' => 'proyectocurricular_bulk_delete',
                         'label' => 'Eliminar',
                         'icon' => 'glyphicon glyphicon-remove',
                         'attributes' => array(
@@ -185,64 +134,28 @@ class ClaseDatatable extends AbstractDatatableView
             ))
             ->add('id', 'column', array(
                 'title' => 'Id',
-                'searchable' => false,
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                )),
             ))
-            ->add('lugar.nombre', 'column', array(
-                'title' => 'Lugar',
+            ->add('nombre', 'column', array(
+                'title' => 'Nombre',
+                'filter' => array('text', array(
+                    'search_type' => 'like',
+                )),
+            ))
+            ->add('facultad', 'column', array(
+                'title' => 'Facultad',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($lugar, 'nombre', 'nombre'),
-                )),
-            ))
-            ->add('fecha', 'datetime', array(
-                'title' => 'Fecha',
-                'date_format' => 'll',
-                'filter' => array('daterange', array()),
-            ))
-            ->add('horaInicio', 'datetime', array(
-                'title' => 'Hora Inicio',
-                'date_format' => 'HH:mm',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
-                )),
-            ))
-            ->add('horaFin', 'datetime', array(
-                'title' => 'Hora Fin',
-                'date_format' => 'HH:mm',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
-                )),
-            ))
-            ->add('estado', 'column', array(
-                'title' => 'Estado',
-                'filter' => array('select', array(
-                    'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($clase, 'estado', 'estado'),
-                )),
-            ))
-            ->add('materia', 'column', array(
-                'title' => 'Materia',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
-                )),
-            ))
-            ->add('grupo', 'column', array(
-                'title' => 'Grupo',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
-                )),
-            ))
-            ->add('observaciones', 'column', array(
-                'title' => 'Observaciones',
-                'filter' => array('text', array(
-                    'search_type' => 'like',
+                    'select_options' => array('' => 'Todas') + $this->getCollectionAsOptionsArray($proyectocurricular, 'facultad', 'facultad'),
                 )),
             ))
             ->add(null, 'action', array(
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'clase_show',
+                        'route' => 'proyectocurricular_show',
                         'route_parameters' => array(
                             'id' => 'id',
                         ),
@@ -256,7 +169,7 @@ class ClaseDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'clase_edit',
+                        'route' => 'proyectocurricular_edit',
                         'route_parameters' => array(
                             'id' => 'id',
                         ),
@@ -279,7 +192,7 @@ class ClaseDatatable extends AbstractDatatableView
      */
     public function getEntity()
     {
-        return 'AppBundle\Entity\Clase';
+        return 'AppBundle\Entity\ProyectoCurricular';
     }
 
     /**
@@ -287,6 +200,6 @@ class ClaseDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'clase_datatable';
+        return 'proyectocurricular_datatable';
     }
 }

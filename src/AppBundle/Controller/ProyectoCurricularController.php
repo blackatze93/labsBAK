@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class ProyectoCurricularController extends Controller
 {
     /**
-     * Metodo que lista las proyectocurriculars de la aplicacion.
+     * Metodo que lista los proyectos curriculares de la aplicacion.
      *
      * @Route("/", name="proyectocurricular_index")
      * @Method("GET")
@@ -70,9 +70,9 @@ class ProyectoCurricularController extends Controller
 
             try {
                 $em->flush();
-                $this->addFlash('success', 'Se agregó la proyectocurricular correctamente');
+                $this->addFlash('success', 'Se agregó el proyecto curricular correctamente');
             } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo agregar la proyectocurricular');
+                $this->addFlash('error', 'No se pudo agregar el proyecto curricular');
             }
 
             return $this->redirectToRoute('proyectocurricular_index');
@@ -126,11 +126,11 @@ class ProyectoCurricularController extends Controller
 
             try {
                 $em->flush();
-                $this->addFlash('success', 'Se edito la proyectocurricular correctamente');
+                $this->addFlash('success', 'Se edito el proyecto curricular correctamente');
 
                 return $this->redirectToRoute('proyectocurricular_index');
             } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo editar la proyectocurricular');
+                $this->addFlash('error', 'No se pudo editar el proyecto curricular');
 
                 return $this->redirectToRoute('proyectocurricular_edit', array(
                     'id' => $request->get('id'),
