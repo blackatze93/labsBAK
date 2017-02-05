@@ -13,6 +13,22 @@ class EstudianteDatatable extends AbstractDatatableView
     /**
      * {@inheritdoc}
      */
+    public function getLineFormatter()
+    {
+        $formatter = function ($line) {
+            $rutaProyectoCurricular = $this->router->generate('proyectocurricular_show', array('id' => $line['proyectocurricular']['id']));
+
+            $line['proyectocurricular']['nombre'] = '<a href="'.$rutaProyectoCurricular.'"></span> '.$line['proyectocurricular']['nombre'].'</a>';
+
+            return $line;
+        };
+
+        return $formatter;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function buildDatatable(array $options = array())
     {
         $this->topActions->set(array(
@@ -105,11 +121,11 @@ class EstudianteDatatable extends AbstractDatatableView
             'dom' => "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>".
                 "<'row'<'col-sm-12'tr>>".
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'length_menu' => array(10, 25, 50, 100, -1),
+            'length_menu' => array(50, 100, -1),
             'order_classes' => true,
             'order' => array(array(1, 'asc')),
             'order_multi' => true,
-            'page_length' => 10,
+            'page_length' => 50,
             'paging_type' => Style::FULL_NUMBERS_PAGINATION,
             'renderer' => '',
             'scroll_collapse' => false,
@@ -173,22 +189,15 @@ class EstudianteDatatable extends AbstractDatatableView
                     'select_options' => array('' => 'Todos', 'Matriculado' => 'Matriculado', 'Deudor' => 'Deudor'),
                 )),
             ))
-            ->add('proyectocurricular.id', 'column', array(
-                'title' => 'Id del Proyecto Curricular',
-                'filter' => array('select', array(
-                    'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($proyectocurricular, 'id', 'id'),
-                )),
-            ))
             ->add('proyectocurricular.nombre', 'column', array(
-                'title' => 'Nombre del Proyecto Curricular',
+                'title' => 'Proyecto Curricular',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
                     'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($proyectocurricular, 'nombre', 'nombre'),
                 )),
             ))
             ->add('proyectocurricular.facultad', 'column', array(
-                'title' => 'Facultad del Proyecto Curricular',
+                'title' => 'Facultad',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
                     'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($proyectocurricular, 'facultad', 'facultad'),
