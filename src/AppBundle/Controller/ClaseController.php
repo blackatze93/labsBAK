@@ -82,13 +82,14 @@ class ClaseController extends Controller
                 $clase->setObservaciones($formulario->getData()->getObservaciones());
 
                 $em->persist($clase);
+            }
 
-                try {
-                    $em->flush();
-                    $this->addFlash('success', 'Se agregó la clase correctamente');
-                } catch (\Exception $e) {
-                    $this->addFlash('error', 'No se pudo agregar la clase');
-                }
+            try {
+                $em->flush();
+                $em->clear();
+                $this->addFlash('success', 'Se agregó la clase correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo agregar la clase');
             }
 
             return $this->redirectToRoute('clase_index');
@@ -119,7 +120,6 @@ class ClaseController extends Controller
         ));
     }
 
-    // TODO: en la edicion de clases comprobar que funcione
     /**
      * Displays a form to edit an existing clase entity.
      *

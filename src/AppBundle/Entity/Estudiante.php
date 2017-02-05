@@ -72,6 +72,8 @@ class Estudiante
     private $proyectocurricular;
 
     /**
+     * Set id.
+     *
      * @param int $id
      */
     public function setId($id)
@@ -80,7 +82,7 @@ class Estudiante
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -90,7 +92,7 @@ class Estudiante
     }
 
     /**
-     * Set nombre
+     * Set nombre.
      *
      * @param string $nombre
      * @return Estudiante
@@ -103,9 +105,9 @@ class Estudiante
     }
 
     /**
-     * Get nombre
+     * Get nombre.
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -113,7 +115,7 @@ class Estudiante
     }
 
     /**
-     * Set apellido
+     * Set apellido.
      *
      * @param string $apellido
      * @return Estudiante
@@ -126,9 +128,9 @@ class Estudiante
     }
 
     /**
-     * Get apellido
+     * Get apellido.
      *
-     * @return string 
+     * @return string
      */
     public function getApellido()
     {
@@ -136,7 +138,7 @@ class Estudiante
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      * @return Estudiante
@@ -149,9 +151,9 @@ class Estudiante
     }
 
     /**
-     * Get email
+     * Get email.
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -159,7 +161,7 @@ class Estudiante
     }
 
     /**
-     * Set estado
+     * Set estado.
      *
      * @param string $estado
      * @return Estudiante
@@ -172,9 +174,9 @@ class Estudiante
     }
 
     /**
-     * Get estado
+     * Get estado.
      *
-     * @return string 
+     * @return string
      */
     public function getEstado()
     {
@@ -182,6 +184,8 @@ class Estudiante
     }
 
     /**
+     * Set proyectocurricular.
+     *
      * @param ProyectoCurricular $proyectocurricular
      */
     public function setProyectocurricular($proyectocurricular)
@@ -190,6 +194,8 @@ class Estudiante
     }
 
     /**
+     * Get proyectocurricular.
+     *
      * @return ProyectoCurricular
      */
     public function getProyectocurricular()

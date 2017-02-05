@@ -109,8 +109,8 @@ class EstudianteController extends Controller
      * @Route("/{id}/edit", name="estudiante_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
-     * @param Request $request
-     * @param Estudiante   $estudiante
+     * @param Request    $request
+     * @param Estudiante $estudiante
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -151,8 +151,8 @@ class EstudianteController extends Controller
      * @Route("/{id}", name="estudiante_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
-     * @param Request $request
-     * @param Estudiante   $estudiante
+     * @param Request    $request
+     * @param Estudiante $estudiante
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */

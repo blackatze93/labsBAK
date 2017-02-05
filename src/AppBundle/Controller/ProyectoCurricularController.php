@@ -109,7 +109,7 @@ class ProyectoCurricularController extends Controller
      * @Route("/{id}/edit", name="proyectocurricular_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
-     * @param Request     $request
+     * @param Request            $request
      * @param ProyectoCurricular $proyectocurricular
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -151,7 +151,7 @@ class ProyectoCurricularController extends Controller
      * @Route("/{id}", name="proyectocurricular_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
-     * @param Request     $request
+     * @param Request            $request
      * @param ProyectoCurricular $proyectocurricular
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
