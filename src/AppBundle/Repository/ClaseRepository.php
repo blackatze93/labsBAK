@@ -21,14 +21,11 @@ class ClaseRepository extends EntityRepository
     {
         return $this
             ->createQueryBuilder('clases')
-            ->where(':horaInicio > clases.horaInicio AND :horaInicio < clases.horaFin')
-            ->orWhere(':horaFin > clases.horaInicio AND :horaFin < clases.horaFin')
+            ->where(':horaInicio >= clases.horaInicio AND :horaInicio < clases.horaFin')
+            ->orWhere(':horaFin > clases.horaInicio AND :horaFin <= clases.horaFin')
             ->andWhere('clases.lugar = :lugar')
             ->andWhere('clases.fecha = :fecha')
-            ->setParameter('horaInicio', $criteria['horaInicio']->format('H:i:s'))
-            ->setParameter('horaFin', $criteria['horaFin']->format('H:i:s'))
-            ->setParameter('lugar', $criteria['lugar'])
-            ->setParameter('fecha', $criteria['fecha']->format('Y-m-d'))
+            ->setParameters($criteria)
             ->getQuery()->getResult()
         ;
     }

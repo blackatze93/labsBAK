@@ -3,9 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Clase;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -82,14 +82,13 @@ class ClaseController extends Controller
                 $clase->setObservaciones($formulario->getData()->getObservaciones());
 
                 $em->persist($clase);
-            }
 
-            try {
-                $em->flush();
-                $em->clear();
-                $this->addFlash('success', 'Se agregó la clase correctamente');
-            } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo agregar la clase');
+                try {
+                    $em->flush();
+                    $this->addFlash('success', 'Se agregó la clase correctamente');
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'No se pudo agregar la clase');
+                }
             }
 
             return $this->redirectToRoute('clase_index');
