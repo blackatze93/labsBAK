@@ -41,7 +41,7 @@ class ProyectoCurricularType extends AbstractType
                 ->add('guardar', 'submit');
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */

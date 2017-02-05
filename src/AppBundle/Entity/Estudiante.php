@@ -95,6 +95,7 @@ class Estudiante
      * Set nombre.
      *
      * @param string $nombre
+     *
      * @return Estudiante
      */
     public function setNombre($nombre)
@@ -118,6 +119,7 @@ class Estudiante
      * Set apellido.
      *
      * @param string $apellido
+     *
      * @return Estudiante
      */
     public function setApellido($apellido)
@@ -141,6 +143,7 @@ class Estudiante
      * Set email.
      *
      * @param string $email
+     *
      * @return Estudiante
      */
     public function setEmail($email)
@@ -164,6 +167,7 @@ class Estudiante
      * Set estado.
      *
      * @param string $estado
+     *
      * @return Estudiante
      */
     public function setEstado($estado)

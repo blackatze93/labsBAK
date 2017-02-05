@@ -21,7 +21,7 @@ class EstudianteType extends AbstractType
             ->add('nombre')
             ->add('apellido')
             ->add('email', 'email', array(
-                'required' => false
+                'required' => false,
             ))
             ->add('estado', 'choice', array(
                 'choices' => array(
@@ -32,7 +32,7 @@ class EstudianteType extends AbstractType
             ))
             ->add('proyectocurricular', 'entity', array(
                 'label' => 'Proyecto Curricular',
-                'class' => 'AppBundle:ProyectoCurricular'
+                'class' => 'AppBundle:ProyectoCurricular',
             ))
             ->add('restablecer', 'reset')
         ;
@@ -47,7 +47,7 @@ class EstudianteType extends AbstractType
             ;
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -55,7 +55,7 @@ class EstudianteType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Estudiante',
-            'accion' => 'edit_estudiante'
+            'accion' => 'edit_estudiante',
         ));
     }
 
@@ -66,6 +66,4 @@ class EstudianteType extends AbstractType
     {
         return 'estudiante';
     }
-
-
 }
