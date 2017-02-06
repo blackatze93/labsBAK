@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class LugarType extends AbstractType
 {
+    // TODO: Editar vista para resaltar los checkbox
     /**
      * {@inheritdoc}
      */

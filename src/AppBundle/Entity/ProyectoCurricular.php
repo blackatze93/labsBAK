@@ -42,6 +42,7 @@ class ProyectoCurricular
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
+    // TODO: revisar si implementar la entidad facultad
     private $facultad;
 
     /**
