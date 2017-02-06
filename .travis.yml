@@ -40,7 +40,3 @@ install:
 # Run script
 script:
   - phpunit -c app
-
-addons:
-  code_climate:
-    repo_token: 223819bee6f19c59053531182500053052208e155fda82b69602a466d3af78fb
