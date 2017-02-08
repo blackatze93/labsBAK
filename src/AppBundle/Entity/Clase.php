@@ -40,6 +40,7 @@ class Clase
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="date", nullable=false, unique=false)
+     * @Assert\NotBlank()
      * @Assert\Date()
      */
     private $fecha;
@@ -48,6 +49,7 @@ class Clase
      * @var \DateTime
      *
      * @ORM\Column(name="hora_inicio", type="time", nullable=false, unique=false)
+     * @Assert\NotBlank()
      * @Assert\Time()
      */
     private $horaInicio;
@@ -55,6 +57,7 @@ class Clase
     /**
      * @var \DateTime
      * @ORM\Column(name="hora_fin", type="time", nullable=false, unique=false)
+     * @Assert\NotBlank()
      * @Assert\Time()
      * @Assert\Expression(
      *     "this.getHoraInicio() < this.getHoraFin()",

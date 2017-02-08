@@ -3,21 +3,27 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Elemento
  *
  * @ORM\Table(name="elemento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoRepository")
+ * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("serial")
  */
 class Elemento
 {
+    // TODO: placa del equipo
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="string", length=20, nullable=false, unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="20")
      */
     private $id;
 
@@ -25,34 +31,53 @@ class Elemento
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=60)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="60")
      */
     private $nombre;
 
     /**
      * @var string
      *
+     * @ORM\Column(name="marca", type="string", length=60, nullable=true)
+     * @Assert\Length(max="60")
+     */
+    private $marca;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $descripcion;
 
+    // TODO: disponible, clase, practica, mirar si este atributo debe ir ahi
+    // TODO: mirar si con un trigger se puede usar
     /**
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $estado;
 
+    // TODO: especializado, computador
     /**
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $tipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="serial", type="string", length=60)
+     * @ORM\Column(name="serial", type="string", length=60, nullable=true, unique=true)
+     * @Assert\Length(max="60")
      */
     private $serial;
 
@@ -60,20 +85,28 @@ class Elemento
      * @var \DateTime
      *
      * @ORM\Column(name="fechaIngreso", type="date", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Date()
      */
     private $fechaIngreso;
 
     /**
-     * @var string
+     * @var Lugar
      *
-     * @ORM\Column(name="ubicacion", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Lugar")
+     * @Assert\NotBlank()
      */
-    private $ubicacion;
+    private $lugar;
 
+    // TODO: funcionanrio - estudiante
     /**
      * @var string
      *
-     * @ORM\Column(name="tipoPrestamo", type="string", length=255)
+     * @ORM\Column(name="tipoPrestamo", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
      */
     private $tipoPrestamo;
 
@@ -81,21 +114,24 @@ class Elemento
      * @var string
      *
      * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
      */
     private $observaciones;
 
     /**
-     * @var string
+     * Set id
      *
-     * @ORM\Column(name="marca", type="string", length=255)
+     * @param string $id
      */
-    private $marca;
-
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return string
      */
     public function getId()
     {
@@ -123,6 +159,29 @@ class Elemento
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set marca
+     *
+     * @param string $marca
+     * @return Elemento
+     */
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+
+        return $this;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return string
+     */
+    public function getMarca()
+    {
+        return $this->marca;
     }
 
     /**
@@ -241,26 +300,19 @@ class Elemento
     }
 
     /**
-     * Set ubicacion
-     *
-     * @param string $ubicacion
-     * @return Elemento
+     * @param Lugar $lugar
      */
-    public function setUbicacion($ubicacion)
+    public function setLugar($lugar)
     {
-        $this->ubicacion = $ubicacion;
-
-        return $this;
+        $this->lugar = $lugar;
     }
 
     /**
-     * Get ubicacion
-     *
-     * @return string 
+     * @return Lugar
      */
-    public function getUbicacion()
+    public function getLugar()
     {
-        return $this->ubicacion;
+        return $this->lugar;
     }
 
     /**
@@ -307,28 +359,5 @@ class Elemento
     public function getObservaciones()
     {
         return $this->observaciones;
-    }
-
-    /**
-     * Set marca
-     *
-     * @param string $marca
-     * @return Elemento
-     */
-    public function setMarca($marca)
-    {
-        $this->marca = $marca;
-
-        return $this;
-    }
-
-    /**
-     * Get marca
-     *
-     * @return string 
-     */
-    public function getMarca()
-    {
-        return $this->marca;
     }
 }
