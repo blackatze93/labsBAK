@@ -99,8 +99,10 @@ class ElementoDatatable extends AbstractDatatableView
             ->add('serial', 'column', array(
                 'title' => 'Serial',
             ))
-            ->add('fechaIngreso', 'column', array(
-                'title' => 'FechaIngreso',
+            ->add('fechaIngreso', 'datetime', array(
+                'title' => 'Fecha de Ingreso',
+                'date_format' => 'll',
+                'filter' => array('daterange', array()),
             ))
             ->add('tipo', 'column', array(
                 'title' => 'Tipo',
