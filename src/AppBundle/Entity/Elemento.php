@@ -52,27 +52,6 @@ class Elemento
      */
     private $descripcion;
 
-    // TODO: disponible, clase, practica, mirar si este atributo debe ir ahi
-    // TODO: mirar si con un trigger se puede usar
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="estado", type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
-     */
-    private $estado;
-
-    // TODO: especializado, computador
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
-     */
-    private $tipo;
-
     /**
      * @var string
      *
@@ -80,15 +59,6 @@ class Elemento
      * @Assert\Length(max="60")
      */
     private $serial;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechaIngreso", type="date", nullable=true)
-     * @Assert\NotBlank()
-     * @Assert\Date()
-     */
-    private $fechaIngreso;
 
     /**
      * @var Lugar
@@ -100,11 +70,29 @@ class Elemento
      */
     private $lugar;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso", type="date", nullable=true)
+     * @Assert\Date()
+     */
+    private $fechaIngreso;
+
+    // TODO: especializado, computador
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
+     */
+    private $tipo;
+
     // TODO: funcionanrio - estudiante
     /**
      * @var string
      *
-     * @ORM\Column(name="tipoPrestamo", type="string", length=45)
+     * @ORM\Column(name="tipo_prestamo", type="string", length=45)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
@@ -119,18 +107,6 @@ class Elemento
     private $observaciones;
 
     /**
-     * Set id
-     *
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * Get id
-     *
      * @return string
      */
     public function getId()
@@ -139,22 +115,15 @@ class Elemento
     }
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     * @return Elemento
+     * @param string $id
      */
-    public function setNombre($nombre)
+    public function setId($id)
     {
-        $this->nombre = $nombre;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get nombre
-     *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -162,21 +131,14 @@ class Elemento
     }
 
     /**
-     * Set marca
-     *
-     * @param string $marca
-     * @return Elemento
+     * @param string $nombre
      */
-    public function setMarca($marca)
+    public function setNombre($nombre)
     {
-        $this->marca = $marca;
-
-        return $this;
+        $this->nombre = $nombre;
     }
 
     /**
-     * Get marca
-     *
      * @return string
      */
     public function getMarca()
@@ -185,22 +147,15 @@ class Elemento
     }
 
     /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     * @return Elemento
+     * @param string $marca
      */
-    public function setDescripcion($descripcion)
+    public function setMarca($marca)
     {
-        $this->descripcion = $descripcion;
-
-        return $this;
+        $this->marca = $marca;
     }
 
     /**
-     * Get descripcion
-     *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {
@@ -208,68 +163,15 @@ class Elemento
     }
 
     /**
-     * Set estado
-     *
-     * @param string $estado
-     * @return Elemento
+     * @param string $descripcion
      */
-    public function setEstado($estado)
+    public function setDescripcion($descripcion)
     {
-        $this->estado = $estado;
-
-        return $this;
+        $this->descripcion = $descripcion;
     }
 
     /**
-     * Get estado
-     *
-     * @return string 
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
-     * Set tipo
-     *
-     * @param string $tipo
-     * @return Elemento
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return string 
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
-    }
-
-    /**
-     * Set serial
-     *
-     * @param string $serial
-     * @return Elemento
-     */
-    public function setSerial($serial)
-    {
-        $this->serial = $serial;
-
-        return $this;
-    }
-
-    /**
-     * Get serial
-     *
-     * @return string 
+     * @return string
      */
     public function getSerial()
     {
@@ -277,34 +179,11 @@ class Elemento
     }
 
     /**
-     * Set fechaIngreso
-     *
-     * @param \DateTime $fechaIngreso
-     * @return Elemento
+     * @param string $serial
      */
-    public function setFechaIngreso($fechaIngreso)
+    public function setSerial($serial)
     {
-        $this->fechaIngreso = $fechaIngreso;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaIngreso
-     *
-     * @return \DateTime 
-     */
-    public function getFechaIngreso()
-    {
-        return $this->fechaIngreso;
-    }
-
-    /**
-     * @param Lugar $lugar
-     */
-    public function setLugar($lugar)
-    {
-        $this->lugar = $lugar;
+        $this->serial = $serial;
     }
 
     /**
@@ -316,22 +195,47 @@ class Elemento
     }
 
     /**
-     * Set tipoPrestamo
-     *
-     * @param string $tipoPrestamo
-     * @return Elemento
+     * @param Lugar $lugar
      */
-    public function setTipoPrestamo($tipoPrestamo)
+    public function setLugar($lugar)
     {
-        $this->tipoPrestamo = $tipoPrestamo;
-
-        return $this;
+        $this->lugar = $lugar;
     }
 
     /**
-     * Get tipoPrestamo
-     *
-     * @return string 
+     * @return \DateTime
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
+    }
+
+    /**
+     * @param \DateTime $fechaIngreso
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fechaIngreso = $fechaIngreso;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param string $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return string
      */
     public function getTipoPrestamo()
     {
@@ -339,25 +243,34 @@ class Elemento
     }
 
     /**
-     * Set observaciones
-     *
-     * @param string $observaciones
-     * @return Elemento
+     * @param string $tipoPrestamo
      */
-    public function setObservaciones($observaciones)
+    public function setTipoPrestamo($tipoPrestamo)
     {
-        $this->observaciones = $observaciones;
-
-        return $this;
+        $this->tipoPrestamo = $tipoPrestamo;
     }
 
     /**
-     * Get observaciones
-     *
-     * @return string 
+     * @return string
      */
     public function getObservaciones()
     {
         return $this->observaciones;
+    }
+
+    /**
+     * @param string $observaciones
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->getNombre();
     }
 }

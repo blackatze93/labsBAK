@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="1">
                 <source>Id</source>
-                <target>Identificación</target>
+                <target>Id</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>Nombre</source>

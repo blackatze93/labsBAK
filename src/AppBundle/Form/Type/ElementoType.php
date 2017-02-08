@@ -1,11 +1,14 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class ElementoType
+ */
 class ElementoType extends AbstractType
 {
     /**
@@ -13,7 +16,18 @@ class ElementoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('id')->add('nombre')->add('marca')->add('descripcion')->add('estado')->add('tipo')->add('serial')->add('fechaIngreso')->add('tipoPrestamo')->add('observaciones')->add('lugar')        ;
+        $builder
+            ->add('id')
+            ->add('nombre')
+            ->add('marca')
+            ->add('descripcion')
+            ->add('serial')
+            ->add('lugar')
+            ->add('fechaIngreso')
+            ->add('tipo')
+            ->add('tipoPrestamo')
+            ->add('observaciones')
+        ;
     }
     
     /**
@@ -31,7 +45,7 @@ class ElementoType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_elemento';
+        return 'elemento';
     }
 
 

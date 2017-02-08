@@ -40,7 +40,7 @@ class ElementoController extends Controller
     public function newAction(Request $request)
     {
         $elemento = new Elemento();
-        $form = $this->createForm('AppBundle\Form\ElementoType', $elemento);
+        $form = $this->createForm('AppBundle\Form\Type\ElementoType', $elemento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class ElementoController extends Controller
     public function editAction(Request $request, Elemento $elemento)
     {
         $deleteForm = $this->createDeleteForm($elemento);
-        $editForm = $this->createForm('AppBundle\Form\ElementoType', $elemento);
+        $editForm = $this->createForm('AppBundle\Form\Type\ElementoType', $elemento);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
