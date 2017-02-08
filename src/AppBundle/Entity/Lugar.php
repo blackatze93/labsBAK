@@ -35,6 +35,7 @@ class Lugar
      */
     private $nombre;
 
+    // TODO: se usa para determinar la cantidad de equipos que se pueden prestar
     /**
      * @var int
      *
