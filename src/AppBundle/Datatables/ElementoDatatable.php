@@ -96,17 +96,14 @@ class ElementoDatatable extends AbstractDatatableView
             ->add('descripcion', 'column', array(
                 'title' => 'Descripcion',
             ))
-            ->add('estado', 'column', array(
-                'title' => 'Estado',
-            ))
-            ->add('tipo', 'column', array(
-                'title' => 'Tipo',
-            ))
             ->add('serial', 'column', array(
                 'title' => 'Serial',
             ))
             ->add('fechaIngreso', 'column', array(
                 'title' => 'FechaIngreso',
+            ))
+            ->add('tipo', 'column', array(
+                'title' => 'Tipo',
             ))
             ->add('tipoPrestamo', 'column', array(
                 'title' => 'TipoPrestamo',

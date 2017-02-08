@@ -1,55 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Lista de Elementos{% endblock %}
+{% block encabezado %}Lista de Elementos{% endblock %}
+
 {% block article %}
-    <h1>Elementos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Tipo</th>
-                <th>Serial</th>
-                <th>Fechaingreso</th>
-                <th>Tipoprestamo</th>
-                <th>Observaciones</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for elemento in elementos %}
-            <tr>
-                <td><a href="{{ path('elemento_show', { 'id': elemento.id }) }}">{{ elemento.id }}</a></td>
-                <td>{{ elemento.nombre }}</td>
-                <td>{{ elemento.marca }}</td>
-                <td>{{ elemento.descripcion }}</td>
-                <td>{{ elemento.estado }}</td>
-                <td>{{ elemento.tipo }}</td>
-                <td>{{ elemento.serial }}</td>
-                <td>{% if elemento.fechaIngreso %}{{ elemento.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ elemento.tipoPrestamo }}</td>
-                <td>{{ elemento.observaciones }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('elemento_show', { 'id': elemento.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('elemento_edit', { 'id': elemento.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('elemento_new') }}">Create a new elemento</a>
-        </li>
-    </ul>
+    {{ datatable_render(datatable) }}
 {% endblock %}
