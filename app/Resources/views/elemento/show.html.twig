@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Elemento</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ elemento.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ elemento.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Marca</th>
+                <td>{{ elemento.marca }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ elemento.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ elemento.estado }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ elemento.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Serial</th>
+                <td>{{ elemento.serial }}</td>
+            </tr>
+            <tr>
+                <th>Fechaingreso</th>
+                <td>{% if elemento.fechaIngreso %}{{ elemento.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tipoprestamo</th>
+                <td>{{ elemento.tipoPrestamo }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ elemento.observaciones }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('elemento_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('elemento_edit', { 'id': elemento.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
