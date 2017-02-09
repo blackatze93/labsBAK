@@ -6,9 +6,7 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class ElementoDatatable
- *
- * @package AppBundle\Datatables
+ * Class ElementoDatatable.
  */
 class ElementoDatatable extends AbstractDatatableView
 {
@@ -233,7 +231,7 @@ class ElementoDatatable extends AbstractDatatableView
                     array(
                         'route' => 'elemento_show',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.show'),
                         'icon' => 'glyphicon glyphicon-eye-open',
@@ -241,13 +239,13 @@ class ElementoDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.show'),
                             'class' => 'btn btn-primary btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
                     ),
                     array(
                         'route' => 'elemento_edit',
                         'route_parameters' => array(
-                            'id' => 'id'
+                            'id' => 'id',
                         ),
                         'label' => $this->translator->trans('datatables.actions.edit'),
                         'icon' => 'glyphicon glyphicon-edit',
@@ -255,10 +253,10 @@ class ElementoDatatable extends AbstractDatatableView
                             'rel' => 'tooltip',
                             'title' => $this->translator->trans('datatables.actions.edit'),
                             'class' => 'btn btn-warning btn-xs',
-                            'role' => 'button'
+                            'role' => 'button',
                         ),
-                    )
-                )
+                    ),
+                ),
             ))
         ;
     }

@@ -3,11 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Prestamo
+ * Prestamo.
  *
  * @ORM\Table(name="prestamo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoRepository")
@@ -70,9 +69,9 @@ class Prestamo
     // TODO: mirar la relacion de estudiante y usuario
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -80,9 +79,10 @@ class Prestamo
     }
 
     /**
-     * Set fechaPrestamo
+     * Set fechaPrestamo.
      *
      * @param \DateTime $fechaPrestamo
+     *
      * @return Prestamo
      */
     public function setFechaPrestamo($fechaPrestamo)
@@ -93,9 +93,9 @@ class Prestamo
     }
 
     /**
-     * Get fechaPrestamo
+     * Get fechaPrestamo.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaPrestamo()
     {
@@ -103,9 +103,10 @@ class Prestamo
     }
 
     /**
-     * Set fechaDevolucion
+     * Set fechaDevolucion.
      *
      * @param \DateTime $fechaDevolucion
+     *
      * @return Prestamo
      */
     public function setFechaDevolucion($fechaDevolucion)
@@ -116,9 +117,9 @@ class Prestamo
     }
 
     /**
-     * Get fechaDevolucion
+     * Get fechaDevolucion.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaDevolucion()
     {
@@ -126,9 +127,10 @@ class Prestamo
     }
 
     /**
-     * Set estadoDevolucion
+     * Set estadoDevolucion.
      *
      * @param string $estadoDevolucion
+     *
      * @return Prestamo
      */
     public function setEstadoDevolucion($estadoDevolucion)
@@ -139,9 +141,9 @@ class Prestamo
     }
 
     /**
-     * Get estadoDevolucion
+     * Get estadoDevolucion.
      *
-     * @return string 
+     * @return string
      */
     public function getEstadoDevolucion()
     {
@@ -149,9 +151,10 @@ class Prestamo
     }
 
     /**
-     * Set descripcionDevolucion
+     * Set descripcionDevolucion.
      *
      * @param string $descripcionDevolucion
+     *
      * @return Prestamo
      */
     public function setDescripcionDevolucion($descripcionDevolucion)
@@ -162,9 +165,9 @@ class Prestamo
     }
 
     /**
-     * Get descripcionDevolucion
+     * Get descripcionDevolucion.
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcionDevolucion()
     {
