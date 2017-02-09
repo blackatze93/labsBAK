@@ -109,7 +109,7 @@ class ElementoController extends Controller
      * @Route("/{id}/edit", name="elemento_edit", requirements={"id": "\d+"}, options={"expose"=true})
      * @Method({"GET", "POST"})
      *
-     * @param Request    $request
+     * @param Request  $request
      * @param Elemento $elemento
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -151,7 +151,7 @@ class ElementoController extends Controller
      * @Route("/{id}", name="elemento_delete", requirements={"id": "\d+"})
      * @Method("DELETE")
      *
-     * @param Request    $request
+     * @param Request  $request
      * @param Elemento $elemento
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

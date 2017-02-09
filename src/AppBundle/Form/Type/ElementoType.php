@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class ElementoType
+ * Class ElementoType.
  */
 class ElementoType extends AbstractType
 {
@@ -59,7 +59,7 @@ class ElementoType extends AbstractType
             ;
         }
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -78,6 +78,4 @@ class ElementoType extends AbstractType
     {
         return 'elemento';
     }
-
-
 }

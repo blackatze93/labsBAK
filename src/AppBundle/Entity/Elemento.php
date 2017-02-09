@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 // TODO: comprobar si se puede hacer un bulk import de las entidades
 /**
- * Elemento
+ * Elemento.
  *
  * @ORM\Table(name="elemento")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoRepository")
@@ -270,7 +270,7 @@ class Elemento
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->getNombre();
     }
