@@ -79,6 +79,16 @@ class Elemento
      */
     private $fechaIngreso;
 
+    // TODO: bueno, dañado
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
+     */
+    private $estado;
+
     // TODO: especializado, computador
     /**
      * @var string
@@ -217,6 +227,22 @@ class Elemento
     public function setFechaIngreso($fechaIngreso)
     {
         $this->fechaIngreso = $fechaIngreso;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param string $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
     }
 
     /**

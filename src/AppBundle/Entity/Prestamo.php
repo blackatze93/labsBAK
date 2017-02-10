@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Prestamo.
@@ -55,18 +56,31 @@ class Prestamo
      */
     private $descripcionDevolucion;
 
-    // TODO: mirar si la relacion no es muchos a muchos
     /**
-     * @var Lugar
+     * @var Elemento
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
-     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
-     * @Assert\NotBlank()
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Elemento")
+     * @Assert\Type("AppBundle\Entity\Elemento")
      */
-    private $lugar;
+    private $elemento;
 
-    // TODO: mirar la relacion de estudiante y usuario
+    /**
+     * @var Estudiante
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estudiante")
+     * @ORM\JoinColumn(name="estudiante_id", referencedColumnName="id", nullable=true, unique=false)
+     * @Assert\Type("AppBundle\Entity\Estudiante")
+     */
+    private $estudiante;
+
+    /**
+     * @var Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=true, unique=false)
+     * @Assert\Type("AppBundle\Entity\Usuario")
+     */
+    private $usuario;
 
     /**
      * Get id.
@@ -172,5 +186,57 @@ class Prestamo
     public function getDescripcionDevolucion()
     {
         return $this->descripcionDevolucion;
+    }
+
+    /**
+     * @param Estudiante $estudiante
+     */
+    public function setEstudiante($estudiante)
+    {
+        $this->estudiante = $estudiante;
+    }
+
+    /**
+     * @return Estudiante
+     */
+    public function getEstudiante()
+    {
+        return $this->estudiante;
+    }
+
+    /**
+     * @param Usuario $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+
+    /**
+     * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
+     */
+    public function validarUsuario(ExecutionContextInterface $context)
+    {
+        if (is_null($this->estudiante) && is_null($this->usuario)){
+            $context->buildViolation('Debe asignar un estudiante o usuario al prestamo.')
+                ->atPath('estudiante')
+                ->addViolation()
+            ;
+        } elseif (!is_null($this->estudiante) && !is_null($this->usuario)) {
+            $context->buildViolation('No puede asignar un prestamo a un estudiante y un usuario al mismo tiempo.')
+                ->atPath('usuario')
+                ->addViolation();
+        }
     }
 }

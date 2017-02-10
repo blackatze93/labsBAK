@@ -84,6 +84,7 @@ class ElementoDatatable extends AbstractDatatableView
                                 '8',
                                 '9',
                                 '10',
+                                '11',
                             ),
                         ),
                     ),
@@ -102,6 +103,7 @@ class ElementoDatatable extends AbstractDatatableView
                                 '8',
                                 '9',
                                 '10',
+                                '11',
                             ),
                         ),
                     ),
@@ -204,6 +206,13 @@ class ElementoDatatable extends AbstractDatatableView
                 'title' => 'Fecha de Ingreso',
                 'date_format' => 'll',
                 'filter' => array('daterange', array()),
+            ))
+            ->add('estado', 'column', array(
+                'title' => 'Estado',
+                'filter' => array('select', array(
+                    'search_type' => 'eq',
+                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($elemento, 'estado', 'estado'),
+                )),
             ))
             ->add('tipo', 'column', array(
                 'title' => 'Tipo',

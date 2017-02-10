@@ -29,6 +29,14 @@ class ElementoType extends AbstractType
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
             ))
+            ->add('estado', 'choice', array(
+                'choices' => array(
+                    'Bueno' => 'Bueno',
+                    'Dañado' => 'Dañado',
+                    'Otro' => 'Otro',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('tipo', 'choice', array(
                 'choices' => array(
                     'Computador' => 'Computador',
@@ -41,6 +49,7 @@ class ElementoType extends AbstractType
                 'choices' => array(
                     'Estudiante' => 'Estudiante',
                     'Funcionario' => 'Funcionario',
+                    'Otro' => 'Otro',
                 ),
                 'choices_as_values' => true,
                 'label' => 'Tipo de Préstamo',
