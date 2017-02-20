@@ -41,30 +41,6 @@ class Prestamo
     private $fechaDevolucion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="estado_devolucion", type="string", length=45, nullable=true)
-     * @Assert\Length(max="45")
-     */
-    private $estadoDevolucion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion_devolucion", type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
-     */
-    private $descripcionDevolucion;
-
-    /**
-     * @var Elemento
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Elemento")
-     * @Assert\Type("AppBundle\Entity\Elemento")
-     */
-    private $elemento;
-
-    /**
      * @var Estudiante
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estudiante")
@@ -141,54 +117,6 @@ class Prestamo
     }
 
     /**
-     * Set estadoDevolucion.
-     *
-     * @param string $estadoDevolucion
-     *
-     * @return Prestamo
-     */
-    public function setEstadoDevolucion($estadoDevolucion)
-    {
-        $this->estadoDevolucion = $estadoDevolucion;
-
-        return $this;
-    }
-
-    /**
-     * Get estadoDevolucion.
-     *
-     * @return string
-     */
-    public function getEstadoDevolucion()
-    {
-        return $this->estadoDevolucion;
-    }
-
-    /**
-     * Set descripcionDevolucion.
-     *
-     * @param string $descripcionDevolucion
-     *
-     * @return Prestamo
-     */
-    public function setDescripcionDevolucion($descripcionDevolucion)
-    {
-        $this->descripcionDevolucion = $descripcionDevolucion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcionDevolucion.
-     *
-     * @return string
-     */
-    public function getDescripcionDevolucion()
-    {
-        return $this->descripcionDevolucion;
-    }
-
-    /**
      * @param Estudiante $estudiante
      */
     public function setEstudiante($estudiante)
@@ -219,7 +147,6 @@ class Prestamo
     {
         return $this->usuario;
     }
-
 
     /**
      * @Assert\Callback
