@@ -7,17 +7,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * PrestamoElemento
+ * ElementoPrestamo
  *
- * @ORM\Table(name="prestamo_elemento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoElementoRepository")
+ * @ORM\Table(name="elemento_prestamo")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoPrestamoRepository")
  */
-class PrestamoElemento
+class ElementoPrestamo
 {
     /**
      * @var Prestamo
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestamo")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestamo", inversedBy="elementos_prestamo")
      * @ORM\JoinColumn(name="prestamo_id", referencedColumnName="id", nullable=false)
      * @ORM\Id
      * @Assert\Type("AppBundle\Entity\Prestamo")
@@ -53,6 +53,8 @@ class PrestamoElemento
     private $descripcionDevolucion;
 
     /**
+     * Get prestamo
+     *
      * @return Prestamo
      */
     public function getPrestamo()
@@ -61,14 +63,22 @@ class PrestamoElemento
     }
 
     /**
+     * Set prestamo
+     *
      * @param Prestamo $prestamo
+     *
+     * @return ElementoPrestamo
      */
-    public function setPrestamo($prestamo)
+    public function setPrestamo(Prestamo $prestamo = null)
     {
         $this->prestamo = $prestamo;
+
+        return $this;
     }
 
     /**
+     * Get elemento
+     *
      * @return Elemento
      */
     public function getElemento()
@@ -77,9 +87,11 @@ class PrestamoElemento
     }
 
     /**
+     * Set elemento
+     *
      * @param Elemento $elemento
      */
-    public function setElemento($elemento)
+    public function setElemento(Elemento $elemento)
     {
         $this->elemento = $elemento;
     }

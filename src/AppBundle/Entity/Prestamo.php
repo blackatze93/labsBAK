@@ -59,6 +59,11 @@ class Prestamo
     private $usuario;
 
     /**
+     * @ORM\OneToMany(targetEntity="ElementoPrestamo", mappedBy="prestamo")
+     */
+    protected $elementos_prestamo;
+
+    /**
      * Get id.
      *
      * @return int
@@ -146,6 +151,48 @@ class Prestamo
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Prestamo constructor.
+     */
+    public function __construct()
+    {
+        $this->elementos_prestamo = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add elementos_prestamo
+     *
+     * @param ElementoPrestamo $elementos_prestamo
+     *
+     * @return Prestamo
+     */
+    public function addElementoPrestamo(ElementoPrestamo $elementos_prestamo)
+    {
+        $this->elementos_prestamo[] = $elementos_prestamo;
+
+        return $this;
+    }
+
+    /**
+     * Remove elementos_prestamo
+     *
+     * @param ElementoPrestamo $elementos_prestamo
+     */
+    public function removeElementoPrestamo(ElementoPrestamo $elementos_prestamo)
+    {
+        $this->elementos_prestamo->removeElement($elementos_prestamo);
+    }
+
+    /**
+     * Get elementos_prestamo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getElementosPrestamo()
+    {
+        return $this->elementos_prestamo;
     }
 
     /**
