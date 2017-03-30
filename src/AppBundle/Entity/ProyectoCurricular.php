@@ -19,7 +19,7 @@ class ProyectoCurricular
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
@@ -29,21 +29,29 @@ class ProyectoCurricular
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=45)
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
-     * @Assert\Length(max="45")
+     * @Assert\Length(max="100")
      */
     private $nombre;
 
     /**
-     * @var string
+     * @var Facultad
      *
-     * @ORM\Column(name="facultad", type="string", length=45)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad")
+     * @ORM\JoinColumn(name="facultad_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\Facultad")
      * @Assert\NotBlank()
-     * @Assert\Length(max="45")
      */
-    // TODO: revisar si implementar la entidad facultad
     private $facultad;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @param int $id
@@ -54,32 +62,6 @@ class ProyectoCurricular
     }
 
     /**
-     * Get id..
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nombre.
-     *
-     * @param string $nombre
-     *
-     * @return ProyectoCurricular
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre.
-     *
      * @return string
      */
     public function getNombre()
@@ -88,27 +70,27 @@ class ProyectoCurricular
     }
 
     /**
-     * Set facultad.
-     *
-     * @param string $facultad
-     *
-     * @return ProyectoCurricular
+     * @param string $nombre
      */
-    public function setFacultad($facultad)
+    public function setNombre($nombre)
     {
-        $this->facultad = $facultad;
-
-        return $this;
+        $this->nombre = $nombre;
     }
 
     /**
-     * Get facultad.
-     *
-     * @return string
+     * @return Facultad
      */
     public function getFacultad()
     {
         return $this->facultad;
+    }
+
+    /**
+     * @param Facultad $facultad
+     */
+    public function setFacultad($facultad)
+    {
+        $this->facultad = $facultad;
     }
 
     /**

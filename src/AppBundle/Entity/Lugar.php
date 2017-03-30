@@ -20,7 +20,7 @@ class Lugar
      * @var int
      *
      * @ORM\Id
-     * @ORM\Column(name="id", type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
@@ -29,21 +29,27 @@ class Lugar
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=100, unique=true)
+     * @ORM\Column(type="string", length=100, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(max="100")
      */
     private $nombre;
 
-    // TODO: se usa para determinar la cantidad de equipos que se pueden prestar
     /**
      * @var int
      *
-     * @ORM\Column(name="capacidad", type="integer")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="integer")
      * @Assert\Range(min="0", max="100")
      */
-    private $capacidad;
+    private $cantidadEquipos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100")
+     */
+    private $descripcion;
 
     /**
      * @var bool
@@ -54,12 +60,12 @@ class Lugar
     private $visible;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion", type="string", length=100, nullable=true)
-     * @Assert\Length(max="100")
+     * @return int
      */
-    private $descripcion;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @param int $id
@@ -70,32 +76,6 @@ class Lugar
     }
 
     /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nombre.
-     *
-     * @param string $nombre
-     *
-     * @return Lugar
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre.
-     *
      * @return string
      */
     public function getNombre()
@@ -104,27 +84,51 @@ class Lugar
     }
 
     /**
-     * Set capacidad.
-     *
-     * @param int $capacidad
-     *
-     * @return Lugar
+     * @param string $nombre
      */
-    public function setCapacidad($capacidad)
+    public function setNombre($nombre)
     {
-        $this->capacidad = $capacidad;
-
-        return $this;
+        $this->nombre = $nombre;
     }
 
     /**
-     * Get capacidad.
-     *
      * @return int
      */
-    public function getCapacidad()
+    public function getCantidadEquipos()
     {
-        return $this->capacidad;
+        return $this->cantidadEquipos;
+    }
+
+    /**
+     * @param int $cantidadEquipos
+     */
+    public function setCantidadEquipos($cantidadEquipos)
+    {
+        $this->cantidadEquipos = $cantidadEquipos;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param string $descripcion
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return $this->visible;
     }
 
     /**
@@ -133,38 +137,6 @@ class Lugar
     public function setVisible($visible)
     {
         $this->visible = $visible;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getVisible()
-    {
-        return $this->visible;
-    }
-
-    /**
-     * Set descripcion.
-     *
-     * @param string $descripcion
-     *
-     * @return Lugar
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion.
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
     }
 
     /**

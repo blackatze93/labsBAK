@@ -27,20 +27,29 @@ class Usuario implements AdvancedUserInterface
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="bigint", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
+     */
+    private $codigo;
+
+    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
-     * @Assert\Length(max="60")
+     * @Assert\Length(max="100")
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=100)-
      * @Assert\NotBlank()
-     * @Assert\Length(max="60")
+     * @Assert\Length(max="100")
      */
     private $apellido;
 
@@ -72,27 +81,11 @@ class Usuario implements AdvancedUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
-     * @Assert\Length(max="45")
+     * @Assert\Length(max="100")
      */
-    private $cargo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=60, nullable=true)
-     * @Assert\Length(max="60")
-     */
-    private $funciones;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     * @Assert\DateTime()
-     */
-    private $fechaAlta;
+    private $rol;
 
     /**
      * @var bool
@@ -100,24 +93,51 @@ class Usuario implements AdvancedUserInterface
      * @ORM\Column(type="boolean")
      * @Assert\Type(type="bool")
      */
-    private $estaActivo;
+    private $activo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="100")
+     */
+    private $estado;
 
     /**
      * @var Dependencia
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
-     * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=true)
      * @Assert\Type("AppBundle\Entity\Dependencia")
      * @Assert\NotBlank()
      */
     private $dependencia;
 
     /**
+     * @var ProyectoCurricular
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
+     * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=true)
+     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
+     * @Assert\NotBlank()
+     */
+    private $proyectoCurricular;
+
+    /**
      * Usuario constructor.
      */
     public function __construct()
     {
-        $this->fechaAlta = new \DateTime();
+        $this->fechaCreacion = new \DateTime();
     }
 
     /**
@@ -142,6 +162,22 @@ class Usuario implements AdvancedUserInterface
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * @param int $codigo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
     }
 
     /**
@@ -227,65 +263,65 @@ class Usuario implements AdvancedUserInterface
     /**
      * @return string
      */
-    public function getCargo()
+    public function getRol()
     {
-        return $this->cargo;
+        return $this->rol;
     }
 
     /**
-     * @param string $cargo
+     * @param string $rol
      */
-    public function setCargo($cargo)
+    public function setRol($rol)
     {
-        $this->cargo = $cargo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFunciones()
-    {
-        return $this->funciones;
-    }
-
-    /**
-     * @param string $funciones
-     */
-    public function setFunciones($funciones)
-    {
-        $this->funciones = $funciones;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaAlta()
-    {
-        return $this->fechaAlta;
-    }
-
-    /**
-     * @param \DateTime $fechaAlta
-     */
-    public function setFechaAlta($fechaAlta)
-    {
-        $this->fechaAlta = $fechaAlta;
+        $this->rol = $rol;
     }
 
     /**
      * @return bool
      */
-    public function getEstaActivo()
+    public function isActivo()
     {
-        return $this->estaActivo;
+        return $this->activo;
     }
 
     /**
-     * @param bool $estaActivo
+     * @param bool $activo
      */
-    public function setEstaActivo($estaActivo)
+    public function setActivo($activo)
     {
-        $this->estaActivo = $estaActivo;
+        $this->activo = $activo;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * @param \DateTime $fechaCreacion
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param string $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
     }
 
     /**
@@ -302,6 +338,22 @@ class Usuario implements AdvancedUserInterface
     public function setDependencia(Dependencia $dependencia)
     {
         $this->dependencia = $dependencia;
+    }
+
+    /**
+     * @return ProyectoCurricular
+     */
+    public function getProyectoCurricular()
+    {
+        return $this->proyectoCurricular;
+    }
+
+    /**
+     * @param ProyectoCurricular $proyectoCurricular
+     */
+    public function setProyectoCurricular(ProyectoCurricular $proyectoCurricular)
+    {
+        $this->proyectoCurricular = $proyectoCurricular;
     }
 
     /**
@@ -322,7 +374,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function getRoles()
     {
-        return array($this->cargo);
+        return array($this->rol);
     }
 
     /**
@@ -387,6 +439,6 @@ class Usuario implements AdvancedUserInterface
      */
     public function isEnabled()
     {
-        return $this->estaActivo;
+        return $this->isActivo();
     }
 }
