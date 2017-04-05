@@ -32,11 +32,13 @@ services:
     app.datatable.proyectocurricular:
         class: AppBundle\Datatables\ProyectoCurricularDatatable
         parent: sg_datatables.datatable.abstract
-        
-    app.datatable.estudiante:
-        class: AppBundle\Datatables\EstudianteDatatable
-        parent: sg_datatables.datatable.abstract
 
     app.datatable.elemento:
         class: AppBundle\Datatables\ElementoDatatable
         parent: sg_datatables.datatable.abstract
+
+    admin.facultad:
+        class: AppBundle\Admin\FacultadAdmin
+        arguments: [~, AppBundle\Entity\Facultad, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Facultad }
