@@ -21,7 +21,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="id", type="string", length=20, nullable=false, unique=true)
+     * @ORM\Column(type="string", length=20, nullable=false, unique=true)
      * @ORM\Id
      * @Assert\NotBlank()
      * @Assert\Length(max="20")
@@ -31,7 +31,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=60)
+     * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank()
      * @Assert\Length(max="60")
      */
@@ -40,7 +40,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", length=60, nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=true)
      * @Assert\Length(max="60")
      */
     private $marca;
@@ -48,7 +48,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
      */
     private $descripcion;
@@ -56,7 +56,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="serial", type="string", length=60, nullable=true, unique=true)
+     * @ORM\Column(type="string", length=60, nullable=true, unique=true)
      * @Assert\Length(max="60")
      */
     private $serial;
@@ -74,7 +74,7 @@ class Elemento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso", type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      * @Assert\Date()
      */
     private $fechaIngreso;
@@ -83,7 +83,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=45)
+     * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
@@ -93,7 +93,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=45)
+     * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
@@ -103,7 +103,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo_prestamo", type="string", length=45)
+     * @ORM\Column(type="string", length=45)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
@@ -112,10 +112,28 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max="255")
      */
     private $observaciones;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
+     */
+    private $activo;
+
+    /**
+     * @var Equipo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipo")
+     * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id", nullable=true)
+     * @Assert\Type("AppBundle\Entity\Equipo")
+     * @Assert\NotBlank()
+     */
+    private $equipo;
 
     /**
      * @return string
@@ -291,6 +309,38 @@ class Elemento
     public function setObservaciones($observaciones)
     {
         $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
+     * @param bool $activo
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+    }
+
+    /**
+     * @return Equipo
+     */
+    public function getEquipo()
+    {
+        return $this->equipo;
+    }
+
+    /**
+     * @param Equipo $equipo
+     */
+    public function setEquipo($equipo)
+    {
+        $this->equipo = $equipo;
     }
 
     /**

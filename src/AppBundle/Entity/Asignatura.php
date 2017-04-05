@@ -6,14 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
-// TODO: completar asignatura
 /**
  * Asignatura
  *
  * @ORM\Table(name="asignatura")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AsignaturaRepository")
  * @DoctrineAssert\UniqueEntity("id")
- * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
+ * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Asignatura
 {
@@ -22,7 +21,8 @@ class Asignatura
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
      */
     private $id;
 
@@ -36,20 +36,7 @@ class Asignatura
     private $nombre;
 
     /**
-     * @var ProyectoCurricular
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
-     * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
-     * @Assert\NotBlank()
-     */
-    private $proyectoCurricular;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -57,25 +44,33 @@ class Asignatura
     }
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     * @return Asignatura
+     * @param int $id
      */
-    public function setNombre($nombre)
+    public function setId($id)
     {
-        $this->nombre = $nombre;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get nombre
-     *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+
+    /**
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
+
 }

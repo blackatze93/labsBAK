@@ -65,4 +65,11 @@ class Facultad
     {
         $this->nombre = $nombre;
     }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
+
 }
