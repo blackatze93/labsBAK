@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Form\Type\UsuarioType;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MantenimientoExterno

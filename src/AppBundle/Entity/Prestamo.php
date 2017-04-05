@@ -41,15 +41,6 @@ class Prestamo
     private $fechaDevolucion;
 
     /**
-     * @var Estudiante
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estudiante")
-     * @ORM\JoinColumn(name="estudiante_id", referencedColumnName="id", nullable=true, unique=false)
-     * @Assert\Type("AppBundle\Entity\Estudiante")
-     */
-    private $estudiante;
-
-    /**
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
@@ -122,22 +113,6 @@ class Prestamo
     }
 
     /**
-     * @param Estudiante $estudiante
-     */
-    public function setEstudiante($estudiante)
-    {
-        $this->estudiante = $estudiante;
-    }
-
-    /**
-     * @return Estudiante
-     */
-    public function getEstudiante()
-    {
-        return $this->estudiante;
-    }
-
-    /**
      * @param Usuario $usuario
      */
     public function setUsuario($usuario)
@@ -200,17 +175,17 @@ class Prestamo
      *
      * @param ExecutionContextInterface $context
      */
-    public function validarUsuario(ExecutionContextInterface $context)
-    {
-        if (is_null($this->estudiante) && is_null($this->usuario)){
-            $context->buildViolation('Debe asignar un estudiante o usuario al prestamo.')
-                ->atPath('estudiante')
-                ->addViolation()
-            ;
-        } elseif (!is_null($this->estudiante) && !is_null($this->usuario)) {
-            $context->buildViolation('No puede asignar un prestamo a un estudiante y un usuario al mismo tiempo.')
-                ->atPath('usuario')
-                ->addViolation();
-        }
-    }
+//    public function validarUsuario(ExecutionContextInterface $context)
+//    {
+//        if (is_null($this->estudiante) && is_null($this->usuario)){
+//            $context->buildViolation('Debe asignar un estudiante o usuario al prestamo.')
+//                ->atPath('estudiante')
+//                ->addViolation()
+//            ;
+//        } elseif (!is_null($this->estudiante) && !is_null($this->usuario)) {
+//            $context->buildViolation('No puede asignar un prestamo a un estudiante y un usuario al mismo tiempo.')
+//                ->atPath('usuario')
+//                ->addViolation();
+//        }
+//    }
 }
