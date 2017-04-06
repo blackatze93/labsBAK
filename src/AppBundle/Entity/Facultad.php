@@ -68,7 +68,7 @@ class Facultad
 
     function __toString()
     {
-        return $this->getNombre();
+        return (string) $this->getNombre();
     }
 
 

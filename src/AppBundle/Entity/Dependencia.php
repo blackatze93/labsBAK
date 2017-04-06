@@ -98,6 +98,6 @@ class Dependencia
      */
     public function __toString()
     {
-        return $this->getNombre().' - '.$this->getFacultad();
+        return (string) $this->getNombre();
     }
 }
