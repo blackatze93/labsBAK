@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
@@ -35,6 +36,11 @@ class Facultad
     private $nombre;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dependencia", mappedBy="facultad")
+     */
+    private $dependencias;
+
+    /**
      * @return int
      */
     public function getId()
@@ -66,9 +72,22 @@ class Facultad
         $this->nombre = $nombre;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDependencias()
+    {
+        return $this->dependencias;
+    }
+
     function __toString()
     {
         return (string) $this->getNombre();
+    }
+
+    public function __construct()
+    {
+        $this->dependencias = new ArrayCollection();
     }
 
 
