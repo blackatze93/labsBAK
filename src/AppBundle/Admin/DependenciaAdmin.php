@@ -12,7 +12,6 @@ class DependenciaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id', 'integer')
             ->add('nombre', 'text')
             ->add('facultad', 'sonata_type_model', array(
                 'class' => 'AppBundle\Entity\Facultad',
@@ -23,18 +22,16 @@ class DependenciaAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
             ->add('nombre')
-//            ->add('facultad')
+            ->add('facultad')
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
             ->addIdentifier('nombre')
-//            ->addIdentifier('facultad')
+            ->add('facultad')
         ;
     }
 }
