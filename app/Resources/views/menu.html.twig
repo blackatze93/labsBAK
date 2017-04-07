@@ -69,28 +69,6 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {#{% if is_granted('ROLE_ADMIN') %}#}
-                    {% if (route starts with 'usuario' or
-                    route starts with 'dependencia' or
-                    route starts with 'lugar' or
-                    route starts with 'clase') and
-                    route != 'usuario_perfil'%}
-                        {% set entidad = 'active' %}
-                    {% endif %}
-
-                    <li class="dropdown {{ entidad|default('') }}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entidades <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="{{ route starts with 'usuario' and route != 'usuario_perfil' ? 'active' }}"><a href="{{ path('usuario_index') }}">Usuarios</a></li>
-                            <li class="{{ route starts with 'dependencia' ? 'active' }}"><a href="{{ path('dependencia_index') }}">Dependencias</a></li>
-                            <li class="{{ route starts with 'lugar' ? 'active' }}"><a href="{{ path('lugar_index') }}">Lugares</a></li>
-                            <li class="{{ route starts with 'clase' ? 'active' }}"><a href="{{ path('clase_index') }}">Clases</a></li>
-                            <li class="{{ route starts with 'proyectocurricular' ? 'active' }}"><a href="{{ path('proyectocurricular_index') }}">Proyectos Curriculares</a></li>
-                            <li class="{{ route starts with 'elemento' ? 'active' }}"><a href="{{ path('elemento_index') }}">Elementos</a></li>
-                        </ul>
-                    </li>
-
-                {#{% endif %}#}
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="{{ route == 'usuario_perfil' ? 'active' }}"><a href="{{ path('usuario_perfil') }}">{{ app.user }}</a></li>
                     <li><a href="{{ path('usuario_logout') }}">Salir</a></li>
