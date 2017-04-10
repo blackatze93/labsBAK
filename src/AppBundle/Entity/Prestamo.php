@@ -137,7 +137,7 @@ class Prestamo
     }
 
     /**
-     * Add elementos_prestamo
+     * Add elementos_prestamo.
      *
      * @param ElementoPrestamo $elementos_prestamo
      *
@@ -151,7 +151,7 @@ class Prestamo
     }
 
     /**
-     * Remove elementos_prestamo
+     * Remove elementos_prestamo.
      *
      * @param ElementoPrestamo $elementos_prestamo
      */
@@ -161,7 +161,7 @@ class Prestamo
     }
 
     /**
-     * Get elementos_prestamo
+     * Get elementos_prestamo.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -170,7 +170,7 @@ class Prestamo
         return $this->elementos_prestamo;
     }
 
-    /**
+    /*
      * @Assert\Callback
      *
      * @param ExecutionContextInterface $context

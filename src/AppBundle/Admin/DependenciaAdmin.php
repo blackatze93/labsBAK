@@ -50,8 +50,8 @@ class DependenciaAdmin extends AbstractAdmin
                     'fieldName' => 'nombre',
                 ),
                 'sort_parent_association_mappings' => array(
-                    array('fieldName' => 'facultad')
-                )
+                    array('fieldName' => 'facultad'),
+                ),
             ))
             ->add('_action', null, array(
                 'label' => 'Acciones',
@@ -59,7 +59,7 @@ class DependenciaAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ))
         ;
     }
