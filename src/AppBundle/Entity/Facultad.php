@@ -40,6 +40,11 @@ class Facultad
     private $dependencias;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ProyectoCurricular", mappedBy="facultad")
+     */
+    private $proyectosCurriculares;
+
+    /**
      * @return int
      */
     public function getId()
@@ -71,9 +76,18 @@ class Facultad
         return $this->dependencias;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getProyectosCurriculares()
+    {
+        return $this->proyectosCurriculares;
+    }
+
     public function __construct()
     {
         $this->dependencias = new ArrayCollection();
+        $this->proyectosCurriculares = new ArrayCollection();
     }
 
 

@@ -24,3 +24,9 @@ services:
             arguments: [~, AppBundle\Entity\Dependencia, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Dependencia }
+
+    admin.proyectoCurricular:
+            class: AppBundle\Admin\ProyectoCurricularAdmin
+            arguments: [~, AppBundle\Entity\ProyectoCurricular, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Proyecto Curricular }

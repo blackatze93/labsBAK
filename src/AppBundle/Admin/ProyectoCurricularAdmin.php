@@ -2,19 +2,24 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\Facultad;
+use AppBundle\Entity\ProyectoCurricular;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class FacultadAdmin extends AbstractAdmin
+class ProyectoCurricularAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('id', 'integer')
             ->add('nombre', 'text')
+            ->add('facultad', 'sonata_type_model', array(
+                'class' => 'AppBundle\Entity\Facultad',
+                'property' => 'nombre',
+            ))
         ;
     }
 
@@ -23,6 +28,10 @@ class FacultadAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('nombre')
+            ->add('facultad', null, array(), 'entity', array(
+                'class' => 'AppBundle\Entity\Facultad',
+                'property' => 'nombre',
+            ))
         ;
     }
 
@@ -31,6 +40,20 @@ class FacultadAdmin extends AbstractAdmin
         $listMapper
             ->add('id', 'text')
             ->add('nombre')
+            ->add('facultad', null, array(
+                'route' => array(
+                    'name' => 'show',
+                ),
+                'label' => 'Facultad',
+                'associated_property' => 'nombre',
+                'sortable' => true,
+                'sort_field_mapping' => array(
+                    'fieldName' => 'nombre',
+                ),
+                'sort_parent_association_mappings' => array(
+                    array('fieldName' => 'facultad')
+                )
+            ))
             ->add('_action', null, array(
                 'label' => 'Acciones',
                 'actions' => array(
@@ -47,13 +70,7 @@ class FacultadAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('nombre')
-            ->add('dependencias', null, array(
-                'associated_property' => 'nombre',
-                'route' => array(
-                    'name' => 'show',
-                ),
-            ))
-            ->add('proyectosCurriculares', null, array(
+            ->add('facultad', null, array(
                 'associated_property' => 'nombre',
                 'route' => array(
                     'name' => 'show',
@@ -64,8 +81,8 @@ class FacultadAdmin extends AbstractAdmin
 
     public function toString($object)
     {
-        return $object instanceof Facultad
+        return $object instanceof ProyectoCurricular
             ? $object->getNombre()
-            : 'Facultad'; // shown in the breadcrumb on the create view
+            : 'Proyecto Curricular'; // shown in the breadcrumb on the create view
     }
 }
