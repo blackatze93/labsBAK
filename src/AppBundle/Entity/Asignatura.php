@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Asignatura
+ * Asignatura.
  *
  * @ORM\Table(name="asignatura")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AsignaturaRepository")
@@ -66,5 +66,4 @@ class Asignatura
     {
         $this->nombre = $nombre;
     }
-
 }
