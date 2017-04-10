@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Sg\DatatablesBundle\SgDatatablesBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
 
             // These are the other bundles the SonataAdminBundle relies on

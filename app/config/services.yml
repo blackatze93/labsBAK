@@ -7,35 +7,11 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-    app.datatable.usuario:
-        class: AppBundle\Datatables\UsuarioDatatable
-        parent: sg_datatables.datatable.abstract
-
-    app.datatable.dependencia:
-        class: AppBundle\Datatables\DependenciaDatatable
-        parent: sg_datatables.datatable.abstract
-
     app.calendar_listener:
         class: AppBundle\EventListener\CalendarEventListener
         tags:
             - { name: kernel.event_listener, event: calendar.load_events, method: loadEvents }
         arguments: ['@doctrine.orm.entity_manager', '@router']
-
-    app.datatable.lugar:
-        class: AppBundle\Datatables\LugarDatatable
-        parent: sg_datatables.datatable.abstract
-
-    app.datatable.clase:
-        class: AppBundle\Datatables\ClaseDatatable
-        parent: sg_datatables.datatable.abstract
-
-    app.datatable.proyectocurricular:
-        class: AppBundle\Datatables\ProyectoCurricularDatatable
-        parent: sg_datatables.datatable.abstract
-
-    app.datatable.elemento:
-        class: AppBundle\Datatables\ElementoDatatable
-        parent: sg_datatables.datatable.abstract
 
     admin.facultad:
         class: AppBundle\Admin\FacultadAdmin

@@ -50,7 +50,7 @@ class DependenciaAdmin extends AbstractAdmin
                     'fieldName' => 'nombre',
                 ),
                 'sort_parent_association_mappings' => array(
-                    array('fieldName' => 'facultad') // property state of entity City
+                    array('fieldName' => 'facultad')
                 )
             ))
             ->add('_action', null, array(
