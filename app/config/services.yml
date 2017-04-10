@@ -20,19 +20,25 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Facultad" }
 
     app.admin.dependencia:
-            class: AppBundle\Admin\DependenciaAdmin
-            arguments: [~, AppBundle\Entity\Dependencia, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Dependencia" }
+        class: AppBundle\Admin\DependenciaAdmin
+        arguments: [~, AppBundle\Entity\Dependencia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Dependencia" }
 
     app.admin.proyectoCurricular:
-            class: AppBundle\Admin\ProyectoCurricularAdmin
-            arguments: [~, AppBundle\Entity\ProyectoCurricular, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Proyecto Curricular" }
+        class: AppBundle\Admin\ProyectoCurricularAdmin
+        arguments: [~, AppBundle\Entity\ProyectoCurricular, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Proyecto Curricular" }
 
     app.admin.asignatura:
-            class: AppBundle\Admin\AsignaturaAdmin
-            arguments: [~, AppBundle\Entity\Asignatura, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Asignatura" }
+        class: AppBundle\Admin\AsignaturaAdmin
+        arguments: [~, AppBundle\Entity\Asignatura, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Asignatura" }
+
+    app.admin.equipo:
+        class: AppBundle\Admin\EquipoAdmin
+        arguments: [~, AppBundle\Entity\Equipo, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Equipo" }
