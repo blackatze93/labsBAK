@@ -65,6 +65,10 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+sonata_admin:
+  title: UD
+  title_logo: https://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0019/4485/brand.gif?itok=wz562CQK
+
 sonata_block:
     default_contexts: [cms]
     blocks:
