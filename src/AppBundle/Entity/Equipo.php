@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="equipo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipoRepository")
+ * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Equipo
 {
@@ -24,10 +25,11 @@ class Equipo
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=45, unique=true)
+     * @ORM\Column(name="nombre", type="string", length=100, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="100")
      */
     private $nombre;
-
 
     /**
      * Get id
@@ -37,6 +39,16 @@ class Equipo
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     /**
@@ -50,15 +62,5 @@ class Equipo
         $this->nombre = $nombre;
 
         return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string 
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
     }
 }
