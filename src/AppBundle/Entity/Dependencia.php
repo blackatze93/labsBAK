@@ -52,14 +52,6 @@ class Dependencia
     }
 
     /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return string
      */
     public function getNombre()
@@ -89,13 +81,5 @@ class Dependencia
     public function setFacultad(Facultad $facultad)
     {
         $this->facultad = $facultad;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string) $this->getNombre();
     }
 }

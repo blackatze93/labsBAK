@@ -12,17 +12,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Table(name="facultad")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FacultadRepository")
- * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Facultad
 {
     /**
      * @var int
      *
+     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer", unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Range(min="0")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -49,14 +48,6 @@ class Facultad
     }
 
     /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return string
      */
     public function getNombre()
@@ -78,11 +69,6 @@ class Facultad
     public function getDependencias()
     {
         return $this->dependencias;
-    }
-
-    function __toString()
-    {
-        return (string) $this->getNombre();
     }
 
     public function __construct()
