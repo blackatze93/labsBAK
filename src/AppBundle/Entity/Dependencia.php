@@ -11,7 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Table(name="dependencia")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
- * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class Dependencia
@@ -19,10 +18,9 @@ class Dependencia
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @Assert\NotBlank()
-     * @Assert\Range(min="0")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -38,7 +36,7 @@ class Dependencia
     /**
      * @var Facultad
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad", inversedBy="dependencias")
      * @ORM\JoinColumn(name="facultad_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Facultad")
      * @Assert\NotBlank()
@@ -51,14 +49,6 @@ class Dependencia
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -88,16 +78,8 @@ class Dependencia
     /**
      * @param Facultad $facultad
      */
-    public function setFacultad($facultad)
+    public function setFacultad(Facultad $facultad)
     {
         $this->facultad = $facultad;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getNombre();
     }
 }

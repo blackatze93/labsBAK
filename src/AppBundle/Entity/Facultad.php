@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
@@ -11,17 +12,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Table(name="facultad")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FacultadRepository")
- * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Facultad
 {
     /**
      * @var int
      *
+     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer", unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Range(min="0")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -35,19 +35,21 @@ class Facultad
     private $nombre;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dependencia", mappedBy="facultad")
+     */
+    private $dependencias;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ProyectoCurricular", mappedBy="facultad")
+     */
+    private $proyectosCurriculares;
+
+    /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -65,4 +67,28 @@ class Facultad
     {
         $this->nombre = $nombre;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDependencias()
+    {
+        return $this->dependencias;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProyectosCurriculares()
+    {
+        return $this->proyectosCurriculares;
+    }
+
+    public function __construct()
+    {
+        $this->dependencias = new ArrayCollection();
+        $this->proyectosCurriculares = new ArrayCollection();
+    }
+
+
 }

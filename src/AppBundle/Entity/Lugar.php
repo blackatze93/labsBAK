@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
@@ -11,7 +12,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Table(name="lugar")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LugarRepository")
- * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Lugar
@@ -19,10 +19,9 @@ class Lugar
     /**
      * @var int
      *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer", unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Range(min="0")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -58,6 +57,12 @@ class Lugar
      * @Assert\Type(type="bool")
      */
     private $visible;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Elemento", mappedBy="lugar")
+     */
+    private $elementos;
+
 
     /**
      * @return int
@@ -155,12 +160,15 @@ class Lugar
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return string
+     * @return mixed
      */
-    public function __toString()
+    public function getElementos()
     {
-        return $this->getNombre();
+        return $this->elementos;
+    }
+
+    public function __construct()
+    {
+        $this->elementos = new ArrayCollection();
     }
 }

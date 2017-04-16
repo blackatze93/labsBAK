@@ -88,6 +88,14 @@ class Usuario implements AdvancedUserInterface
     private $rol;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     * @Assert\Length(max="100")
+     */
+    private $cargo;
+
+    /**
      * @var bool
      *
      * @ORM\Column(type="boolean")
@@ -99,10 +107,12 @@ class Usuario implements AdvancedUserInterface
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $fechaCreacion;
 
+    // TODO: paz y salvo o en mora
     /**
      * @var string
      *
@@ -118,7 +128,6 @@ class Usuario implements AdvancedUserInterface
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=true)
      * @Assert\Type("AppBundle\Entity\Dependencia")
-     * @Assert\NotBlank()
      */
     private $dependencia;
 
@@ -128,7 +137,6 @@ class Usuario implements AdvancedUserInterface
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
      * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=true)
      * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
-     * @Assert\NotBlank()
      */
     private $proyectoCurricular;
 
@@ -274,6 +282,22 @@ class Usuario implements AdvancedUserInterface
     public function setRol($rol)
     {
         $this->rol = $rol;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * @param string $cargo
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
     }
 
     /**

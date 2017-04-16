@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="1">
                 <source>Id</source>
-                <target>Id</target>
+                <target>ID</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>Nombre</source>
@@ -35,24 +35,24 @@
                 <target>Cargo</target>
             </trans-unit>
             <trans-unit id="9">
-                <source>Funciones</source>
-                <target>Funciones</target>
+                <source>Facultad</source>
+                <target>Facultad</target>
             </trans-unit>
             <trans-unit id="10">
-                <source>Esta activo</source>
-                <target>Está Activo</target>
+                <source>Proyecto Curricular</source>
+                <target>Proyecto Curricular</target>
             </trans-unit>
             <trans-unit id="11">
-                <source>Crear</source>
-                <target>Crear</target>
+                <source>Equipo</source>
+                <target>Equipo</target>
             </trans-unit>
             <trans-unit id="12">
-                <source>Restablecer</source>
-                <target>Restablecer</target>
+                <source>Elemento</source>
+                <target>Elemento</target>
             </trans-unit>
             <trans-unit id="13">
-                <source>Guardar</source>
-                <target>Guardar</target>
+                <source></source>
+                <target></target>
             </trans-unit>
             <trans-unit id="14">
                 <source>ROLE_ADMIN</source>
@@ -74,6 +74,19 @@
                 <source>User account is disabled.</source>
                 <target>La cuenta no está activa.</target>
             </trans-unit>
+            <trans-unit id="19">
+                <source>Asignatura List</source>
+                <target>Asignaturas</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Asignatura Create</source>
+                <target>Crear</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Asignatura</source>
+                <target>Asignatura</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -24,10 +24,20 @@ services:
     app.datatable.lugar:
         class: AppBundle\Datatables\LugarDatatable
         parent: sg_datatables.datatable.abstract
+    app.admin.facultad:
+        class: AppBundle\Admin\FacultadAdmin
+        arguments: [~, AppBundle\Entity\Facultad, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Facultad" }
 
     app.datatable.clase:
         class: AppBundle\Datatables\ClaseDatatable
         parent: sg_datatables.datatable.abstract
+    app.admin.dependencia:
+        class: AppBundle\Admin\DependenciaAdmin
+        arguments: [~, AppBundle\Entity\Dependencia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Dependencia" }
 
     app.datatable.proyectocurricular:
         class: AppBundle\Datatables\ProyectoCurricularDatatable
@@ -36,7 +46,35 @@ services:
     app.datatable.estudiante:
         class: AppBundle\Datatables\EstudianteDatatable
         parent: sg_datatables.datatable.abstract
+    app.admin.proyectoCurricular:
+        class: AppBundle\Admin\ProyectoCurricularAdmin
+        arguments: [~, AppBundle\Entity\ProyectoCurricular, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Proyecto Curricular" }
 
     app.datatable.elemento:
         class: AppBundle\Datatables\ElementoDatatable
         parent: sg_datatables.datatable.abstract
+    app.admin.asignatura:
+        class: AppBundle\Admin\AsignaturaAdmin
+        arguments: [~, AppBundle\Entity\Asignatura, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Asignatura" }
+
+    app.admin.equipo:
+        class: AppBundle\Admin\EquipoAdmin
+        arguments: [~, AppBundle\Entity\Equipo, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Equipo" }
+
+    app.admin.elemento:
+        class: AppBundle\Admin\ElementoAdmin
+        arguments: [~, AppBundle\Entity\Elemento, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Elemento" }
+
+    app.admin.lugar:
+        class: AppBundle\Admin\LugarAdmin
+        arguments: [~, AppBundle\Entity\Lugar, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Entidades", label: "Lugar" }

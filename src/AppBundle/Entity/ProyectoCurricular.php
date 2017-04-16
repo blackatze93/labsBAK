@@ -38,7 +38,7 @@ class ProyectoCurricular
     /**
      * @var Facultad
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad", inversedBy="proyectosCurriculares")
      * @ORM\JoinColumn(name="facultad_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Facultad")
      * @Assert\NotBlank()
@@ -91,13 +91,5 @@ class ProyectoCurricular
     public function setFacultad($facultad)
     {
         $this->facultad = $facultad;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getNombre();
     }
 }
