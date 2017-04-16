@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * Facultad
+ * Facultad.
  *
  * @ORM\Table(name="facultad")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FacultadRepository")
@@ -89,6 +89,4 @@ class Facultad
         $this->dependencias = new ArrayCollection();
         $this->proyectosCurriculares = new ArrayCollection();
     }
-
-
 }

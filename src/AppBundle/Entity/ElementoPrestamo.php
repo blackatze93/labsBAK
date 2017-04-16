@@ -4,10 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
- * ElementoPrestamo
+ * ElementoPrestamo.
  *
  * @ORM\Table(name="elemento_prestamo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoPrestamoRepository")
@@ -53,7 +52,7 @@ class ElementoPrestamo
     private $descripcionDevolucion;
 
     /**
-     * Get prestamo
+     * Get prestamo.
      *
      * @return Prestamo
      */
@@ -63,7 +62,7 @@ class ElementoPrestamo
     }
 
     /**
-     * Set prestamo
+     * Set prestamo.
      *
      * @param Prestamo $prestamo
      *
@@ -77,7 +76,7 @@ class ElementoPrestamo
     }
 
     /**
-     * Get elemento
+     * Get elemento.
      *
      * @return Elemento
      */
@@ -87,7 +86,7 @@ class ElementoPrestamo
     }
 
     /**
-     * Set elemento
+     * Set elemento.
      *
      * @param Elemento $elemento
      */

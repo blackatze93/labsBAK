@@ -66,8 +66,8 @@ class ElementoAdmin extends AbstractAdmin
                     'fieldName' => 'nombre',
                 ),
                 'sort_parent_association_mappings' => array(
-                    array('fieldName' => 'lugar')
-                )
+                    array('fieldName' => 'lugar'),
+                ),
             ))
             ->add('_action', null, array(
                 'label' => 'Acciones',
@@ -75,10 +75,11 @@ class ElementoAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ))
         ;
     }
+
 //
 //    public function configureShowFields(ShowMapper $showMapper)
 //    {

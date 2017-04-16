@@ -46,10 +46,11 @@ class LugarAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                )
+                ),
             ))
         ;
     }
+
 //
 //    public function configureShowFields(ShowMapper $showMapper)
 //    {

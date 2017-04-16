@@ -63,7 +63,6 @@ class Lugar
      */
     private $elementos;
 
-
     /**
      * @return int
      */
