@@ -46,6 +46,11 @@ class UsuarioController extends BaseAdminController
      */
     public function perfilAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') || $this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            $this->addFlash('error', 'Edite su perfil desde la administración.');
+            return $this->redirectToRoute('admin');
+        }
+
         $usuario = $this->getUser();
 
         $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario);

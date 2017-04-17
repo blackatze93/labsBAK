@@ -1,14 +1,12 @@
 function notificacion(text, type) {
-    noty({
-        text        : text,
+    new Noty({
         type        : type,
-        dismissQueue: true,
-        timeout     : 10000,
-        progressBar : true,
-        closeWith   : ['click'],
-        layout      : 'topCenter',
-        modal       : false,
-        theme       : 'metroui',
-        maxVisible  : 3
-    });
+        text        : text
+    }).show();
 }
+
+Noty.overrideDefaults({
+    layout   : 'bottomCenter',
+    theme    : 'mint',
+    timeout     : 5000
+});
