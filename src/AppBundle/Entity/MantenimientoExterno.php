@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Form\Type\UsuarioType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -44,7 +43,7 @@ class MantenimientoExterno
     /**
      * @var int
      *
-     * @ORM\Column(type="bigint", unique=true)
+     * @ORM\Column(type="bigint")
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
@@ -70,7 +69,7 @@ class MantenimientoExterno
 
     // TODO: el usuario que registra el mantenimiento
     /**
-     * @var UsuarioType
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
@@ -85,14 +84,6 @@ class MantenimientoExterno
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -176,7 +167,7 @@ class MantenimientoExterno
     }
 
     /**
-     * @return UsuarioType
+     * @return Usuario
      */
     public function getUsuario()
     {
@@ -184,10 +175,12 @@ class MantenimientoExterno
     }
 
     /**
-     * @param UsuarioType $usuario
+     * @param Usuario $usuario
      */
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
     }
+
+
 }
