@@ -71,7 +71,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted('ROLE_ADMIN') %}
                     <li><a href="{{ path('admin') }}">Administración</a></li>
-                    <li class="{{ route starts with 'clase' ? 'active' }}"><a href="{{ path('clase_index') }}">Clases</a></li>
+                    <li class="{{ route starts with 'evento' ? 'active' }}"><a href="{{ path('evento_index') }}">Eventos</a></li>
                 {% endif %}
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="{{ route == 'usuario_perfil' ? 'active' }}"><a href="{{ path('usuario_perfil') }}">{{ app.user }}</a></li>

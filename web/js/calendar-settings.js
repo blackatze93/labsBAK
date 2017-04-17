@@ -43,7 +43,7 @@ $(function () {
             url: Routing.generate('fullcalendar_lugares'),
             type: 'POST'
         },
-        // Clases
+        // Eventos
         eventRender: function(event, element) {
             var texto = '';
 

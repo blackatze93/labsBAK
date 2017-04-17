@@ -97,7 +97,7 @@ class UsuarioController extends BaseAdminController
         //Se crea la nueva entidad sobre la cual se guardaran los datos
         $usuario = new Usuario();
 
-        // Se genera el formulario por medio de la clase UsuarioType que ya tiene todos los campos
+        // Se genera el formulario por medio de la evento UsuarioType que ya tiene todos los campos
         $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario, array(
             'accion' => 'registro',
             'validation_groups' => array('Default', 'Registro'),

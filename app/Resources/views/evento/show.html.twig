@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Consultar Clase{% endblock %}
-{% block encabezado %}Consultar Clase{% endblock %}
+{% block title %}Consultar Evento{% endblock %}
+{% block encabezado %}Consultar Evento{% endblock %}
 
 {% block article %}
     <div class="table-responsive">
@@ -9,46 +9,46 @@
             <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ clase.id }}</td>
+                <td>{{ evento.id }}</td>
             </tr>
             <tr>
                 <th>Lugar</th>
-                <td>{{ clase.lugar }}</td>
+                <td>{{ evento.lugar }}</td>
             </tr>
             <tr>
                 <th>Fecha</th>
-                <td>{{ clase.fecha | date('Y-m-d') }}</td>
+                <td>{{ evento.fecha | date('Y-m-d') }}</td>
             </tr>
             <tr>
                 <th>Hora Inicio</th>
-                <td>{{ clase.horaInicio | date('H:i') }}</td>
+                <td>{{ evento.horaInicio | date('H:i') }}</td>
             </tr>
             <tr>
                 <th>Hora Fin</th>
-                <td>{{ clase.horaFin | date('H:i') }}</td>
+                <td>{{ evento.horaFin | date('H:i') }}</td>
             </tr>
             <tr>
                 <th>Estado</th>
-                <td>{{ clase.estado }}</td>
+                <td>{{ evento.estado }}</td>
             </tr>
             <tr>
                 <th>Materia</th>
-                <td>{{ clase.materia }}</td>
+                <td>{{ evento.materia }}</td>
             </tr>
             <tr>
                 <th>Grupo</th>
-                <td>{{ clase.grupo }}</td>
+                <td>{{ evento.grupo }}</td>
             </tr>
             <tr>
                 <th>Observaciones</th>
-                <td>{{ clase.observaciones }}</td>
+                <td>{{ evento.observaciones }}</td>
             </tr>
             </tbody>
         </table>
     </div>
     <div class="text-center">
         {{ form_start(delete_form) }}
-        <a href="{{ path('clase_edit', { 'id' : clase.id }) }}" title="Editar" class="btn btn-warning">
+        <a href="{{ path('evento_edit', { 'id' : evento.id }) }}" title="Editar" class="btn btn-warning">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             Editar
         </a>
@@ -56,7 +56,7 @@
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             Eliminar
         </button>
-        <a href="{{ path('clase_index') }}" class="btn btn-primary">
+        <a href="{{ path('evento_index') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             Lista
         </a>

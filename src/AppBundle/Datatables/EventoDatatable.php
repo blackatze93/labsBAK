@@ -6,9 +6,9 @@ use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
 /**
- * Class ClaseDatatable.
+ * Class EventoDatatable.
  */
-class ClaseDatatable extends AbstractDatatableView
+class EventoDatatable extends AbstractDatatableView
 {
 
     /**
@@ -21,12 +21,12 @@ class ClaseDatatable extends AbstractDatatableView
             'end_html' => '</div></div><br>',
             'actions' => array(
                 array(
-                    'route' => $this->router->generate('clase_new'),
-                    'label' => 'Nueva Clase',
+                    'route' => $this->router->generate('evento_new'),
+                    'label' => 'Nueva Evento',
                     'icon' => 'glyphicon glyphicon-plus',
                     'attributes' => array(
                         'rel' => 'tooltip',
-                        'title' => 'Nueva Clase',
+                        'title' => 'Nueva Evento',
                         'class' => 'btn btn-info',
                         'role' => 'button',
                     ),
@@ -97,7 +97,7 @@ class ClaseDatatable extends AbstractDatatableView
         ));
 
         $this->ajax->set(array(
-            'url' => $this->router->generate('clase_results'),
+            'url' => $this->router->generate('evento_results'),
             'type' => 'GET',
             'pipeline' => 0,
         ));
@@ -128,13 +128,13 @@ class ClaseDatatable extends AbstractDatatableView
         ));
 
         $lugar = $this->em->getRepository('AppBundle:Lugar')->findAll();
-        $clase = $this->em->getRepository('AppBundle:Clase')->findAll();
+        $evento = $this->em->getRepository('AppBundle:Evento')->findAll();
 
         $this->columnBuilder
             ->add(null, 'multiselect', array(
                 'actions' => array(
                     array(
-                        'route' => 'clase_bulk_activate',
+                        'route' => 'evento_bulk_activate',
                         'label' => 'Activar',
                         'icon' => 'glyphicon glyphicon-plus',
                         'attributes' => array(
@@ -145,7 +145,7 @@ class ClaseDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'clase_bulk_cancel',
+                        'route' => 'evento_bulk_cancel',
                         'label' => 'Cancelar',
                         'icon' => 'glyphicon glyphicon-minus',
                         'attributes' => array(
@@ -156,7 +156,7 @@ class ClaseDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'clase_bulk_delete',
+                        'route' => 'evento_bulk_delete',
                         'label' => 'Eliminar',
                         'icon' => 'glyphicon glyphicon-remove',
                         'attributes' => array(
@@ -202,7 +202,7 @@ class ClaseDatatable extends AbstractDatatableView
                 'title' => 'Estado',
                 'filter' => array('select', array(
                     'search_type' => 'eq',
-                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($clase, 'estado', 'estado'),
+                    'select_options' => array('' => 'Todos') + $this->getCollectionAsOptionsArray($evento, 'estado', 'estado'),
                 )),
             ))
             ->add('materia', 'column', array(
@@ -227,7 +227,7 @@ class ClaseDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => array(
                     array(
-                        'route' => 'clase_show',
+                        'route' => 'evento_show',
                         'route_parameters' => array(
                             'id' => 'id',
                         ),
@@ -241,7 +241,7 @@ class ClaseDatatable extends AbstractDatatableView
                         ),
                     ),
                     array(
-                        'route' => 'clase_edit',
+                        'route' => 'evento_edit',
                         'route_parameters' => array(
                             'id' => 'id',
                         ),
@@ -264,7 +264,7 @@ class ClaseDatatable extends AbstractDatatableView
      */
     public function getEntity()
     {
-        return 'AppBundle\Entity\Clase';
+        return 'AppBundle\Entity\Evento';
     }
 
     /**
@@ -272,6 +272,6 @@ class ClaseDatatable extends AbstractDatatableView
      */
     public function getName()
     {
-        return 'clase_datatable';
+        return 'evento_datatable';
     }
 }
