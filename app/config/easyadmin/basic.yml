@@ -23,5 +23,6 @@ easy_admin:
             - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
             - { entity: 'Lugar', label: 'Lugares' }
+            - { entity: 'MantenimientoExterno', icon: 'wrench', label: 'Mantenimientos Externos' }
             - { entity: 'ProyectoCurricular',label: 'Proyectos Curriculares' }
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }

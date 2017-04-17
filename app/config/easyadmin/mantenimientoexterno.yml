@@ -1,0 +1,12 @@
+easy_admin:
+    entities:
+        MantenimientoExterno:
+            class: AppBundle\Entity\MantenimientoExterno
+            list:
+                title: 'Mantenimientos Externos'
+#            form:
+#                fields:
+#                    - 'nombre'
+#                    - 'cantidadEquipos'
+#                    - 'descripcion'
+#                    - 'visible'
