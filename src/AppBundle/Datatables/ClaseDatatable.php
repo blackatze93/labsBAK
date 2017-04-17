@@ -10,21 +10,6 @@ use Sg\DatatablesBundle\Datatable\View\Style;
  */
 class ClaseDatatable extends AbstractDatatableView
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getLineFormatter()
-    {
-        $formatter = function ($line) {
-            $rutaLugar = $this->router->generate('lugar_show', array('id' => $line['lugar']['id']));
-
-            $line['lugar']['nombre'] = '<a href="'.$rutaLugar.'"></span> '.$line['lugar']['nombre'].'</a>';
-
-            return $line;
-        };
-
-        return $formatter;
-    }
 
     /**
      * {@inheritdoc}

@@ -11,3 +11,17 @@ easy_admin:
             - { name: 'show', icon: 'eye' }
             - { name: 'edit', icon: 'edit' }
             - { name: 'delete', icon: 'remove' }
+
+    design:
+        color_scheme: 'light'
+
+        menu:
+            - { label: 'Inicio', icon: 'home', route: 'index' }
+            - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
+            - { entity: 'Dependencia', label: 'Dependencias' }
+            - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
+            - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
+            - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
+            - { entity: 'Lugar', label: 'Lugares' }
+            - { entity: 'ProyectoCurricular',label: 'Proyectos Curriculares' }
+            - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }

@@ -2,3 +2,5 @@ easy_admin:
     entities:
         Dependencia:
             class: AppBundle\Entity\Dependencia
+            list:
+                title: 'Dependencias'

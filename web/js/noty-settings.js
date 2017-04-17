@@ -3,12 +3,12 @@ function notificacion(text, type) {
         text        : text,
         type        : type,
         dismissQueue: true,
-        timeout     : 5000,
+        timeout     : 10000,
         progressBar : true,
         closeWith   : ['click'],
         layout      : 'topCenter',
         modal       : false,
-        theme       : 'bootstrapTheme',
+        theme       : 'metroui',
         maxVisible  : 3
     });
 }

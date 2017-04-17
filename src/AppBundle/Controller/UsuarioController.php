@@ -37,7 +37,7 @@ class UsuarioController extends BaseAdminController
     /**
      * Metodo que permite ver el perfil de un usuario y modificarlo.
      *
-     * @Route("/perfil", name="usuario_perfil")
+     * @Route("/perfil/", name="usuario_perfil")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -58,9 +58,9 @@ class UsuarioController extends BaseAdminController
             $em->persist($usuario);
             try {
                 $em->flush();
-                $this->addFlash('success', 'Se actualizó el perfil correctamente');
+                $this->addFlash('success', 'Se actualizó su perfil correctamente');
             } catch (\Exception $e) {
-                $this->addFlash('error', 'No se pudo actualizar el perfil');
+                $this->addFlash('error', 'No se pudo actualizar su perfil');
             }
 
             return $this->redirectToRoute('index');
@@ -73,9 +73,70 @@ class UsuarioController extends BaseAdminController
     }
 
     /**
+     * Metodo que genera la pagina de nuevo usuario y procesa los datos.
+     *
+     * @Route("/registro/", name="usuario_registro")
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function registroAction(Request $request)
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $this->addFlash('error', 'Ya está registrado');
+            return $this->redirectToRoute('index');
+        }
+
+        //Se crea la nueva entidad sobre la cual se guardaran los datos
+        $usuario = new Usuario();
+
+        // Se genera el formulario por medio de la clase UsuarioType que ya tiene todos los campos
+        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario, array(
+            'accion' => 'registro',
+            'validation_groups' => array('Default', 'Registro'),
+        ));
+
+        // Cuando se hace el post se invoca el metodo handleRequest que procesa la informacion del request
+        $formulario->handleRequest($request);
+
+        // Si el formulario contiene informacion valida y sin ningun error de validacion se guardan los datos
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $this->prePersistEntity($usuario);
+
+            if(!$usuario->isActivo()) {
+                $usuario->setActivo(false);
+            }
+
+            // Se obtiene el entity manager de doctrine para generar el guardado
+            $em = $this->getDoctrine()->getManager();
+            // Se genera el codigo SQL para poder guardar los datos en la BD
+            $em->persist($usuario);
+
+            // Se ejecuta el codigo SQL generado por Doctrine con la instruccion anterior
+            try {
+                $em->flush();
+                // Se agrega un mensaje para que pueda ser leido por el motor de plantillas twig
+                $this->addFlash('success', 'Se registró el usuario correctamente. Debe esperar su activación por parte del administrador.');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo registrar el usuario');
+            }
+
+            // Por ultimo se redirecciona a la pagina de usuarios
+            return $this->redirectToRoute('index');
+        }
+
+        // Muestra el formulario mediante la accion createView de la variable formulario
+        return $this->render('usuario/registro.html.twig', array(
+            'formulario' => $formulario->createView(),
+        ));
+    }
+
+    /**
      * Metodo que genera el formulario de login.
      *
-     * @Route("/login", name="usuario_login")
+     * @Route("/login/", name="usuario_login")
      */
     public function loginAction()
     {
@@ -117,7 +178,7 @@ class UsuarioController extends BaseAdminController
      * El logout lo hace Symfony automáticamente, por lo que
      * no hay que añadir ningún código en este método.
      *
-     * @Route("/logout", name="usuario_logout")
+     * @Route("/logout/", name="usuario_logout")
      */
     public function logoutAction()
     {

@@ -31,6 +31,8 @@ security:
 
     access_control:
         - { path: ^/admin/*, roles: ROLE_ADMIN }
+        - { path: ^/registro/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/perfil/*, roles: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 #TODO: configurar el acceso de usuarios

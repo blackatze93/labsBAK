@@ -4,6 +4,7 @@ easy_admin:
             class: AppBundle\Entity\Usuario
             controller: AppBundle\Controller\UsuarioController
             list:
+                title: 'Usuarios'
                 fields:
                     - 'id'
                     - { property: 'codigo', type: 'text' }
@@ -38,7 +39,7 @@ easy_admin:
                     - { property: 'passwordEnClaro', type: 'repeated', type_options: { type: 'password', invalid_message: 'Las dos contraseñas deben coincidir', first_options: { label: 'Contraseña' }, second_options: { label: 'Confirmar Contraseña' }, required: false } }
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE',  } } }
                     - 'cargo'
-                    - 'estado'
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Paz y Salvo': 'Paz y Salvo', 'En Mora': 'En Mora'  } } }
                     - 'dependencia'
                     - 'proyectoCurricular'
                     - 'activo'

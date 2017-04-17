@@ -2,6 +2,8 @@ easy_admin:
     entities:
         ProyectoCurricular:
             class: AppBundle\Entity\ProyectoCurricular
+            list:
+                title: 'Proyectos Curriculares'
             form:
                 fields:
                     - 'id'

@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 {% form_theme formulario 'form/fields.html.twig' %}
 
-{% block title %}Nuevo Usuario{% endblock %}
-{% block encabezado %}Nuevo Usuario{% endblock %}
+{% block title %}Registrarse como Usuario{% endblock %}
+{% block encabezado %}Registrarse como Usuario{% endblock %}
 
 {% block article %}
     {{ form_start(formulario) }}
@@ -15,6 +15,11 @@
             {{ form_label(formulario.id) }}
             {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
             <span class="text-danger">{{ form_errors(formulario.id) }}</span>
+        </div>
+        <div class="form-group">
+            {{ form_label(formulario.codigo) }}
+            {{ form_widget(formulario.codigo, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.codigo) }}</span>
         </div>
         <div class="form-group">
             {{ form_label(formulario.nombre) }}
@@ -42,9 +47,9 @@
             <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
         </div>
         <div class="form-group">
-            {{ form_label(formulario.dependencia) }}
-            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
+            {{ form_label(formulario.rol) }}
+            {{ form_widget(formulario.rol, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.rol) }}</span>
         </div>
         <div class="form-group">
             {{ form_label(formulario.cargo) }}
@@ -52,21 +57,23 @@
             <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
         </div>
         <div class="form-group">
-            {{ form_label(formulario.funciones) }}
-            {{ form_widget(formulario.funciones, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.funciones) }}</span>
+            {{ form_label(formulario.estado) }}
+            {{ form_widget(formulario.estado, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.estado) }}</span>
         </div>
-        <div class="checkbox">
-            <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
-            <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
+        <div class="form-group">
+            {{ form_label(formulario.dependencia) }}
+            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
+        </div>
+        <div class="form-group">
+            {{ form_label(formulario.proyectoCurricular) }}
+            {{ form_widget(formulario.proyectoCurricular, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.proyectoCurricular) }}</span>
         </div>
         <div class="text-center">
             {{ form_widget(formulario.crear, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Crear'}) }}
             {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
-            <a href="{{ path('usuario_index') }}" class="btn btn-primary">
-                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                Lista
-            </a>
         </div>
     {{ form_end(formulario) }}
 {% endblock %}

@@ -2,6 +2,8 @@ easy_admin:
     entities:
         Lugar:
             class: AppBundle\Entity\Lugar
+            list:
+                title: 'Lugares'
             form:
                 fields:
                     - 'nombre'

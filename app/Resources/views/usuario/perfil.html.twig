@@ -48,9 +48,19 @@
             <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
         </div>
         <div class="form-group">
+            {{ form_label(formulario.rol) }}
+            {{ form_widget(formulario.rol, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.rol) }}</span>
+        </div>
+        <div class="form-group">
             {{ form_label(formulario.cargo) }}
             {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
+        </div>
+        <div class="form-group">
+            {{ form_label(formulario.estado) }}
+            {{ form_widget(formulario.estado, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.estado) }}</span>
         </div>
         <div class="form-group">
             {{ form_label(formulario.dependencia) }}
@@ -67,4 +77,34 @@
             {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
         </div>
     {{ form_end(formulario) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        // Funciones para hacer los selects y el checkbox readonly
+        $(function(){
+            $('#usuario_rol').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+            $('#usuario_estado').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+            $('#usuario_dependencia').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+            $('#usuario_proyectoCurricular').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
+        })
+    </script>
 {% endblock %}

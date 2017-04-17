@@ -2,6 +2,8 @@ easy_admin:
     entities:
         Facultad:
             class: AppBundle\Entity\Facultad
+            list:
+                title: 'Facultades'
             form:
                 fields:
                     - 'nombre'

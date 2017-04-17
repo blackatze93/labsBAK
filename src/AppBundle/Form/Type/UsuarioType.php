@@ -34,14 +34,29 @@ class UsuarioType extends AbstractType
                 'second_name' => 'pass2',
                 'required' => false,
             ))
+            ->add('rol', 'choice', array(
+                'choices' => array(
+                    'ROLE_FUNCIONARIO' => 'ROLE_FUNCIONARIO',
+                    'ROLE_DOCENTE' => 'ROLE_DOCENTE',
+                    'ROLE_ESTUDIANTE' => 'ROLE_ESTUDIANTE',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('cargo')
+            ->add('estado', 'choice', array(
+                'choices' => array(
+                    'Paz y Salvo' => 'Paz y Salvo',
+                    'En Mora' => 'En Mora',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('dependencia')
             ->add('proyectoCurricular')
             ->add('restablecer', 'reset')
         ;
 
         // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
-        if ($options['accion'] === 'new_usuario') {
+        if ($options['accion'] === 'registro') {
             $builder
                 ->add('crear', 'submit')
             ;

@@ -2,6 +2,8 @@ easy_admin:
     entities:
         Elemento:
             class: AppBundle\Entity\Elemento
+            list:
+                title: 'Elementos'
             form:
                 fields:
                     - 'id'
