@@ -90,7 +90,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\Length(max="100")
      */
     private $cargo;

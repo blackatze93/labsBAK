@@ -12,11 +12,7 @@ sg_datatables_bundle:
 adesigns_calendar:
     resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
 
-admin_area:
-    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
-    prefix: /admin
-
-_sonata_admin:
-    resource: .
-    type: sonata_admin
-    prefix: /admin
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
