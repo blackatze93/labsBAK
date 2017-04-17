@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        Facultad:
+            class: AppBundle\Entity\Facultad
+            form:
+                fields:
+                    - 'nombre'

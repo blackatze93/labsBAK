@@ -30,9 +30,8 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
     access_control:
-#        - { path: ^/usuario/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/usuario/*, roles: ROLE_ADMIN }
-#        - { path: ^/dependencia/*, roles: ROLE_ADMIN }
+        - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/*, roles: ROLE_ADMIN }
 #TODO: configurar el acceso de usuarios
 
     providers:

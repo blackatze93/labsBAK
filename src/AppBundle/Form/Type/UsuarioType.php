@@ -21,6 +21,7 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('id')
+            ->add('codigo')
             ->add('nombre')
             ->add('apellido')
             ->add('email', 'email')
@@ -33,17 +34,9 @@ class UsuarioType extends AbstractType
                 'second_name' => 'pass2',
                 'required' => false,
             ))
-            ->add('cargo', 'choice', array(
-                'choices' => array(
-                    'ROLE_ADMIN' => 'ROLE_ADMIN',
-                    'ROLE_DOCENTE' => 'ROLE_DOCENTE',
-                    'ROLE_FUNCIONARIO' => 'ROLE_FUNCIONARIO',
-                ),
-                'choices_as_values' => true,
-            ))
-            ->add('funciones')
+            ->add('cargo')
             ->add('dependencia')
-            ->add('estaActivo', 'checkbox', array('required' => false))
+            ->add('proyectoCurricular')
             ->add('restablecer', 'reset')
         ;
 

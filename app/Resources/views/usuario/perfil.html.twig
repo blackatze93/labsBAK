@@ -17,6 +17,11 @@
             <span class="text-danger">{{ form_errors(formulario.id) }}</span>
         </div>
         <div class="form-group">
+            {{ form_label(formulario.codigo) }}
+            {{ form_widget(formulario.codigo, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.codigo) }}</span>
+        </div>
+        <div class="form-group">
             {{ form_label(formulario.nombre) }}
             {{ form_widget(formulario.nombre, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.nombre) }}</span>
@@ -43,53 +48,23 @@
             <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
         </div>
         <div class="form-group">
-            {{ form_label(formulario.dependencia) }}
-            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
-        </div>
-        <div class="form-group">
             {{ form_label(formulario.cargo) }}
             {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
             <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
         </div>
         <div class="form-group">
-            {{ form_label(formulario.funciones) }}
-            {{ form_widget(formulario.funciones, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.funciones) }}</span>
+            {{ form_label(formulario.dependencia) }}
+            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
         </div>
-        <div class="checkbox">
-            <label>{{ form_widget(formulario.estaActivo) }} {{ form_label(formulario.estaActivo) }}</label>
-            <span class="text-danger">{{ form_errors(formulario.estaActivo) }}</span>
+        <div class="form-group">
+            {{ form_label(formulario.proyectoCurricular) }}
+            {{ form_widget(formulario.proyectoCurricular, {'attr' : {'class' : 'form-control'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.proyectoCurricular) }}</span>
         </div>
         <div class="text-center">
             {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
             {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
         </div>
     {{ form_end(formulario) }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    <script>
-        // Funciones para hacer los selects y el checkbox readonly
-        $(function(){
-            $('#usuario_cargo').each(function(){
-                $(this)
-                    .hide()
-                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
-            });
-
-            $('#usuario_dependencia').each(function(){
-                $(this)
-                    .hide()
-                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
-            });
-
-            $('#usuario_estaActivo').each(function(){
-                $(this)
-                    .parent().hide()
-            });
-        })
-    </script>
 {% endblock %}

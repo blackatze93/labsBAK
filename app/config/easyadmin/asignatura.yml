@@ -1,0 +1,8 @@
+easy_admin:
+    entities:
+        Asignatura:
+            class: AppBundle\Entity\Asignatura
+            form:
+                fields:
+                    - 'id'
+                    - 'nombre'

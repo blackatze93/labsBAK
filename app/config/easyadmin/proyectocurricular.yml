@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+        ProyectoCurricular:
+            class: AppBundle\Entity\ProyectoCurricular
+            form:
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'facultad'

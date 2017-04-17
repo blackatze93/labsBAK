@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        Elemento:
+            class: AppBundle\Entity\Elemento
+            form:
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'marca'
+                    - 'descripcion'
+                    - 'serial'
+                    - 'fechaIngreso'
+                    - 'estado'
+                    - 'tipo'
+                    - 'tipoPrestamo'
+                    - 'observaciones'
+                    - 'lugar'
+                    - 'equipo'
+                    - 'activo'

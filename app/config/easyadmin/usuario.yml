@@ -1,0 +1,47 @@
+easy_admin:
+    entities:
+        Usuario:
+            class: AppBundle\Entity\Usuario
+            controller: AppBundle\Controller\UsuarioController
+            list:
+                fields:
+                    - 'id'
+                    - { property: 'codigo', type: 'text' }
+                    - 'nombre'
+                    - 'apellido'
+                    - 'email'
+                    - 'rol'
+                    - 'activo'
+                    - 'fechaCreacion'
+            show:
+                fields:
+                    - 'id'
+                    - 'codigo'
+                    - 'nombre'
+                    - 'apellido'
+                    - 'email'
+                    - 'rol'
+                    - 'cargo'
+                    - 'estado'
+                    - 'dependencia'
+                    - 'proyectoCurricular'
+                    - 'activo'
+                    - 'fechaCreacion'
+            form:
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - 'id'
+                    - 'codigo'
+                    - 'nombre'
+                    - 'apellido'
+                    - 'email'
+                    - { property: 'passwordEnClaro', type: 'repeated', type_options: { type: 'password', invalid_message: 'Las dos contraseñas deben coincidir', first_options: { label: 'Contraseña' }, second_options: { label: 'Confirmar Contraseña' }, required: false } }
+                    - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE',  } } }
+                    - 'cargo'
+                    - 'estado'
+                    - 'dependencia'
+                    - 'proyectoCurricular'
+                    - 'activo'
+            new:
+                form_options: { validation_groups: ['Default', 'New'] }
+

@@ -1,0 +1,13 @@
+easy_admin:
+    site_name: 'UD'
+
+    formats:
+        date:     'd-m-Y'
+        time:     'H:i'
+        datetime: 'd-m-Y H:i:s'
+
+    list:
+        actions:
+            - { name: 'show', icon: 'eye' }
+            - { name: 'edit', icon: 'edit' }
+            - { name: 'delete', icon: 'remove' }

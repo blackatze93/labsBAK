@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Lugar:
+            class: AppBundle\Entity\Lugar
+            form:
+                fields:
+                    - 'nombre'
+                    - 'cantidadEquipos'
+                    - 'descripcion'
+                    - 'visible'
