@@ -67,4 +67,9 @@ class Asignatura
         $this->nombre = $nombre;
     }
 
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
 }

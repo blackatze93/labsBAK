@@ -90,5 +90,10 @@ class Facultad
         $this->proyectosCurriculares = new ArrayCollection();
     }
 
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
 
 }

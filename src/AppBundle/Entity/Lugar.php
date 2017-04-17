@@ -171,4 +171,9 @@ class Lugar
     {
         $this->elementos = new ArrayCollection();
     }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
 }

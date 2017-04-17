@@ -342,4 +342,9 @@ class Elemento
     {
         $this->equipo = $equipo;
     }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
 }
