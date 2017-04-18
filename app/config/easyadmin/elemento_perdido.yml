@@ -1,0 +1,21 @@
+easy_admin:
+    entities:
+        ElementoPerdido:
+            class: AppBundle\Entity\ElementoPerdido
+            list:
+                title: 'Elementos Perdidos'
+            # form:
+            #     fields:
+            #         - 'id'
+            #         - 'nombre'
+            #         - 'marca'
+            #         - 'descripcion'
+            #         - 'serial'
+            #         - 'fechaIngreso'
+            #         - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Dañado': 'Dañado' } } }
+            #         - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Computador': 'Computador', 'Especializado': 'Especializado', 'Otro': 'Otro' } } }
+            #         - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' } } }
+            #         - 'observaciones'
+            #         - 'lugar'
+            #         - 'equipo'
+            #         - 'activo'

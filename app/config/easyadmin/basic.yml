@@ -20,6 +20,7 @@ easy_admin:
             - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
             - { entity: 'Dependencia', label: 'Dependencias' }
             - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
+            - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
             - { entity: 'Lugar', label: 'Lugares' }
