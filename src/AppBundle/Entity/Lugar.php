@@ -62,6 +62,11 @@ class Lugar
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Elemento", mappedBy="lugar")
      */
     private $elementos;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ElementoPerdido", mappedBy="lugar")
+     */
+    private $elementosPerdidos;
 
 
     /**
@@ -166,10 +171,19 @@ class Lugar
     {
         return $this->elementos;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getElementosPerdidos()
+    {
+        return $this->elementosPerdidos;
+    }
 
     public function __construct()
     {
         $this->elementos = new ArrayCollection();
+        $this->elementosPerdidos = new ArrayCollection();
     }
 
     function __toString()

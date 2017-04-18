@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
-// TODO: falta crear getters y setters
+// TODO: comprobar si se puede hacer un bulk import de las entidades
 /**
- * ElementoPerdido.
+ * Incidencia.
  *
- * @ORM\Table(name="elemento_perdido")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoPerdidoRepository")
+ * @ORM\Table(name="incidencia")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\IncidenciaRepository")
  */
-class ElementoPerdido
+class Incidencia
 {
     /**
      * @var int
@@ -43,7 +43,7 @@ class ElementoPerdido
      */
     private $fechaRegistro;
 
-    // TODO: entregado, disponible
+    // TODO: solucionado, activo
     /**
      * @var string
      *
@@ -59,17 +59,7 @@ class ElementoPerdido
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
      */
-    private $fechaEntrega;
-    
-    /**
-     * @var Lugar
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar", inversedBy="elementosPerdidos")
-     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
-     * @Assert\NotBlank()
-     */
-    private $lugar;
+    private $fechaAtencion;
     
     /**
      * @var Usuario
@@ -85,10 +75,10 @@ class ElementoPerdido
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_entrega_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="usuario_atiende_id", referencedColumnName="id", nullable=true)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
-    private $usuarioEntrega;
+    private $usuarioAtiende;
 
     /**
      * @return string

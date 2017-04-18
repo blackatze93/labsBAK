@@ -23,6 +23,7 @@ easy_admin:
             - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
+            - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias' }
             - { entity: 'Lugar', label: 'Lugares' }
             - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
             - { entity: 'MantenimientoExterno', icon: 'wrench', label: 'Mantenimientos Externos' }
