@@ -8,14 +8,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * Evento.
+ * Horario.
  *
- * @ORM\Table(name="evento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
- * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoEvento",
- *     message="Ya existe un evento asociado a esa fecha y lugar.")
+ * @ORM\Table(name="horario")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\HorarioRepository")
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoHorario",
+ *     message="Ya existe un horario asociado a esa fecha y lugar.")
  */
-class Evento
+class Horario
 {
     /**
      * @var int
@@ -25,15 +25,52 @@ class Evento
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia_clase", type="string", length=45)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="45")
+     */
+    private $diaClase;
+    
+    /**
+     * @var Asignatura
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Asignatura")
+     * @ORM\JoinColumn(name="asignatura_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Asignatura")
+     * @Assert\NotBlank()
+     */
+    private $asignatura;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
+     */
+    private $grupo;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha_inicio", type="date")
      * @Assert\NotBlank()
      * @Assert\Date()
      */
-    private $fecha;
+    private $fechaInicio;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_fin", type="date")
+     * @Assert\NotBlank()
+     * @Assert\Date()
+     */
+    private $fechaFin;
 
     /**
      * @var \DateTime
@@ -55,23 +92,6 @@ class Evento
      * )
      */
     private $horaFin;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
-     */
-    private $tipo;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
-     */
-    private $observaciones;
     
     /**
      * @var Lugar
@@ -83,7 +103,7 @@ class Evento
      */
     private $lugar;
     
-    // TODO: el usuario que registra el evento
+    // TODO: el usuario que registra el horario
     /**
      * @var Usuario
      *
@@ -95,13 +115,13 @@ class Evento
     private $usuario;
     
     /**
-     * @var Horario
+     * @var ProyectoCurricular
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Horario")
-     * @ORM\JoinColumn(name="horario_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\Horario")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
+     * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
      */
-    private $horario;
+    private $proyectoCurricular;
 
     /**
      * Get id.
@@ -198,7 +218,7 @@ class Evento
      *
      * @param string $estado
      *
-     * @return Evento
+     * @return Horario
      */
     public function setEstado($estado)
     {
@@ -222,7 +242,7 @@ class Evento
      *
      * @param string $materia
      *
-     * @return Evento
+     * @return Horario
      */
     public function setMateria($materia)
     {
@@ -246,7 +266,7 @@ class Evento
      *
      * @param string $grupo
      *
-     * @return Evento
+     * @return Horario
      */
     public function setGrupo($grupo)
     {
@@ -270,7 +290,7 @@ class Evento
      *
      * @param string $observaciones
      *
-     * @return Evento
+     * @return Horario
      */
     public function setObservaciones($observaciones)
     {
