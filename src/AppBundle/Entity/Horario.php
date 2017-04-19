@@ -134,35 +134,91 @@ class Horario
     }
 
     /**
-     * @param Lugar $lugar
+     * @return string
      */
-    public function setLugar($lugar)
+    public function getDiaClase()
     {
-        $this->lugar = $lugar;
+        return $this->diaClase;
     }
 
     /**
-     * @return Lugar
+     * @param string $diaClase
      */
-    public function getLugar()
+    public function setDiaClase($diaClase)
     {
-        return $this->lugar;
+        $this->diaClase = $diaClase;
     }
 
     /**
-     * @param \DateTime $fecha
+     * @return Asignatura
      */
-    public function setFecha($fecha)
+    public function getAsignatura()
     {
-        $this->fecha = $fecha;
+        return $this->asignatura;
+    }
+
+    /**
+     * @param Asignatura $asignatura
+     */
+    public function setAsignatura($asignatura)
+    {
+        $this->asignatura = $asignatura;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
+     * @param int $grupo
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
     }
 
     /**
      * @return \DateTime
      */
-    public function getFecha()
+    public function getFechaInicio()
     {
-        return $this->fecha;
+        return $this->fechaInicio;
+    }
+
+    /**
+     * @param \DateTime $fechaInicio
+     */
+    public function setFechaInicio($fechaInicio)
+    {
+        $this->fechaInicio = $fechaInicio;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaFin()
+    {
+        return $this->fechaFin;
+    }
+
+    /**
+     * @param \DateTime $fechaFin
+     */
+    public function setFechaFin($fechaFin)
+    {
+        $this->fechaFin = $fechaFin;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHoraInicio()
+    {
+        return $this->horaInicio;
     }
 
     /**
@@ -176,9 +232,9 @@ class Horario
     /**
      * @return \DateTime
      */
-    public function getHoraInicio()
+    public function getHoraFin()
     {
-        return $this->horaInicio;
+        return $this->horaFin;
     }
 
     /**
@@ -190,123 +246,51 @@ class Horario
     }
 
     /**
-     * @return \DateTime
+     * @return Lugar
      */
-    public function getHoraFin()
+    public function getLugar()
     {
-        return $this->horaFin;
+        return $this->lugar;
     }
 
     /**
-     * @param int $semanas
+     * @param Lugar $lugar
      */
-    public function setSemanas($semanas)
+    public function setLugar($lugar)
     {
-        $this->semanas = $semanas;
+        $this->lugar = $lugar;
     }
 
     /**
-     * @return int
+     * @return Usuario
      */
-    public function getSemanas()
+    public function getUsuario()
     {
-        return $this->semanas;
+        return $this->usuario;
     }
 
     /**
-     * Set estado.
-     *
-     * @param string $estado
-     *
-     * @return Horario
+     * @param Usuario $usuario
      */
-    public function setEstado($estado)
+    public function setUsuario($usuario)
     {
-        $this->estado = $estado;
-
-        return $this;
+        $this->usuario = $usuario;
     }
 
     /**
-     * Get estado.
-     *
-     * @return string
+     * @return ProyectoCurricular
      */
-    public function getEstado()
+    public function getProyectoCurricular()
     {
-        return $this->estado;
+        return $this->proyectoCurricular;
     }
 
     /**
-     * Set materia.
-     *
-     * @param string $materia
-     *
-     * @return Horario
+     * @param ProyectoCurricular $proyectoCurricular
      */
-    public function setMateria($materia)
+    public function setProyectoCurricular($proyectoCurricular)
     {
-        $this->materia = $materia;
-
-        return $this;
-    }
-
-    /**
-     * Get materia.
-     *
-     * @return string
-     */
-    public function getMateria()
-    {
-        return $this->materia;
-    }
-
-    /**
-     * Set grupo.
-     *
-     * @param string $grupo
-     *
-     * @return Horario
-     */
-    public function setGrupo($grupo)
-    {
-        $this->grupo = $grupo;
-
-        return $this;
-    }
-
-    /**
-     * Get grupo.
-     *
-     * @return string
-     */
-    public function getGrupo()
-    {
-        return $this->grupo;
-    }
-
-    /**
-     * Set observaciones.
-     *
-     * @param string $observaciones
-     *
-     * @return Horario
-     */
-    public function setObservaciones($observaciones)
-    {
-        $this->observaciones = $observaciones;
-
-        return $this;
-    }
-
-    /**
-     * Get observaciones.
-     *
-     * @return string
-     */
-    public function getObservaciones()
-    {
-        return $this->observaciones;
+        $this->proyectoCurricular = $proyectoCurricular;
     }
 
     /**

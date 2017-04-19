@@ -98,5 +98,115 @@ class ElementoPerdido
         return $this->id;
     }
 
-    
+    /**
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param string $descripcion
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fechaRegistro;
+    }
+
+    /**
+     * @param \DateTime $fechaRegistro
+     */
+    public function setFechaRegistro($fechaRegistro)
+    {
+        $this->fechaRegistro = $fechaRegistro;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param string $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaEntrega()
+    {
+        return $this->fechaEntrega;
+    }
+
+    /**
+     * @param \DateTime $fechaEntrega
+     */
+    public function setFechaEntrega($fechaEntrega)
+    {
+        $this->fechaEntrega = $fechaEntrega;
+    }
+
+    /**
+     * @return Lugar
+     */
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
+
+    /**
+     * @param Lugar $lugar
+     */
+    public function setLugar($lugar)
+    {
+        $this->lugar = $lugar;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioRegistra()
+    {
+        return $this->usuarioRegistra;
+    }
+
+    /**
+     * @param Usuario $usuarioRegistra
+     */
+    public function setUsuarioRegistra($usuarioRegistra)
+    {
+        $this->usuarioRegistra = $usuarioRegistra;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioEntrega()
+    {
+        return $this->usuarioEntrega;
+    }
+
+    /**
+     * @param Usuario $usuarioEntrega
+     */
+    public function setUsuarioEntrega($usuarioEntrega)
+    {
+        $this->usuarioEntrega = $usuarioEntrega;
+    }
 }

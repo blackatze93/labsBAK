@@ -6,6 +6,8 @@ use ADesigns\CalendarBundle\Event\CalendarEvent;
 use ADesigns\CalendarBundle\Entity\EventEntity;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
 
 /**
  * Class CalendarEventListener.
@@ -14,6 +16,7 @@ class CalendarEventListener
 {
     private $entityManager;
     private $router;
+    private $authorizationChecker;
 
     /**
      * CalendarEventListener constructor.
@@ -21,10 +24,11 @@ class CalendarEventListener
      * @param EntityManager $entityManager
      * @param Router        $router
      */
-    public function __construct(EntityManager $entityManager, Router $router)
+    public function __construct(EntityManager $entityManager, Router $router, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->entityManager = $entityManager;
         $this->router = $router;
+        $this->authorizationChecker = $authorizationChecker;
     }
 
     /**
@@ -63,8 +67,9 @@ class CalendarEventListener
             $eventEntity = new EventEntity(/*$evento->getMateria()*/null, $fechaInicio, $fechaFin);
 
             //optional calendar event settings
-            // TODO: agregar condicion para mostrar solo url a los autenticados con permisos
-            $eventEntity->setUrl($this->router->generate('evento_show', array('id' => $evento->getId()))); // url to send user to when event label is clicked
+            if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+                $eventEntity->setUrl($this->router->generate('easyadmin', array('action' => 'show', 'id' => $evento->getId(), 'entity' => 'Evento'))); // url to send user to when event label is clicked
+            }
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());
 
 //            $eventEntity->addField('estado', $evento->getEstado());

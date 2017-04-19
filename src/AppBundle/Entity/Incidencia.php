@@ -52,7 +52,7 @@ class Incidencia
      * @Assert\Length(max="45")
      */
     private $estado;
-    
+
     /**
      * @var \DateTime
      *
@@ -60,7 +60,7 @@ class Incidencia
      * @Assert\DateTime()
      */
     private $fechaAtencion;
-    
+
     /**
      * @var Usuario
      *
@@ -70,7 +70,7 @@ class Incidencia
      * @Assert\NotBlank()
      */
     private $usuarioRegistra;
-    
+
     /**
      * @var Usuario
      *
@@ -88,5 +88,99 @@ class Incidencia
         return $this->id;
     }
 
-    
+    /**
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param string $descripcion
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fechaRegistro;
+    }
+
+    /**
+     * @param \DateTime $fechaRegistro
+     */
+    public function setFechaRegistro($fechaRegistro)
+    {
+        $this->fechaRegistro = $fechaRegistro;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param string $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaAtencion()
+    {
+        return $this->fechaAtencion;
+    }
+
+    /**
+     * @param \DateTime $fechaAtencion
+     */
+    public function setFechaAtencion($fechaAtencion)
+    {
+        $this->fechaAtencion = $fechaAtencion;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioRegistra()
+    {
+        return $this->usuarioRegistra;
+    }
+
+    /**
+     * @param Usuario $usuarioRegistra
+     */
+    public function setUsuarioRegistra($usuarioRegistra)
+    {
+        $this->usuarioRegistra = $usuarioRegistra;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioAtiende()
+    {
+        return $this->usuarioAtiende;
+    }
+
+    /**
+     * @param Usuario $usuarioAtiende
+     */
+    public function setUsuarioAtiende($usuarioAtiende)
+    {
+        $this->usuarioAtiende = $usuarioAtiende;
+    }
 }
