@@ -12,11 +12,3 @@ services:
         tags:
             - { name: kernel.event_listener, event: calendar.load_events, method: loadEvents }
         arguments: ['@doctrine.orm.entity_manager', '@router']
-
-    app.datatable.evento:
-        class: AppBundle\Datatables\EventoDatatable
-        parent: sg_datatables.datatable.abstract
-
-    app.datatable.elemento:
-        class: AppBundle\Datatables\ElementoDatatable
-        parent: sg_datatables.datatable.abstract
