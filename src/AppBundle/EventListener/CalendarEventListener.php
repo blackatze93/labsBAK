@@ -60,16 +60,16 @@ class CalendarEventListener
             $fechaFin = new \DateTime($fecha->format('Y-m-d').' '.$horaFin->format('H:i'));
 
             // create an event with a start/end time
-            $eventEntity = new EventEntity($evento->getMateria(), $fechaInicio, $fechaFin);
+            $eventEntity = new EventEntity(/*$evento->getMateria()*/null, $fechaInicio, $fechaFin);
 
             //optional calendar event settings
             // TODO: agregar condicion para mostrar solo url a los autenticados con permisos
             $eventEntity->setUrl($this->router->generate('evento_show', array('id' => $evento->getId()))); // url to send user to when event label is clicked
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());
 
-            $eventEntity->addField('estado', $evento->getEstado());
-
-            $eventEntity->addField('grupo', $evento->getGrupo());
+//            $eventEntity->addField('estado', $evento->getEstado());
+//
+//            $eventEntity->addField('grupo', $evento->getGrupo());
 
             $eventEntity->addField('observaciones', $evento->getObservaciones());
 

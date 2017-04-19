@@ -114,19 +114,11 @@ class Evento
     }
 
     /**
-     * @param Lugar $lugar
+     * @return \DateTime
      */
-    public function setLugar($lugar)
+    public function getFecha()
     {
-        $this->lugar = $lugar;
-    }
-
-    /**
-     * @return Lugar
-     */
-    public function getLugar()
-    {
-        return $this->lugar;
+        return $this->fecha;
     }
 
     /**
@@ -140,9 +132,9 @@ class Evento
     /**
      * @return \DateTime
      */
-    public function getFecha()
+    public function getHoraInicio()
     {
-        return $this->fecha;
+        return $this->horaInicio;
     }
 
     /**
@@ -156,9 +148,9 @@ class Evento
     /**
      * @return \DateTime
      */
-    public function getHoraInicio()
+    public function getHoraFin()
     {
-        return $this->horaInicio;
+        return $this->horaFin;
     }
 
     /**
@@ -170,123 +162,83 @@ class Evento
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getHoraFin()
-    {
-        return $this->horaFin;
-    }
-
-    /**
-     * @param int $semanas
-     */
-    public function setSemanas($semanas)
-    {
-        $this->semanas = $semanas;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSemanas()
-    {
-        return $this->semanas;
-    }
-
-    /**
-     * Set estado.
-     *
-     * @param string $estado
-     *
-     * @return Evento
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado.
-     *
      * @return string
      */
-    public function getEstado()
+    public function getTipo()
     {
-        return $this->estado;
+        return $this->tipo;
     }
 
     /**
-     * Set materia.
-     *
-     * @param string $materia
-     *
-     * @return Evento
+     * @param string $tipo
      */
-    public function setMateria($materia)
+    public function setTipo($tipo)
     {
-        $this->materia = $materia;
-
-        return $this;
+        $this->tipo = $tipo;
     }
 
     /**
-     * Get materia.
-     *
-     * @return string
-     */
-    public function getMateria()
-    {
-        return $this->materia;
-    }
-
-    /**
-     * Set grupo.
-     *
-     * @param string $grupo
-     *
-     * @return Evento
-     */
-    public function setGrupo($grupo)
-    {
-        $this->grupo = $grupo;
-
-        return $this;
-    }
-
-    /**
-     * Get grupo.
-     *
-     * @return string
-     */
-    public function getGrupo()
-    {
-        return $this->grupo;
-    }
-
-    /**
-     * Set observaciones.
-     *
-     * @param string $observaciones
-     *
-     * @return Evento
-     */
-    public function setObservaciones($observaciones)
-    {
-        $this->observaciones = $observaciones;
-
-        return $this;
-    }
-
-    /**
-     * Get observaciones.
-     *
      * @return string
      */
     public function getObservaciones()
     {
         return $this->observaciones;
+    }
+
+    /**
+     * @param string $observaciones
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return Lugar
+     */
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
+
+    /**
+     * @param Lugar $lugar
+     */
+    public function setLugar($lugar)
+    {
+        $this->lugar = $lugar;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * @return Horario
+     */
+    public function getHorario()
+    {
+        return $this->horario;
+    }
+
+    /**
+     * @param Horario $horario
+     */
+    public function setHorario($horario)
+    {
+        $this->horario = $horario;
     }
 
     /**
