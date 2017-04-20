@@ -4,3 +4,8 @@ easy_admin:
             class: AppBundle\Entity\Equipo
             list:
                 title: 'Equipos'
+            form:
+                fields:
+                    - 'nombre'
+                    - { property: 'elementos', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false } }
+

@@ -80,6 +80,20 @@ class Equipo
         return $this->elementos;
     }
 
+    public function addElemento($elemento) {
+        $this->elementos[] = $elemento;
+        $elemento->setEquipo($this);
+
+        return $this;
+    }
+
+    public function removeElemento($elemento) {
+        $this->elementos->removeElement($elemento);
+        $elemento->setEquipo(null);
+
+        return $this;
+    }
+
     public function __construct()
     {
         $this->elementos = new ArrayCollection();
