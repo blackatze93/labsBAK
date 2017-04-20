@@ -4,3 +4,7 @@ easy_admin:
             class: AppBundle\Entity\Dependencia
             list:
                 title: 'Dependencias'
+            form:
+                fields:
+                    - 'nombre'
+                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }

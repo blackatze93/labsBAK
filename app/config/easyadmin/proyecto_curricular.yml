@@ -8,4 +8,4 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'nombre'
-                    - 'facultad'
+                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }

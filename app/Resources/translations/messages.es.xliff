@@ -51,8 +51,8 @@
                 <target>Elemento</target>
             </trans-unit>
             <trans-unit id="13">
-                <source></source>
-                <target></target>
+                <source>ROLE_ESTUDIANTE</source>
+                <target>Estudiante</target>
             </trans-unit>
             <trans-unit id="14">
                 <source>ROLE_ADMIN</source>
@@ -74,19 +74,6 @@
                 <source>User account is disabled.</source>
                 <target>La cuenta no está activa.</target>
             </trans-unit>
-            <trans-unit id="19">
-                <source>Asignatura List</source>
-                <target>Asignaturas</target>
-            </trans-unit>
-            <trans-unit id="20">
-                <source>Asignatura Create</source>
-                <target>Crear</target>
-            </trans-unit>
-            <trans-unit id="21">
-                <source>Asignatura</source>
-                <target>Asignatura</target>
-            </trans-unit>
-
         </body>
     </file>
 </xliff>

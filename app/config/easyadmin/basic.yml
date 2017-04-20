@@ -18,7 +18,7 @@ easy_admin:
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }
             - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
-            - { entity: 'Dependencia', label: 'Dependencias' }
+            - { entity: 'Dependencia', icon: 'phone', label: 'Dependencias' }
             - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
             - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
@@ -26,8 +26,8 @@ easy_admin:
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
             - { entity: 'Horario', icon: 'calendar', label: 'Horario' }
             - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias' }
-            - { entity: 'Lugar', label: 'Lugares' }
+            - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
             - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
-            - { entity: 'MantenimientoExterno', icon: 'wrench', label: 'Mantenimientos Externos' }
-            - { entity: 'ProyectoCurricular',label: 'Proyectos Curriculares' }
+            - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
+            - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
