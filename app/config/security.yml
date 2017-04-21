@@ -35,8 +35,6 @@ security:
         - { path: ^/perfil/*, roles: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-#TODO: configurar el acceso de usuarios
-
     providers:
         usuarios:
             entity: { class: AppBundle\Entity\Usuario, property: id }

@@ -60,6 +60,11 @@ class Mantenimiento
      * @Assert\NotBlank()
      */
     private $usuario;
+    
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
+    }
 
     /**
      * @return int

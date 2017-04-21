@@ -4,6 +4,15 @@ easy_admin:
             class: AppBundle\Entity\MantenimientoExterno
             list:
                 title: 'Mantenimientos Externos'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Mantenimiento Externo' }
+            new:
+                title: 'Crear Mantenimiento Externo'
+            edit:
+                title: 'Modificar Mantenimiento Externo'
+            show:
+                title: 'Mantenimiento Externo (#%%entity_id%%)'
 #            form:
 #                fields:
 #                    - 'nombre'

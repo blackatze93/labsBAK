@@ -4,8 +4,19 @@ easy_admin:
             class: AppBundle\Entity\ProyectoCurricular
             list:
                 title: 'Proyectos Curriculares'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Proyecto Curricular' }
             form:
                 fields:
                     - 'id'
                     - 'nombre'
                     - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+            new:
+                title: 'Crear Proyecto Curricular'
+            edit:
+                title: 'Modificar Proyecto Curricular'
+            show:
+                title: 'Proyecto Curricular (#%%entity_id%%)'
+            
+                

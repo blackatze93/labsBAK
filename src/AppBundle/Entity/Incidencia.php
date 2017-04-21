@@ -79,6 +79,11 @@ class Incidencia
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioAtiende;
+    
+    public function __construct()
+    {
+        $this->fechaRegistro = new \DateTime();
+    }
 
     /**
      * @return string

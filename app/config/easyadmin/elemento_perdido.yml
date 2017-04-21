@@ -5,6 +5,9 @@ easy_admin:
             controller: AppBundle\Controller\ElementoPerdidoController
             list:
                 title: 'Elementos Perdidos'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Elemento Perdido' }
                 fields:
                    - 'id'
                    - 'descripcion'
@@ -12,8 +15,8 @@ easy_admin:
                    - 'fechaRegistro'
                    - { property: 'entregado', type: 'boolean' }
                    - 'fechaEntrega'
-
             show:
+                title: 'Elemento Perdido (#%%entity_id%%)'
                 fields:
                    - 'id'
                    - 'descripcion'
@@ -23,9 +26,13 @@ easy_admin:
                    - 'entregado'
                    - 'fechaEntrega'
                    - 'usuarioEntrega'
-
             form:
                fields:
                    - 'descripcion'
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - 'entregado'
+            new:
+                title: 'Crear Elemento Perdido'
+            edit:
+                title: 'Modificar Elemento Perdido'
+                
