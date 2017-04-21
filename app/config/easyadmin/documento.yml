@@ -1,0 +1,27 @@
+easy_admin:
+    entities:
+        Documento:
+            class: AppBundle\Entity\Documento
+            controller: AppBundle\Controller\DocumentoController
+            show:
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'tipo'
+                    - 'usuario'
+                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%' }
+                    - 'fechaSubida'
+            list:
+                title: 'Documentos'
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'tipo'
+                    - 'usuario'
+                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%' }
+                    - 'fechaSubida'
+            form:
+                fields:
+                    - 'nombre'
+                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Cotización': 'Cotización', 'Factura': 'Factura', 'Otro': 'Otro' } } }
+                    - { property: 'documentoFile', type: 'vich_file'}

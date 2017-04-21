@@ -26,13 +26,13 @@ class Documento
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\Length(max="100")
      */
-    private $fecha;
+    private $nombre;
 
     /**
      * @var string
@@ -49,23 +49,145 @@ class Documento
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
-     * @Assert\NotBlank()
      */
     private $usuario;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="255")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $documento;
 
     /**
      * @var File
      *
-     *
+     * @Vich\UploadableField(mapping="documentos", fileNameProperty="documento")}
      */
     private $documentoFile;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_subida", type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
+     */
+    private $fechaSubida;
+
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param string $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+
+    /**
+     * @param string $documento
+     */
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDocumentoFile()
+    {
+        return $this->documentoFile;
+    }
+
+    /**
+     * @param mixed $documentoFile
+     */
+    public function setDocumentoFile(File $documento = null)
+    {
+        $this->documentoFile = $documento;
+
+        if ($documento) {
+            $this->fechaSubida = new \DateTime();
+        }
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaSubida()
+    {
+        return $this->fechaSubida;
+    }
+
+    /**
+     * @param \DateTime $fechaSubida
+     */
+    public function setFechaSubida($fechaSubida)
+    {
+        $this->fechaSubida = $fechaSubida;
+    }
+
+    public function __construct()
+    {
+        $this->fechaSubida = new \DateTime();
+    }
+
+
 }

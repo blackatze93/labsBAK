@@ -15,10 +15,13 @@ easy_admin:
     design:
         color_scheme: 'light'
 
+        form_theme: ['horizontal', 'fields.html.twig']
+
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }
             - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
             - { entity: 'Dependencia', icon: 'phone', label: 'Dependencias' }
+            - { entity: 'Documento', icon: 'file-text', label: 'Documentos' }
             - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
             - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
