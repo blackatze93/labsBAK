@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Class UsuarioController.
@@ -48,6 +47,7 @@ class UsuarioController extends BaseAdminController
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') || $this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
             $this->addFlash('error', 'Edite su perfil desde la administración.');
+
             return $this->redirectToRoute('admin');
         }
 
@@ -91,6 +91,7 @@ class UsuarioController extends BaseAdminController
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             $this->addFlash('error', 'Ya está registrado');
+
             return $this->redirectToRoute('index');
         }
 
@@ -110,7 +111,7 @@ class UsuarioController extends BaseAdminController
         if ($formulario->isSubmitted() && $formulario->isValid()) {
             $this->prePersistEntity($usuario);
 
-            if(!$usuario->isActivo()) {
+            if (!$usuario->isActivo()) {
                 $usuario->setActivo(false);
             }
 

@@ -80,7 +80,7 @@ class Documento
         $this->fechaSubida = new \DateTime();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->getNombre();
     }
@@ -192,8 +192,4 @@ class Documento
     {
         $this->fechaSubida = $fechaSubida;
     }
-
-
-
-
 }

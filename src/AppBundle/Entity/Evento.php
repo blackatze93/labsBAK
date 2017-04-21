@@ -109,9 +109,8 @@ class Evento
     {
         $this->fecha = new \DateTime();
         $this->horaInicio = new \DateTime();
-        $this->horaFin = new \DateTime("+2 hours");
+        $this->horaFin = new \DateTime('+2 hours');
     }
-
 
     /**
      * Get id.

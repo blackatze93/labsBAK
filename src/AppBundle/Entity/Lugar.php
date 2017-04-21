@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
@@ -57,8 +56,8 @@ class Lugar
      * @Assert\Type(type="bool")
      */
     private $visible;
-    
-    function __toString()
+
+    public function __toString()
     {
         return $this->getNombre();
     }
@@ -157,6 +156,4 @@ class Lugar
 
         return $lugar;
     }
-
-    
 }

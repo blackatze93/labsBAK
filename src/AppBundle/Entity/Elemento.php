@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -132,7 +131,7 @@ class Elemento
         $this->fechaIngreso = new \DateTime();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->getNombre();
     }

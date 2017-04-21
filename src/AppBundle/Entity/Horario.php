@@ -25,7 +25,7 @@ class Horario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -34,7 +34,7 @@ class Horario
      * @Assert\Length(max="45")
      */
     private $diaClase;
-    
+
     /**
      * @var Asignatura
      *
@@ -44,7 +44,7 @@ class Horario
      * @Assert\NotBlank()
      */
     private $asignatura;
-    
+
     /**
      * @var int
      *
@@ -62,7 +62,7 @@ class Horario
      * @Assert\Date()
      */
     private $fechaInicio;
-    
+
     /**
      * @var \DateTime
      *
@@ -92,7 +92,7 @@ class Horario
      * )
      */
     private $horaFin;
-    
+
     /**
      * @var Lugar
      *
@@ -102,7 +102,7 @@ class Horario
      * @Assert\NotBlank()
      */
     private $lugar;
-    
+
     // TODO: el usuario que registra el horario
     /**
      * @var Usuario
@@ -113,7 +113,7 @@ class Horario
      * @Assert\NotBlank()
      */
     private $usuario;
-    
+
     /**
      * @var ProyectoCurricular
      *

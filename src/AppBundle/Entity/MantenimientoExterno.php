@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * MantenimientoExterno
+ * MantenimientoExterno.
  *
  * @ORM\Table(name="mantenimiento_externo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MantenimientoExternoRepository")
@@ -77,7 +77,7 @@ class MantenimientoExterno
      * @Assert\NotBlank()
      */
     private $usuario;
-    
+
     public function __construct()
     {
         $this->fecha = new \DateTime();
@@ -186,6 +186,4 @@ class MantenimientoExterno
     {
         $this->usuario = $usuario;
     }
-
-
 }

@@ -474,7 +474,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function validarDependencia(ExecutionContextInterface $context)
     {
-        if (is_null($this->dependencia) && is_null($this->proyectoCurricular)){
+        if (is_null($this->dependencia) && is_null($this->proyectoCurricular)) {
             $context->buildViolation('Debe asignar una dependencia o proyecto curricular al usuario.')
                 ->atPath('dependencia')
                 ->addViolation()

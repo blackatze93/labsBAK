@@ -2,9 +2,7 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 // TODO: comprobar si se puede hacer un bulk import de las entidades
@@ -79,7 +77,7 @@ class Incidencia
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioAtiende;
-    
+
     public function __construct()
     {
         $this->fechaRegistro = new \DateTime();
