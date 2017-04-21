@@ -41,11 +41,10 @@ class ElementoPerdido
     private $fechaRegistro;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
      */
     private $entregado;
     
@@ -54,10 +53,6 @@ class ElementoPerdido
      *
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
-     * @Assert\Expression(
-     *     "this.getFechaRegistro() < this.getFechaEntrega()",
-     *     message="La fecha de entrega tiene que ser mayor a la fecha de registro."
-     * )
      */
     private $fechaEntrega;
     
@@ -143,19 +138,19 @@ class ElementoPerdido
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEstado()
+    public function isEntregado()
     {
-        return $this->estado;
+        return $this->entregado;
     }
 
     /**
-     * @param string $estado
+     * @param bool $entregado
      */
-    public function setEstado($estado)
+    public function setEntregado($entregado)
     {
-        $this->estado = $estado;
+        $this->entregado = $entregado;
     }
 
     /**

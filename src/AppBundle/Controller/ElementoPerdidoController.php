@@ -18,16 +18,21 @@ class ElementoPerdidoController extends BaseAdminController
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();
+        $entity->setUsuarioRegistra($usuario);
 
-        if ($entity->getE())
+        if ($entity->isEntregado()) {
             $entity->setUsuarioEntrega($usuario);
+            $entity->setFechaEntrega(new \DateTime());
+        }
     }
 
     protected function preUpdateEntity($entity)
     {
         $usuario = $this->getUser();
 
-        if ($entity->getFechaEntrega())
+        if ($entity->isEntregado()) {
             $entity->setUsuarioEntrega($usuario);
+            $entity->setFechaEntrega(new \DateTime());
+        }
     }
 }

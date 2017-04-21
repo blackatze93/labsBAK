@@ -9,11 +9,11 @@ easy_admin:
                    - 'id'
                    - 'descripcion'
                    - 'fechaRegistro'
-                   - 'estado'
+                   - { property: 'entregado', type: 'boolean' }
                    - 'fechaEntrega'
                    - 'lugar'
             form:
                fields:
                    - 'descripcion'
-                   - { property: 'estado', type: 'choice', type_options: { choices:  { 'Disponible': 'Disponible', 'Entregado': 'Entregado', } } }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
+                   - 'entregado'

@@ -12,7 +12,7 @@ easy_admin:
                     - 'estado'
                     - 'restriccionPrestamo'
                     - 'lugar'
-                    - 'activo'
+                    - { property: 'activo', type: 'boolean' }
             form:
                 fields:
                     - 'id'
@@ -26,4 +26,4 @@ easy_admin:
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
-                    - 'activo'
+                    - { property: 'activo', type: 'checkbox'}
