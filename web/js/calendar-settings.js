@@ -47,27 +47,27 @@ $(function () {
         eventRender: function(event, element) {
             var texto = '';
 
-            texto += '<b>Materia:</b> ';
-            texto += event.title ? event.title : 'Ninguna';
+            // texto += '<b>Materia:</b> ';
+            // texto += event.title ? event.title : 'Ninguna';
+            //
+            // texto +='<br><b>Grupo:</b> ';
+            // texto += event.grupo ? event.grupo : 'Ninguno';
+            //
+            // texto += '<br><b>Estado:</b> ' + event.estado;
 
-            texto +='<br><b>Grupo:</b> ';
-            texto += event.grupo ? event.grupo : 'Ninguno';
-
-            texto += '<br><b>Estado:</b> ' + event.estado;
-
-            texto += '<br><b>Observaciones:</b> ';
+            texto += '<b>Observaciones:</b> ';
             texto += event.observaciones ? event.observaciones : 'Ninguna';
 
+            var n = new Noty({
+                text        : texto,
+                type        : 'information',
+                layout      : 'center'
+            });
+
             $(element).mouseenter(function() {
-               noty({
-                    text        : texto,
-                    type        : 'information',
-                    dismissQueue: false,
-                    layout      : 'center',
-                    theme       : 'bootstrapTheme'
-                });
+                n.show();
             }).mouseleave(function () {
-                $.noty.closeAll(); // Close all notifications
+                n.close(); // Close all notifications
             });
         }
     });

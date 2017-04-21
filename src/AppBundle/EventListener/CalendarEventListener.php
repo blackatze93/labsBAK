@@ -64,15 +64,13 @@ class CalendarEventListener
             $fechaFin = new \DateTime($fecha->format('Y-m-d').' '.$horaFin->format('H:i'));
 
             // create an event with a start/end time
-            $eventEntity = new EventEntity(/*$evento->getMateria()*/null, $fechaInicio, $fechaFin);
+            $eventEntity = new EventEntity($evento->getTipo(), $fechaInicio, $fechaFin);
 
             //optional calendar event settings
             if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
                 $eventEntity->setUrl($this->router->generate('easyadmin', array('action' => 'show', 'id' => $evento->getId(), 'entity' => 'Evento'))); // url to send user to when event label is clicked
             }
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());
-
-//            $eventEntity->addField('estado', $evento->getEstado());
 //
 //            $eventEntity->addField('grupo', $evento->getGrupo());
 

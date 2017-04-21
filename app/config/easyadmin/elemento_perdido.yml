@@ -8,10 +8,22 @@ easy_admin:
                 fields:
                    - 'id'
                    - 'descripcion'
+                   - 'lugar'
                    - 'fechaRegistro'
                    - { property: 'entregado', type: 'boolean' }
                    - 'fechaEntrega'
+
+            show:
+                fields:
+                   - 'id'
+                   - 'descripcion'
                    - 'lugar'
+                   - 'fechaRegistro'
+                   - 'usuarioRegistra'
+                   - 'entregado'
+                   - 'fechaEntrega'
+                   - 'usuarioEntrega'
+
             form:
                fields:
                    - 'descripcion'

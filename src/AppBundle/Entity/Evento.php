@@ -64,7 +64,7 @@ class Evento
      * @Assert\Length(max="45")
      */
     private $tipo;
-    
+
     /**
      * @var string
      *
@@ -72,7 +72,7 @@ class Evento
      * @Assert\Length(max="255")
      */
     private $observaciones;
-    
+
     /**
      * @var Lugar
      *
@@ -82,7 +82,7 @@ class Evento
      * @Assert\NotBlank()
      */
     private $lugar;
-    
+
     // TODO: el usuario que registra el evento
     /**
      * @var Usuario
@@ -90,10 +90,9 @@ class Evento
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
-     * @Assert\NotBlank()
      */
     private $usuario;
-    
+
     /**
      * @var Horario
      *
@@ -102,6 +101,17 @@ class Evento
      * @Assert\Type("AppBundle\Entity\Horario")
      */
     private $horario;
+
+    /**
+     * Evento constructor.
+     */
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
+        $this->horaInicio = new \DateTime();
+        $this->horaFin = new \DateTime("+2 hours");
+    }
+
 
     /**
      * Get id.

@@ -13,6 +13,22 @@ easy_admin:
                     - 'restriccionPrestamo'
                     - 'lugar'
                     - { property: 'activo', type: 'boolean' }
+
+            show:
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'marca'
+                    - 'descripcion'
+                    - 'serial'
+                    - 'fechaIngreso'
+                    - 'estado'
+                    - 'restriccionPrestamo'
+                    - 'observaciones'
+                    - 'lugar'
+                    - 'activo'
+                    - 'equipo'
+
             form:
                 fields:
                     - 'id'
@@ -26,4 +42,4 @@ easy_admin:
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
-                    - { property: 'activo', type: 'checkbox'}
+                    - { property: 'activo', type: 'checkbox', type_options: { data: true }}
