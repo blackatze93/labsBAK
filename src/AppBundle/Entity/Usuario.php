@@ -3,9 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Usuario.
@@ -301,22 +302,6 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @return bool
-     */
-    public function isActivo()
-    {
-        return $this->activo;
-    }
-
-    /**
-     * @param bool $activo
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getFechaCreacion()
@@ -464,5 +449,40 @@ class Usuario implements AdvancedUserInterface
     public function isEnabled()
     {
         return $this->isActivo();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
+     * @param bool $activo
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+    }
+
+    /**
+     * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
+     */
+    public function validarDependencia(ExecutionContextInterface $context)
+    {
+        if (is_null($this->dependencia) && is_null($this->proyectoCurricular)){
+            $context->buildViolation('Debe asignar una dependencia o proyecto curricular al usuario.')
+                ->atPath('dependencia')
+                ->addViolation()
+            ;
+        } elseif (!is_null($this->dependencia) && !is_null($this->proyectoCurricular)) {
+            $context->buildViolation('No puede asignar una dependencia y proyecto curricular a un usuario al mismo tiempo.')
+                ->atPath('proyectoCurricular')
+                ->addViolation();
+        }
     }
 }
