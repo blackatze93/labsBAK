@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -47,7 +46,7 @@ class ElementoPerdido
      * @Assert\Type(type="bool")
      */
     private $entregado;
-    
+
     /**
      * @var \DateTime
      *
@@ -55,7 +54,7 @@ class ElementoPerdido
      * @Assert\DateTime()
      */
     private $fechaEntrega;
-    
+
     /**
      * @var Lugar
      *
@@ -65,7 +64,7 @@ class ElementoPerdido
      * @Assert\NotBlank()
      */
     private $lugar;
-    
+
     /**
      * @var Usuario
      *
@@ -74,7 +73,7 @@ class ElementoPerdido
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRegistra;
-    
+
     /**
      * @var Usuario
      *
@@ -92,7 +91,7 @@ class ElementoPerdido
         $this->fechaRegistro = new \DateTime();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->getDescripcion();
     }
