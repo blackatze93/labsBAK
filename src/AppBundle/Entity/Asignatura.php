@@ -35,6 +35,11 @@ class Asignatura
      */
     private $nombre;
 
+    function __toString()
+    {
+        return $this->getNombre();
+    }
+
     /**
      * @return int
      */
@@ -67,9 +72,5 @@ class Asignatura
         $this->nombre = $nombre;
     }
 
-    function __toString()
-    {
-        return $this->getNombre();
-    }
 
 }

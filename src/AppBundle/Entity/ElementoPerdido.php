@@ -2,12 +2,10 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
-// TODO: falta crear getters y setters
 /**
  * ElementoPerdido.
  *
@@ -38,12 +36,10 @@ class ElementoPerdido
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $fechaRegistro;
 
-    // TODO: entregado, disponible
     /**
      * @var string
      *
@@ -51,13 +47,17 @@ class ElementoPerdido
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
-    private $estado;
+    private $entregado;
     
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
+     * @Assert\Expression(
+     *     "this.getFechaRegistro() < this.getFechaEntrega()",
+     *     message="La fecha de entrega tiene que ser mayor a la fecha de registro."
+     * )
      */
     private $fechaEntrega;
     
@@ -77,7 +77,6 @@ class ElementoPerdido
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_registra_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
-     * @Assert\NotBlank()
      */
     private $usuarioRegistra;
     
@@ -89,6 +88,19 @@ class ElementoPerdido
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioEntrega;
+
+    /**
+     * ElementoPerdido constructor.
+     */
+    public function __construct()
+    {
+        $this->fechaRegistro = new \DateTime();
+    }
+
+    function __toString()
+    {
+        return $this->getDescripcion();
+    }
 
     /**
      * @return string

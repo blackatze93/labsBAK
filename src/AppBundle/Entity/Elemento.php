@@ -90,16 +90,6 @@ class Elemento
      */
     private $estado;
 
-    // TODO: especializado, computador
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
-     */
-    private $tipo;
-
     // TODO: funcionanrio - estudiante
     /**
      * @var string
@@ -133,6 +123,19 @@ class Elemento
      * @Assert\Type("AppBundle\Entity\Equipo")
      */
     private $equipo;
+
+    /**
+     * Elemento constructor.
+     */
+    public function __construct()
+    {
+        $this->fechaIngreso = new \DateTime();
+    }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
 
     /**
      * @return string
@@ -265,22 +268,6 @@ class Elemento
     /**
      * @return string
      */
-    public function getTipo()
-    {
-        return $this->tipo;
-    }
-
-    /**
-     * @param string $tipo
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-    }
-
-    /**
-     * @return string
-     */
     public function getRestriccionPrestamo()
     {
         return $this->restriccionPrestamo;
@@ -340,10 +327,5 @@ class Elemento
     public function setEquipo($equipo)
     {
         $this->equipo = $equipo;
-    }
-
-    function __toString()
-    {
-        return $this->getNombre();
     }
 }

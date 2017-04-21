@@ -2,9 +2,9 @@ easy_admin:
     site_name: 'UD'
 
     formats:
-        date:     'd-m-Y'
+        date:     'd/m/Y'
         time:     'H:i'
-        datetime: 'd-m-Y H:i:s'
+        datetime: 'd/m/Y H:i'
 
     list:
         actions:
@@ -14,8 +14,6 @@ easy_admin:
 
     design:
         color_scheme: 'light'
-
-        form_theme: ['horizontal', 'fields.html.twig']
 
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }

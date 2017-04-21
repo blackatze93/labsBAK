@@ -4,6 +4,15 @@ easy_admin:
             class: AppBundle\Entity\Elemento
             list:
                 title: 'Elementos'
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - 'serial'
+                    - 'fechaIngreso'
+                    - 'estado'
+                    - 'restriccionPrestamo'
+                    - 'lugar'
+                    - 'activo'
             form:
                 fields:
                     - 'id'
@@ -13,7 +22,6 @@ easy_admin:
                     - 'serial'
                     - 'fechaIngreso'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Dañado': 'Dañado', 'Otro': 'Otro' } } }
-                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Computador': 'Computador', 'Especializado': 'Especializado', 'Otro': 'Otro' } } }
                     - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' } } }
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }

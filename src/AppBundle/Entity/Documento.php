@@ -75,6 +75,15 @@ class Documento
      */
     private $fechaSubida;
 
+    public function __construct()
+    {
+        $this->fechaSubida = new \DateTime();
+    }
+
+    function __toString()
+    {
+        return $this->getNombre();
+    }
 
     /**
      * @return int
@@ -184,10 +193,7 @@ class Documento
         $this->fechaSubida = $fechaSubida;
     }
 
-    public function __construct()
-    {
-        $this->fechaSubida = new \DateTime();
-    }
+
 
 
 }

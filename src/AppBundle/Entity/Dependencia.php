@@ -43,6 +43,11 @@ class Dependencia
      */
     private $facultad;
 
+    function __toString()
+    {
+        return $this->getNombre().' - '.$this->getFacultad();
+    }
+
     /**
      * @return int
      */
@@ -81,10 +86,5 @@ class Dependencia
     public function setFacultad(Facultad $facultad)
     {
         $this->facultad = $facultad;
-    }
-
-    function __toString()
-    {
-        return $this->getNombre().' - '.$this->getFacultad();
     }
 }
