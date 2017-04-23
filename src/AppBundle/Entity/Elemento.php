@@ -64,7 +64,7 @@ class Elemento
     /**
      * @var Lugar
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar", inversedBy="elementos")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
      * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()

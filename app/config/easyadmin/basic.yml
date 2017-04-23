@@ -30,5 +30,6 @@ easy_admin:
             - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
             - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
             - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
+            - { entity: 'MotivoBaja' }
             - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
