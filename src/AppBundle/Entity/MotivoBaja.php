@@ -64,6 +64,4 @@ class MotivoBaja
     {
         $this->descripcion = $descripcion;
     }
-
-
 }

@@ -83,6 +83,7 @@ class Equipo
 
     /**
      * @param $elemento
+     *
      * @return $this
      */
     public function addElemento(Elemento $elemento)
@@ -95,6 +96,7 @@ class Equipo
 
     /**
      * @param $elemento
+     *
      * @return $this
      */
     public function removeElemento(Elemento $elemento)

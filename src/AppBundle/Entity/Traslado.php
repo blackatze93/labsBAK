@@ -106,6 +106,4 @@ class Traslado
     {
         $this->usuarioRecibe = $usuarioRecibe;
     }
-
-
 }

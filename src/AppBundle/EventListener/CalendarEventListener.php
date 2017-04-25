@@ -20,8 +20,8 @@ class CalendarEventListener
     /**
      * CalendarEventListener constructor.
      *
-     * @param EntityManager $entityManager
-     * @param Router $router
+     * @param EntityManager                 $entityManager
+     * @param Router                        $router
      * @param AuthorizationCheckerInterface $authorizationChecker
      */
     public function __construct(EntityManager $entityManager, Router $router, AuthorizationCheckerInterface $authorizationChecker)
