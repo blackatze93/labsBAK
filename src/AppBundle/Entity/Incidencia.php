@@ -78,6 +78,9 @@ class Incidencia
      */
     private $usuarioAtiende;
 
+    /**
+     * Incidencia constructor.
+     */
     public function __construct()
     {
         $this->fechaRegistro = new \DateTime();

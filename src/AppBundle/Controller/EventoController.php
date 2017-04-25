@@ -9,6 +9,9 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
  */
 class EventoController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();

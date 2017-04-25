@@ -131,6 +131,9 @@ class Elemento
         $this->fechaIngreso = new \DateTime();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre();

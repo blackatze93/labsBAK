@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UsuarioController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function prePersistEntity($entity)
     {
         // Se obtiene el encoder, que es el metodo de encriptacion de la entidad usuario
@@ -24,6 +27,9 @@ class UsuarioController extends BaseAdminController
         $entity->setPassword($passwordCodificado);
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preUpdateEntity($entity)
     {
         if ($entity->getPasswordEnClaro() !== null) {

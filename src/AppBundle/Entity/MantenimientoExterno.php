@@ -78,6 +78,9 @@ class MantenimientoExterno
      */
     private $usuario;
 
+    /**
+     * MantenimientoExterno constructor.
+     */
     public function __construct()
     {
         $this->fecha = new \DateTime();

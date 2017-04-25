@@ -91,6 +91,9 @@ class ElementoPerdido
         $this->fechaRegistro = new \DateTime();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getDescripcion();

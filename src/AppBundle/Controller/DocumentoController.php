@@ -9,12 +9,18 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
  */
 class DocumentoController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();
         $entity->setUsuario($usuario);
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preUpdateEntity($entity)
     {
         $usuario = $this->getUser();

@@ -9,6 +9,9 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
  */
 class ElementoPerdidoController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();
@@ -20,6 +23,9 @@ class ElementoPerdidoController extends BaseAdminController
         }
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preUpdateEntity($entity)
     {
         $usuario = $this->getUser();

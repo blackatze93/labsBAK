@@ -61,6 +61,9 @@ class Mantenimiento
      */
     private $usuario;
 
+    /**
+     * Mantenimiento constructor.
+     */
     public function __construct()
     {
         $this->fecha = new \DateTime();

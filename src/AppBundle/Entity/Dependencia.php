@@ -43,6 +43,9 @@ class Dependencia
      */
     private $facultad;
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre().' - '.$this->getFacultad();

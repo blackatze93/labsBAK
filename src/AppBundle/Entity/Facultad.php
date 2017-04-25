@@ -84,12 +84,18 @@ class Facultad
         return $this->proyectosCurriculares;
     }
 
+    /**
+     * Facultad constructor.
+     */
     public function __construct()
     {
         $this->dependencias = new ArrayCollection();
         $this->proyectosCurriculares = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre();

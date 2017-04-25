@@ -57,6 +57,9 @@ class Lugar
      */
     private $visible;
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre();

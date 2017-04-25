@@ -75,11 +75,17 @@ class Documento
      */
     private $fechaSubida;
 
+    /**
+     * Documento constructor.
+     */
     public function __construct()
     {
         $this->fechaSubida = new \DateTime();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre();
@@ -166,7 +172,8 @@ class Documento
     }
 
     /**
-     * @param mixed $documentoFile
+     * @param File|null $documento
+     * @internal param mixed $documentoFile
      */
     public function setDocumentoFile(File $documento = null)
     {

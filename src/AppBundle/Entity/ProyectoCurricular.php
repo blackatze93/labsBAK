@@ -93,6 +93,9 @@ class ProyectoCurricular
         $this->facultad = $facultad;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre().' - '.$this->getFacultad();

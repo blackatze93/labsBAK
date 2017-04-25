@@ -81,7 +81,11 @@ class Equipo
         return $this->elementos;
     }
 
-    public function addElemento($elemento)
+    /**
+     * @param $elemento
+     * @return $this
+     */
+    public function addElemento(Elemento $elemento)
     {
         $this->elementos[] = $elemento;
         $elemento->setEquipo($this);
@@ -89,7 +93,11 @@ class Equipo
         return $this;
     }
 
-    public function removeElemento($elemento)
+    /**
+     * @param $elemento
+     * @return $this
+     */
+    public function removeElemento(Elemento $elemento)
     {
         $this->elementos->removeElement($elemento);
         $elemento->setEquipo(null);
@@ -97,11 +105,17 @@ class Equipo
         return $this;
     }
 
+    /**
+     * Equipo constructor.
+     */
     public function __construct()
     {
         $this->elementos = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getNombre();
