@@ -43,11 +43,11 @@ class PrestamoPracticaLibre
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="type="time")
+     * @ORM\Column(type="time")
      * @Assert\NotBlank()
      * @Assert\Time()
      * @Assert\Expression(
-     *     "this.getHoraInicio() < this.getHoraFin()",
+     *     "this.getHoraEntrada() < this.getHoraSalida()",
      *     message="La hora final debe ser mayor a la hora de inicio"
      * )
      */

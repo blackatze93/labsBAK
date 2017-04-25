@@ -7,12 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * Prestamo.
+ * PrestamoElemento.
  *
- * @ORM\Table(name="prestamo")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoRepository")
+ * @ORM\Table(name="prestamo_elemento")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoElementoRepository")
  */
-class Prestamo
+class PrestamoElemento
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class Prestamo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_prestamo", type="datetime")
+     * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      * @Assert\DateTime()
      */
@@ -35,24 +35,37 @@ class Prestamo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_devolucion", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $fechaDevolucion;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
+     * @Assert\Length(max="255")
+     */
+    private $observaciones;
+
+    /**
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=true, unique=false)
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuario;
 
     /**
-     * @ORM\OneToMany(targetEntity="ElementoPrestamo", mappedBy="prestamo")
+     * @var Elemento
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
+     * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Elemento")
      */
-    protected $elementos_prestamo;
+    private $elemento;
 
     /**
      * Get id.
@@ -65,22 +78,6 @@ class Prestamo
     }
 
     /**
-     * Set fechaPrestamo.
-     *
-     * @param \DateTime $fechaPrestamo
-     *
-     * @return Prestamo
-     */
-    public function setFechaPrestamo($fechaPrestamo)
-    {
-        $this->fechaPrestamo = $fechaPrestamo;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaPrestamo.
-     *
      * @return \DateTime
      */
     public function getFechaPrestamo()
@@ -89,22 +86,14 @@ class Prestamo
     }
 
     /**
-     * Set fechaDevolucion.
-     *
-     * @param \DateTime $fechaDevolucion
-     *
-     * @return Prestamo
+     * @param \DateTime $fechaPrestamo
      */
-    public function setFechaDevolucion($fechaDevolucion)
+    public function setFechaPrestamo($fechaPrestamo)
     {
-        $this->fechaDevolucion = $fechaDevolucion;
-
-        return $this;
+        $this->fechaPrestamo = $fechaPrestamo;
     }
 
     /**
-     * Get fechaDevolucion.
-     *
      * @return \DateTime
      */
     public function getFechaDevolucion()
@@ -113,11 +102,27 @@ class Prestamo
     }
 
     /**
-     * @param Usuario $usuario
+     * @param \DateTime $fechaDevolucion
      */
-    public function setUsuario($usuario)
+    public function setFechaDevolucion($fechaDevolucion)
     {
-        $this->usuario = $usuario;
+        $this->fechaDevolucion = $fechaDevolucion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * @param string $observaciones
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
     }
 
     /**
@@ -129,45 +134,27 @@ class Prestamo
     }
 
     /**
-     * Prestamo constructor.
+     * @param Usuario $usuario
      */
-    public function __construct()
+    public function setUsuario($usuario)
     {
-        $this->elementos_prestamo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->usuario = $usuario;
     }
 
     /**
-     * Add elementos_prestamo.
-     *
-     * @param ElementoPrestamo $elementos_prestamo
-     *
-     * @return Prestamo
+     * @return Elemento
      */
-    public function addElementoPrestamo(ElementoPrestamo $elementos_prestamo)
+    public function getElemento()
     {
-        $this->elementos_prestamo[] = $elementos_prestamo;
-
-        return $this;
+        return $this->elemento;
     }
 
     /**
-     * Remove elementos_prestamo.
-     *
-     * @param ElementoPrestamo $elementos_prestamo
+     * @param Elemento $elemento
      */
-    public function removeElementoPrestamo(ElementoPrestamo $elementos_prestamo)
+    public function setElemento($elemento)
     {
-        $this->elementos_prestamo->removeElement($elementos_prestamo);
-    }
-
-    /**
-     * Get elementos_prestamo.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getElementosPrestamo()
-    {
-        return $this->elementos_prestamo;
+        $this->elemento = $elemento;
     }
 
     /*
