@@ -1,7 +1,7 @@
 easy_admin:
     entities:
-        MotivoBaja:
-            class: AppBundle\Entity\MotivoBaja
+        PrestamoPracticaLibre:
+            class: AppBundle\Entity\PrestamoPracticaLibre
 #            list:
 #                title: 'Dependencias'
 #            form:
