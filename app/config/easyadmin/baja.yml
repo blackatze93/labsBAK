@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Baja:
+            class: AppBundle\Entity\Baja
+#            list:
+#                title: 'Dependencias'
+#            form:
+#                fields:
+#                    - 'nombre'
+#                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }

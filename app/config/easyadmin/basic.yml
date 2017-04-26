@@ -35,3 +35,5 @@ easy_admin:
             - { entity: 'PrestamoPracticaLibre' }
             - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
+            - { entity: 'Baja' }
+            - { entity: 'Traslado' }

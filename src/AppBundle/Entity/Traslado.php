@@ -46,7 +46,7 @@ class Traslado
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_recibe_id", referencedColumnName="id", nullable=false, unique=false)
+     * @ORM\JoinColumn(name="usuario_recibe_id", refxºerencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRecibe;
