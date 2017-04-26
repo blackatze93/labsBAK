@@ -4,6 +4,10 @@ easy_admin:
             class: AppBundle\Entity\Dependencia
             list:
                 title: 'Dependencias'
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - { property: 'facultad.nombre', label: 'Facultad', sortable: true }
             form:
                 fields:
                     - 'nombre'
