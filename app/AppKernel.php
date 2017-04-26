@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
