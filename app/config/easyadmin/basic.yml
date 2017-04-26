@@ -16,9 +16,9 @@ easy_admin:
         color_scheme: 'light'
 
         assets:
-            css: ['assets/vendor/noty/lib/noty.css']
+            css: ['/assets/vendor/noty/lib/noty.css']
 
-            js: ['assets/vendor/noty/lib/noty.min.js', 'js/noty-settings.js']
+            js: ['/assets/vendor/noty/lib/noty.min.js', '/js/noty-settings.js']
 
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }
