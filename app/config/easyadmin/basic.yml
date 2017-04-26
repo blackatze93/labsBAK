@@ -15,11 +15,6 @@ easy_admin:
     design:
         color_scheme: 'light'
 
-        assets:
-            css: ['/assets/vendor/noty/lib/noty.css']
-
-            js: ['/assets/vendor/noty/lib/noty.min.js', '/js/noty-settings.js']
-
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }
             - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
