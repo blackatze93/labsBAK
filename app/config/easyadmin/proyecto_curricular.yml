@@ -7,6 +7,10 @@ easy_admin:
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Proyecto Curricular' }
+                fields:
+                    - 'id'
+                    - 'nombre'
+                    - { property: 'facultad.nombre', label: 'Facultad', sortable: true }
             form:
                 fields:
                     - 'id'
