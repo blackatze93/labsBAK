@@ -173,6 +173,7 @@ class Documento
 
     /**
      * @param File|null $documento
+     *
      * @internal param mixed $documentoFile
      */
     public function setDocumentoFile(File $documento = null)
