@@ -3,6 +3,11 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,8 +29,8 @@ class UsuarioType extends AbstractType
             ->add('codigo')
             ->add('nombre')
             ->add('apellido')
-            ->add('email', 'email')
-            ->add('passwordEnClaro', 'repeated', array(
+            ->add('email', EmailType::class)
+            ->add('passwordEnClaro', RepeatedType::class, array(
                 'type' => 'password',
                 'invalid_message' => 'Las dos contraseñas deben coincidir',
                 'first_options' => array('label' => 'Contraseña'),
@@ -34,7 +39,7 @@ class UsuarioType extends AbstractType
                 'second_name' => 'pass2',
                 'required' => false,
             ))
-            ->add('rol', 'choice', array(
+            ->add('rol', ChoiceType::class, array(
                 'choices' => array(
                     'ROLE_FUNCIONARIO' => 'ROLE_FUNCIONARIO',
                     'ROLE_DOCENTE' => 'ROLE_DOCENTE',
@@ -43,7 +48,7 @@ class UsuarioType extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('cargo')
-            ->add('estado', 'choice', array(
+            ->add('estado', ChoiceType::class, array(
                 'choices' => array(
                     'Paz y Salvo' => 'Paz y Salvo',
                     'En Mora' => 'En Mora',
@@ -52,17 +57,17 @@ class UsuarioType extends AbstractType
             ))
             ->add('dependencia')
             ->add('proyectoCurricular')
-            ->add('restablecer', 'reset')
+            ->add('restablecer', ResetType::class)
         ;
 
         // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
         if ($options['accion'] === 'registro') {
             $builder
-                ->add('crear', 'submit')
+                ->add('crear', SubmitType::class)
             ;
         } elseif ($options['accion'] === 'modificar_perfil') {
             $builder
-                ->add('guardar', 'submit')
+                ->add('guardar', SubmitType::class)
             ;
         }
     }
