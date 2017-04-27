@@ -11,8 +11,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * Usuario.
  *
+ * @ORM\Entity()
  * @ORM\Table(name="usuario")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @DoctrineAssert\UniqueEntity("id")
  */
 class Usuario implements AdvancedUserInterface

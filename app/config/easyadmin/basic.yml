@@ -24,7 +24,6 @@ easy_admin:
               children:
                 - { entity: 'Documento', icon: 'file', label: 'Documentos' }
                 - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documentos' }
-            - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
             - { entity: 'Horario', icon: 'calendar', label: 'Horario' }
@@ -42,6 +41,7 @@ easy_admin:
                 - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
                 - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
                 - { entity: 'Traslado' }
+                - { entity: 'ObjetoEncontrado', icon: 'search', label: 'Objetos Encontrados' }
             - label: 'Prestamos'
               icon: ''
               children:

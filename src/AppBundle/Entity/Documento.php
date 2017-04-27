@@ -10,8 +10,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * Documento.
  *
+ * @ORM\Entity()
  * @ORM\Table(name="documento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DocumentoRepository")
  * @Vich\Uploadable
  */
 class Documento

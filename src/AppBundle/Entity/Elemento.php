@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Elemento.
  *
+ * @ORM\Entity()
  * @ORM\Table(name="elemento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoRepository")
  * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity("serial")
  */

@@ -9,8 +9,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 /**
  * Dependencia.
  *
+ * @ORM\Entity()
  * @ORM\Table(name="dependencia")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DependenciaRepository")
  * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class Dependencia

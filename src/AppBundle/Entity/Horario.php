@@ -10,8 +10,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * Horario.
  *
- * @ORM\Table(name="horario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\HorarioRepository")
+ * @ORM\Table(name="horario")
  * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoHorario",
  *     message="Ya existe un horario asociado a esa fecha y lugar.")
  */

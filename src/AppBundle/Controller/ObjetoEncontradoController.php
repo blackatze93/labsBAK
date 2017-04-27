@@ -5,9 +5,9 @@ namespace AppBundle\Controller;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
- * Class ElementoPerdidoController.
+ * Class ObjetoEncontradoController.
  */
-class ElementoPerdidoController extends BaseAdminController
+class ObjetoEncontradoController extends BaseAdminController
 {
     /**
      * @param object $entity

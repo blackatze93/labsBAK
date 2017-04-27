@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ElementoPerdido.
+ * ObjetoEncontrado.
  *
- * @ORM\Table(name="elemento_perdido")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ElementoPerdidoRepository")
+ * @ORM\Entity()
+ * @ORM\Table(name="objeto_encontrado")
  */
-class ElementoPerdido
+class ObjetoEncontrado
 {
     /**
      * @var int
@@ -84,7 +84,7 @@ class ElementoPerdido
     private $usuarioEntrega;
 
     /**
-     * ElementoPerdido constructor.
+     * ObjetoEncontrado constructor.
      */
     public function __construct()
     {

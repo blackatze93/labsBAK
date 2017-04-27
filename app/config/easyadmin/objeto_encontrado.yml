@@ -1,13 +1,13 @@
 easy_admin:
     entities:
-        ElementoPerdido:
-            class: AppBundle\Entity\ElementoPerdido
-            controller: AppBundle\Controller\ElementoPerdidoController
+        ObjetoEncontrado:
+            class: AppBundle\Entity\ObjetoEncontrado
+            controller: AppBundle\Controller\ObjetoEncontradoController
             list:
-                title: 'Elementos Perdidos'
+                title: 'Objetos Encontrados'
                 actions:
                     - { name: 'show', icon: 'eye' }
-                    - { name: 'new', label: 'Crear Elemento Perdido' }
+                    - { name: 'new', label: 'Crear Objeto Encontrado' }
                 fields:
                    - 'id'
                    - 'descripcion'
@@ -16,7 +16,7 @@ easy_admin:
                    - { property: 'entregado', type: 'boolean' }
                    - 'fechaEntrega'
             show:
-                title: 'Elemento Perdido (#%%entity_id%%)'
+                title: 'Objeto Encontrado (#%%entity_id%%)'
                 fields:
                    - 'id'
                    - 'descripcion'
@@ -32,7 +32,7 @@ easy_admin:
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - 'entregado'
             new:
-                title: 'Crear Elemento Perdido'
+                title: 'Crear Objeto Encontrado'
             edit:
-                title: 'Modificar Elemento Perdido'
+                title: 'Modificar Objeto Encontrado'
                 

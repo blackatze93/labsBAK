@@ -8,8 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * PrestamoElemento.
  *
+ * @ORM\Entity()
  * @ORM\Table(name="prestamo_elemento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoElementoRepository")
  */
 class PrestamoElemento
 {
