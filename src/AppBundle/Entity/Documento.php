@@ -35,13 +35,13 @@ class Documento
     private $nombre;
 
     /**
-     * @var string
+     * @var TipoDocumento
      *
-     * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoDocumento", inversedBy="documentos")
+     * @ORM\JoinColumn(name="tipo_documento_id", referencedColumnName="id", nullable=false)
+     * @Assert\Type("AppBundle\Entity\TipoDocumento")
      */
-    private $tipo;
+    private $tipoDocumento;
 
     /**
      * @var Usuario
@@ -118,17 +118,17 @@ class Documento
     /**
      * @return string
      */
-    public function getTipo()
+    public function getTipoDocumento()
     {
-        return $this->tipo;
+        return $this->tipoDocumento;
     }
 
     /**
-     * @param string $tipo
+     * @param string $tipoDocumento
      */
-    public function setTipo($tipo)
+    public function setTipoDocumento($tipoDocumento)
     {
-        $this->tipo = $tipo;
+        $this->tipoDocumento = $tipoDocumento;
     }
 
     /**

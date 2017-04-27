@@ -7,21 +7,35 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'nombre'
-                    - 'tipo'
-                    - 'usuario'
-                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%' }
-                    - 'fechaSubida'
+                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
+                    - { property: 'usuario', label: 'Subido Por' }
+                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%', label: 'Archivo' }
+                    - { property: 'fechaSubida', label: 'Fecha de Subida' }
             list:
                 title: 'Documentos'
                 fields:
                     - 'id'
                     - 'nombre'
-                    - 'tipo'
-                    - 'usuario'
-                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%' }
-                    - 'fechaSubida'
+                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
+                    - { property: 'usuario', label: 'Subido Por' }
+                    - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%', label: 'Archivo' }
+                    - { property: 'fechaSubida', label: 'Fecha de Subida' }
             form:
                 fields:
                     - 'nombre'
-                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Cotización': 'Cotización', 'Factura': 'Factura', 'Otro': 'Otro' } } }
-                    - { property: 'documentoFile', type: 'vich_file'}
+                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
+                    - { property: 'documentoFile', type: 'vich_file', label: 'Archivo'}
+
+        TipoDocumento:
+            class: AppBundle\Entity\TipoDocumento
+            list:
+                title: 'Tipos de Documentos'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Tipo de Documento' }
+            new:
+                title: 'Crear Tipo de Documento'
+            edit:
+                title: 'Modificar Tipo de Documento'
+            show:
+                title: 'Tipo de Documento (#%%entity_id%%)'

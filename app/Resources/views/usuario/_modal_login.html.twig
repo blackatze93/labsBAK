@@ -8,14 +8,28 @@
             </div>
             <div class="modal-body">
                 <form class="form-signin" action="{{ path('usuario_login_check') }}" method="post">
-                    <label for="username_modal" class="sr-only">Identificación</label>
-                    <input type="text" id="username_modal" name="_username" value="{{ last_username }}" class="form-control" placeholder="Identificación" required>
-                    <label for="password_modal" class="sr-only">Contraseña</label>
-                    <input type="password" id="password_modal" name="_password" class="form-control" placeholder="Contraseña" required>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username_modal" placeholder="Identificación" name="_username" value="{{ last_username }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password_modal" placeholder="Contraseña" name="_password" required>
+                        </div>
+                    </div>
                     <div class="checkbox">
                         <label><input type="checkbox" id="no_cerrar_modal" name="_remember_me" checked>No cerrar sesión</label>
                     </div>
-                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
+                    <div class="form-group">
+                        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Iniciar sesión">
+                    </div>
                 </form>
             </div>
         </div>

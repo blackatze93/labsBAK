@@ -19,7 +19,11 @@ easy_admin:
             - { label: 'Inicio', icon: 'home', route: 'index' }
             - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
             - { entity: 'Dependencia', icon: 'phone', label: 'Dependencias' }
-            - { entity: 'Documento', icon: 'file-text', label: 'Documentos' }
+            - label: 'Documentos'
+              icon: 'file-text'
+              children:
+                - { entity: 'Documento', icon: 'file', label: 'Documentos' }
+                - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documentos' }
             - { entity: 'ElementoPerdido', icon: 'search', label: 'Elementos Perdidos' }
             - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
             - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
