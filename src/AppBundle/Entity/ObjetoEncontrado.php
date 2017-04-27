@@ -32,30 +32,6 @@ class ObjetoEncontrado
     private $descripcion;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     * @Assert\DateTime()
-     */
-    private $fechaRegistro;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     * @Assert\Type(type="bool")
-     */
-    private $entregado;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime()
-     */
-    private $fechaEntrega;
-
-    /**
      * @var Lugar
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
@@ -64,6 +40,15 @@ class ObjetoEncontrado
      * @Assert\NotBlank()
      */
     private $lugar;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
+     */
+    private $fechaRegistro;
 
     /**
      * @var Usuario
@@ -75,6 +60,32 @@ class ObjetoEncontrado
     private $usuarioRegistra;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="100")
+     */
+    private $estado;
+
+    /**
+     * @var Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\JoinColumn(name="usuario_reclama_id", referencedColumnName="id", nullable=true)
+     * @Assert\Type("AppBundle\Entity\Usuario")
+     */
+    private $usuarioReclama;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
+     */
+    private $fechaEntrega;
+
+    /**
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
@@ -83,9 +94,6 @@ class ObjetoEncontrado
      */
     private $usuarioEntrega;
 
-    /**
-     * ObjetoEncontrado constructor.
-     */
     public function __construct()
     {
         $this->fechaRegistro = new \DateTime();
@@ -124,54 +132,6 @@ class ObjetoEncontrado
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getFechaRegistro()
-    {
-        return $this->fechaRegistro;
-    }
-
-    /**
-     * @param \DateTime $fechaRegistro
-     */
-    public function setFechaRegistro($fechaRegistro)
-    {
-        $this->fechaRegistro = $fechaRegistro;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEntregado()
-    {
-        return $this->entregado;
-    }
-
-    /**
-     * @param bool $entregado
-     */
-    public function setEntregado($entregado)
-    {
-        $this->entregado = $entregado;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaEntrega()
-    {
-        return $this->fechaEntrega;
-    }
-
-    /**
-     * @param \DateTime $fechaEntrega
-     */
-    public function setFechaEntrega($fechaEntrega)
-    {
-        $this->fechaEntrega = $fechaEntrega;
-    }
-
-    /**
      * @return Lugar
      */
     public function getLugar()
@@ -188,6 +148,22 @@ class ObjetoEncontrado
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getFechaRegistro()
+    {
+        return $this->fechaRegistro;
+    }
+
+    /**
+     * @param \DateTime $fechaRegistro
+     */
+    public function setFechaRegistro($fechaRegistro)
+    {
+        $this->fechaRegistro = $fechaRegistro;
+    }
+
+    /**
      * @return Usuario
      */
     public function getUsuarioRegistra()
@@ -201,6 +177,54 @@ class ObjetoEncontrado
     public function setUsuarioRegistra($usuarioRegistra)
     {
         $this->usuarioRegistra = $usuarioRegistra;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param string $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioReclama()
+    {
+        return $this->usuarioReclama;
+    }
+
+    /**
+     * @param Usuario $usuarioReclama
+     */
+    public function setUsuarioReclama($usuarioReclama)
+    {
+        $this->usuarioReclama = $usuarioReclama;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaEntrega()
+    {
+        return $this->fechaEntrega;
+    }
+
+    /**
+     * @param \DateTime $fechaEntrega
+     */
+    public function setFechaEntrega($fechaEntrega)
+    {
+        $this->fechaEntrega = $fechaEntrega;
     }
 
     /**

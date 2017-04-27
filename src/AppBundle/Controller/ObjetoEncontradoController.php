@@ -17,7 +17,7 @@ class ObjetoEncontradoController extends BaseAdminController
         $usuario = $this->getUser();
         $entity->setUsuarioRegistra($usuario);
 
-        if ($entity->isEntregado()) {
+        if ($entity->getEstado() === 'Entregado') {
             $entity->setUsuarioEntrega($usuario);
             $entity->setFechaEntrega(new \DateTime());
         }
@@ -30,7 +30,7 @@ class ObjetoEncontradoController extends BaseAdminController
     {
         $usuario = $this->getUser();
 
-        if ($entity->isEntregado()) {
+        if ($entity->getEstado() === 'Entregado') {
             $entity->setUsuarioEntrega($usuario);
             $entity->setFechaEntrega(new \DateTime());
         }

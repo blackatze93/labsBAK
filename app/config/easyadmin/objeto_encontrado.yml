@@ -12,25 +12,28 @@ easy_admin:
                    - 'id'
                    - 'descripcion'
                    - 'lugar'
-                   - 'fechaRegistro'
-                   - { property: 'entregado', type: 'boolean' }
-                   - 'fechaEntrega'
+                   - { property: 'fechaRegistro', label: 'Fecha de Registro' }
+                   - 'estado'
+                   - { property: 'fechaEntrega', label: 'Fecha de Entrega' }
             show:
                 title: 'Objeto Encontrado (#%%entity_id%%)'
                 fields:
                    - 'id'
                    - 'descripcion'
                    - 'lugar'
-                   - 'fechaRegistro'
-                   - 'usuarioRegistra'
-                   - 'entregado'
-                   - 'fechaEntrega'
-                   - 'usuarioEntrega'
+                   - { property: 'fechaRegistro', label: 'Fecha de Registro' }
+                   - { property: 'usuarioRegistra', label: 'Registrado Por' }
+                   - 'estado'
+                   - { property: 'usuarioReclama', label: 'Entregado A' }
+                   - { property: 'fechaEntrega', label: 'Fecha de Entrega' }
+                   - { property: 'usuarioEntrega', label: 'Entregado Por' }
             form:
                fields:
                    - 'descripcion'
+                   - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro' }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
-                   - 'entregado'
+                   - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' } } }
+                   - { property: 'usuarioReclama', label: 'Entregado A' }
             new:
                 title: 'Crear Objeto Encontrado'
             edit:
