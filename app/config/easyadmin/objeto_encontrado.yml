@@ -30,7 +30,7 @@ easy_admin:
             form:
                fields:
                    - 'descripcion'
-                   - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro' }
+                   - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro', type_options: { widget: 'single_text' } }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' } } }
                    - { property: 'usuarioReclama', label: 'Entregado A' }
