@@ -1,5 +1,23 @@
 $(function () {
     $('#objetoencontrado_fechaRegistro').datetimepicker({
-        locale: 'es'
+        locale: 'es',
+        showTodayButton: true,
+        showClear: true,
+        showClose: true,
+        debug: true,
+        disabledHours: [0,1,2,3,4,5,22,23],
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-plus",
+            down: "fa fa-minus",
+            previous: "fa fa-chevron-left",
+            next: "fa fa-chevron-right",
+            today: "fa fa-calendar-check-o",
+            clear: "fa fa-trash-o",
+            close: "fa fa-window-close-o"
+        }
     });
+
+    // TODO: Remove class btn to down and up buttons
 });
