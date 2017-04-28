@@ -34,7 +34,7 @@ easy_admin:
             - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
             - label: 'Inventario'
-              icon: ''
+              icon: 'archive'
               children:
                 - { entity: 'Baja' }
                 - { entity: 'MotivoBaja' }
@@ -43,7 +43,7 @@ easy_admin:
                 - { entity: 'Traslado' }
                 - { entity: 'ObjetoEncontrado', icon: 'search', label: 'Objetos Encontrados' }
             - label: 'Prestamos'
-              icon: ''
+              icon: 'shopping-basket'
               children:
                 - { entity: 'PrestamoElemento' }
                 - { entity: 'PrestamoPracticaLibre' }

@@ -7,23 +7,23 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'nombre'
-                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
-                    - { property: 'usuario', label: 'Subido Por' }
+                    - { property: 'tipoDocumento', label: 'Tipo de documento' }
+                    - { property: 'usuario', label: 'Subido por' }
                     - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%', label: 'Archivo' }
-                    - { property: 'fechaSubida', label: 'Fecha de Subida' }
+                    - { property: 'fechaSubida', label: 'Fecha de subida' }
             list:
                 title: 'Documentos'
                 fields:
                     - 'id'
                     - 'nombre'
-                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
-                    - { property: 'usuario', label: 'Subido Por' }
+                    - { property: 'tipoDocumento', label: 'Tipo de documento' }
+                    - { property: 'usuario', label: 'Subido por' }
                     - { property: 'documento', template: 'documento.html.twig', base_path: '%app.path.documentos%', label: 'Archivo' }
-                    - { property: 'fechaSubida', label: 'Fecha de Subida' }
+                    - { property: 'fechaSubida', label: 'Fecha de subida' }
             form:
                 fields:
                     - 'nombre'
-                    - { property: 'tipoDocumento', label: 'Tipo de Documento' }
+                    - { property: 'tipoDocumento', label: 'Tipo de documento' }
                     - { property: 'documentoFile', type: 'vich_file', label: 'Archivo'}
 
         TipoDocumento:

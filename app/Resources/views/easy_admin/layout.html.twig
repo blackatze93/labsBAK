@@ -95,12 +95,12 @@
                                         {{ 'user.anonymous'|trans(domain = 'EasyAdminBundle') }}
                                     {% elseif not _logout_path %}
                                         <i class="hidden-xs fa fa-user"></i>
-                                        {{ app.user.username|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
+                                        {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
                                     {% else %}
                                         <div class="btn-group">
                                             <button type="button" class="btn" data-toggle="dropdown">
                                                 <i class="hidden-xs fa fa-user"></i>
-                                                {{ app.user.username|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
+                                                {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
                                             </button>
                                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 <span class="caret"></span>

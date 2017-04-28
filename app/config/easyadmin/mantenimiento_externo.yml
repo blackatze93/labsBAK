@@ -13,9 +13,11 @@ easy_admin:
                 title: 'Modificar Mantenimiento Externo'
             show:
                 title: 'Mantenimiento Externo (#%%entity_id%%)'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - 'cantidadEquipos'
-#                    - 'descripcion'
-#                    - 'visible'
+            form:
+                fields:
+                    - { property: 'nombreEmpresa', label: 'Nombre de la empresa' }
+                    - { property: 'nombreTecnico', label: 'Nombre del técnico' }
+                    - { property: 'cedulaTecnico', label: 'Cédula del técnico' }
+                    - { property: 'fecha', type: 'datetime', type_options: { widget: 'single_text' } }
+                    - 'descripcion'
+                    - { property: 'usuario', type: 'easyadmin_autocomplete', label: 'Usuario que atiende', type_options: { class: 'AppBundle\Entity\Usuario' } }

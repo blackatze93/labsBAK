@@ -12,28 +12,28 @@ easy_admin:
                    - 'id'
                    - 'descripcion'
                    - 'lugar'
-                   - { property: 'fechaRegistro', label: 'Fecha de Registro' }
+                   - { property: 'fechaRegistro', label: 'Fecha de registro' }
                    - 'estado'
-                   - { property: 'fechaEntrega', label: 'Fecha de Entrega' }
+                   - { property: 'fechaEntrega', label: 'Fecha de entrega' }
             show:
                 title: 'Objeto Encontrado (#%%entity_id%%)'
                 fields:
                    - 'id'
                    - 'descripcion'
                    - 'lugar'
-                   - { property: 'fechaRegistro', label: 'Fecha de Registro' }
-                   - { property: 'usuarioRegistra', label: 'Registrado Por' }
+                   - { property: 'fechaRegistro', label: 'Fecha de registro' }
+                   - { property: 'usuarioRegistra', label: 'Registrado por' }
                    - 'estado'
-                   - { property: 'usuarioReclama', label: 'Entregado A' }
-                   - { property: 'fechaEntrega', label: 'Fecha de Entrega' }
-                   - { property: 'usuarioEntrega', label: 'Entregado Por' }
+                   - { property: 'usuarioReclama', label: 'Entregado a' }
+                   - { property: 'fechaEntrega', label: 'Fecha de entrega' }
+                   - { property: 'usuarioEntrega', label: 'Entregado por' }
             form:
                fields:
                    - 'descripcion'
-                   - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro', type_options: { widget: 'single_text' } }
+                   - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro', type_options: { widget: 'single_text' } }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' } } }
-                   - { property: 'usuarioReclama', label: 'Entregado A' }
+                   - { property: 'usuarioReclama', type: 'easyadmin_autocomplete', label: 'Entregado a', type_options: { class: 'AppBundle\Entity\Usuario' } }
             new:
                 title: 'Crear Objeto Encontrado'
             edit:
