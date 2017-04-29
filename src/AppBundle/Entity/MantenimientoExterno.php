@@ -72,11 +72,11 @@ class MantenimientoExterno
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="usuario_atiende_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
-    private $usuario;
+    private $usuarioAtiende;
 
     /**
      * MantenimientoExterno constructor.
@@ -177,16 +177,16 @@ class MantenimientoExterno
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioAtiende()
     {
-        return $this->usuario;
+        return $this->usuarioAtiende;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioAtiende
      */
-    public function setUsuario($usuario)
+    public function setUsuarioAtiende($usuarioAtiende)
     {
-        $this->usuario = $usuario;
+        $this->usuarioAtiende = $usuarioAtiende;
     }
 }

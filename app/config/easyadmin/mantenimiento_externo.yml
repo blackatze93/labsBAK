@@ -15,9 +15,9 @@ easy_admin:
                 title: 'Mantenimiento Externo (#%%entity_id%%)'
             form:
                 fields:
-                    - { property: 'nombreEmpresa', label: 'Nombre de la empresa' }
-                    - { property: 'nombreTecnico', label: 'Nombre del técnico' }
-                    - { property: 'cedulaTecnico', label: 'Cédula del técnico' }
+                    - 'nombreEmpresa'
+                    - 'nombreTecnico'
+                    - 'cedulaTecnico'
                     - { property: 'fecha', type: 'datetime', type_options: { widget: 'single_text' } }
                     - 'descripcion'
-                    - { property: 'usuario', type: 'easyadmin_autocomplete', label: 'Usuario que atiende', type_options: { class: 'AppBundle\Entity\Usuario' } }
+                    - { property: 'usuarioAtiende', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' } }

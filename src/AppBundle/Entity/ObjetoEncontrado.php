@@ -94,6 +94,9 @@ class ObjetoEncontrado
      */
     private $usuarioEntrega;
 
+    /**
+     * ObjetoEncontrado constructor.
+     */
     public function __construct()
     {
         $this->fechaRegistro = new \DateTime();

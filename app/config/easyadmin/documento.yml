@@ -29,7 +29,7 @@ easy_admin:
         TipoDocumento:
             class: AppBundle\Entity\TipoDocumento
             list:
-                title: 'Tipos de Documentos'
+                title: 'Tipos de Documento'
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Tipo de Documento' }
@@ -39,3 +39,6 @@ easy_admin:
                 title: 'Modificar Tipo de Documento'
             show:
                 title: 'Tipo de Documento (#%%entity_id%%)'
+            form:
+                fields:
+                    - 'nombre'

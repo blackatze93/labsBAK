@@ -5,11 +5,6 @@
 
 {% block main %}
     {{ form_start(formulario) }}
-        {% if not formulario.vars.valid %}
-            <script>
-                notificacion('Hay errores en el formulario', 'error');
-            </script>
-        {% endif %}
         <div class="form-group">
             {{ form_label(formulario.id) }}
             {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}

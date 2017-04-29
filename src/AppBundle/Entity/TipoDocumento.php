@@ -39,6 +39,9 @@ class TipoDocumento
      */
     private $documentos;
 
+    /**
+     * TipoDocumento constructor.
+     */
     public function __construct()
     {
         $this->documentos = new ArrayCollection();

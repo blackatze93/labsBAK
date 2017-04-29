@@ -3,6 +3,7 @@ $(function () {
 
     $('#objetoencontrado_fechaRegistro').datetimepicker({
         locale: 'es',
+        format: 'YYYY-MM-DD HH:mm',
         showTodayButton: true,
         showClear: true,
         showClose: true,
@@ -22,6 +23,7 @@ $(function () {
 
     $('#mantenimientoexterno_fecha').datetimepicker({
         locale: 'es',
+        format: 'YYYY-MM-DD HH:mm',
         showTodayButton: true,
         showClear: true,
         showClose: true,

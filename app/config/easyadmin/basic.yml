@@ -1,10 +1,10 @@
 easy_admin:
-    site_name: 'UD'
+    site_name: 'Universidad Distrital'
 
     formats:
-        date:     'd/m/Y'
+        date:     'Y-m-d'
         time:     'H:i'
-        datetime: 'd/m/Y H:i'
+        datetime: 'Y-m-d H:i'
 
     list:
         actions:
@@ -20,7 +20,7 @@ easy_admin:
               icon: 'file-text'
               children:
                 - { entity: 'Documento', icon: 'file', label: 'Documentos' }
-                - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documentos' }
+                - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documento' }
 
             - label: 'Horario'
               icon: 'calendar'

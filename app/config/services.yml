@@ -12,3 +12,9 @@ services:
         tags:
             - { name: kernel.event_listener, event: calendar.load_events, method: loadEvents }
         arguments: ['@doctrine.orm.entity_manager', '@router', '@security.authorization_checker']
+
+    app.exception_listener:
+        class: AppBundle\EventListener\ExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+        arguments: ['@router', '@session']
