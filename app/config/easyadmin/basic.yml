@@ -17,33 +17,49 @@ easy_admin:
 
         menu:
             - { label: 'Inicio', icon: 'home', route: 'index' }
-            - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
-            - { entity: 'Dependencia', icon: 'phone', label: 'Dependencias' }
             - label: 'Documentos'
               icon: 'file-text'
               children:
                 - { entity: 'Documento', icon: 'file', label: 'Documentos' }
                 - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documentos' }
-            - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
-            - { entity: 'Facultad', icon: 'university', label: 'Facultades' }
-            - { entity: 'Horario', icon: 'calendar', label: 'Horario' }
-            - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias' }
-            - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
-            - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
-            - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
-            - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
-            - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
+
+            - label: 'Horario'
+              icon: 'calendar'
+              children:
+                - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
+                - { entity: 'Horario', icon: 'calendar-check-o', label: 'Horario' }
+
             - label: 'Inventario'
               icon: 'archive'
               children:
-                - { entity: 'Baja' }
-                - { entity: 'MotivoBaja' }
+                - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
                 - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
                 - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
-                - { entity: 'Traslado' }
+                - { entity: 'Traslado', icon: 'truck', label: 'Traslados'}
                 - { entity: 'ObjetoEncontrado', icon: 'search', label: 'Objetos Encontrados' }
+                - { label: 'Bajas' }
+                - { entity: 'Baja', icon: 'times-circle', label: 'Bajas'}
+                - { entity: 'MotivoBaja', icon: 'tag', label: 'Motivos de Baja' }
+
             - label: 'Prestamos'
-              icon: 'shopping-basket'
+              icon: 'shopping-bag'
               children:
-                - { entity: 'PrestamoElemento' }
-                - { entity: 'PrestamoPracticaLibre' }
+                - { entity: 'PrestamoElemento', icon: 'microchip', label: 'Préstamo de Elementos' }
+                - { entity: 'PrestamoPracticaLibre', icon: 'desktop', label: 'Préstamo Práctica Libre' }
+
+            - label: 'Soporte'
+              icon: 'support'
+              children:
+                - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias', default: true }
+                - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
+                - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
+
+            - label: 'Universidad'
+              icon: 'university'
+              children:
+                - { entity: 'Asignatura', icon: 'book', label: 'Asignaturas' }
+                - { entity: 'Dependencia', icon: 'phone', label: 'Dependencias' }
+                - { entity: 'Facultad', icon: 'building', label: 'Facultades' }
+                - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
+
+            - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }

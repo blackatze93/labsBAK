@@ -11,7 +11,7 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'nombre'
-                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+                    - 'facultad'
             new:
                 title: 'Crear Proyecto Curricular'
             edit:
