@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% form_theme formulario 'form/fields.html.twig' %}
 
-{% block title %}Perfil del Usuario{% endblock %}
-{% block encabezado %}Perfil del Usuario{% endblock %}
+{% block page_title %}Perfil del Usuario{% endblock %}
 
-{% block article %}
+{% block main %}
     {{ form_start(formulario) }}
         {% if not formulario.vars.valid %}
             <script>

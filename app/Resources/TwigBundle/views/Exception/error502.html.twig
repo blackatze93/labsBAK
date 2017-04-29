@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Error {{ status_code }}{% endblock %}
+{% block page_title %}Error {{ status_code }}{% endblock %}
 
-{% block article %}
+{% block main %}
     <h1 class="text-center"><i class="fa fa-bolt" style="color:#f0ad4e;"></i> {{ status_code }} </h1>
     <h2 class="text-center">El servidor web está devolviendo un error de red inesperado</h2><br>
 {% endblock %}

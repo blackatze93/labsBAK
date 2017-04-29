@@ -1,9 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Ingreso al sistema{% endblock %}
-{% block encabezado %}Ingreso al sistema{% endblock %}
+{% block page_title %}Iniciar sesión{% endblock %}
 
-{% block article %}
+{% block main %}
     {% if error %}
         <script>
             notificacion({{ error.message | trans | json_encode() | raw }}, 'error');

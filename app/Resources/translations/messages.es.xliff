@@ -7,72 +7,48 @@
                 <target>ID</target>
             </trans-unit>
             <trans-unit id="2">
-                <source>Nombre</source>
-                <target>Nombre</target>
-            </trans-unit>
-            <trans-unit id="3">
-                <source>Apellido</source>
-                <target>Apellido</target>
-            </trans-unit>
-            <trans-unit id="4">
-                <source>Email</source>
-                <target>Correo Electrónico</target>
-            </trans-unit>
-            <trans-unit id="5">
-                <source>Contraseña</source>
-                <target>Contraseña</target>
-            </trans-unit>
-            <trans-unit id="6">
-                <source>Confirmar Contraseña</source>
-                <target>Confirmar Contraseña</target>
-            </trans-unit>
-            <trans-unit id="7">
-                <source>Dependencia</source>
-                <target>Dependencia</target>
-            </trans-unit>
-            <trans-unit id="8">
-                <source>Cargo</source>
-                <target>Cargo</target>
-            </trans-unit>
-            <trans-unit id="9">
-                <source>Facultad</source>
-                <target>Facultad</target>
-            </trans-unit>
-            <trans-unit id="10">
-                <source>Proyecto Curricular</source>
-                <target>Proyecto Curricular</target>
-            </trans-unit>
-            <trans-unit id="11">
-                <source>Equipo</source>
-                <target>Equipo</target>
-            </trans-unit>
-            <trans-unit id="12">
-                <source>Elemento</source>
-                <target>Elemento</target>
-            </trans-unit>
-            <trans-unit id="13">
                 <source>ROLE_ESTUDIANTE</source>
                 <target>Estudiante</target>
             </trans-unit>
-            <trans-unit id="14">
+            <trans-unit id="3">
                 <source>ROLE_ADMIN</source>
                 <target>Administrador</target>
             </trans-unit>
-            <trans-unit id="15">
+            <trans-unit id="4">
                 <source>ROLE_DOCENTE</source>
                 <target>Docente</target>
             </trans-unit>
-            <trans-unit id="16">
+            <trans-unit id="5">
                 <source>ROLE_FUNCIONARIO</source>
                 <target>Funcionario</target>
             </trans-unit>
-            <trans-unit id="17">
+            <trans-unit id="6">
                 <source>Bad credentials.</source>
-                <target>Nombre de usuario o contraseña inválidos.</target>
+                <target>Nombre de usuario o contraseña inválidos</target>
             </trans-unit>
-            <trans-unit id="18">
+            <trans-unit id="7">
                 <source>User account is disabled.</source>
-                <target>La cuenta no está activa.</target>
+                <target>La cuenta no está activa</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>user.signin</source>
+                <target>Iniciar sesión</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>user.register</source>
+                <target>Registrarse</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>user.profile</source>
+                <target>Perfil</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>user.admin</source>
+                <target>Administración</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>menu.index</source>
+                <target>Inicio</target>
             </trans-unit>
         </body>
     </file>

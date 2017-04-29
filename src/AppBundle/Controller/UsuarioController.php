@@ -52,9 +52,9 @@ class UsuarioController extends BaseAdminController
     public function perfilAction(Request $request)
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') || $this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
-            $this->addFlash('error', 'Edite su perfil desde la administración.');
+            $this->addFlash('error', 'Edite su perfil desde la administración');
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('easyadmin', array('entity' => 'Usuario', 'action' => 'edit', 'id' => $this->getUser()->getId()));
         }
 
         $usuario = $this->getUser();
@@ -156,21 +156,6 @@ class UsuarioController extends BaseAdminController
         $authUtils = $this->get('security.authentication_utils');
 
         return $this->render('usuario/login.html.twig', array(
-            'last_username' => $authUtils->getLastUsername(),
-            'error' => $authUtils->getLastAuthenticationError(),
-        ));
-    }
-
-    /**
-     * Metodo que genera el modal login en el menu principal.
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function modalLoginAction()
-    {
-        $authUtils = $this->get('security.authentication_utils');
-
-        return $this->render('usuario/_modal_login.html.twig', array(
             'last_username' => $authUtils->getLastUsername(),
             'error' => $authUtils->getLastAuthenticationError(),
         ));

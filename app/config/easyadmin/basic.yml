@@ -16,7 +16,6 @@ easy_admin:
         color_scheme: 'light'
 
         menu:
-            - { label: 'Inicio', icon: 'home', route: 'index' }
             - label: 'Documentos'
               icon: 'file-text'
               children:
@@ -32,11 +31,11 @@ easy_admin:
             - label: 'Inventario'
               icon: 'archive'
               children:
-                - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
                 - { entity: 'Elemento', icon: 'plug', label: 'Elementos' }
                 - { entity: 'Equipo', icon: 'desktop', label: 'Equipos' }
-                - { entity: 'Traslado', icon: 'truck', label: 'Traslados'}
+                - { entity: 'Lugar', icon: 'map-marker', label: 'Lugares' }
                 - { entity: 'ObjetoEncontrado', icon: 'search', label: 'Objetos Encontrados' }
+                - { entity: 'Traslado', icon: 'truck', label: 'Traslados'}
                 - { label: 'Bajas' }
                 - { entity: 'Baja', icon: 'times-circle', label: 'Bajas'}
                 - { entity: 'MotivoBaja', icon: 'tag', label: 'Motivos de Baja' }

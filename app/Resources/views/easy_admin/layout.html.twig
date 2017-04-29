@@ -5,15 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noimageindex, notranslate, nocache" />
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <meta name="generator" content="EasyAdmin" />
 
-        <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}</title>
+        <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %} - Laboratorios de Informática - Facultad Tecnológica</title>
 
         {% block head_stylesheets %}
-            <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/easyadmin-all.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/vendor/noty/lib/noty.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/easyadmin-all.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/noty/lib/noty.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fullcalendar/dist/fullcalendar.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fullcalendar-scheduler/dist/scheduler.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') }}">
             <style>
                 {{ easyadmin_config('_internal.custom_css')|raw }}
             </style>
@@ -45,11 +48,16 @@
 
             <script src="{{ asset('bundles/easyadmin/javascript/easyadmin-all.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/moment/min/moment.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/fullcalendar-scheduler/dist/scheduler.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/fullcalendar/dist/locale/es.js') }}"></script>
             <script src="{{ asset('assets/vendor/noty/lib/noty.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
             <script src="{{ asset('js/easy-admin.js') }}"></script>
             <script src="{{ asset('js/noty-settings.js') }}"></script>
+            <script src="{{ asset('js/calendar-settings.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         {% endblock head_javascript %}
 
         {% if easyadmin_config('design.rtl') %}
@@ -76,48 +84,69 @@
 
                     <div id="header-logo">
                         {% block header_logo %}
-                            <a class="logo {{ easyadmin_config('site_name')|length > 14 ? 'logo-long' }}" title="{{ easyadmin_config('site_name')|striptags }}" href="{{ path('easyadmin') }}">
+                            <a class="logo {{ easyadmin_config('site_name')|length > 14 ? 'logo-long' }}" title="{{ easyadmin_config('site_name')|striptags }}" href="{{ path('index') }}">
                                 {{ easyadmin_config('site_name')|raw }}
                             </a>
                         {% endblock header_logo %}
                     </div>
 
                     <div class="navbar-custom-menu">
-                    {% block header_custom_menu %}
-                        {% set _logout_path = easyadmin_logout_path() %}
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown user user-menu">
-                                {% block user_menu %}
-                                    <span class="sr-only">{{ 'user.logged_in_as'|trans(domain = 'EasyAdminBundle') }}</span>
+                        {% block header_custom_menu %}
+                            {% set _logout_path = easyadmin_logout_path() %}
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown user user-menu">
+                                    {% block user_menu %}
+                                        <span class="sr-only">{{ 'user.logged_in_as'|trans(domain = 'EasyAdminBundle') }}</span>
 
-                                    {% if app.user|default(false) == false %}
-                                        <i class="hidden-xs fa fa-user-times"></i>
-                                        {{ 'user.anonymous'|trans(domain = 'EasyAdminBundle') }}
-                                    {% elseif not _logout_path %}
-                                        <i class="hidden-xs fa fa-user"></i>
-                                        {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
-                                    {% else %}
-                                        <div class="btn-group">
-                                            <button type="button" class="btn" data-toggle="dropdown">
-                                                <i class="hidden-xs fa fa-user"></i>
-                                                {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
-                                            </button>
-                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                {% block user_menu_dropdown %}
-                                                <li>
-                                                    <a href="{{ _logout_path }}"><i class="fa fa-sign-out"></i> {{ 'user.signout'|trans(domain = 'EasyAdminBundle') }}</a>
-                                                </li>
-                                                {% endblock user_menu_dropdown %}
-                                            </ul>
-                                        </div>
-                                    {% endif %}
-                                {% endblock user_menu %}
-                            </li>
-                        </ul>
-                    {% endblock header_custom_menu %}
+                                        {% if app.user|default(false) == false %}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="hidden-xs fa fa-user-times"></i>
+                                                    {{ 'user.anonymous'|trans(domain = 'EasyAdminBundle') }}
+                                                </button>
+                                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="{{ path('usuario_login') }}"><i class="fa fa-sign-in"></i> {{ 'user.signin'|trans() }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('usuario_registro') }}"><i class="fa fa-user-plus"></i> {{ 'user.register'|trans() }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        {% elseif not _logout_path %}
+                                            <i class="hidden-xs fa fa-user"></i>
+                                            {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
+                                        {% else %}
+                                            <div class="btn-group">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="hidden-xs fa fa-user"></i>
+                                                    {{ app.user|default('user.unnamed'|trans(domain = 'EasyAdminBundle')) }}
+                                                </button>
+                                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="{{ path('usuario_perfil') }}"><i class="fa fa-id-badge"></i> {{ 'user.profile'|trans() }}</a>
+                                                    </li>
+                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                        <li>
+                                                            <a href="{{ path('admin') }}"><i class="fa fa-lock"></i> {{ 'user.admin'|trans() }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                    <li>
+                                                        <a href="{{ _logout_path }}"><i class="fa fa-sign-out"></i> {{ 'user.signout'|trans(domain = 'EasyAdminBundle') }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    {% endblock user_menu %}
+                                </li>
+                            </ul>
+                        {% endblock header_custom_menu %}
                     </div>
                 </nav>
             {% endblock header %}
@@ -125,22 +154,14 @@
 
             <aside class="main-sidebar">
             {% block sidebar %}
-                <section class="sidebar">
-                    {% block main_menu_wrapper %}
-                        {{ include([
-                            _entity_config is defined ? _entity_config.templates.menu,
-                            easyadmin_config('design.templates.menu'),
-                            '@EasyAdmin/default/menu.html.twig'
-                        ]) }}
-                    {% endblock main_menu_wrapper %}
-                </section>
+                {{ include('sidebar.html.twig') }}
             {% endblock sidebar %}
             </aside>
 
             <div class="content-wrapper">
             {% block content %}
                 {% block flash_messages %}
-                    {{ include(_entity_config is defined ? _entity_config.templates.flash_messages : '@EasyAdmin/default/flash_messages.html.twig') }}
+                    {{ include(':easy_admin:flash_messages.html.twig') }}
                 {% endblock flash_messages %}
 
                 <section class="content-header">
