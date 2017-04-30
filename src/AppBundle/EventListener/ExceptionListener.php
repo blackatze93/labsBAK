@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class ExceptionListener
- * @package AppBundle\EventListener
  */
 class ExceptionListener
 {
@@ -20,11 +19,11 @@ class ExceptionListener
 
     /**
      * ExceptionListener constructor.
+     *
      * @param Router $router
      * @param Session $session
      */
-    public function __construct(Router $router, Session $session)
-    {
+    public function __construct(Router $router, Session $session) {
         $this->router = $router;
         $this->session = $session;
     }
@@ -37,9 +36,14 @@ class ExceptionListener
         $exception = $event->getException();
 
         if ($exception instanceof EntityRemoveException) {
+            // Obtiene los datos de la entidad que genero la excepcion al intentar removerse
             $easyadmin = $event->getRequest()->attributes->get('easyadmin');
+            // Genera la url a la lista de la entidad que genero la excepcion
             $url = $this->router->generate('easyadmin', array('action' => 'list', 'entity' => $easyadmin['entity']['name']));
-            $this->session->getFlashBag()->add('error', 'No se puede eliminar la entidad');
+
+            // Agrega el mensaje de error al flashbag
+            $this->session->getFlashBag()->add('error', 'La entidad tiene asociaciones en otras tablas');
+            // Redirecciona la pagina a la url generada
             $event->setResponse(new RedirectResponse($url));
         }
     }

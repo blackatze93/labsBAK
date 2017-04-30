@@ -67,7 +67,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @var string
      *
-     * @Assert\Length(min = 6)
+     * @Assert\Length(min = 6, max = 100)
      * @Assert\NotBlank(groups={"New", "Registro"})
      */
     private $passwordEnClaro;
