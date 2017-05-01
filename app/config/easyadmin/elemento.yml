@@ -5,7 +5,7 @@ easy_admin:
             list:
                 title: 'Elementos'
                 fields:
-                    - 'id'
+                    - 'placa'
                     - 'nombre'
                     - 'serial'
                     - 'fechaIngreso'
@@ -16,7 +16,7 @@ easy_admin:
 
             show:
                 fields:
-                    - 'id'
+                    - 'placa'
                     - 'nombre'
                     - 'marca'
                     - 'descripcion'
@@ -31,7 +31,7 @@ easy_admin:
 
             form:
                 fields:
-                    - 'id'
+                    - 'placa'
                     - 'nombre'
                     - 'marca'
                     - 'descripcion'

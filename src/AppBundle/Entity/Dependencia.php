@@ -25,6 +25,15 @@ class Dependencia
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
+     */
+    private $codigo;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=100)
@@ -57,6 +66,22 @@ class Dependencia
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * @param int $codigo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
     }
 
     /**

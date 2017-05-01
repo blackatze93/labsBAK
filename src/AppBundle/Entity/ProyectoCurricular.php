@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="proyecto_curricular")
- * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("codigo")
  * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class ProyectoCurricular
@@ -19,12 +19,20 @@ class ProyectoCurricular
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", unique=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
-    private $id;
+    private $codigo;
 
     /**
      * @var string
@@ -54,11 +62,19 @@ class ProyectoCurricular
     }
 
     /**
-     * @param int $id
+     * @return int
      */
-    public function setId($id)
+    public function getCodigo()
     {
-        $this->id = $id;
+        return $this->codigo;
+    }
+
+    /**
+     * @param int $codigo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
     }
 
     /**

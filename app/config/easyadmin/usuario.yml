@@ -6,7 +6,7 @@ easy_admin:
             list:
                 title: 'Usuarios'
                 fields:
-                    - 'id'
+                    - { property: 'documento', type: 'text' }
                     - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'apellido'
@@ -14,10 +14,11 @@ easy_admin:
                     - 'rol'
                     - 'activo'
                     - 'fechaCreacion'
+                sort: 'fechaCreacion'
             show:
                 fields:
-                    - 'id'
-                    - 'codigo'
+                    - { property: 'documento', type: 'text' }
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'apellido'
                     - 'email'
@@ -31,7 +32,7 @@ easy_admin:
             form:
                 form_options: { validation_groups: ['Default'] }
                 fields:
-                    - 'id'
+                    - 'documento'
                     - 'codigo'
                     - 'nombre'
                     - 'apellido'

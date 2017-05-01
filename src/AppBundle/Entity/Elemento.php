@@ -11,21 +11,28 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="elemento")
- * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("placa")
  * @DoctrineAssert\UniqueEntity("serial")
  */
 class Elemento
 {
-    // TODO: placa del equipo
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45, nullable=false, unique=true)
-     * @ORM\Id
+     * @ORM\Column(type="string", length=45, nullable=true, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
-    private $id;
+    private $placa;
 
     /**
      * @var string
@@ -139,7 +146,7 @@ class Elemento
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -147,11 +154,19 @@ class Elemento
     }
 
     /**
-     * @param string $id
+     * @return string
      */
-    public function setId($id)
+    public function getPlaca()
     {
-        $this->id = $id;
+        return $this->placa;
+    }
+
+    /**
+     * @param string $placa
+     */
+    public function setPlaca($placa)
+    {
+        $this->placa = $placa;
     }
 
     /**

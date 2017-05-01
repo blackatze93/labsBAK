@@ -57,14 +57,14 @@ class Documento
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $documento;
+    private $archivo;
 
     /**
      * @var File
      *
-     * @Vich\UploadableField(mapping="documentos", fileNameProperty="documento")}
+     * @Vich\UploadableField(mapping="documentos", fileNameProperty="archivo")}
      */
-    private $documentoFile;
+    private $archivoFile;
 
     /**
      * @var \DateTime
@@ -150,37 +150,37 @@ class Documento
     /**
      * @return string
      */
-    public function getDocumento()
+    public function getArchivo()
     {
-        return $this->documento;
+        return $this->archivo;
     }
 
     /**
-     * @param string $documento
+     * @param string $archivo
      */
-    public function setDocumento($documento)
+    public function setArchivo($archivo)
     {
-        $this->documento = $documento;
+        $this->archivo = $archivo;
     }
 
     /**
      * @return mixed
      */
-    public function getDocumentoFile()
+    public function getArchivoFile()
     {
-        return $this->documentoFile;
+        return $this->archivoFile;
     }
 
     /**
-     * @param File|null $documento
+     * @param File|null $archivo
      *
-     * @internal param mixed $documentoFile
+     * @internal param mixed $archivoFile
      */
-    public function setDocumentoFile(File $documento = null)
+    public function setArchivoFile(File $archivo = null)
     {
-        $this->documentoFile = $documento;
+        $this->archivoFile = $archivo;
 
-        if ($documento) {
+        if ($archivo) {
             $this->fechaSubida = new \DateTime();
         }
     }

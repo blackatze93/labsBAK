@@ -42,7 +42,7 @@ class ExceptionListener
             $url = $this->router->generate('easyadmin', array('action' => 'list', 'entity' => $easyadmin['entity']['name']));
 
             // Agrega el mensaje de error al flashbag
-            $this->session->getFlashBag()->add('error', 'La entidad tiene asociaciones en otras tablas');
+            $this->session->getFlashBag()->add('error', 'Error al eliminar el registro. La entidad tiene asociaciones en otras tablas.');
             // Redirecciona la pagina a la url generada
             $event->setResponse(new RedirectResponse($url));
         }

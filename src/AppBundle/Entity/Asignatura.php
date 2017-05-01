@@ -11,20 +11,27 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="asignatura")
- * @DoctrineAssert\UniqueEntity("id")
- * @DoctrineAssert\UniqueEntity("nombre")
+ * @DoctrineAssert\UniqueEntity("codigo")
  */
 class Asignatura
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", unique=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
-    private $id;
+    private $codigo;
 
     /**
      * @var string
@@ -52,11 +59,19 @@ class Asignatura
     }
 
     /**
-     * @param int $id
+     * @return int
      */
-    public function setId($id)
+    public function getCodigo()
     {
-        $this->id = $id;
+        return $this->codigo;
+    }
+
+    /**
+     * @param int $codigo
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
     }
 
     /**

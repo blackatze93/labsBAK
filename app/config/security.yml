@@ -37,7 +37,7 @@ security:
 
     providers:
         usuarios:
-            entity: { class: AppBundle\Entity\Usuario, property: id }
+            entity: { class: AppBundle\Entity\Usuario, property: documento }
 
     encoders:
         AppBundle\Entity\Usuario: bcrypt

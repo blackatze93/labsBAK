@@ -4,7 +4,3 @@ easy_admin:
             class: AppBundle\Entity\Dependencia
             list:
                 title: 'Dependencias'
-            form:
-                fields:
-                    - 'nombre'
-                    - 'facultad'

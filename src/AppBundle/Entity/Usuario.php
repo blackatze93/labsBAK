@@ -13,19 +13,28 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @ORM\Entity()
  * @ORM\Table(name="usuario")
- * @DoctrineAssert\UniqueEntity("id")
+ * @DoctrineAssert\UniqueEntity("documento")
+ * @DoctrineAssert\UniqueEntity("codigo")
  */
 class Usuario implements AdvancedUserInterface
 {
     /**
      * @var int
      *
-     * @ORM\Column(type="bigint", unique=true)
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="bigint", unique=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
-    private $id;
+    private $documento;
 
     /**
      * @var int
@@ -166,11 +175,19 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @param int $id
+     * @return int
      */
-    public function setId($id)
+    public function getDocumento()
     {
-        $this->id = $id;
+        return $this->documento;
+    }
+
+    /**
+     * @param int $documento
+     */
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
     }
 
     /**
@@ -405,7 +422,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function getUsername()
     {
-        return $this->getId();
+        return $this->getDocumento();
     }
 
     /**

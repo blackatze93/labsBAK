@@ -4,7 +4,3 @@ easy_admin:
             class: AppBundle\Entity\Asignatura
             list:
                 title: 'Asignaturas'
-            form:
-                fields:
-                    - 'id'
-                    - 'nombre'

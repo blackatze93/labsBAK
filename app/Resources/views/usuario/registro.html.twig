@@ -6,9 +6,9 @@
 {% block main %}
     {{ form_start(formulario) }}
         <div class="form-group">
-            {{ form_label(formulario.id) }}
-            {{ form_widget(formulario.id, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.id) }}</span>
+            {{ form_label(formulario.documento) }}
+            {{ form_widget(formulario.documento, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
+            <span class="text-danger">{{ form_errors(formulario.documento) }}</span>
         </div>
         <div class="form-group">
             {{ form_label(formulario.codigo) }}
