@@ -30,7 +30,6 @@ easy_admin:
                     - 'activo'
                     - 'fechaCreacion'
             form:
-                form_options: { validation_groups: ['Default'] }
                 fields:
                     - 'documento'
                     - 'codigo'

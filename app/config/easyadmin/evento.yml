@@ -30,8 +30,12 @@ easy_admin:
             form:
                fields:
                    - 'fecha'
-                   - { property: 'horaInicio', type: 'time', type_options: { hours: [ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ], minutes: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] } }
-                   - { property: 'horaFin', type: 'time', type_options: { hours: [ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ], minutes: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] } }
+                   - 'horaInicio'
+                   - 'horaFin'
+                   - { property: 'semanas', type: 'number' }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Clase': 'Clase', 'Practica Libre': 'Practica Libre', 'Otro': 'Otro' } } }
                    - 'observaciones'
+
+            new:
+                form_options: { validation_groups: ['Default', 'New'] }

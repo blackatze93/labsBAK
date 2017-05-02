@@ -57,6 +57,14 @@ class Evento
     private $horaFin;
 
     /**
+     * @var int
+     *
+     * @Assert\NotBlank(groups={"New"})
+     * @Assert\Range(min="1", max="50")
+     */
+    private $semanas;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=45)
@@ -168,6 +176,22 @@ class Evento
     public function setHoraFin($horaFin)
     {
         $this->horaFin = $horaFin;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSemanas()
+    {
+        return $this->semanas;
+    }
+
+    /**
+     * @param int $semanas
+     */
+    public function setSemanas($semanas)
+    {
+        $this->semanas = $semanas;
     }
 
     /**
