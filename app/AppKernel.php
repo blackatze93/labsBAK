@@ -23,7 +23,6 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Beelab\Recaptcha2Bundle\BeelabRecaptcha2Bundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
