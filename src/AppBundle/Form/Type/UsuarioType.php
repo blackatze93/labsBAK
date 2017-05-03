@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Beelab\Recaptcha2Bundle\Form\Type\RecaptchaType;
+use Beelab\Recaptcha2Bundle\Validator\Constraints\Recaptcha2;
 
 /**
  * Class UsuarioType.
@@ -57,6 +59,10 @@ class UsuarioType extends AbstractType
             ))
             ->add('dependencia')
             ->add('proyectoCurricular')
+            ->add('captcha', RecaptchaType::class, [
+                'constraints' => new Recaptcha2(),
+                'mapped' => false,
+            ])
             ->add('restablecer', ResetType::class)
         ;
 

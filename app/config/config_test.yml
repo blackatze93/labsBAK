@@ -14,3 +14,6 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+beelab_recaptcha2:
+    enabled: false

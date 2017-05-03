@@ -9,6 +9,8 @@ imports:
 parameters:
     locale: es
     app.path.documentos: /uploads/documentos
+    recaptcha_site_key: 6LerVhMUAAAAAOjIMBLok_IDNboeKE0pqWsJBec9
+    recaptcha_secret: 6LerVhMUAAAAAE_Qko5maKK_bZ1eNoEwLm6EsUXY
 
 framework:
     #esi:             ~
@@ -72,4 +74,8 @@ vich_uploader:
     mappings:
         documentos:
             uri_prefix: '%app.path.documentos%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/documentos'
+            upload_destination: '%kernel.root_dir%/../web%app.path.documentos%'
+
+beelab_recaptcha2:
+    site_key: "%recaptcha_site_key%"
+    secret: "%recaptcha_secret%"

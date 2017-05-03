@@ -15,7 +15,7 @@ class DocumentoController extends BaseAdminController
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();
-        $entity->setUsuario($usuario);
+        $entity->setUsuarioSube($usuario);
     }
 
     /**
@@ -24,6 +24,6 @@ class DocumentoController extends BaseAdminController
     protected function preUpdateEntity($entity)
     {
         $usuario = $this->getUser();
-        $entity->setUsuario($usuario);
+        $entity->setUsuarioSube($usuario);
     }
 }
