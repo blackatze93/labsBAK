@@ -103,16 +103,15 @@ class Horario
      */
     private $lugar;
 
-    // TODO: el usuario que registra el horario
     /**
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="usuario_registra_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
-    private $usuario;
+    private $usuarioRegistra;
 
     /**
      * @var ProyectoCurricular
@@ -264,17 +263,17 @@ class Horario
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioRegistra()
     {
-        return $this->usuario;
+        return $this->usuarioRegistra;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioRegistra
      */
-    public function setUsuario($usuario)
+    public function setUsuarioRegistra($usuarioRegistra)
     {
-        $this->usuario = $usuario;
+        $this->usuarioRegistra = $usuarioRegistra;
     }
 
     /**

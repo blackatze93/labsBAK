@@ -38,6 +38,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        recaptcha_site_key: "%recaptcha_site_key%"
+        recaptcha_secret:   "%recaptcha_secret%"
 
 # Doctrine Configuration
 doctrine:
@@ -75,7 +78,3 @@ vich_uploader:
         documentos:
             uri_prefix: '%app.path.documentos%'
             upload_destination: '%kernel.root_dir%/../web%app.path.documentos%'
-
-beelab_recaptcha2:
-    site_key: "%recaptcha_site_key%"
-    secret: "%recaptcha_secret%"

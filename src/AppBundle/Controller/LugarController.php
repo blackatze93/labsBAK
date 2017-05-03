@@ -32,13 +32,13 @@ class LugarController extends Controller
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
 
-        $return_lugares = array();
+        $returnLugares = array();
 
         foreach ($lugares as $lugar) {
-            $return_lugares[] = $lugar->toArray();
+            $returnLugares[] = $lugar->toArray();
         }
 
-        $response->setContent(json_encode($return_lugares));
+        $response->setContent(json_encode($returnLugares));
 
         return $response;
     }

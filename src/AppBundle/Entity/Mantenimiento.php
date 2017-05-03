@@ -50,16 +50,15 @@ class Mantenimiento
      */
     private $elemento;
 
-    // TODO: el usuario que realiza el mantenimiento
     /**
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
-    private $usuario;
+    private $usuarioRealiza;
 
     /**
      * Mantenimiento constructor.
@@ -128,16 +127,16 @@ class Mantenimiento
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioRealiza()
     {
-        return $this->usuario;
+        return $this->usuarioRealiza;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioRealiza
      */
-    public function setUsuario($usuario)
+    public function setUsuarioRealiza($usuarioRealiza)
     {
-        $this->usuario = $usuario;
+        $this->usuarioRealiza = $usuarioRealiza;
     }
 }

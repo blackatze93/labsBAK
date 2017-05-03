@@ -52,6 +52,15 @@ class Traslado
     private $usuarioRecibe;
 
     /**
+     * @var Lugar
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_destino_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Lugar")
+     */
+    private $lugarDestino;
+
+    /**
      * @return int
      */
     public function getId()
@@ -105,5 +114,21 @@ class Traslado
     public function setUsuarioRecibe($usuarioRecibe)
     {
         $this->usuarioRecibe = $usuarioRecibe;
+    }
+
+    /**
+     * @return Lugar
+     */
+    public function getLugarDestino()
+    {
+        return $this->lugarDestino;
+    }
+
+    /**
+     * @param Lugar $lugarDestino
+     */
+    public function setLugarDestino($lugarDestino)
+    {
+        $this->lugarDestino = $lugarDestino;
     }
 }

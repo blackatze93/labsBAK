@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * SolicitudPrestamoSala.
@@ -69,7 +68,6 @@ class SolicitudPrestamoSala
      */
     private $usuarioRealiza;
 
-    // TODO: usuario que aprueba o rechaza
     /**
      * @var Usuario
      *

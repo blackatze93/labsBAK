@@ -5,13 +5,11 @@ namespace AppBundle\EventListener;
 use JavierEguiluz\Bundle\EasyAdminBundle\Exception\EntityRemoveException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-
-
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * Class ExceptionListener
+ * Class ExceptionListener.
  */
 class ExceptionListener
 {
@@ -20,10 +18,11 @@ class ExceptionListener
     /**
      * ExceptionListener constructor.
      *
-     * @param Router $router
+     * @param Router  $router
      * @param Session $session
      */
-    public function __construct(Router $router, Session $session) {
+    public function __construct(Router $router, Session $session)
+    {
         $this->router = $router;
         $this->session = $session;
     }
@@ -31,7 +30,8 @@ class ExceptionListener
     /**
      * @param GetResponseForExceptionEvent $event
      */
-    public function onKernelException(GetResponseForExceptionEvent $event) {
+    public function onKernelException(GetResponseForExceptionEvent $event)
+    {
         // You get the exception object from the received event
         $exception = $event->getException();
 

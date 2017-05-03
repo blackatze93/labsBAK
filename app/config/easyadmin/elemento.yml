@@ -38,7 +38,7 @@ easy_admin:
                     - 'serial'
                     - 'fechaIngreso'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' }, attr: { 'data-widget': 'select2' }, 'empty_value': 'Ninguno' } }
+                    - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' }, attr: { 'data-widget': 'select2' }, 'empty_value': 'Ninguna' } }
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }

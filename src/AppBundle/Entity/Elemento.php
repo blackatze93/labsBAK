@@ -85,7 +85,6 @@ class Elemento
      */
     private $fechaIngreso;
 
-    // TODO: bueno, dañado
     /**
      * @var string
      *
@@ -95,7 +94,6 @@ class Elemento
      */
     private $estado;
 
-    // TODO: funcionanrio - estudiante
     /**
      * @var string
      *
@@ -142,7 +140,7 @@ class Elemento
      */
     public function __toString()
     {
-        return $this->getNombre();
+        return $this->getNombre().' '.$this->getPlaca();
     }
 
     /**

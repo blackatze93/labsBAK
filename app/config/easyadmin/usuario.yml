@@ -45,4 +45,3 @@ easy_admin:
                     - 'activo'
             new:
                 form_options: { validation_groups: ['Default', 'New'] }
-
