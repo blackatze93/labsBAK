@@ -32,7 +32,7 @@ easy_admin:
                    - 'descripcion'
                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro', type_options: { widget: 'single_text' } }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
-                   - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' } } }
+                   - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' }, attr: { 'data-widget': 'select2' } } }
                    - { property: 'usuarioReclama', type: 'easyadmin_autocomplete', label: 'Entregado a', type_options: { class: 'AppBundle\Entity\Usuario' } }
             new:
                 title: 'Crear Objeto Encontrado'

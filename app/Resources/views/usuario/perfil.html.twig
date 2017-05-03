@@ -5,76 +5,129 @@
 {% block content_title %}Perfil del Usuario{% endblock %}
 
 {% block main %}
-    {{ form_start(formulario) }}
-        <div class="form-group">
-            {{ form_label(formulario.documento) }}
-            {{ form_widget(formulario.documento, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.documento) }}</span>
+    {{ form_start(formulario, {'attr': {'class': 'form-horizontal'}}) }}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.documento, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.documento, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.documento) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.codigo, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.codigo, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.codigo) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.nombre, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.nombre, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.nombre) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.apellido, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.apellido, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.apellido) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.email, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.email, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.email) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.passwordEnClaro.pass1, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="help-block">Ingrese una nueva contraseña para modificar la actual.</span>
+                        <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass1) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.passwordEnClaro.pass2, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.passwordEnClaro.pass2, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.rol, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.rol, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.rol) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.cargo, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                {#TODO: el estado no se deberia pedir en el registro#}
+                <div class="form-group">
+                    {{ form_label(formulario.estado, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.estado, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.estado) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.dependencia, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    {{ form_label(formulario.proyectoCurricular, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(formulario.proyectoCurricular, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
+                        <span class="text-danger">{{ form_errors(formulario.proyectoCurricular) }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{ form_label(formulario.codigo) }}
-            {{ form_widget(formulario.codigo, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.codigo) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.nombre) }}
-            {{ form_widget(formulario.nombre, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.nombre) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.apellido) }}
-            {{ form_widget(formulario.apellido, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.apellido) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.email) }}
-            {{ form_widget(formulario.email, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.email) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.passwordEnClaro.pass1) }}
-            {{ form_widget(formulario.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="help-block">Ingrese una nueva contraseña para modificar la actual.</span>
-            <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass1) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.passwordEnClaro.pass2) }}
-            {{ form_widget(formulario.passwordEnClaro.pass2, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.passwordEnClaro.pass2) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.rol) }}
-            {{ form_widget(formulario.rol, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.rol) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.cargo) }}
-            {{ form_widget(formulario.cargo, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.cargo) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.estado) }}
-            {{ form_widget(formulario.estado, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.estado) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.dependencia) }}
-            {{ form_widget(formulario.dependencia, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.dependencia) }}</span>
-        </div>
-        <div class="form-group">
-            {{ form_label(formulario.proyectoCurricular) }}
-            {{ form_widget(formulario.proyectoCurricular, {'attr' : {'class' : 'form-control'}}) }}
-            <span class="text-danger">{{ form_errors(formulario.proyectoCurricular) }}</span>
-        </div>
-        <div class="text-center">
-            {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-success'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
-            {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-10">
+                {{ form_widget(formulario.guardar, {'attr' : {'class' : 'btn btn-primary'}, 'label' : '<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar'}) }}
+                {{ form_widget(formulario.restablecer, {'attr' : {'class' : 'btn btn-warning'}, 'label' : '<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Restablecer'}) }}
+            </div>
         </div>
     {{ form_end(formulario) }}
 {% endblock %}
 
-{% block javascripts %}
+{% block body_javascript %}
     {{ parent() }}
 
     <script>

@@ -57,18 +57,22 @@ class UsuarioType extends AbstractType
                 ),
                 'choices_as_values' => true,
             ))
-            ->add('dependencia')
-            ->add('proyectoCurricular')
-            ->add('captcha', RecaptchaType::class, [
-                'constraints' => new Recaptcha2(),
-                'mapped' => false,
-            ])
+            ->add('dependencia', null, array(
+                'empty_value' => 'Ninguna'
+            ))
+            ->add('proyectoCurricular', null, array(
+                'empty_value' => 'Ninguno'
+            ))
             ->add('restablecer', ResetType::class)
         ;
 
         // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
         if ($options['accion'] === 'registro') {
             $builder
+                ->add('captcha', RecaptchaType::class, [
+                    'constraints' => new Recaptcha2(),
+                    'mapped' => false,// "groups" option is not mandatory
+                ])
                 ->add('crear', SubmitType::class)
             ;
         } elseif ($options['accion'] === 'modificar_perfil') {
