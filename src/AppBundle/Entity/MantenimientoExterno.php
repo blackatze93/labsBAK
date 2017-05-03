@@ -54,7 +54,7 @@ class MantenimientoExterno
      *
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\DateTime()
      */
     private $fecha;
 
@@ -67,7 +67,6 @@ class MantenimientoExterno
      */
     private $descripcion;
 
-    // TODO: el usuario que registra el mantenimiento
     /**
      * @var Usuario
      *

@@ -32,7 +32,7 @@ easy_admin:
                    - 'fecha'
                    - 'horaInicio'
                    - 'horaFin'
-                   - { property: 'semanas', type: 'number' }
+                   - { property: 'semanas', type: 'integer' }
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Clase': 'Clase', 'Practica Libre': 'Practica Libre', 'Otro': 'Otro' } } }
                    - 'observaciones'

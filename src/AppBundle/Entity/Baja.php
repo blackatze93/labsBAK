@@ -37,10 +37,10 @@ class Baja
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false, unique=false)
+     * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
-    private $usuario;
+    private $usuarioRealiza;
 
     /**
      * @var string
@@ -87,17 +87,17 @@ class Baja
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioRealiza()
     {
-        return $this->usuario;
+        return $this->usuarioRealiza;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioRealiza
      */
-    public function setUsuario($usuario)
+    public function setUsuarioRealiza($usuarioRealiza)
     {
-        $this->usuario = $usuario;
+        $this->usuarioRealiza = $usuarioRealiza;
     }
 
     /**

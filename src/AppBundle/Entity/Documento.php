@@ -47,10 +47,10 @@ class Documento
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="usuario_sube_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
-    private $usuario;
+    private $usuarioSube;
 
     /**
      * @var string
@@ -134,17 +134,17 @@ class Documento
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioSube()
     {
-        return $this->usuario;
+        return $this->usuarioSube;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioSube
      */
-    public function setUsuario($usuario)
+    public function setUsuarioSube($usuarioSube)
     {
-        $this->usuario = $usuario;
+        $this->usuarioSube = $usuarioSube;
     }
 
     /**
