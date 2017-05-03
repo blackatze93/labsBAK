@@ -56,10 +56,10 @@ class UsuarioType extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('dependencia', null, array(
-                'empty_value' => 'Ninguna'
+                'empty_value' => 'Ninguna',
             ))
             ->add('proyectoCurricular', null, array(
-                'empty_value' => 'Ninguno'
+                'empty_value' => 'Ninguno',
             ))
             ->add('restablecer', ResetType::class)
         ;
