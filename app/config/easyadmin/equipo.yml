@@ -8,4 +8,3 @@ easy_admin:
                 fields:
                     - 'nombre'
                     - { property: 'elementos', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false } }
-

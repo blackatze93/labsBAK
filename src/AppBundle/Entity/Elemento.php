@@ -85,7 +85,6 @@ class Elemento
      */
     private $fechaIngreso;
 
-    // TODO: bueno, dañado
     /**
      * @var string
      *
@@ -95,7 +94,6 @@ class Elemento
      */
     private $estado;
 
-    // TODO: funcionanrio - estudiante
     /**
      * @var string
      *

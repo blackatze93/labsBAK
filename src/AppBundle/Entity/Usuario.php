@@ -122,7 +122,6 @@ class Usuario implements AdvancedUserInterface
      */
     private $fechaCreacion;
 
-    // TODO: paz y salvo o en mora
     /**
      * @var string
      *
