@@ -142,7 +142,7 @@ class Elemento
      */
     public function __toString()
     {
-        return $this->getNombre();
+        return $this->getNombre().' '.$this->getPlaca();
     }
 
     /**

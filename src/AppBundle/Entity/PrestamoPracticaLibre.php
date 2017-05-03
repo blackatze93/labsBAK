@@ -47,7 +47,7 @@ class PrestamoPracticaLibre
      * @Assert\Time()
      * @Assert\Expression(
      *     "this.getHoraEntrada() < this.getHoraSalida()",
-     *     message="La hora final debe ser mayor a la hora de inicio"
+     *     message="La hora de salida debe ser mayor a la hora de entrada"
      * )
      */
     private $horaSalida;
@@ -64,10 +64,11 @@ class PrestamoPracticaLibre
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false, unique=false)
+     * @ORM\JoinColumn(name="usuario_solicita_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
+     * @Assert\NotBlank()
      */
-    private $usuario;
+    private $usuarioSolicita;
 
     /**
      * @var Equipo
@@ -75,8 +76,18 @@ class PrestamoPracticaLibre
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipo")
      * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Equipo")
+     * @Assert\NotBlank()
      */
     private $equipo;
+
+    /**
+     * @var Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Usuario")
+     */
+    private $usuarioRealiza;
 
     /**
      * Get id.
@@ -155,17 +166,17 @@ class PrestamoPracticaLibre
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioSolicita()
     {
-        return $this->usuario;
+        return $this->usuarioSolicita;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioSolicita
      */
-    public function setUsuario($usuario)
+    public function setUsuarioSolicita($usuarioSolicita)
     {
-        $this->usuario = $usuario;
+        $this->usuarioSolicita = $usuarioSolicita;
     }
 
     /**
@@ -184,22 +195,19 @@ class PrestamoPracticaLibre
         $this->equipo = $equipo;
     }
 
-    /*
-     * @Assert\Callback
-     *
-     * @param ExecutionContextInterface $context
+    /**
+     * @return Usuario
      */
-//    public function validarUsuario(ExecutionContextInterface $context)
-//    {
-//        if (is_null($this->estudiante) && is_null($this->usuario)){
-//            $context->buildViolation('Debe asignar un estudiante o usuario al prestamo.')
-//                ->atPath('estudiante')
-//                ->addViolation()
-//            ;
-//        } elseif (!is_null($this->estudiante) && !is_null($this->usuario)) {
-//            $context->buildViolation('No puede asignar un prestamo a un estudiante y un usuario al mismo tiempo.')
-//                ->atPath('usuario')
-//                ->addViolation();
-//        }
-//    }
+    public function getUsuarioRealiza()
+    {
+        return $this->usuarioRealiza;
+    }
+
+    /**
+     * @param Usuario $usuarioRealiza
+     */
+    public function setUsuarioRealiza($usuarioRealiza)
+    {
+        $this->usuarioRealiza = $usuarioRealiza;
+    }
 }
