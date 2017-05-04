@@ -62,3 +62,12 @@ easy_admin:
                 - { entity: 'ProyectoCurricular', icon: 'graduation-cap', label: 'Proyectos Curriculares' }
 
             - { entity: 'Usuario', icon: 'users', label: 'Usuarios' }
+
+            - label: 'Reportes'
+              icon: 'files-o'
+              children:
+                - { label: 'Paz y Salvo', icon: 'check-circle', route: 'paz_y_salvo'}
+
+            - { label: 'Graficos', icon: 'line-chart', route: 'easyadmin'}
+
+

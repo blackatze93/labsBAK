@@ -1,4 +1,5 @@
 {% set route = app.request.attributes.get('_route') %}
+{% set route_admin = 'admin' in path(route) %}
 
 <section class="sidebar">
     {% block main_menu_wrapper %}
@@ -9,13 +10,13 @@
                 </a>
             </li>
         </ul>
-        {% if is_granted('ROLE_ADMIN') and route == 'easyadmin' %}
+        {% if is_granted('ROLE_ADMIN') and route_admin %}
             {{ include([
             _entity_config is defined ? _entity_config.templates.menu,
             easyadmin_config('design.templates.menu'),
             '@EasyAdmin/default/menu.html.twig'
             ]) }}
-        {% elseif route != 'easyadmin' %}
+        {% elseif not route_admin %}
             <ul class="sidebar-menu">
                 <li class="">
                     <a href="{{ path('index') }}" >
