@@ -59,10 +59,10 @@ class UsuarioController extends BaseAdminController
 
         $usuario = $this->getUser();
 
-        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario);
-        $formulario->handleRequest($request);
+        $form = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario);
+        $form->handleRequest($request);
 
-        if ($formulario->isSubmitted() && $formulario->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->preUpdateEntity($usuario);
 
             $em = $this->getDoctrine()->getManager();
@@ -79,7 +79,7 @@ class UsuarioController extends BaseAdminController
 
         return $this->render('usuario/perfil.html.twig', array(
             'usuario' => $usuario,
-            'formulario' => $formulario->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -104,17 +104,17 @@ class UsuarioController extends BaseAdminController
         //Se crea la nueva entidad sobre la cual se guardaran los datos
         $usuario = new Usuario();
 
-        // Se genera el formulario por medio de la evento UsuarioType que ya tiene todos los campos
-        $formulario = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario, array(
+        // Se genera el form por medio de la evento UsuarioType que ya tiene todos los campos
+        $form = $this->createForm('AppBundle\Form\Type\UsuarioType', $usuario, array(
             'accion' => 'registro',
             'validation_groups' => array('Default', 'Registro'),
         ));
 
         // Cuando se hace el post se invoca el metodo handleRequest que procesa la informacion del request
-        $formulario->handleRequest($request);
+        $form->handleRequest($request);
 
-        // Si el formulario contiene informacion valida y sin ningun error de validacion se guardan los datos
-        if ($formulario->isSubmitted() && $formulario->isValid()) {
+        // Si el form contiene informacion valida y sin ningun error de validacion se guardan los datos
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->prePersistEntity($usuario);
 
             if (!$usuario->isActivo()) {
@@ -139,20 +139,20 @@ class UsuarioController extends BaseAdminController
             return $this->redirectToRoute('index');
         }
 
-        // Muestra el formulario mediante la accion createView de la variable formulario
+        // Muestra el form mediante la accion createView de la variable form
         return $this->render('usuario/registro.html.twig', array(
-            'formulario' => $formulario->createView(),
+            'form' => $form->createView(),
         ));
     }
 
     /**
-     * Metodo que genera el formulario de login.
+     * Metodo que genera el form de login.
      *
      * @Route("/login/", name="usuario_login")
      */
     public function loginAction()
     {
-        // crear aqui el formulario de login
+        // crear aqui el form de login
         $authUtils = $this->get('security.authentication_utils');
 
         return $this->render('usuario/login.html.twig', array(

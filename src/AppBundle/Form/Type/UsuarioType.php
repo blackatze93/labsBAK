@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UsuarioType extends AbstractType
 {
     /**
-     * Metodo para crear el formulario de la entidad Usuario con los campos requeridos.
+     * Metodo para crear el form de la entidad Usuario con los campos requeridos.
      *
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -64,7 +64,7 @@ class UsuarioType extends AbstractType
             ->add('restablecer', ResetType::class)
         ;
 
-        // Dependiendo del tipo de formulario si es nuevo usuario o modificcacion se agrega el boton
+        // Dependiendo del tipo de form si es nuevo usuario o modificcacion se agrega el boton
         if ($options['accion'] === 'registro') {
             $builder
                 ->add('crear', SubmitType::class)
@@ -77,7 +77,7 @@ class UsuarioType extends AbstractType
     }
 
     /**
-     * Metodo que configura las opciones por defecto que tendra el formulario.
+     * Metodo que configura las opciones por defecto que tendra el form.
      *
      * @param OptionsResolver $resolver
      */
@@ -90,7 +90,7 @@ class UsuarioType extends AbstractType
     }
 
     /**
-     * Metodo que configura el prefijo que tendran los campos del formulario.
+     * Metodo que configura el prefijo que tendran los campos del form.
      *
      * @return string
      */
