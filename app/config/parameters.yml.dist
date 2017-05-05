@@ -17,3 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+    
+    # ReCAPTCHA config parameters
+    recaptcha_site_key: recaptcha_site_key
+    recaptcha_secret:   recaptcha_secret

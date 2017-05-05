@@ -10,12 +10,17 @@ use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * Class ReporteController.
+ * 
+ * @Route("/admin/reportes/")
+ */
 class ReporteController extends Controller
 {
     /**
      * Metodo que genera el paz y salvo.
      *
-     * @Route("/admin/paz_y_salvo", name="paz_y_salvo")
+     * @Route("paz_y_salvo/", name="paz_y_salvo")
      */
     public function pazSalvoAction(Request $request)
     {
@@ -29,9 +34,10 @@ class ReporteController extends Controller
                 'class' => 'AppBundle\Entity\Usuario',
                 'constraints' => new NotBlank(),
             ))
+            ->add('consultar', 'submit')
 
             ->getForm();
-
+            
         // TODO: agregar boton de enviar y manejar el envio del mismo
         $form->handleRequest($request);
 

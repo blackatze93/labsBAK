@@ -68,6 +68,6 @@ easy_admin:
               children:
                 - { label: 'Paz y Salvo', icon: 'check-circle', route: 'paz_y_salvo'}
 
-            - { label: 'Graficos', icon: 'line-chart', route: 'easyadmin'}
+            - { label: 'Graficos', icon: 'line-chart', route: 'prueba'}
 
 

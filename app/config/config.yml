@@ -9,8 +9,6 @@ imports:
 parameters:
     locale: es
     app.path.documentos: /uploads/documentos
-    recaptcha_site_key: 6LerVhMUAAAAAOjIMBLok_IDNboeKE0pqWsJBec9
-    recaptcha_secret: 6LerVhMUAAAAAE_Qko5maKK_bZ1eNoEwLm6EsUXY
 
 framework:
     #esi:             ~

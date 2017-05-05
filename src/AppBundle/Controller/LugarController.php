@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Lugar controller.
- *
- * @Route("lugar")
  */
 class LugarController extends Controller
 {
@@ -21,7 +19,7 @@ class LugarController extends Controller
      *
      * @internal param Request $request
      *
-     * @Route("/fc-load-lugares", name="fullcalendar_lugares", options={"expose"=true})
+     * @Route("/fc-load-lugares/", name="fullcalendar_lugares", options={"expose"=true})
      * @Method("POST")
      */
     public function cargarLugaresAction()
