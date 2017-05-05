@@ -51,6 +51,10 @@ class ReporteController extends Controller
                 $mpdfService = $this->get('tfox.mpdfport');
                 $mPDF = $mpdfService->getMpdf();
                 $fecha = new \DateTime();
+                $helper_assets = $this->container->get('templating.helper.assets');
+
+                $escudo = $helper_assets->getUrl('img/escudo.png');
+                $sigud = $helper_assets->getUrl('img/sigud.png');
 
                 $html = '
                 <!DOCTYPE html>
@@ -59,15 +63,14 @@ class ReporteController extends Controller
                         <title>FORMATO DE PAZ Y SALVOS</title>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <link rel="stylesheet" type="text/css" href="ESTILOSFORMATOS2.css" media="all">
                     </head>
                     <body>
                     <table class="encabezado">
                         <tr>
-                            <td class="ESySI" rowspan="3"><img src="escudo.png" alt="" style="width: 90%; height: 90%;"></td>
+                            <td class="ESySI" rowspan="3"><img src="'.$escudo.'" alt="" style="width: 90%; height: 90%;"></td>
                             <td class="soliBaja">FORMATO DE PAZ Y SALVO</td>
                             <td class="Cod">Código:</td>
-                            <td class="ESySI" rowspan="3"><img src="sigud.png" alt="" style="width: 90%; height: 90%;"></td>
+                            <td class="ESySI" rowspan="3"><img src="'.$sigud.'" alt="" style="width: 90%; height: 90%;"></td>
                         </tr>
                         <tr>
                             <td class="MP">Macro proceso: Apoyo a lo misional</td>
@@ -97,18 +100,9 @@ class ReporteController extends Controller
                 </body>
                 </html>
                 ';
-                $arguments = array(
-                    'SetHeader' => 'gato'
-//                    'constructorArgs' => array(), //Constructor arguments. Numeric array. Don't forget about points 2 and 3 in Warning section!
-//                    'writeHtmlMode' => null, //$mode argument for WriteHTML method
-//                    'writeHtmlInitialise' => null, //$mode argument for WriteHTML method
-//                    'writeHtmlClose' => null, //$close argument for WriteHTML method
-//                    'outputFilename' => 'paz_y.pdf', //$filename argument for Output method
-//                    'outputDest' => 'D' //$dest argument for Output method
-                );
-                $response = $mpdfService->generatePdfResponse($html, $arguments);
+                $response = $mpdfService->generatePdfResponse($html);
 
-                return $response;
+                return new Response($html);
             }
 
             return $this->render(':reportes:paz_y_salvo.html.twig', array(
