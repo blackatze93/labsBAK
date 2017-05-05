@@ -136,7 +136,6 @@ class Usuario implements AdvancedUserInterface
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dependencia")
      * @ORM\JoinColumn(name="dependencia_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\Dependencia")
      */
     private $dependencia;
 
@@ -145,7 +144,6 @@ class Usuario implements AdvancedUserInterface
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
      * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
      */
     private $proyectoCurricular;
 
@@ -360,7 +358,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @param Dependencia %dependencia
      */
-    public function setDependencia(Dependencia $dependencia)
+    public function setDependencia($dependencia)
     {
         $this->dependencia = $dependencia;
     }
@@ -376,7 +374,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @param ProyectoCurricular $proyectoCurricular
      */
-    public function setProyectoCurricular(ProyectoCurricular $proyectoCurricular)
+    public function setProyectoCurricular($proyectoCurricular)
     {
         $this->proyectoCurricular = $proyectoCurricular;
     }

@@ -40,7 +40,7 @@ easy_admin:
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Paz y Salvo': 'Paz y Salvo', 'En Mora': 'En Mora' }, attr: { 'data-widget': 'select2' } } }
-                    - 'dependencia'
+                    - { property: 'dependencia', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Dependencia' } }
                     - { property: 'proyectoCurricular', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\ProyectoCurricular' } }
                     - 'activo'
             new:
