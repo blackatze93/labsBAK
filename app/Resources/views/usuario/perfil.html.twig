@@ -56,8 +56,7 @@
                 <div class="form-group">
                     {{ form_label(form.passwordEnClaro.pass1, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control'}}) }}
-                        <span class="help-block">Ingrese una nueva contraseña para modificar la actual.</span>
+                        {{ form_widget(form.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control', 'placeholder': 'Ingrese una nueva contraseña para modificar la actual.'}}) }}
                         <span class="text-danger">{{ form_errors(form.passwordEnClaro.pass1) }}</span>
                     </div>
                 </div>
@@ -86,16 +85,6 @@
                     <div class="col-sm-10">
                         {{ form_widget(form.cargo, {'attr' : {'class' : 'form-control'}}) }}
                         <span class="text-danger">{{ form_errors(form.cargo) }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                {#TODO: el estado no se deberia pedir en el registro#}
-                <div class="form-group">
-                    {{ form_label(form.estado, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.estado, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
-                        <span class="text-danger">{{ form_errors(form.estado) }}</span>
                     </div>
                 </div>
             </div>
@@ -134,11 +123,6 @@
         // Funciones para hacer los selects y el checkbox readonly
         $(function(){
             $('#usuario_rol').each(function(){
-                $(this)
-                    .hide()
-                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
-            });
-            $('#usuario_estado').each(function(){
                 $(this)
                     .hide()
                     .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')

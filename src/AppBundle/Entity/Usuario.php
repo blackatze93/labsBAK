@@ -77,7 +77,7 @@ class Usuario implements AdvancedUserInterface
      * @var string
      *
      * @Assert\Length(min = 6, max = 100)
-     * @Assert\NotBlank(groups={"New", "Registro"})
+     * @Assert\NotBlank(groups={"Registro"})
      */
     private $passwordEnClaro;
 
@@ -126,7 +126,6 @@ class Usuario implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
      * @Assert\Length(max="100")
      */
     private $estado;

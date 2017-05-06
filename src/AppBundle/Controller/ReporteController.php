@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 
 /**
  * Class ReporteController.
@@ -25,7 +26,10 @@ class ReporteController extends Controller
         $form = $this->createFormBuilder()
             ->add('usuario', 'easyadmin_autocomplete', array(
                 'class' => 'AppBundle\Entity\Usuario',
-                'constraints' => new NotBlank(),
+                'constraints' => array(
+                    new NotBlank(),
+                    new Range(array('min' => 1)),
+                )
             ))
             ->add('consultar', 'submit')
             ->add('generar', 'submit')
@@ -38,16 +42,17 @@ class ReporteController extends Controller
         // Si el formulario se ha enviado y es valido comprobamos el usuario
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $usuario = $data['usuario'];
             $pazSalvo = 'no';
 
             // Usamos una variable bandera para saber si el usuario esta en paz y salvo
-            if ($data['usuario']->getEstado() == 'Paz y Salvo') {
+            if ($usuario->getEstado() == 'Paz y Salvo') {
                 $pazSalvo = 'si';
             }
 
             // Si la opcion que selecciono fue generar y el usuario esta en paz y salvo procedemos a generarlo
             if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
-                return $this->crearPdf($data, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
+                return $this->crearPdf($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
             }
 
             return $this->render(':reportes:paz_y_salvo.html.twig', array(
@@ -61,7 +66,7 @@ class ReporteController extends Controller
         ));
     }
 
-    public function crearPdf($data, $mpdfService, $helper_assets) {
+    public function crearPdf($usuario, $mpdfService, $helper_assets) {
         $mPDF = $mpdfService->getMpdf();
         $fecha = new \DateTime();
 
@@ -97,12 +102,12 @@ class ReporteController extends Controller
                     </table> 
                     <br><br>
                     <p align="justify">Los Laboratorios de Informática de la Facultad Tecnológica, hacen constar que el (la) 
-                        estudiante '.$data['usuario']->getNombre().' '.$data['usuario']->getApellido().' con documento de identificación número: '
-            .$data['usuario']->getDocumento().' y código estudiantil: '.$data['usuario']->getCodigo().', del proyecto curricular '
-            .$data['usuario']->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
+                        estudiante '.$usuario->getNombre().' '.$usuario->getApellido().' con documento de identificación número: '
+                        .$usuario->getDocumento().' y código estudiantil: '.$usuario->getCodigo().', del proyecto curricular '
+                        .$usuario->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
                         <br><br><br>El presente certificado se expide por solicitud del interesado a los '
-            .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
-            .'.<br><br><br><br><br>
+                        .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
+                        .'.<br><br><br><br><br>
                         Atentamente,<br><br><br><br><br>
             
                         _____________________________<br>

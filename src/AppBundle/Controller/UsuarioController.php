@@ -117,9 +117,8 @@ class UsuarioController extends BaseAdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->prePersistEntity($usuario);
 
-            if (!$usuario->isActivo()) {
-                $usuario->setActivo(false);
-            }
+            $usuario->setEstado('Paz y Salvo');
+            $usuario->setActivo(false);
 
             // Se obtiene el entity manager de doctrine para generar el guardado
             $em = $this->getDoctrine()->getManager();

@@ -11,7 +11,7 @@
                 <div class="form-group">
                     {{ form_label(form.documento, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.documento, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
+                        {{ form_widget(form.documento, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus', 'placeholder': 'Documento de identidad'}}) }}
                         <span class="text-danger">{{ form_errors(form.documento) }}</span>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     {{ form_label(form.codigo, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control'}}) }}
+                        {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control', 'placeholder': 'Código'}}) }}
                         <span class="text-danger">{{ form_errors(form.codigo) }}</span>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     {{ form_label(form.nombre, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control'}}) }}
+                        {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control', 'placeholder': 'Nombre'}}) }}
                         <span class="text-danger">{{ form_errors(form.nombre) }}</span>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     {{ form_label(form.apellido, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.apellido, {'attr' : {'class' : 'form-control'}}) }}
+                        {{ form_widget(form.apellido, {'attr' : {'class' : 'form-control', 'placeholder': 'Apellido'}}) }}
                         <span class="text-danger">{{ form_errors(form.apellido) }}</span>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     {{ form_label(form.email, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.email, {'attr' : {'class' : 'form-control'}}) }}
+                        {{ form_widget(form.email, {'attr' : {'class' : 'form-control', 'placeholder': 'Correo electrónico'}}) }}
                         <span class="text-danger">{{ form_errors(form.email) }}</span>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     {{ form_label(form.passwordEnClaro.pass1, null, {'label_attr' : {'class' : 'col-sm-2 control-label required'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control', 'required': true}}) }}
+                        {{ form_widget(form.passwordEnClaro.pass1, {'attr' : {'class' : 'form-control', 'required': true, 'placeholder': 'Debe tener 6 o más caracteres'}}) }}
                         <span class="text-danger">{{ form_errors(form.passwordEnClaro.pass1) }}</span>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="form-group">
                     {{ form_label(form.passwordEnClaro.pass2, null, {'label_attr' : {'class' : 'col-sm-2 control-label required'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.passwordEnClaro.pass2, {'attr' : {'class' : 'form-control', 'required': true}}) }}
+                        {{ form_widget(form.passwordEnClaro.pass2, {'attr' : {'class' : 'form-control', 'required': true, 'placeholder': 'Debe ser igual a la anterior'}}) }}
                         <span class="text-danger">{{ form_errors(form.passwordEnClaro.pass2) }}</span>
                     </div>
                 </div>
@@ -83,18 +83,8 @@
                 <div class="form-group">
                     {{ form_label(form.cargo, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
-                        {{ form_widget(form.cargo, {'attr' : {'class' : 'form-control'}}) }}
+                        {{ form_widget(form.cargo, {'attr' : {'class' : 'form-control', 'placeholder': 'Ejemplo: Asistente de Decanatura'}}) }}
                         <span class="text-danger">{{ form_errors(form.cargo) }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                {#TODO: el estado no se deberia pedir en el registro#}
-                <div class="form-group">
-                    {{ form_label(form.estado, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.estado, {'attr' : {'class' : 'form-control', 'data-widget': 'select2'}}) }}
-                        <span class="text-danger">{{ form_errors(form.estado) }}</span>
                     </div>
                 </div>
             </div>

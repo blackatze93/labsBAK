@@ -48,13 +48,6 @@ class UsuarioType extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('cargo')
-            ->add('estado', ChoiceType::class, array(
-                'choices' => array(
-                    'Paz y Salvo' => 'Paz y Salvo',
-                    'En Mora' => 'En Mora',
-                ),
-                'choices_as_values' => true,
-            ))
             ->add('dependencia', null, array(
                 'empty_value' => 'Ninguna',
             ))
