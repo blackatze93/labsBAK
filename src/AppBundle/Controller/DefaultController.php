@@ -25,6 +25,36 @@ class DefaultController extends Controller
     }
 
     /**
+     * Metodo que lista los objetos encontrados en el sitio web.
+     *
+     * @Route("/solicitud_sala/", name="solicitud_sala")
+     */
+    public function solicitudSalaAction()
+    {
+        return $this->render('solicitud_sala.html.twig');
+    }
+
+    /**
+     * Metodo que lista los objetos encontrados en el sitio web.
+     *
+     * @Route("/elementos_prestamo/", name="elementos_prestamo")
+     */
+    public function elementosPrestamoAction()
+    {
+        return $this->render('elementos_prestamo.html.twig');
+    }
+
+    /**
+     * Metodo que lista los objetos encontrados en el sitio web.
+     *
+     * @Route("/objetos_encontrados/", name="objetos_encontrados")
+     */
+    public function objetosEncontradosAction()
+    {
+        return $this->render('objetos_encontrados.html.twig');
+    }
+
+    /**
      * Metodo que genera el calendario
      *
      * @Route("/calendario/", name="calendario")
@@ -35,7 +65,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que genera el calendario
+     * Metodo que genera el paz y salvo
      *
      * @Route("/paz_y_salvo/", name="paz_y_salvo")
      */
