@@ -5,12 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class ReporteController.
- * 
+ *
  * @Route("/admin/reportes/")
  */
 class ReporteController extends Controller
@@ -18,7 +17,7 @@ class ReporteController extends Controller
     /**
      * Metodo que genera el paz y salvo.
      *
-     * @Route("paz_y_salvo/", name="paz_y_salvo")
+     * @Route("paz_salvo/", name="paz_salvo")
      */
     public function pazSalvoAction(Request $request)
     {
@@ -48,29 +47,44 @@ class ReporteController extends Controller
 
             // Si la opcion que selecciono fue generar y el usuario esta en paz y salvo procedemos a generarlo
             if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
-                $mpdfService = $this->get('tfox.mpdfport');
-                $mPDF = $mpdfService->getMpdf();
-                $fecha = new \DateTime();
-                $helper_assets = $this->container->get('templating.helper.assets');
+                return $this->crearPdf($data, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
+            }
 
-                $escudo = $helper_assets->getUrl('img/escudo.png');
-                $sigud = $helper_assets->getUrl('img/sigud.png');
+            return $this->render(':reportes:paz_y_salvo.html.twig', array(
+                'form' => $form->createView(),
+                'pazSalvo' => $pazSalvo,
+            ));
+        }
 
-                $html = '
+        return $this->render(':reportes:paz_y_salvo.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function crearPdf($data, $mpdfService, $helper_assets) {
+        $mPDF = $mpdfService->getMpdf();
+        $fecha = new \DateTime();
+
+        $escudo = $helper_assets->getUrl('img/escudo.png');
+        $sigud = $helper_assets->getUrl('img/sigud.png');
+        $css = $helper_assets->getUrl('css/formatos.css');
+
+        $html = '
                 <!DOCTYPE html>
                 <html>
                     <head>
-                        <title>FORMATO DE PAZ Y SALVOS</title>
+                        <title>Paz y Salvo</title>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <link rel="stylesheet" href="'.$css.'">
                     </head>
                     <body>
                     <table class="encabezado">
                         <tr>
-                            <td class="ESySI" rowspan="3"><img src="'.$escudo.'" alt="" style="width: 90%; height: 90%;"></td>
+                            <td class="ESySI" rowspan="3"><img src="'.$escudo.'" alt="" ></td>
                             <td class="soliBaja">FORMATO DE PAZ Y SALVO</td>
                             <td class="Cod">Código:</td>
-                            <td class="ESySI" rowspan="3"><img src="'.$sigud.'" alt="" style="width: 90%; height: 90%;"></td>
+                            <td class="ESySI" rowspan="3"><img src="'.$sigud.'" alt="" ></td>
                         </tr>
                         <tr>
                             <td class="MP">Macro proceso: Apoyo a lo misional</td>
@@ -84,11 +98,11 @@ class ReporteController extends Controller
                     <br><br>
                     <p align="justify">Los Laboratorios de Informática de la Facultad Tecnológica, hacen constar que el (la) 
                         estudiante '.$data['usuario']->getNombre().' '.$data['usuario']->getApellido().' con documento de identificación número: '
-                        .$data['usuario']->getDocumento().' y código estudiantil: '.$data['usuario']->getCodigo().', del proyecto curricular '
-                        .$data['usuario']->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
+            .$data['usuario']->getDocumento().' y código estudiantil: '.$data['usuario']->getCodigo().', del proyecto curricular '
+            .$data['usuario']->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
                         <br><br><br>El presente certificado se expide por solicitud del interesado a los '
-                        .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
-                        .'.<br><br><br><br><br>
+            .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
+            .'.<br><br><br><br><br>
                         Atentamente,<br><br><br><br><br>
             
                         _____________________________<br>
@@ -100,20 +114,9 @@ class ReporteController extends Controller
                 </body>
                 </html>
                 ';
-                $response = $mpdfService->generatePdfResponse($html);
+        $response = $mpdfService->generatePdfResponse($html);
 
-                return new Response($html);
-            }
-
-            return $this->render(':reportes:paz_y_salvo.html.twig', array(
-                'form' => $form->createView(),
-                'pazSalvo' => $pazSalvo,
-            ));
-        }
-
-        return $this->render(':reportes:paz_y_salvo.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $response;
     }
 }
 
