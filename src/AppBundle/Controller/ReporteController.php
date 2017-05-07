@@ -51,7 +51,7 @@ class ReporteController extends Controller
 
             // Si la opcion que selecciono fue generar y el usuario esta en paz y salvo procedemos a generarlo
             if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
-                return $this->crearPdf($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
+                return $this->crearPazSalvo($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
             }
 
             return $this->render(':reportes:paz_y_salvo.html.twig', array(
@@ -65,13 +65,13 @@ class ReporteController extends Controller
         ));
     }
 
-    public function crearPdf($usuario, $mpdfService, $helper_assets) {
+    public function crearPazSalvo($usuario, $mpdfService, $helper_assets) {
         $mPDF = $mpdfService->getMpdf();
         $fecha = new \DateTime();
 
         $escudo = $helper_assets->getUrl('img/escudo.png');
         $sigud = $helper_assets->getUrl('img/sigud.png');
-        $css = $helper_assets->getUrl('css/formatos.css');
+        $css = $helper_assets->getUrl('css/paz_y_salvo.css');
 
         $html = '
                 <!DOCTYPE html>
@@ -85,10 +85,10 @@ class ReporteController extends Controller
                     <body>
                     <table class="encabezado">
                         <tr>
-                            <td class="ESySI" rowspan="3"><img src="'.$escudo.'" alt="" ></td>
-                            <td class="soliBaja">FORMATO DE PAZ Y SALVO</td>
+                            <td rowspan="3"><img src="'.$escudo.'" alt="Logo UD" ></td>
+                            <td class="titulo">FORMATO DE PAZ Y SALVO</td>
                             <td class="Cod">Código:</td>
-                            <td class="ESySI" rowspan="3"><img src="'.$sigud.'" alt="" ></td>
+                            <td rowspan="3"><img class="logoSIGUD" src="'.$sigud.'" alt="Logo SIGUD" ></td>
                         </tr>
                         <tr>
                             <td class="MP">Macro proceso: Apoyo a lo misional</td>
@@ -96,18 +96,18 @@ class ReporteController extends Controller
                         </tr>
                         <tr>
                             <td class="PG">Proceso: Gestión de Laboratorios de Informática</td>
-                            <td class="PG">Fecha de aprobación: ___/___/_____ </td>
+                            <td class="Cod">Fecha de aprobación: __/__/____</td>
                         </tr>
                     </table> 
-                    <br><br>
-                    <p align="justify">Los Laboratorios de Informática de la Facultad Tecnológica, hacen constar que el (la) 
+                    <br><br><br><br><br>
+                    <p align="justify">Los <b>Laboratorios de Informática</b> de la Facultad Tecnológica, hacen constar que el (la) 
                         estudiante '.$usuario->getNombre().' '.$usuario->getApellido().' con documento de identificación número: '
                         .$usuario->getDocumento().' y código estudiantil: '.$usuario->getCodigo().', del proyecto curricular '
                         .$usuario->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
-                        <br><br><br>El presente certificado se expide por solicitud del interesado a los '
+                        <br><br><br><br><br>El presente certificado se expide por solicitud del interesado a los '
                         .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
-                        .'.<br><br><br><br><br>
-                        Atentamente,<br><br><br><br><br>
+                        .'.<br><br><br><br><br><br><br>
+                        Atentamente,<br><br><br><br><br><br><br>
             
                         _____________________________<br>
                         <b>ING. JOSE VICENTE REYES MOZO</b><br>

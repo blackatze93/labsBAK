@@ -107,7 +107,7 @@ class DefaultController extends Controller
                 if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
                     $reporte = new ReporteController();
 
-                    return $reporte->crearPdf($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
+                    return $reporte->crearPazSalvo($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
                 }
             } else {
                 $pazSalvo = 'no_registrado';

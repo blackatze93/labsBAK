@@ -4,6 +4,7 @@ easy_admin:
             class: AppBundle\Entity\Equipo
             list:
                 title: 'Equipos'
+                sort: 'nombre'
             form:
                 fields:
                     - 'nombre'
