@@ -2,10 +2,12 @@ easy_admin:
     entities:
         Lugar:
             class: AppBundle\Entity\Lugar
+            controller: AppBundle\Controller\LugarController
             list:
                 title: 'Lugares'
             form:
                 fields:
+                    - 'id'
                     - 'nombre'
                     - 'cantidadEquipos'
                     - 'descripcion'

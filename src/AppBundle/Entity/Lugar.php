@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LugarRepository")
  * @ORM\Table(name="lugar")
+ * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity("nombre")
  */
 class Lugar
@@ -18,9 +19,10 @@ class Lugar
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0")
      */
     private $id;
 

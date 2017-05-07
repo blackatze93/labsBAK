@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Equipo.
@@ -35,9 +36,35 @@ class Equipo
     private $nombre;
 
     /**
+     * @var Lugar
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Lugar")
+     * @Assert\NotBlank()
+     */
+    private $lugar;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Elemento", mappedBy="equipo")
      */
     private $elementos;
+
+    /**
+     * Equipo constructor.
+     */
+    public function __construct()
+    {
+        $this->elementos = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 
     /**
      * Get id.
@@ -108,18 +135,37 @@ class Equipo
     }
 
     /**
-     * Equipo constructor.
+     * @return Lugar
      */
-    public function __construct()
+    public function getLugar()
     {
-        $this->elementos = new ArrayCollection();
+        return $this->lugar;
     }
 
     /**
-     * @return string
+     * @param Lugar $lugar
      */
-    public function __toString()
+    public function setLugar($lugar)
     {
-        return $this->getNombre();
+        $this->lugar = $lugar;
+    }
+
+    /**
+     * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
+     */
+    public function validarElemenos(ExecutionContextInterface $context)
+    {
+        $elementos = $this->getElementos();
+        $lugar = $this->getLugar();
+
+        for ($i = 0; $i < $elementos->count(); ++$i) {
+            if ($elementos[$i]->getLugar() != $lugar)
+                $context->buildViolation('El elemento debe estar en el mismo lugar que el equipo.')
+                    ->atPath('elementos')
+                    ->addViolation();
+
+        }
     }
 }

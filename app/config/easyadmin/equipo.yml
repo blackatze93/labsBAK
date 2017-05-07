@@ -7,4 +7,5 @@ easy_admin:
             form:
                 fields:
                     - 'nombre'
+                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'elementos', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false } }

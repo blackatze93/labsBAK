@@ -2,16 +2,34 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
  * Lugar controller.
  */
-class LugarController extends Controller
+class LugarController extends BaseAdminController
 {
+    protected function prePersistEntity($entity)
+    {
+        $cantidadEquipos = $entity->getCantidadEquipos();
+        $idSala = $entity->getId();
+
+        for ($i = 0; $i < $cantidadEquipos; ++$i) {
+            $equipo = new Equipo();
+
+            $equipo->setNombre('FT'.$idSala.'_0'.($i+2));
+            $equipo->setLugar($entity);
+
+            $this->em->persist($equipo);
+        }
+    }
+
+
     /**
      * Return a Response with the resources of the calendar.
      *
