@@ -155,14 +155,14 @@ class Equipo
      *
      * @param ExecutionContextInterface $context
      */
-    public function validarElemenos(ExecutionContextInterface $context)
+    public function validarElementos(ExecutionContextInterface $context)
     {
         $elementos = $this->getElementos();
         $lugar = $this->getLugar();
 
         for ($i = 0; $i < $elementos->count(); ++$i) {
             if ($elementos[$i]->getLugar() != $lugar)
-                $context->buildViolation('El elemento debe estar en el mismo lugar que el equipo.')
+                $context->buildViolation('El elemento '.$elementos[$i].' debe estar en el mismo lugar que el equipo.')
                     ->atPath('elementos')
                     ->addViolation();
 

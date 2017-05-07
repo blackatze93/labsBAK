@@ -37,10 +37,10 @@
             var pazSalvo = $('#pazSalvo');
             if (pazSalvo.length) {
                 if (pazSalvo.html() === 'si') {
-                    $('#pazSalvo').html('<ul><li>El usuario se encuentra a paz y salvo. Puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-info');
+                    pazSalvo.html('<ul><li>El usuario se encuentra a paz y salvo. Puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-info');
                     $('#form_generar').removeClass('hidden');
                 } else if (pazSalvo.html() === 'no') {
-                    $('#pazSalvo').html('<ul><li>El usuario no se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
+                    pazSalvo.html('<ul><li>El usuario no se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
                 }
             }
         })

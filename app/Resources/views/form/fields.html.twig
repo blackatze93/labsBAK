@@ -25,3 +25,22 @@
     })
     }}
 {% endblock easyadmin_autocomplete_widget %}
+
+{# Errors #}
+{% block form_errors %}
+    {% set error_count = errors|length %}
+    {% if error_count >= 1 %}
+        <div class="error-block">
+            <span class="label label-danger">{{ 'errors'|transchoice(error_count, {}, 'EasyAdminBundle') }}</span>
+            {% if error_count == 1 %}
+                <b class="text-danger"> {{ errors|first.message }}</b>
+            {% else %}
+                <ul>
+                    {% for error in errors %}
+                        <li class="text-danger"><b>{{ error.message }}</b></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock form_errors %}

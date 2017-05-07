@@ -14,5 +14,9 @@
 
 .required:after {
     content: " *";
-    color: red;
+    color: #D42124 !important;
+}
+
+.text-danger {
+    color: #D42124 !important;
 }

@@ -15,6 +15,6 @@ class EventoController extends BaseAdminController
     protected function prePersistEntity($entity)
     {
         $usuario = $this->getUser();
-        $entity->setUsuario($usuario);
+        $entity->setUsuarioRegistra($usuario);
     }
 }

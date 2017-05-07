@@ -28,7 +28,6 @@ class ReporteController extends Controller
                 'class' => 'AppBundle\Entity\Usuario',
                 'constraints' => array(
                     new NotBlank(),
-                    new Range(array('min' => 1)),
                 )
             ))
             ->add('consultar', 'submit')

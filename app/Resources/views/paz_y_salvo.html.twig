@@ -37,15 +37,15 @@
             var pazSalvo = $('#pazSalvo');
             if (pazSalvo.length) {
                 if (pazSalvo.html() === 'si') {
-                    $('#pazSalvo').html('<ul>' +
+                    pazSalvo.html('<ul>' +
                         '<li>Se encuentra a paz y salvo. Puede generar el PDF.</li>' +
                         '<li><b>El paz y salvo sin firma no es válido.</b></li>' +
                         '</ul>').removeClass('hidden').addClass('text-info');
                     $('#form_generar').removeClass('hidden');
                 } else if (pazSalvo.html() === 'no') {
-                    $('#pazSalvo').html('<ul><li>No se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
+                    pazSalvo.html('<ul><li>No se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
                 } else if (pazSalvo.html() === 'no_registrado') {
-                    $('#pazSalvo').html('<ul><li>No está registrado. Acerquese a los laboratorios para crear su usuario.</li></ul>').removeClass('hidden').addClass('text-danger');
+                    pazSalvo.html('<ul><li>No está registrado. Acerquese a los laboratorios para crear su usuario.</li></ul>').removeClass('hidden').addClass('text-danger');
                 }
             }
         })
