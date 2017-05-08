@@ -1,5 +1,5 @@
 $(function () {
-    var options = {
+    var opDateTime = {
         locale: 'es',
         format: 'YYYY-MM-DD HH:mm',
         showTodayButton: true,
@@ -19,7 +19,16 @@ $(function () {
         }
     };
 
-    $('#objetoencontrado_fechaRegistro').datetimepicker(options);
+    $('#objetoencontrado_fechaRegistro').datetimepicker(opDateTime);
 
-    $('#mantenimientoexterno_fecha').datetimepicker(options);
+    $('#incidencia_fechaRegistro').datetimepicker(opDateTime);
+
+    var opVacio = {
+        useCurrent: false
+    };
+    $.extend(opVacio, opDateTime);
+
+    $('#incidencia_fechaAtencion').datetimepicker(opVacio);
+
+    $('#mantenimientoexterno_fecha').datetimepicker(opDateTime);
 });

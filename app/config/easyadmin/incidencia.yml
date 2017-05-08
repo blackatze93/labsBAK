@@ -2,20 +2,30 @@ easy_admin:
     entities:
         Incidencia:
             class: AppBundle\Entity\Incidencia
+
             list:
                 title: 'Incidencias'
-            # form:
-            #     fields:
-            #         - 'id'
-            #         - 'nombre'
-            #         - 'marca'
-            #         - 'descripcion'
-            #         - 'serial'
-            #         - 'fechaIngreso'
-            #         - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Dañado': 'Dañado' } } }
-            #         - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Computador': 'Computador', 'Especializado': 'Especializado', 'Otro': 'Otro' } } }
-            #         - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' } } }
-            #         - 'observaciones'
-            #         - 'lugar'
-            #         - 'equipo'
-            #         - 'activo'
+                fields:
+                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'estado' }
+                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
+                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+                sort: 'fechaRegistro'
+
+            show:
+                fields:
+                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'estado' }
+                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
+                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+            form:
+                fields:
+                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro', type_options: { widget: 'single_text' } }
+                    - { property: 'descripcion', type: 'ckeditor' }
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Sin Atender': 'Sin Atender', 'Atendida': 'Atendida' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención', type_options: { widget: 'single_text' } }
+                    - { property: 'usuarioAtiende', type: 'easyadmin_autocomplete', label: 'Usuario que atiende', type_options: { class: 'AppBundle\Entity\Usuario' } }

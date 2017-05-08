@@ -8,14 +8,17 @@ easy_admin:
 
     list:
         actions:
-            - { name: 'show', icon: 'eye' }
-            - { name: 'edit', icon: 'edit' }
-            - { name: 'delete', icon: 'remove' }
+            - { name: 'show', icon: 'eye', label: 'Ver' }
+            - { name: 'edit', icon: 'edit', label: 'Editar' }
+            - { name: 'delete', icon: 'remove', label: 'Borrar' }
 
     design:
         color_scheme: 'light'
 
         form_theme: ['horizontal', ':form:fields.html.twig']
+
+        assets:
+            favicon: 'img/favicon.ico'
 
         menu:
             - label: 'Documentos'
