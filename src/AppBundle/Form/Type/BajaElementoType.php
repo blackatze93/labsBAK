@@ -24,7 +24,7 @@ class BajaElementoType extends AbstractType
     {
         $builder
             ->add('elemento', EasyAdminAutocompleteType::class, array(
-                'class' => 'AppBundle\Entity\Elemento'
+                'class' => 'AppBundle\Entity\Elemento',
             ))
             ->add('observacion')
             ->add('motivoBaja', EntityType::class, array(

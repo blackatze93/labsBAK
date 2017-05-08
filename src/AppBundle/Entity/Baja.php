@@ -173,6 +173,8 @@ class Baja
      */
     public function removeBajaElemento(BajaElemento $elementoBaja)
     {
+        $elementoBaja->getElemento()->setActivo(true);
+
         $this->bajaElementos->removeElement($elementoBaja);
 
         return $this;

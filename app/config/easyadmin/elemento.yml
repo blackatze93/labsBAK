@@ -43,4 +43,4 @@ easy_admin:
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
-                    - { property: 'activo', type: 'checkbox', type_options: { data: true }}
+                    - { property: 'activo', type: 'checkbox'}
