@@ -108,8 +108,6 @@ class BajaElemento
     public function setElemento($elemento)
     {
         $this->elemento = $elemento;
-
-        $elemento->setActivo(false);
     }
 
     /**

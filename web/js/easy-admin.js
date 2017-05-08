@@ -1,6 +1,5 @@
 $(function () {
     var opDefault = {
-        debug: true,
         locale: 'es',
         showTodayButton: true,
         showClear: true,
@@ -74,4 +73,6 @@ $(function () {
     $('#mantenimientoexterno_fecha').datetimepicker(opDateTime);
 
     $('#baja_fecha').datetimepicker(opDate);
+
+    $('#traslado_fecha').datetimepicker(opDate);
 });

@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Traslado.
  *
  * @ORM\Entity()
  * @ORM\Table(name="traslado")
- * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class Traslado
 {
@@ -37,10 +37,10 @@ class Traslado
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_entrega_id", referencedColumnName="id", nullable=false, unique=false)
+     * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
-    private $usuarioEntrega;
+    private $usuarioRealiza;
 
     /**
      * @var Usuario
@@ -59,6 +59,19 @@ class Traslado
      * @Assert\Type("AppBundle\Entity\Lugar")
      */
     private $lugarDestino;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TrasladoElemento", mappedBy="traslado", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $trasladoElementos;
+
+    /**
+     * Traslado constructor.
+     */
+    public function __construct()
+    {
+        $this->trasladoElementos = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -87,17 +100,17 @@ class Traslado
     /**
      * @return Usuario
      */
-    public function getUsuarioEntrega()
+    public function getUsuarioRealiza()
     {
-        return $this->usuarioEntrega;
+        return $this->usuarioRealiza;
     }
 
     /**
-     * @param Usuario $usuarioEntrega
+     * @param Usuario $usuarioRealiza
      */
-    public function setUsuarioEntrega($usuarioEntrega)
+    public function setUsuarioRealiza($usuarioRealiza)
     {
-        $this->usuarioEntrega = $usuarioEntrega;
+        $this->usuarioRealiza = $usuarioRealiza;
     }
 
     /**
@@ -130,5 +143,40 @@ class Traslado
     public function setLugarDestino($lugarDestino)
     {
         $this->lugarDestino = $lugarDestino;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTrasladoElementos()
+    {
+        return $this->trasladoElementos;
+    }
+
+    /**
+     * @param TrasladoElemento $elementoTraslado
+     *
+     * @return Traslado
+     */
+    public function addTrasladoElemento(TrasladoElemento $elementoTraslado)
+    {
+        $this->trasladoElementos[] = $elementoTraslado;
+        $elementoTraslado->setTraslado($this);
+
+        $elementoTraslado->getElemento()->setLugar($this->getLugarDestino());
+
+        return $this;
+    }
+
+    /**
+     * @param $elemento
+     *
+     * @return $this
+     */
+    public function removeTrasladoElemento(TrasladoElemento $elementoTraslado)
+    {
+        $this->trasladoElementos->removeElement($elementoTraslado);
+
+        return $this;
     }
 }

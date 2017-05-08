@@ -11,7 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="traslado_elemento")
- * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class TrasladoElemento
 {
@@ -27,9 +26,8 @@ class TrasladoElemento
     /**
      * @var Traslado
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Traslado")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Traslado", inversedBy="trasladoElementos")
      * @ORM\JoinColumn(name="traslado_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Traslado")
      */
     private $traslado;
 
@@ -38,7 +36,7 @@ class TrasladoElemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
      * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Elemento")
+     * @Assert\NotBlank()
      */
     private $elemento;
 
@@ -49,6 +47,14 @@ class TrasladoElemento
      * @Assert\Length(max="255")
      */
     private $observacion;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Elemento: '.$this->getElemento().', Observación: '.$this->getObservacion().'.';
+    }
 
     /**
      * @return int
@@ -72,6 +78,8 @@ class TrasladoElemento
     public function setTraslado($traslado)
     {
         $this->traslado = $traslado;
+
+        return $this;
     }
 
     /**

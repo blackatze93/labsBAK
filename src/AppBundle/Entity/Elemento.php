@@ -133,6 +133,7 @@ class Elemento
     public function __construct()
     {
         $this->fechaIngreso = new \DateTime();
+        $this->setActivo(true);
     }
 
     /**

@@ -163,6 +163,8 @@ class Baja
         $this->bajaElementos[] = $elementoBaja;
         $elementoBaja->setBaja($this);
 
+        $elementoBaja->getElemento()->setActivo(false);
+
         return $this;
     }
 

@@ -2,9 +2,29 @@ easy_admin:
     entities:
         Traslado:
             class: AppBundle\Entity\Traslado
-#            list:
-#                title: 'Dependencias'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+            show:
+                fields:
+                    - { property: 'fecha', type: 'date' }
+                    - { property: 'usuarioRealiza', label: 'Realizado por' }
+                    - { property: 'lugarDestino', label: 'Lugar de destino' }
+                    - { property: 'usuarioRecibe', label: 'Recibido por' }
+                    - { property: 'trasladoElementos', label: 'Elementos' }
+
+            list:
+                title: 'Traslados'
+                fields:
+                    - { property: 'fecha', type: 'date' }
+                    - { property: 'usuarioRealiza', label: 'Realizado por' }
+                    - { property: 'lugarDestino', label: 'Lugar de destino' }
+                    - { property: 'usuarioRecibe', label: 'Recibido por' }
+                    - { property: 'trasladoElementos', label: 'Elementos' }
+                sort: ['fecha', 'DESC']
+
+            form:
+                fields:
+                    - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'usuarioRealiza', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Realizado por' }
+                    - { property: 'lugarDestino', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' }, label: 'Lugar de destino' }
+                    - { property: 'usuarioRecibe', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Recibido por' }
+                    - { type: 'group', label: 'Elementos' }
+                    - { property: 'trasladoElementos', label: ' ', type: 'collection', type_options: { entry_type: 'AppBundle\Form\Type\TrasladoElementoType', by_reference: false } }
