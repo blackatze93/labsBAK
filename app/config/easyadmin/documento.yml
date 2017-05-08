@@ -3,23 +3,25 @@ easy_admin:
         Documento:
             class: AppBundle\Entity\Documento
             controller: AppBundle\Controller\DocumentoController
+
             show:
                 fields:
-                    - 'id'
                     - 'nombre'
                     - { property: 'tipoDocumento', label: 'Tipo de documento' }
                     - { property: 'usuarioSube', label: 'Subido por' }
                     - { property: 'archivo', template: 'archivo.html.twig', base_path: '%app.path.documentos%' }
                     - { property: 'fechaSubida', label: 'Fecha de subida' }
+
             list:
                 title: 'Documentos'
                 fields:
-                    - 'id'
                     - 'nombre'
                     - { property: 'tipoDocumento', label: 'Tipo de documento' }
                     - { property: 'usuarioSube', label: 'Subido por' }
                     - { property: 'archivo', template: 'archivo.html.twig', base_path: '%app.path.documentos%' }
                     - { property: 'fechaSubida', label: 'Fecha de subida' }
+                sort: ['fechaSubida', 'DESC']
+
             form:
                 fields:
                     - 'nombre'
@@ -28,17 +30,29 @@ easy_admin:
 
         TipoDocumento:
             class: AppBundle\Entity\TipoDocumento
+
             list:
                 title: 'Tipos de Documento'
+                sort: ['nombre', 'ASC']
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Tipo de Documento' }
-            new:
-                title: 'Crear Tipo de Documento'
-            edit:
-                title: 'Modificar Tipo de Documento'
+                fields:
+                    - 'nombre'
+                    - 'documentos'
+
             show:
                 title: 'Tipo de Documento (#%%entity_id%%)'
+                fields:
+                    - 'nombre'
+                    - 'documentos'
+
             form:
                 fields:
                     - 'nombre'
+            new:
+                title: 'Crear Tipo de Documento'
+
+            edit:
+                title: 'Modificar Tipo de Documento'
+

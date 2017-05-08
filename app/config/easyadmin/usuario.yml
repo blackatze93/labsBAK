@@ -45,5 +45,4 @@ easy_admin:
                     - 'activo'
             edit:
                 fields:
-                    - { property: 'documento', help: 'probar'}
                     - { property: 'passwordEnClaro', type: 'repeated', type_options: { type: 'password', invalid_message: 'Las dos contraseñas deben coincidir', first_options: { label: 'Contraseña', attr: { placeholder: 'Ingrese una nueva contraseña para modificar la actual.' }, }, second_options: { label: 'Confirmar Contraseña' }, required: false } }
