@@ -2,6 +2,7 @@ easy_admin:
     entities:
         Elemento:
             class: AppBundle\Entity\Elemento
+            controller: AppBundle\Controller\ElementoController
             list:
                 title: 'Elementos'
                 fields:
