@@ -9,8 +9,16 @@
 !app/logs/.gitkeep
 /app/phpunit.xml
 /build/
-/vendor/
+
+/vendor/*
+!/vendor/javiereguiluz/
+
+/vendor/javiereguiluz/*
+!/vendor/javiereguiluz/easyadmin-bundle/
+
+/vendor/javiereguiluz/easyadmin-bundle/*
 !/vendor/javiereguiluz/easyadmin-bundle/Search/
+
 /bin/
 /composer.phar
 .c9/*
@@ -20,5 +28,6 @@
 nbproject
 .idea
 .tm_properties
+
 
 
