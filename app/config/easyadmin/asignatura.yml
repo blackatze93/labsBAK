@@ -2,5 +2,15 @@ easy_admin:
     entities:
         Asignatura:
             class: AppBundle\Entity\Asignatura
+
             list:
                 title: 'Asignaturas'
+                sort: ['codigo', 'ASC']
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+
+            show:
+                fields:
+                    - 'codigo'
+                    - 'nombre'

@@ -1,7 +1,7 @@
 $(function () {
-    var opDateTime = {
+    var opDefault = {
+        debug: true,
         locale: 'es',
-        format: 'YYYY-MM-DD HH:mm',
         showTodayButton: true,
         showClear: true,
         showClose: true,
@@ -16,19 +16,62 @@ $(function () {
             today: "fa fa-calendar-check-o",
             clear: "fa fa-trash-o",
             close: "fa fa-window-close-o"
+        },
+        tooltips: {
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Cerrar',
+            selectTime: 'Seleccionar hora',
+            incrementHour: 'Aumentar hora',
+            incrementMinute: 'Aumentar minuto',
+            decrementHour: 'Disminuir hora',
+            decrementMinute: 'Disminuir minuto',
+            pickHour: 'Seleccionar hora',
+            pickMinute: 'Seleccionar minuto',
+            selectMonth: 'Seleccionar mes',
+            prevMonth: 'Mes anterior',
+            nextMonth: 'Siguiente mes',
+            selectYear: 'Seleccionar año',
+            prevYear: 'Año anterior',
+            nextYear: 'Siguiente año',
+            selectDecade: 'Seleccionar década',
+            prevDecade: 'Década anterior',
+            nextDecade: 'Siguiente década',
+            prevCentury: 'Siglo anterior',
+            nextCentury: 'Siguiente siglo'
         }
     };
 
-    $('#objetoencontrado_fechaRegistro').datetimepicker(opDateTime);
+    var opDateTime = {
+        format: 'YYYY-MM-DD HH:mm'
+    };
 
-    $('#incidencia_fechaRegistro').datetimepicker(opDateTime);
+    $.extend(opDateTime, opDefault);
+
+    var opDate = {
+        format: 'YYYY-MM-DD'
+    };
+
+    $.extend(opDate, opDefault);
+
+    var opTime = {
+        format: 'HH:mm'
+    };
+
+    $.extend(opTime, opDefault);
 
     var opVacio = {
         useCurrent: false
     };
     $.extend(opVacio, opDateTime);
 
+    $('#objetoencontrado_fechaRegistro').datetimepicker(opDateTime);
+
+    $('#incidencia_fechaRegistro').datetimepicker(opDateTime);
+
     $('#incidencia_fechaAtencion').datetimepicker(opVacio);
 
     $('#mantenimientoexterno_fecha').datetimepicker(opDateTime);
+
+    $('#baja_fecha').datetimepicker(opDate);
 });

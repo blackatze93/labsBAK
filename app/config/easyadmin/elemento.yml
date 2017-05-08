@@ -10,7 +10,7 @@ easy_admin:
                     - 'serial'
                     - 'fechaIngreso'
                     - 'estado'
-                    - 'restriccionPrestamo'
+                    - 'tipoPrestamo'
                     - 'lugar'
                     - { property: 'activo', type: 'boolean' }
 
@@ -23,7 +23,7 @@ easy_admin:
                     - 'serial'
                     - 'fechaIngreso'
                     - 'estado'
-                    - 'restriccionPrestamo'
+                    - 'tipoPrestamo'
                     - 'observaciones'
                     - 'lugar'
                     - 'activo'
@@ -37,8 +37,8 @@ easy_admin:
                     - 'descripcion'
                     - 'serial'
                     - 'fechaIngreso'
-                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'restriccionPrestamo', type: 'choice', type_options: { choices:  { 'Funcionario': 'Funcionario' }, attr: { 'data-widget': 'select2' }, 'empty_value': 'Ninguna' } }
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'tipoPrestamo', type: 'choice', type_options: { choices:  { 'Todos': 'Todos', 'Funcionarios': 'Funcionarios', 'Nadie': 'Nadie' }, attr: { 'data-widget': 'select2' } } }
                     - 'observaciones'
                     - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }

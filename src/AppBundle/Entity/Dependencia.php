@@ -111,7 +111,7 @@ class Dependencia
     /**
      * @param Facultad $facultad
      */
-    public function setFacultad(Facultad $facultad)
+    public function setFacultad($facultad)
     {
         $this->facultad = $facultad;
     }

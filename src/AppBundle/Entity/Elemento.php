@@ -97,10 +97,10 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45, nullable=true)
+     * @ORM\Column(type="string", length=45, nullable=false)
      * @Assert\Length(max="45")
      */
-    private $restriccionPrestamo;
+    private $tipoPrestamo;
 
     /**
      * @var string
@@ -282,17 +282,17 @@ class Elemento
     /**
      * @return string
      */
-    public function getRestriccionPrestamo()
+    public function getTipoPrestamo()
     {
-        return $this->restriccionPrestamo;
+        return $this->tipoPrestamo;
     }
 
     /**
-     * @param string $restriccionPrestamo
+     * @param string $tipoPrestamo
      */
-    public function setRestriccionPrestamo($restriccionPrestamo)
+    public function setTipoPrestamo($tipoPrestamo)
     {
-        $this->restriccionPrestamo = $restriccionPrestamo;
+        $this->tipoPrestamo = $tipoPrestamo;
     }
 
     /**

@@ -50,6 +50,7 @@ easy_admin:
             form:
                 fields:
                     - 'nombre'
+
             new:
                 title: 'Crear Tipo de Documento'
 
