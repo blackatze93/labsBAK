@@ -2,16 +2,15 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Baja.
  *
  * @ORM\Entity()
  * @ORM\Table(name="baja")
- * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class Baja
 {
@@ -39,11 +38,12 @@ class Baja
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
+     * @Assert\NotBlank()
      */
     private $usuarioRealiza;
 
     /**
-     * @var string
+     * @var int
      *
      * @ORM\Column(type="bigint")
      * @Assert\NotBlank()
@@ -59,6 +59,19 @@ class Baja
      * @Assert\Length(max="100")
      */
     private $nombreRecibe;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BajaElemento", mappedBy="baja", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $bajaElementos;
+
+    /**
+     * Baja constructor.
+     */
+    public function __construct()
+    {
+        $this->bajaElementos = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -130,5 +143,38 @@ class Baja
     public function setNombreRecibe($nombreRecibe)
     {
         $this->nombreRecibe = $nombreRecibe;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBajaElementos()
+    {
+        return $this->bajaElementos;
+    }
+
+    /**
+     * @param BajaElemento $elementoBaja
+     *
+     * @return Baja
+     */
+    public function addBajaElemento(BajaElemento $elementoBaja)
+    {
+        $this->bajaElementos[] = $elementoBaja;
+        $elementoBaja->setBaja($this);
+
+        return $this;
+    }
+
+    /**
+     * @param $elemento
+     *
+     * @return $this
+     */
+    public function removeBajaElemento(BajaElemento $elementoBaja)
+    {
+        $this->bajaElementos->removeElement($elementoBaja);
+
+        return $this;
     }
 }

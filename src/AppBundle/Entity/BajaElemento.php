@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="baja_elemento")
- * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
+ * @DoctrineAssert\UniqueEntity("elemento")
  */
 class BajaElemento
 {
@@ -27,9 +27,8 @@ class BajaElemento
     /**
      * @var Baja
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Baja")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Baja", inversedBy="bajaElementos")
      * @ORM\JoinColumn(name="baja_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Baja")
      */
     private $baja;
 
@@ -37,8 +36,8 @@ class BajaElemento
      * @var Elemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
-     * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Elemento")
+     * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false, unique=true)
+     * @Assert\NotBlank()
      */
     private $elemento;
 
@@ -53,11 +52,19 @@ class BajaElemento
     /**
      * @var MotivoBaja
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\MotivoBaja")
-     * @ORM\JoinColumn(name="motivo_baja_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\MotivoBaja")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MotivoBaja", inversedBy="bajas")
+     * @ORM\JoinColumn(name="motivo_baja_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\NotBlank()
      */
     private $motivoBaja;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Elemento: '.$this->getElemento().', Observación: '.$this->getObservacion().', Motivo de Baja: '.$this->getMotivoBaja().'.';
+    }
 
     /**
      * @return int
@@ -77,10 +84,14 @@ class BajaElemento
 
     /**
      * @param Baja $baja
+     *
+     * @return BajaElemento
      */
-    public function setBaja($baja)
+    public function setBaja(Baja $baja)
     {
         $this->baja = $baja;
+
+        return $this;
     }
 
     /**
@@ -97,6 +108,8 @@ class BajaElemento
     public function setElemento($elemento)
     {
         $this->elemento = $elemento;
+
+        $elemento->setActivo(false);
     }
 
     /**

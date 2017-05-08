@@ -5,13 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * MotivoBaja.
  *
  * @ORM\Entity()
  * @ORM\Table(name="motivo_baja")
- * @DoctrineAssert\UniqueEntity(fields={"descripcion"})
+ * @DoctrineAssert\UniqueEntity(fields={"nombre"})
  */
 class MotivoBaja
 {
@@ -31,14 +32,27 @@ class MotivoBaja
      * @Assert\NotBlank()
      * @Assert\Length(max="100")
      */
-    private $descripcion;
+    private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BajaElemento", mappedBy="motivoBaja")
+     */
+    private $bajas;
+
+    /**
+     * TipoDocumento constructor.
+     */
+    public function __construct()
+    {
+        $this->bajas = new ArrayCollection();
+    }
 
     /**
      * @return string
      */
     public function __toString()
     {
-        return $this->getDescripcion();
+        return $this->getNombre();
     }
 
     /**
@@ -52,16 +66,24 @@ class MotivoBaja
     /**
      * @return string
      */
-    public function getDescripcion()
+    public function getNombre()
     {
-        return $this->descripcion;
+        return $this->nombre;
     }
 
     /**
-     * @param string $descripcion
+     * @param string $nombre
      */
-    public function setDescripcion($descripcion)
+    public function setNombre($nombre)
     {
-        $this->descripcion = $descripcion;
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBajas()
+    {
+        return $this->bajas;
     }
 }

@@ -2,9 +2,58 @@ easy_admin:
     entities:
         Baja:
             class: AppBundle\Entity\Baja
-#            list:
-#                title: 'Dependencias'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+            show:
+                fields:
+                    - { property: 'fecha', type: 'date' }
+                    - { property: 'usuarioRealiza', label: 'Realizada por' }
+                    - { property: 'cedulaRecibe' }
+                    - { property: 'nombreRecibe' }
+                    - { property: 'bajaElementos', label: 'Elementos' }
+            list:
+                title: 'Bajas'
+                fields:
+                    - { property: 'fecha', type: 'date' }
+                    - { property: 'usuarioRealiza', label: 'Realizada por' }
+                    - { property: 'cedulaRecibe' }
+                    - { property: 'nombreRecibe' }
+                    - { property: 'bajaElementos', label: 'Elementos' }
+                sort: ['fecha', 'DESC']
+
+            form:
+                fields:
+                    - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'usuarioRealiza', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Realizada por' }
+                    - { type: 'group', label: 'Recibido por' }
+                    - { property: 'cedulaRecibe', label: 'Cédula' }
+                    - { property: 'nombreRecibe', label: 'Nombre' }
+                    - { type: 'group', label: 'Elementos' }
+                    - { property: 'bajaElementos', label: ' ', type: 'collection', type_options: { entry_type: 'AppBundle\Form\Type\BajaElementoType', by_reference: false } }
+
+        MotivoBaja:
+            class: AppBundle\Entity\MotivoBaja
+
+            list:
+                title: 'Motivos de Baja'
+                sort: ['nombre', 'ASC']
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Motivo de Baja' }
+                fields:
+                    - 'nombre'
+                    - 'bajas'
+
+            show:
+                title: 'Motivo de Baja (#%%entity_id%%)'
+                fields:
+                    - 'nombre'
+                    - 'bajas'
+
+            form:
+                fields:
+                    - 'nombre'
+
+            new:
+                title: 'Crear Motivo de Baja'
+
+            edit:
+                title: 'Modificar Motivo de Baja'
