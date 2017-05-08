@@ -38,7 +38,7 @@ class Equipo
     /**
      * @var Lugar
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar", inversedBy="equipos")
      * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()

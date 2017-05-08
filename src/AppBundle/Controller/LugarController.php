@@ -29,7 +29,6 @@ class LugarController extends BaseAdminController
         }
     }
 
-
     /**
      * Return a Response with the resources of the calendar.
      *

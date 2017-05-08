@@ -2,5 +2,17 @@ easy_admin:
     entities:
         Dependencia:
             class: AppBundle\Entity\Dependencia
+
             list:
                 title: 'Dependencias'
+                sort: ['codigo', 'ASC']
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+                    - 'facultad'
+
+            show:
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+                    - 'facultad'

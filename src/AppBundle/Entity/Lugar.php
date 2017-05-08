@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Lugar.
@@ -52,12 +53,27 @@ class Lugar
     private $descripcion;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Equipo", mappedBy="lugar", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $equipos;
+
+    /**
      * @var bool
      *
      * @ORM\Column(type="boolean")
      * @Assert\Type(type="bool")
      */
     private $visible;
+
+    /**
+     * Lugar constructor.
+     * @param $equipos
+     */
+    public function __construct()
+    {
+        $this->equipos = new ArrayCollection();
+    }
+
 
     /**
      * @return string
@@ -145,6 +161,14 @@ class Lugar
     public function setVisible($visible)
     {
         $this->visible = $visible;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipos()
+    {
+        return $this->equipos;
     }
 
     /**

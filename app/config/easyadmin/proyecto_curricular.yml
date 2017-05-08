@@ -2,14 +2,29 @@ easy_admin:
     entities:
         ProyectoCurricular:
             class: AppBundle\Entity\ProyectoCurricular
+
             list:
                 title: 'Proyectos Curriculares'
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Proyecto Curricular' }
+                sort: ['codigo', 'ASC']
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+                    - 'facultad'
+
+            form:
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+                    - 'facultad'
+
             new:
                 title: 'Crear Proyecto Curricular'
+
             edit:
                 title: 'Modificar Proyecto Curricular'
+
             show:
                 title: 'Proyecto Curricular (#%%entity_id%%)'

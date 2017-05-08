@@ -3,8 +3,10 @@ easy_admin:
         Lugar:
             class: AppBundle\Entity\Lugar
             controller: AppBundle\Controller\LugarController
+
             list:
                 title: 'Lugares'
+
             form:
                 fields:
                     - 'id'
