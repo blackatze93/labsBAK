@@ -45,16 +45,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que lista los objetos encontrados en el sitio web.
-     *
-     * @Route("/objetos_encontrados/", name="objetos_encontrados")
-     */
-    public function objetosEncontradosAction()
-    {
-        return $this->render('objetos_encontrados.html.twig');
-    }
-
-    /**
      * Metodo que genera el calendario
      *
      * @Route("/calendario/", name="calendario")
