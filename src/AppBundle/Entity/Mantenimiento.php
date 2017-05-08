@@ -25,9 +25,9 @@ class Mantenimiento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1020)
      * @Assert\NotBlank()
-     * @Assert\Length(max="255")
+     * @Assert\Length(max="1020")
      */
     private $descripcion;
 
@@ -36,7 +36,7 @@ class Mantenimiento
      *
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
-     * @Assert\Date()
+     * @Assert\DateTime()
      */
     private $fecha;
 

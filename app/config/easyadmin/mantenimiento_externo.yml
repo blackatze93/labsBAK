@@ -2,22 +2,42 @@ easy_admin:
     entities:
         MantenimientoExterno:
             class: AppBundle\Entity\MantenimientoExterno
+
             list:
                 title: 'Mantenimientos Externos'
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Mantenimiento Externo' }
-            new:
-                title: 'Crear Mantenimiento Externo'
-            edit:
-                title: 'Modificar Mantenimiento Externo'
+                fields:
+                    - { property: 'fecha', type: 'datetime' }
+                    - { property: 'nombreEmpresa', label: 'Nombre de la empresa' }
+                    - { property: 'cedulaTecnico', label: 'Cédula del técnico' }
+                    - { property: 'nombreTecnico', label: 'Nombre del técnico' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+                sort: 'fecha'
+
             show:
                 title: 'Mantenimiento Externo (#%%entity_id%%)'
+                fields:
+                    - { property: 'fecha', type: 'datetime' }
+                    - { property: 'nombreEmpresa', label: 'Nombre de la empresa' }
+                    - { property: 'cedulaTecnico', label: 'Cédula del técnico' }
+                    - { property: 'nombreTecnico', label: 'Nombre del técnico' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+
             form:
                 fields:
-                    - 'nombreEmpresa'
-                    - 'nombreTecnico'
-                    - 'cedulaTecnico'
                     - { property: 'fecha', type: 'datetime', type_options: { widget: 'single_text' } }
-                    - 'descripcion'
+                    - { property: 'nombreEmpresa', label: 'Nombre de la empresa' }
+                    - { property: 'cedulaTecnico', label: 'Cédula del técnico' }
+                    - { property: 'nombreTecnico', label: 'Nombre del técnico' }
+                    - { property: 'descripcion', type: 'ckeditor' }
                     - { property: 'usuarioAtiende', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' } }
+
+            new:
+                title: 'Crear Mantenimiento Externo'
+
+            edit:
+                title: 'Modificar Mantenimiento Externo'

@@ -2,11 +2,26 @@ easy_admin:
     entities:
         Mantenimiento:
             class: AppBundle\Entity\Mantenimiento
+
             list:
                 title: 'Mantenimientos'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - 'cantidadEquipos'
-#                    - 'descripcion'
-#                    - 'visible'
+                fields:
+                    - { property: 'fecha', type: 'datetime' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'elemento' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+                sort: 'fecha'
+
+            show:
+                fields:
+                    - { property: 'fecha', type: 'datetime' }
+                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'elemento' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+
+            form:
+                fields:
+                    - { property: 'fecha', type: 'datetime', type_options: { widget: 'single_text' } }
+                    - { property: 'descripcion', type: 'ckeditor' }
+                    - { property: 'elemento', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento' } }
+                    - { property: 'usuarioRealiza', type: 'easyadmin_autocomplete', label: 'Usuario que realiza', type_options: { class: 'AppBundle\Entity\Usuario' } }
