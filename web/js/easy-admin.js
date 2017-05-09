@@ -59,16 +59,29 @@ $(function () {
 
     $.extend(opTime, opDefault);
 
-    var opVacio = {
+    var opVacioDateTime = {
         useCurrent: false
     };
-    $.extend(opVacio, opDateTime);
+
+    $.extend(opVacioDateTime, opDateTime);
+
+    var opVacioDate = {
+        useCurrent: false
+    };
+
+    $.extend(opVacioDate, opDate);
+
+    var opVacioTime = {
+        useCurrent: false
+    };
+
+    $.extend(opVacioTime, opTime);
 
     $('#objetoencontrado_fechaRegistro').datetimepicker(opDateTime);
 
     $('#incidencia_fechaRegistro').datetimepicker(opDateTime);
 
-    $('#incidencia_fechaAtencion').datetimepicker(opVacio);
+    $('#incidencia_fechaAtencion').datetimepicker(opVacioDateTime);
 
     $('#mantenimiento_fecha').datetimepicker(opDateTime);
 
@@ -77,4 +90,11 @@ $(function () {
     $('#baja_fecha').datetimepicker(opDate);
 
     $('#traslado_fecha').datetimepicker(opDate);
+
+    $('#evento_fecha').datetimepicker(opDate);
+
+    $('#evento_horaInicio').datetimepicker(opTime);
+
+    $('#evento_horaFin').datetimepicker(opVacioTime);
+
 });

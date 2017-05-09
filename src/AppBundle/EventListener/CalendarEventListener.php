@@ -4,6 +4,7 @@ namespace AppBundle\EventListener;
 
 use ADesigns\CalendarBundle\Event\CalendarEvent;
 use ADesigns\CalendarBundle\Entity\EventEntity;
+use AppBundle\Entity\Evento;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -63,17 +64,18 @@ class CalendarEventListener
             $fechaInicio = new \DateTime($fecha->format('Y-m-d').' '.$horaInicio->format('H:i'));
             $fechaFin = new \DateTime($fecha->format('Y-m-d').' '.$horaFin->format('H:i'));
 
+//           $evento = new Evento();
+
             // create an event with a start/end time
-            $eventEntity = new EventEntity($evento->getTipo(), $fechaInicio, $fechaFin);
+            $eventEntity = new EventEntity($evento->getAsignatura()->getNombre(), $fechaInicio, $fechaFin);
 
             //optional calendar event settings
             if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
                 $eventEntity->setUrl($this->router->generate('easyadmin', array('action' => 'show', 'id' => $evento->getId(), 'entity' => 'Evento'))); // url to send user to when event label is clicked
             }
             $eventEntity->addField('resourceId', $evento->getLugar()->getId());
-//
-//            $eventEntity->addField('grupo', $evento->getGrupo());
-
+            $eventEntity->addField('estado', $evento->getEstado());
+            $eventEntity->addField('grupo', $evento->getGrupo());
             $eventEntity->addField('observaciones', $evento->getObservaciones());
 
             //finally, add the event to the CalendarEvent for displaying on the calendar

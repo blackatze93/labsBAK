@@ -47,15 +47,15 @@ $(function () {
         eventRender: function(event, element) {
             var texto = '';
 
-            // texto += '<b>Materia:</b> ';
-            // texto += event.title ? event.title : 'Ninguna';
-            //
-            // texto +='<br><b>Grupo:</b> ';
-            // texto += event.grupo ? event.grupo : 'Ninguno';
-            //
-            // texto += '<br><b>Estado:</b> ' + event.estado;
+            texto += '<b>Asignatura:</b> ';
+            texto += event.title ? event.title : 'Ninguna';
 
-            texto += '<b>Observaciones:</b> ';
+            texto +='<br><b>Grupo:</b> ';
+            texto += event.grupo ? event.grupo : 'Ninguno';
+
+            texto += '<br><b>Estado:</b> ' + event.estado;
+
+            texto += '<br><b>Observaciones:</b> ';
             texto += event.observaciones ? event.observaciones : 'Ninguna';
 
             var n = new Noty({

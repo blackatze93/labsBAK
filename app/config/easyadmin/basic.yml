@@ -27,11 +27,11 @@ easy_admin:
                 - { entity: 'Documento', icon: 'file', label: 'Documentos' }
                 - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documento' }
 
-            - label: 'Horario'
-              icon: 'calendar'
-              children:
-                - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
-                - { entity: 'Horario', icon: 'calendar-check-o', label: 'Horario' }
+#            - label: 'Horario'
+#              icon: 'calendar'
+#              children:
+            - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
+#            - { entity: 'Horario', icon: 'calendar-check-o', label: 'Horario' }
 
             - label: 'Inventario'
               icon: 'archive'

@@ -29,7 +29,7 @@ class Evento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="date", nullable=false, unique=false)
      * @Assert\NotBlank()
      * @Assert\Date()
      */
@@ -67,17 +67,37 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=45)
+     * @ORM\Column(name="estado", type="string", nullable=false, unique=false)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
-    private $tipo;
+    private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
+     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="10")
+     */
+    private $grupo;
+
+    /**
+     * @var Asignatura
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Asignatura")
+     * @ORM\JoinColumn(name="asignatura_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Asignatura")
+     * @Assert\NotBlank()
+     */
+    private $asignatura;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observaciones", type="string", length=1020, nullable=true)
+     * @Assert\Length(max="1020")
      */
     private $observaciones;
 
@@ -99,15 +119,6 @@ class Evento
      * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRegistra;
-
-    /**
-     * @var Horario
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Horario")
-     * @ORM\JoinColumn(name="horario_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\Horario")
-     */
-    private $horario;
 
     /**
      * Evento constructor.
@@ -196,17 +207,17 @@ class Evento
     /**
      * @return string
      */
-    public function getTipo()
+    public function getEstado()
     {
-        return $this->tipo;
+        return $this->estado;
     }
 
     /**
-     * @param string $tipo
+     * @param string $estado
      */
-    public function setTipo($tipo)
+    public function setEstado($estado)
     {
-        $this->tipo = $tipo;
+        $this->estado = $estado;
     }
 
     /**
@@ -258,19 +269,35 @@ class Evento
     }
 
     /**
-     * @return Horario
+     * @return string
      */
-    public function getHorario()
+    public function getGrupo()
     {
-        return $this->horario;
+        return $this->grupo;
     }
 
     /**
-     * @param Horario $horario
+     * @param string $grupo
      */
-    public function setHorario($horario)
+    public function setGrupo($grupo)
     {
-        $this->horario = $horario;
+        $this->grupo = $grupo;
+    }
+
+    /**
+     * @return Asignatura
+     */
+    public function getAsignatura()
+    {
+        return $this->asignatura;
+    }
+
+    /**
+     * @param Asignatura $asignatura
+     */
+    public function setAsignatura($asignatura)
+    {
+        $this->asignatura = $asignatura;
     }
 
     /**
