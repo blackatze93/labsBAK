@@ -2,9 +2,26 @@ easy_admin:
     entities:
         PrestamoElemento:
             class: AppBundle\Entity\PrestamoElemento
-#            list:
-#                title: 'Dependencias'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+
+            list:
+                title: 'Préstamo Elemento'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Préstamo Elemento' }
+
+            show:
+                title: 'Préstamo Elemento (#%%entity_id%%)'
+
+            form:
+                fields:
+                    - { property: 'fechaPrestamo', type: 'datetime', label: 'Fecha de préstamo', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'elemento', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento' } }
+                    - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario' } }
+                    - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'observaciones' }
+
+            new:
+                title: 'Crear Préstamo Elemento'
+
+            edit:
+                title: 'Modificar Préstamo Elemento'

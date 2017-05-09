@@ -3,6 +3,7 @@ easy_admin:
         ObjetoEncontrado:
             class: AppBundle\Entity\ObjetoEncontrado
             controller: AppBundle\Controller\ObjetoEncontradoController
+
             list:
                 title: 'Objetos Encontrados'
                 actions:
@@ -15,6 +16,7 @@ easy_admin:
                    - { property: 'fechaRegistro', label: 'Fecha de registro' }
                    - 'estado'
                    - { property: 'fechaEntrega', label: 'Fecha de entrega' }
+
             show:
                 title: 'Objeto Encontrado (#%%entity_id%%)'
                 fields:
@@ -27,6 +29,7 @@ easy_admin:
                    - { property: 'usuarioReclama', label: 'Entregado a' }
                    - { property: 'fechaEntrega', label: 'Fecha de entrega' }
                    - { property: 'usuarioEntrega', label: 'Entregado por' }
+
             form:
                fields:
                    - 'descripcion'
@@ -34,7 +37,9 @@ easy_admin:
                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                    - { property: 'estado', type: 'choice', type_options: { choices: { 'Disponible': 'Disponible', 'Entregado': 'Entregado', 'Olvidado': 'Olvidado' }, attr: { 'data-widget': 'select2' } } }
                    - { property: 'usuarioReclama', type: 'easyadmin_autocomplete', label: 'Entregado a', type_options: { class: 'AppBundle\Entity\Usuario' } }
+
             new:
                 title: 'Crear Objeto Encontrado'
+
             edit:
                 title: 'Modificar Objeto Encontrado'

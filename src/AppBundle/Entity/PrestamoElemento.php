@@ -34,8 +34,7 @@ class PrestamoElemento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
      */
     private $fechaDevolucion;
@@ -54,8 +53,9 @@ class PrestamoElemento
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
+     * @Assert\NotBlank()
      */
-    private $usuario;
+    private $usuarioSolicita;
 
     /**
      * @var Elemento
@@ -63,6 +63,7 @@ class PrestamoElemento
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
      * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Elemento")
+     * @Assert\NotBlank()
      */
     private $elemento;
 
@@ -127,17 +128,17 @@ class PrestamoElemento
     /**
      * @return Usuario
      */
-    public function getUsuario()
+    public function getUsuarioSolicita()
     {
-        return $this->usuario;
+        return $this->usuarioSolicita;
     }
 
     /**
-     * @param Usuario $usuario
+     * @param Usuario $usuarioSolicita
      */
-    public function setUsuario($usuario)
+    public function setUsuarioSolicita($usuarioSolicita)
     {
-        $this->usuario = $usuario;
+        $this->usuarioSolicita = $usuarioSolicita;
     }
 
     /**

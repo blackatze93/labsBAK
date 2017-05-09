@@ -97,4 +97,16 @@ $(function () {
 
     $('#evento_horaFin').datetimepicker(opVacioTime);
 
+    $('#prestamopracticalibre_fechaPrestamo').datetimepicker(opDate);
+
+    $('#prestamopracticalibre_horaEntrada').datetimepicker(opTime);
+
+    $('#prestamopracticalibre_horaSalida').datetimepicker(opVacioTime);
+
+    $('#prestamoelemento_fechaPrestamo').datetimepicker(opDateTime);
+
+    $('#prestamoelemento_fechaDevolucion').datetimepicker(opVacioDateTime);
+
+
+
 });

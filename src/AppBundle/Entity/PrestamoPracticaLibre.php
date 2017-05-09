@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * PrestamoPracticaLibre.
@@ -42,13 +43,8 @@ class PrestamoPracticaLibre
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="time")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="time", nullable=true)
      * @Assert\Time()
-     * @Assert\Expression(
-     *     "this.getHoraEntrada() < this.getHoraSalida()",
-     *     message="La hora de salida debe ser mayor a la hora de entrada"
-     * )
      */
     private $horaSalida;
 
@@ -209,5 +205,26 @@ class PrestamoPracticaLibre
     public function setUsuarioRealiza($usuarioRealiza)
     {
         $this->usuarioRealiza = $usuarioRealiza;
+    }
+
+    /**
+     * @Assert\Callback
+     *
+     * @param ExecutionContextInterface $context
+     */
+    public function validarHoras(ExecutionContextInterface $context)
+    {
+        $horaEntrada = $this->getHoraEntrada()->format('H:i');
+
+        if ($this->getHoraSalida()) {
+            $horaSalida = $this->getHoraSalida()->format('H:i');
+
+            if ($horaEntrada > $horaSalida) {
+                $context->buildViolation('La hora de salida debe ser mayor a la hora de entrada')
+                    ->atPath('horaSalida')
+                    ->addViolation()
+                ;
+            }
+        }
     }
 }
