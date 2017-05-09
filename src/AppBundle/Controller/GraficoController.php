@@ -3,16 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Usuario;
-use Doctrine\ORM\Mapping\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class GraficoController.
- * 
+ *
  * * @Route("/admin/graficos/")
  */
 class GraficoController extends Controller
@@ -24,7 +22,7 @@ class GraficoController extends Controller
      */
     public function pruebaAction(Request $request)
     {
-//        $mpdfService = $this->get('tfox.mpdfport');
+        //        $mpdfService = $this->get('tfox.mpdfport');
 //        $html = "Hello World!";
 //        $response = $mpdfService->generatePdfResponse($html);
 //

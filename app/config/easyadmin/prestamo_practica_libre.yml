@@ -2,9 +2,28 @@ easy_admin:
     entities:
         PrestamoPracticaLibre:
             class: AppBundle\Entity\PrestamoPracticaLibre
-#            list:
-#                title: 'Dependencias'
-#            form:
-#                fields:
-#                    - 'nombre'
-#                    - { property: 'facultad', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Facultad' } }
+            controller: AppBundle\Controller\PrestamoPracticaLibreController
+
+            list:
+                title: 'Préstamo Práctica Libre'
+                actions:
+                    - { name: 'show', icon: 'eye' }
+                    - { name: 'new', label: 'Crear Préstamo Práctica Libre' }
+
+            show:
+                title: 'Préstamo Práctica Libre (#%%entity_id%%)'
+
+            form:
+                fields:
+                    - { property: 'fechaPrestamo', type: 'date', label: 'Fecha de prestamo', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'horaEntrada', type: 'time', label: 'Hora de entrada', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
+                    - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario' } }
+                    - { property: 'horaSalida', type: 'time', label: 'Hora de salida', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'observaciones' }
+
+            new:
+                title: 'Crear Préstamo Práctica Libre'
+
+            edit:
+                title: 'Modificar Préstamo Práctica Libre'

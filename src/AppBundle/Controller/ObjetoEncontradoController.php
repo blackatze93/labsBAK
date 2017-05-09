@@ -4,8 +4,6 @@ namespace AppBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use JavierEguiluz\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ObjetoEncontradoController.
@@ -54,7 +52,7 @@ class ObjetoEncontradoController extends BaseAdminController
         );
 
         return $this->render('objetos_encontrados.html.twig', array(
-            'objetos' => $objetos
+            'objetos' => $objetos,
         ));
     }
 }

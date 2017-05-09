@@ -29,8 +29,8 @@ class BajaElementoType extends AbstractType
             ->add('motivoBaja', EntityType::class, array(
                 'class' => 'AppBundle\Entity\MotivoBaja',
                 'attr' => array(
-                    'data-widget' => 'select2'
-                )
+                    'data-widget' => 'select2',
+                ),
             ))
         ;
     }
@@ -43,7 +43,7 @@ class BajaElementoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\BajaElemento'
+            'data_class' => 'AppBundle\Entity\BajaElemento',
         ));
     }
 

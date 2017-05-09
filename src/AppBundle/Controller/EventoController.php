@@ -77,6 +77,4 @@ class EventoController extends BaseAdminController
             'entity' => $entity,
         ));
     }
-
-
 }

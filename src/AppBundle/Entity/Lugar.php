@@ -67,13 +67,13 @@ class Lugar
 
     /**
      * Lugar constructor.
+     *
      * @param $equipos
      */
     public function __construct()
     {
         $this->equipos = new ArrayCollection();
     }
-
 
     /**
      * @return string

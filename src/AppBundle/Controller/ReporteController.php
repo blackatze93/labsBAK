@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Range;
 
 /**
  * Class ReporteController.
@@ -28,7 +27,7 @@ class ReporteController extends Controller
                 'class' => 'AppBundle\Entity\Usuario',
                 'constraints' => array(
                     new NotBlank(),
-                )
+                ),
             ))
             ->add('consultar', 'submit')
             ->add('generar', 'submit')
@@ -65,7 +64,8 @@ class ReporteController extends Controller
         ));
     }
 
-    public function crearPazSalvo($usuario, $mpdfService, $helper_assets) {
+    public function crearPazSalvo($usuario, $mpdfService, $helper_assets)
+    {
         $mPDF = $mpdfService->getMpdf();
         $fecha = new \DateTime();
 
@@ -123,4 +123,3 @@ class ReporteController extends Controller
         return $response;
     }
 }
-

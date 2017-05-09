@@ -45,7 +45,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que genera el calendario
+     * Metodo que genera el calendario.
      *
      * @Route("/calendario/", name="calendario")
      */
@@ -55,7 +55,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que genera el paz y salvo
+     * Metodo que genera el paz y salvo.
      *
      * @Route("/paz_y_salvo/", name="paz_y_salvo")
      */
@@ -68,7 +68,7 @@ class DefaultController extends Controller
                     new NotBlank(),
                     new Type('integer'),
                     new Range(array('min' => 1)),
-                )
+                ),
             ))
             ->add('consultar', 'submit')
             ->add('generar', 'submit')

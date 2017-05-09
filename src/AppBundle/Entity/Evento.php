@@ -92,7 +92,6 @@ class Evento
      */
     private $asignatura;
 
-
     /**
      * @var string
      *
