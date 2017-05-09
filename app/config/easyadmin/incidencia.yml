@@ -2,6 +2,7 @@ easy_admin:
     entities:
         Incidencia:
             class: AppBundle\Entity\Incidencia
+            controller: AppBundle\Controller\IncidenciaController
 
             list:
                 title: 'Incidencias'

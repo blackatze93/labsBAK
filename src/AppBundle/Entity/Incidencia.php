@@ -63,7 +63,6 @@ class Incidencia
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_registra_id", referencedColumnName="id", nullable=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
-     * @Assert\NotBlank()
      */
     private $usuarioRegistra;
 
