@@ -159,7 +159,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function __toString()
     {
-        return $this->getDocumento();
+        return $this->getNombre().' '.$this->getApellido();
     }
 
     /**

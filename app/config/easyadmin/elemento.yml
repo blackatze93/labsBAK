@@ -9,11 +9,13 @@ easy_admin:
                     - 'placa'
                     - 'nombre'
                     - 'serial'
-                    - 'fechaIngreso'
+                    - { property: 'fechaIngreso', type: 'date' }
                     - 'estado'
                     - 'tipoPrestamo'
                     - 'lugar'
+                    - { property: 'prestado', type: 'boolean' }
                     - { property: 'activo', type: 'boolean' }
+                sort: 'placa'
 
             show:
                 fields:
@@ -22,11 +24,12 @@ easy_admin:
                     - 'marca'
                     - 'descripcion'
                     - 'serial'
-                    - 'fechaIngreso'
+                    - { property: 'fechaIngreso', type: 'date' }
                     - 'estado'
                     - 'tipoPrestamo'
                     - 'observaciones'
                     - 'lugar'
+                    - 'prestado'
                     - 'activo'
                     - 'equipo'
 
@@ -37,10 +40,10 @@ easy_admin:
                     - 'marca'
                     - 'descripcion'
                     - 'serial'
-                    - 'fechaIngreso'
+                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
+                    - { property: 'fechaIngreso', type: 'date', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'tipoPrestamo', type: 'choice', type_options: { choices:  { 'Todos': 'Todos', 'Funcionarios': 'Funcionarios', 'Nadie': 'Nadie' }, attr: { 'data-widget': 'select2' } } }
-                    - 'observaciones'
-                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
+                    - 'observaciones'
                     - { property: 'activo', type: 'checkbox' }

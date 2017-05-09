@@ -116,6 +116,14 @@ class Elemento
      * @ORM\Column(type="boolean")
      * @Assert\Type(type="bool")
      */
+    private $prestado;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
+     */
     private $activo;
 
     /**
@@ -310,6 +318,22 @@ class Elemento
     public function setObservaciones($observaciones)
     {
         $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrestado()
+    {
+        return $this->prestado;
+    }
+
+    /**
+     * @param bool $prestado
+     */
+    public function setPrestado($prestado)
+    {
+        $this->prestado = $prestado;
     }
 
     /**
