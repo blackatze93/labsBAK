@@ -68,7 +68,7 @@ class Lugar
     /**
      * Lugar constructor.
      *
-     * @param $equipos
+     * @internal param $equipos
      */
     public function __construct()
     {

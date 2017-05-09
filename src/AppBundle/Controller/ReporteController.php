@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use JavierEguiluz\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -18,19 +20,21 @@ class ReporteController extends Controller
      * Metodo que genera el paz y salvo.
      *
      * @Route("paz_salvo/", name="paz_salvo")
+     * @param Request $request
+     * @return mixed|\Symfony\Component\HttpFoundation\Response
      */
     public function pazSalvoAction(Request $request)
     {
         // Se genera el formulario que permite crear el paz y salvo
         $form = $this->createFormBuilder()
-            ->add('usuario', 'easyadmin_autocomplete', array(
+            ->add('usuario', EasyAdminAutocompleteType::class, array(
                 'class' => 'AppBundle\Entity\Usuario',
                 'constraints' => array(
                     new NotBlank(),
                 ),
             ))
-            ->add('consultar', 'submit')
-            ->add('generar', 'submit')
+            ->add('consultar', SubmitType::class)
+            ->add('generar', SubmitType::class)
             ->getForm()
         ;
 
@@ -64,9 +68,14 @@ class ReporteController extends Controller
         ));
     }
 
+    /**
+     * @param $usuario
+     * @param $mpdfService
+     * @param $helper_assets
+     * @return mixed
+     */
     public function crearPazSalvo($usuario, $mpdfService, $helper_assets)
     {
-        $mPDF = $mpdfService->getMpdf();
         $fecha = new \DateTime();
 
         $escudo = $helper_assets->getUrl('img/escudo.png');

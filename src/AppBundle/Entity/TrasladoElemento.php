@@ -73,6 +73,8 @@ class TrasladoElemento
 
     /**
      * @param Traslado $traslado
+     *
+     * @return TrasladoElemento
      */
     public function setTraslado($traslado)
     {

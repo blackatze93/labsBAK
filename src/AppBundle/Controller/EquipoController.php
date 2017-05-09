@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class EquipoController extends BaseAdminController
 {
+    /**
+     * @return JsonResponse
+     */
     protected function autocompleteAction()
     {
         $results = $this->get('easyadmin.autocomplete')->find(

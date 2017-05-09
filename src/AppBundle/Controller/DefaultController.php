@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -58,20 +60,22 @@ class DefaultController extends Controller
      * Metodo que genera el paz y salvo.
      *
      * @Route("/paz_y_salvo/", name="paz_y_salvo")
+     * @param Request $request
+     * @return mixed|\Symfony\Component\HttpFoundation\Response
      */
     public function pazYSalvoAction(Request $request)
     {
         // Se genera el formulario que permite crear el paz y salvo
         $form = $this->createFormBuilder()
-            ->add('codigo', 'integer', array(
+            ->add('codigo', IntegerType::class, array(
                 'constraints' => array(
                     new NotBlank(),
                     new Type('integer'),
                     new Range(array('min' => 1)),
                 ),
             ))
-            ->add('consultar', 'submit')
-            ->add('generar', 'submit')
+            ->add('consultar', SubmitType::class)
+            ->add('generar', SubmitType::class)
             ->getForm()
         ;
 
