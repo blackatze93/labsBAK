@@ -9,9 +9,27 @@ easy_admin:
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Préstamo Práctica Libre' }
+                fields:
+                    - { property: 'fechaPrestamo', type: 'date', label: 'Fecha de prestamo' }
+                    - { property: 'horaEntrada', type: 'time', label: 'Hora de entrada' }
+                    - { property: 'equipo' }
+                    - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
+                    - { property: 'horaSalida', type: 'time', label: 'Hora de salida' }
+                    - { property: 'observaciones' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+                sort: 'fechaPrestamo'
+
 
             show:
                 title: 'Préstamo Práctica Libre (#%%entity_id%%)'
+                fields:
+                      - { property: 'fechaPrestamo', type: 'date', label: 'Fecha de prestamo' }
+                      - { property: 'horaEntrada', type: 'time', label: 'Hora de entrada' }
+                      - { property: 'equipo' }
+                      - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
+                      - { property: 'horaSalida', type: 'time', label: 'Hora de salida' }
+                      - { property: 'observaciones' }
+                      - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
 
             form:
                 fields:

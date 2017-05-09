@@ -6,8 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Type;
-use Symfony\Component\Validator\Constraints\Range;
 
 /**
  * Class ReporteController.
@@ -25,11 +23,10 @@ class ReporteController extends Controller
     {
         // Se genera el formulario que permite crear el paz y salvo
         $form = $this->createFormBuilder()
-            ->add('codigo', 'integer', array(
+            ->add('usuario', 'easyadmin_autocomplete', array(
+                'class' => 'AppBundle\Entity\Usuario',
                 'constraints' => array(
                     new NotBlank(),
-                    new Type('integer'),
-                    new Range(array('min' => 1)),
                 ),
             ))
             ->add('consultar', 'submit')
@@ -43,26 +40,17 @@ class ReporteController extends Controller
         // Si el formulario se ha enviado y es valido comprobamos el usuario
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $usuario = $data['usuario'];
+            $pazSalvo = 'no';
 
-            $em = $this->getDoctrine()->getManager();
-            $usuario = $em->getRepository('AppBundle:Usuario')->findOneBy(array('codigo' => $data['codigo']));
+            // Usamos una variable bandera para saber si el usuario esta en paz y salvo
+            if ($usuario->getEstado() == 'Paz y Salvo') {
+                $pazSalvo = 'si';
+            }
 
-            if ($usuario) {
-                $pazSalvo = 'no';
-
-                // Usamos una variable bandera para saber si el usuario esta en paz y salvo
-                if ($usuario->getEstado() == 'Paz y Salvo' && $usuario->isActivo()) {
-                    $pazSalvo = 'si';
-                }
-
-                // Si la opcion que selecciono fue generar y el usuario esta en paz y salvo procedemos a generarlo
-                if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
-                    $reporte = new ReporteController();
-
-                    return $reporte->crearPazSalvo($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
-                }
-            } else {
-                $pazSalvo = 'no_registrado';
+            // Si la opcion que selecciono fue generar y el usuario esta en paz y salvo procedemos a generarlo
+            if ($form->get('generar')->isClicked() && $pazSalvo == 'si') {
+                return $this->crearPazSalvo($usuario, $this->get('tfox.mpdfport'), $this->container->get('templating.helper.assets'));
             }
 
             return $this->render(':reportes:paz_y_salvo.html.twig', array(

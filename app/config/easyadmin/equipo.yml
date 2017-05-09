@@ -2,9 +2,12 @@ easy_admin:
     entities:
         Equipo:
             class: AppBundle\Entity\Equipo
+            controller: AppBundle\Controller\EquipoController
+
             list:
                 title: 'Equipos'
                 sort: 'nombre'
+
             form:
                 fields:
                     - 'nombre'

@@ -97,6 +97,8 @@ $(function () {
 
     $('#evento_horaFin').datetimepicker(opVacioTime);
 
+    $('#elemento_fechaIngreso').datetimepicker(opVacioDate);
+
     $('#prestamopracticalibre_fechaPrestamo').datetimepicker(opDate);
 
     $('#prestamopracticalibre_horaEntrada').datetimepicker(opTime);

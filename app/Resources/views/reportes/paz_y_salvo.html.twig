@@ -10,10 +10,10 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="form-group">
-                {{ form_label(form.codigo, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                {{ form_label(form.usuario, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                 <div class="col-sm-10">
-                    {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
-                    <span class="text-danger">{{ form_errors(form.codigo) }}</span>
+                    {{ form_widget(form.usuario, {'attr' : {'class' : 'form-control', 'autofocus' : 'autofocus'}}) }}
+                    <span class="text-danger">{{ form_errors(form.usuario) }}</span>
                     {% if pazSalvo is defined %}
                         <span id="pazSalvo" class="hidden">{{ pazSalvo }}</span>
                     {% endif %}
@@ -37,15 +37,10 @@
             var pazSalvo = $('#pazSalvo');
             if (pazSalvo.length) {
                 if (pazSalvo.html() === 'si') {
-                    pazSalvo.html('<ul>' +
-                        '<li>El estudiante se encuentra a paz y salvo. Puede generar el PDF.</li>' +
-                        '<li><b>El paz y salvo sin firma no es válido.</b></li>' +
-                        '</ul>').removeClass('hidden').addClass('text-info');
+                    pazSalvo.html('<ul><li>El usuario se encuentra a paz y salvo. Puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-info');
                     $('#form_generar').removeClass('hidden');
                 } else if (pazSalvo.html() === 'no') {
-                    pazSalvo.html('<ul><li>El estudiante no se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
-                } else if (pazSalvo.html() === 'no_registrado') {
-                    pazSalvo.html('<ul><li>El usuario no está registrado. Agregue un nuevo usuario.</li></ul>').removeClass('hidden').addClass('text-danger');
+                    pazSalvo.html('<ul><li>El usuario no se encuentra a paz y salvo. No puede generar el PDF.</li></ul>').removeClass('hidden').addClass('text-danger');
                 }
             }
         })

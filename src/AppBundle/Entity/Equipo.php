@@ -46,6 +46,14 @@ class Equipo
     private $lugar;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
+     */
+    private $prestado;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Elemento", mappedBy="equipo")
      */
     private $elementos;
@@ -148,6 +156,22 @@ class Equipo
     public function setLugar($lugar)
     {
         $this->lugar = $lugar;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrestado()
+    {
+        return $this->prestado;
+    }
+
+    /**
+     * @param bool $prestado
+     */
+    public function setPrestado($prestado)
+    {
+        $this->prestado = $prestado;
     }
 
     /**
