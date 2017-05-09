@@ -20,7 +20,9 @@ class ReporteController extends Controller
      * Metodo que genera el paz y salvo.
      *
      * @Route("paz_salvo/", name="paz_salvo")
+     *
      * @param Request $request
+     *
      * @return mixed|\Symfony\Component\HttpFoundation\Response
      */
     public function pazSalvoAction(Request $request)
@@ -72,6 +74,7 @@ class ReporteController extends Controller
      * @param $usuario
      * @param $mpdfService
      * @param $helper_assets
+     *
      * @return mixed
      */
     public function crearPazSalvo($usuario, $mpdfService, $helper_assets)

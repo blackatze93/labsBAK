@@ -169,9 +169,10 @@ class Traslado
 
     /**
      * @param TrasladoElemento $elementoTraslado
-     * @return $this
-     * @internal param $elemento
      *
+     * @return $this
+     *
+     * @internal param $elemento
      */
     public function removeTrasladoElemento(TrasladoElemento $elementoTraslado)
     {

@@ -60,7 +60,9 @@ class DefaultController extends Controller
      * Metodo que genera el paz y salvo.
      *
      * @Route("/paz_y_salvo/", name="paz_y_salvo")
+     *
      * @param Request $request
+     *
      * @return mixed|\Symfony\Component\HttpFoundation\Response
      */
     public function pazYSalvoAction(Request $request)
