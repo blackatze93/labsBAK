@@ -11,6 +11,9 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
  */
 class EventoController extends BaseAdminController
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     protected function newAction()
     {
         $this->dispatch(EasyAdminEvents::PRE_NEW);

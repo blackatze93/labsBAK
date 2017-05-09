@@ -4,7 +4,6 @@ namespace AppBundle\EventListener;
 
 use ADesigns\CalendarBundle\Event\CalendarEvent;
 use ADesigns\CalendarBundle\Entity\EventEntity;
-use AppBundle\Entity\Evento;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

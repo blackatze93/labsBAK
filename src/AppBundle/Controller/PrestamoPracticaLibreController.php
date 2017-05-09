@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\PrestamoPracticaLibre;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
@@ -25,6 +24,9 @@ class PrestamoPracticaLibreController extends BaseAdminController
         }
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preUpdateEntity($entity)
     {
         if (!$entity->getHoraSalida()) {

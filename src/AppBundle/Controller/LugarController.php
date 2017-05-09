@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Equipo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
@@ -14,6 +13,9 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
  */
 class LugarController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function prePersistEntity($entity)
     {
         $cantidadEquipos = $entity->getCantidadEquipos();

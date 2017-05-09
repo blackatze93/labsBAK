@@ -169,9 +169,11 @@ class Baja
     }
 
     /**
-     * @param $elemento
+     * @param BajaElemento $elementoBaja
      *
      * @return $this
+     *
+     * @internal param $elemento
      */
     public function removeBajaElemento(BajaElemento $elementoBaja)
     {
