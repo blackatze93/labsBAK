@@ -22,4 +22,3 @@ class ElementoController extends BaseAdminController
         return new JsonResponse($results);
     }
 }
-

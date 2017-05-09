@@ -161,11 +161,11 @@ class Equipo
         $lugar = $this->getLugar();
 
         for ($i = 0; $i < $elementos->count(); ++$i) {
-            if ($elementos[$i]->getLugar() != $lugar)
+            if ($elementos[$i]->getLugar() != $lugar) {
                 $context->buildViolation('El elemento '.$elementos[$i].' debe estar en el mismo lugar que el equipo.')
                     ->atPath('elementos')
                     ->addViolation();
-
+            }
         }
     }
 }
