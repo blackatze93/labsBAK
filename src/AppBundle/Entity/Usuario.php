@@ -30,18 +30,20 @@ class Usuario implements AdvancedUserInterface
     /**
      * @var int
      *
-     * @ORM\Column(type="bigint", unique=true)
+     * @ORM\Column(type="string", unique=true, length=20)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
+     * @Assert\Length(max="20")
      */
     private $documento;
 
     /**
      * @var int
      *
-     * @ORM\Column(type="bigint", unique=true)
+     * @ORM\Column(type="string", unique=true, length=20)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
+     * @Assert\Length(max="20")
      */
     private $codigo;
 

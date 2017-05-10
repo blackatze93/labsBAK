@@ -44,8 +44,9 @@ class EventoController extends BaseAdminController
             for ($i = 0; $i < $semanas; ++$i) {
                 $evento = new Evento();
                 $fechaAux = clone $entity->getFecha();
+                $fecha = $fechaAux->modify('+'.$i.' week');
                 $evento->setLugar($entity->getLugar());
-                $evento->setFecha($fechaAux->modify('+'.$i.' week'));
+                $evento->setFecha($fecha);
                 $evento->setHoraInicio($entity->getHoraInicio());
                 $evento->setHoraFin($entity->getHoraFin());
                 $evento->setEstado($entity->getEstado());
@@ -55,9 +56,16 @@ class EventoController extends BaseAdminController
                 $evento->setObservaciones($entity->getObservaciones());
 
                 $this->em->persist($evento);
-            }
 
-            $this->em->flush();
+                // Se tiene que guardar cada objeto en la BD para poder comprobar el constraint valido
+                try {
+                    $this->em->flush();
+                    $this->em->clear();
+                    $this->addFlash('success', 'Se agregó el evento del '.$fecha->format('Y-m-d'));
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'No se pudo agregar el evento del '.$fecha->format('Y-m-d'));
+                }
+            }
 
             $this->dispatch(EasyAdminEvents::POST_PERSIST, array('entity' => $entity));
 

@@ -43,9 +43,10 @@ class MantenimientoExterno
     /**
      * @var int
      *
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="string", length=20)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
+     * @Assert\Length(max="20")
      */
     private $cedulaTecnico;
 

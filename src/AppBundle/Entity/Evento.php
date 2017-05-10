@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
  * @ORM\Table(name="evento")
  * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoEvento",
- *     message="Ya existe un evento asociado a esa fecha y lugar.")
+ *     message="Ya existe un evento asociado a esa fecha y lugar.", errorPath="fecha")
  */
 class Evento
 {
