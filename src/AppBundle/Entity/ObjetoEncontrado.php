@@ -60,13 +60,12 @@ class ObjetoEncontrado
     private $usuarioRegistra;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="100")
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="bool")
      */
-    private $estado;
+    private $entregado;
 
     /**
      * @var Usuario
@@ -183,19 +182,19 @@ class ObjetoEncontrado
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getEstado()
+    public function isEntregado()
     {
-        return $this->estado;
+        return $this->entregado;
     }
 
     /**
-     * @param string $estado
+     * @param bool $entregado
      */
-    public function setEstado($estado)
+    public function setEntregado($entregado)
     {
-        $this->estado = $estado;
+        $this->entregado = $entregado;
     }
 
     /**

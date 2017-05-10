@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        PrestamoSemestral:
+            class: AppBundle\Entity\PrestamoSemestral
+            list:
+                title: 'Prestamo Semestral'
+

@@ -18,7 +18,7 @@ class ObjetoEncontradoController extends BaseAdminController
         $usuario = $this->getUser();
         $entity->setUsuarioRegistra($usuario);
 
-        if ($entity->getEstado() === 'Entregado' || $entity->getUsuarioReclama()) {
+        if ($entity->isEntregado() || $entity->getUsuarioReclama()) {
             $entity->setUsuarioEntrega($usuario);
             $entity->setFechaEntrega(new \DateTime());
         }
@@ -31,7 +31,7 @@ class ObjetoEncontradoController extends BaseAdminController
     {
         $usuario = $this->getUser();
 
-        if ($entity->getEstado() === 'Entregado' || $entity->getUsuarioReclama()) {
+        if ($entity->isEntregado() || $entity->getUsuarioReclama()) {
             $entity->setUsuarioEntrega($usuario);
             $entity->setFechaEntrega(new \DateTime());
         }
@@ -47,7 +47,7 @@ class ObjetoEncontradoController extends BaseAdminController
         $em = $this->getDoctrine()->getManager();
 
         $objetos = $em->getRepository('AppBundle:ObjetoEncontrado')->findBy(
-            array('estado' => 'Disponible'),
+            array('entregado' => false),
             array('fechaRegistro' => 'DESC')
         );
 

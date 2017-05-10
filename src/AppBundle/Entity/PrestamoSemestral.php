@@ -8,14 +8,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * Horario.
+ * PrestamoSemestral.
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\HorarioRepository")
- * @ORM\Table(name="horario")
- * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoHorario",
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoSemestralRepository")
+ * @ORM\Table(name="prestamo_semestral")
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoPrestamoSemestral",
  *     message="Ya existe un horario asociado a esa fecha y lugar.")
  */
-class Horario
+class PrestamoSemestral
 {
     /**
      * @var int
