@@ -24,6 +24,7 @@ easy_admin:
                 fields:
                     - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'usuarioRealiza', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Realizado por' }
+                    - { type: 'group', label: '' }
                     - { property: 'lugarDestino', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' }, label: 'Lugar de destino' }
                     - { property: 'usuarioRecibe', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Recibido por' }
                     - { type: 'group', label: 'Elementos' }

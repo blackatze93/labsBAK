@@ -70,6 +70,7 @@ class Traslado
     public function __construct()
     {
         $this->trasladoElementos = new ArrayCollection();
+        $this->fecha = new \DateTime();
     }
 
     /**

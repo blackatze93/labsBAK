@@ -71,6 +71,7 @@ class Baja
     public function __construct()
     {
         $this->bajaElementos = new ArrayCollection();
+        $this->fecha = new \DateTime();
     }
 
     /**

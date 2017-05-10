@@ -86,6 +86,16 @@ class PrestamoPracticaLibre
     private $usuarioRealiza;
 
     /**
+     * PrestamoPracticaLibre constructor.
+     */
+    public function __construct()
+    {
+        $this->fechaPrestamo = new \DateTime();
+        $this->horaEntrada = new \DateTime();
+    }
+
+
+    /**
      * Get id.
      *
      * @return int

@@ -76,6 +76,12 @@ class PrestamoElemento
      */
     private $usuarioRealiza;
 
+    public function __construct()
+    {
+        $this->fechaPrestamo = new \DateTime();
+    }
+
+
     /**
      * Get id.
      *

@@ -19,7 +19,7 @@ class ElementoController extends BaseAdminController
             $this->request->query->get('entity'),
             $this->request->query->get('query'),
             $this->request->query->get('page', 1),
-            'entity.activo = true and entity.prestado = false'
+            'entity.activo = true and entity.prestado = false and entity.tipoPrestamo != \'Nadie\''
         );
 
         return new JsonResponse($results);

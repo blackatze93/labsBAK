@@ -14,8 +14,6 @@ security:
                 path:        usuario_logout
             remember_me:
                 secret:      "%secret%"
-                lifetime:    604800
-
 
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
