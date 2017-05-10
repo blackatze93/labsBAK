@@ -4,6 +4,7 @@ $(function () {
         showTodayButton: true,
         showClear: true,
         showClose: true,
+        useCurrent: false,
         disabledHours: [0,1,2,3,4,5,22,23],
         icons: {
             time: "fa fa-clock-o",
@@ -59,29 +60,11 @@ $(function () {
 
     $.extend(opTime, opDefault);
 
-    var opVacioDateTime = {
-        useCurrent: false
-    };
-
-    $.extend(opVacioDateTime, opDateTime);
-
-    var opVacioDate = {
-        useCurrent: false
-    };
-
-    $.extend(opVacioDate, opDate);
-
-    var opVacioTime = {
-        useCurrent: false
-    };
-
-    $.extend(opVacioTime, opTime);
-
     $('#objetoencontrado_fechaRegistro').datetimepicker(opDateTime);
 
     $('#incidencia_fechaRegistro').datetimepicker(opDateTime);
 
-    $('#incidencia_fechaAtencion').datetimepicker(opVacioDateTime);
+    $('#incidencia_fechaAtencion').datetimepicker(opDateTime);
 
     $('#mantenimiento_fecha').datetimepicker(opDateTime);
 
@@ -95,19 +78,19 @@ $(function () {
 
     $('#evento_horaInicio').datetimepicker(opTime);
 
-    $('#evento_horaFin').datetimepicker(opVacioTime);
+    $('#evento_horaFin').datetimepicker(opTime);
 
-    $('#elemento_fechaIngreso').datetimepicker(opVacioDate);
+    $('#elemento_fechaIngreso').datetimepicker(opDate);
 
     $('#prestamopracticalibre_fechaPrestamo').datetimepicker(opDate);
 
     $('#prestamopracticalibre_horaEntrada').datetimepicker(opTime);
 
-    $('#prestamopracticalibre_horaSalida').datetimepicker(opVacioTime);
+    $('#prestamopracticalibre_horaSalida').datetimepicker(opTime);
 
     $('#prestamoelemento_fechaPrestamo').datetimepicker(opDateTime);
 
-    $('#prestamoelemento_fechaDevolucion').datetimepicker(opVacioDateTime);
+    $('#prestamoelemento_fechaDevolucion').datetimepicker(opDateTime);
 
 
 

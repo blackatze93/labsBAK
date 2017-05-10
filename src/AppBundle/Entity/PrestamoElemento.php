@@ -51,7 +51,7 @@ class PrestamoElemento
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false, unique=false)
+     * @ORM\JoinColumn(name="usuario_solicita_id", referencedColumnName="id", nullable=false, unique=false)
      * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
@@ -66,6 +66,15 @@ class PrestamoElemento
      * @Assert\NotBlank()
      */
     private $elemento;
+
+    /**
+     * @var Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Usuario")
+     */
+    private $usuarioRealiza;
 
     /**
      * Get id.
@@ -155,6 +164,22 @@ class PrestamoElemento
     public function setElemento($elemento)
     {
         $this->elemento = $elemento;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuarioRealiza()
+    {
+        return $this->usuarioRealiza;
+    }
+
+    /**
+     * @param Usuario $usuarioRealiza
+     */
+    public function setUsuarioRealiza($usuarioRealiza)
+    {
+        $this->usuarioRealiza = $usuarioRealiza;
     }
 
     /*

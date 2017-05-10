@@ -2,15 +2,31 @@ easy_admin:
     entities:
         PrestamoElemento:
             class: AppBundle\Entity\PrestamoElemento
+            controller: AppBundle\Controller\PrestamoElementoController
 
             list:
                 title: 'Préstamo Elemento'
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Préstamo Elemento' }
+                fields:
+                    - { property: 'fechaPrestamo', type: 'datetime', label: 'Fecha de préstamo' }
+                    - { property: 'elemento' }
+                    - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
+                    - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución' }
+                    - { property: 'observaciones' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+                sort: 'fechaPrestamo'
 
             show:
                 title: 'Préstamo Elemento (#%%entity_id%%)'
+                fields:
+                    - { property: 'fechaPrestamo', type: 'datetime', label: 'Fecha de préstamo' }
+                    - { property: 'elemento' }
+                    - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
+                    - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución' }
+                    - { property: 'observaciones' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
 
             form:
                 fields:

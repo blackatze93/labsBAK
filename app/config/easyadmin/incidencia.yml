@@ -8,7 +8,7 @@ easy_admin:
                 title: 'Incidencias'
                 fields:
                     - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
-                    - { property: 'descripcion', type: 'raw' }
+                    - { property: 'descripcion', type: 'raw', css_class: 'col-sm-3'}
                     - { property: 'estado' }
                     - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
                     - { property: 'usuarioRegistra', label: 'Usuario que registra' }

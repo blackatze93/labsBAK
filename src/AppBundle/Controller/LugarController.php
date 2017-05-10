@@ -24,7 +24,11 @@ class LugarController extends BaseAdminController
         for ($i = 0; $i < $cantidadEquipos; ++$i) {
             $equipo = new Equipo();
 
-            $equipo->setNombre('FT'.$idSala.'_0'.($i + 2));
+            if ($i < 8) {
+                $equipo->setNombre('FT'.$idSala.'_0'.($i + 2));
+            } else {
+                $equipo->setNombre('FT'.$idSala.'_'.($i + 2));
+            }
             $equipo->setLugar($entity);
 
             $this->em->persist($equipo);

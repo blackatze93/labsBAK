@@ -141,6 +141,7 @@ class Elemento
     public function __construct()
     {
         $this->setActivo(true);
+        $this->setPrestado(false);
     }
 
     /**

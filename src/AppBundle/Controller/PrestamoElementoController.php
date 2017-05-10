@@ -2,12 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\PrestamoElemento;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
 /**
- * Class PrestamoPracticaLibreController.
+ * Class PrestamoElementoController.
  */
-class PrestamoPracticaLibreController extends BaseAdminController
+class PrestamoElementoController extends BaseAdminController
 {
     /**
      * @param object $entity
@@ -17,10 +18,10 @@ class PrestamoPracticaLibreController extends BaseAdminController
         $usuario = $this->getUser();
         $entity->setUsuarioRealiza($usuario);
 
-        if (!$entity->getHoraSalida()) {
-            $entity->getEquipo()->setPrestado(true);
+        if (!$entity->getFechaDevolucion()) {
+            $entity->getElemento()->setPrestado(true);
         } else {
-            $entity->getEquipo()->setPrestado(false);
+            $entity->getElemento()->setPrestado(false);
         }
     }
 
@@ -29,15 +30,15 @@ class PrestamoPracticaLibreController extends BaseAdminController
      */
     protected function preUpdateEntity($entity)
     {
-        if (!$entity->getHoraSalida()) {
-            $entity->getEquipo()->setPrestado(true);
+        if (!$entity->getFechaDevolucion()) {
+            $entity->getElemento()->setPrestado(true);
         } else {
-            $entity->getEquipo()->setPrestado(false);
+            $entity->getElemento()->setPrestado(false);
         }
     }
 
     protected function preRemoveEntity($entity)
     {
-        $entity->getEquipo()->setPrestado(false);
+        $entity->getElemento()->setPrestado(false);
     }
 }

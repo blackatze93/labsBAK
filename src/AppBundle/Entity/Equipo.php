@@ -64,6 +64,7 @@ class Equipo
     public function __construct()
     {
         $this->elementos = new ArrayCollection();
+        $this->setPrestado(false);
     }
 
     /**

@@ -7,6 +7,18 @@ easy_admin:
             list:
                 title: 'Equipos'
                 sort: 'nombre'
+                fields:
+                    - { property: 'nombre' }
+                    - { property: 'lugar' }
+                    - { property: 'prestado', type: 'boolean' }
+                    - { property: 'elementos' }
+
+            show:
+                fields:
+                    - { property: 'nombre' }
+                    - { property: 'lugar' }
+                    - { property: 'prestado', type: 'boolean' }
+                    - { property: 'elementos' }
 
             form:
                 fields:
