@@ -23,11 +23,13 @@
                         <i class="fa fa-calendar"></i><span>Calendario</span>
                     </a>
                 </li>
-                <li class="{{ route == 'solicitud_sala' ? 'active' }}">
-                    <a href="{{ path('solicitud_sala') }}">
-                        <i class="fa fa-map-marker"></i><span>Solicitud de Sala</span>
-                    </a>
-                </li>
+                {% if is_granted('ROLE_DOCENTE') or is_granted('ROLE_FUNCIONARIO') %}
+                    <li class="{{ route == 'solicitud_sala' ? 'active' }}">
+                        <a href="{{ path('solicitud_sala') }}">
+                            <i class="fa fa-map-marker"></i><span>Solicitud de Sala</span>
+                        </a>
+                    </li>
+                {% endif %}
                 <li class="{{ route == 'elementos_prestamo' ? 'active' }}">
                     <a href="{{ path('elementos_prestamo') }}">
                         <i class="fa fa-plug"></i><span>Elementos Préstamo</span>

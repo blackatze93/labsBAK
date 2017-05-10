@@ -37,16 +37,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que lista los objetos encontrados en el sitio web.
-     *
-     * @Route("/elementos_prestamo/", name="elementos_prestamo")
-     */
-    public function elementosPrestamoAction()
-    {
-        return $this->render('elementos_prestamo.html.twig');
-    }
-
-    /**
      * Metodo que genera el calendario.
      *
      * @Route("/calendario/", name="calendario")
