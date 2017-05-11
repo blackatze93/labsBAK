@@ -51,6 +51,15 @@ class SolicitudPrestamoSala
     private $fechaRespuesta;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
+     */
+    private $fecha;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -140,6 +149,22 @@ class SolicitudPrestamoSala
     public function getObservaciones()
     {
         return $this->observaciones;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * @param \DateTime $fecha
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
     }
 
     /**

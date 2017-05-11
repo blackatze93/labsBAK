@@ -27,16 +27,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Metodo que lista los objetos encontrados en el sitio web.
-     *
-     * @Route("/solicitud_sala/", name="solicitud_sala")
-     */
-    public function solicitudSalaAction()
-    {
-        return $this->render('solicitud_sala.html.twig');
-    }
-
-    /**
      * Metodo que genera el calendario.
      *
      * @Route("/calendario/", name="calendario")

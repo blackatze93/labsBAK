@@ -1,5 +1,9 @@
 {% set route = app.request.attributes.get('_route') %}
-{% set route_admin = 'admin' in path(route) %}
+{% if route %}
+    {% set route_admin = 'admin' in path(route) %}
+{% else %}
+    {% set route_admin = null %}
+{% endif %}
 
 <section class="sidebar">
     {% block main_menu_wrapper %}
