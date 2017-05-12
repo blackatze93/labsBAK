@@ -80,6 +80,16 @@ class ReporteController extends Controller
     public function crearPazSalvo($usuario, $mpdfService, $helper_assets)
     {
         $fecha = new \DateTime();
+        $formatter = new \IntlDateFormatter('es', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+
+        $formatter->setPattern('dd');
+        $dia = $formatter->format($fecha);
+
+        $formatter->setPattern('LLLL');
+        $mes = $formatter->format($fecha);
+
+        $formatter->setPattern('y');
+        $anio = $formatter->format($fecha);
 
         $escudo = $helper_assets->getUrl('img/escudo.png');
         $sigud = $helper_assets->getUrl('img/sigud.png');
@@ -113,11 +123,11 @@ class ReporteController extends Controller
                     </table> 
                     <br><br><br><br><br>
                     <p align="justify">Los <b>Laboratorios de Informática</b> de la Facultad Tecnológica, hacen constar que el (la) 
-                        estudiante '.$usuario->getNombre().' '.$usuario->getApellido().' con documento de identificación número: '
-                        .$usuario->getDocumento().' y código estudiantil: '.$usuario->getCodigo().', del proyecto curricular '
-                        .$usuario->getProyectoCurricular().' se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
+                        estudiante '.$usuario->getNombre().' '.$usuario->getApellido().' con documento de identificación <b>'
+                        .$usuario->getDocumento().'</b> y código estudiantil <b>'.$usuario->getCodigo().'</b>, del proyecto curricular <b>'
+                        .$usuario->getProyectoCurricular().'</b> se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
                         <br><br><br><br><br>El presente certificado se expide por solicitud del interesado a los '
-                        .$fecha->format('d').' día(s) del mes '.$fecha->format('m').' de '.$fecha->format('Y')
+                        .$dia.' día(s) del mes de '.$mes.' de '.$anio
                         .'.<br><br><br><br><br><br><br>
                         Atentamente,<br><br><br><br><br><br><br>
             

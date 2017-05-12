@@ -51,7 +51,7 @@ easy_admin:
                 - { entity: 'PrestamoElemento', icon: 'microchip', label: 'Préstamo de Elementos' }
                 - { entity: 'PrestamoPracticaLibre', icon: 'desktop', label: 'Préstamo Práctica Libre' }
 
-            - label: 'Soporte'
+            - label: 'Soporte Salas'
               icon: 'support'
               children:
                 - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias', default: true }
