@@ -19,7 +19,6 @@ easy_admin:
                     - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
                 sort: 'fechaPrestamo'
 
-
             show:
                 title: 'Préstamo Práctica Libre (#%%entity_id%%)'
                 fields:
