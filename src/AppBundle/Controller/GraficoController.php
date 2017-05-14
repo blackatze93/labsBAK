@@ -74,9 +74,8 @@ class GraficoController extends Controller
             $prestamos = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosRango(
                 array(
                     'anio' => $anio,
-//                    TODO: hacer filtrado por mes
-//                    'mesInicio' => ($data['mesInicio'] + 1),
-//                    'mesFin' => ($data['mesFin'] + 1)
+                    'mesInicio' => ($data['mesInicio'] + 1),
+                    'mesFin' => ($data['mesFin'] + 1)
                 ));
 
             $data = array();
