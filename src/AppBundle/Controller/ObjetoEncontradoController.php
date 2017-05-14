@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ObjetoEncontradoController.
@@ -54,5 +57,33 @@ class ObjetoEncontradoController extends BaseAdminController
         return $this->render('objetos_encontrados.html.twig', array(
             'objetos' => $objetos,
         ));
+    }
+
+    /**
+     * @Route("/encontrados_bulk_delete/", name="encontrados_bulk_delete")
+     * @Method({"POST"})
+     */
+    public function bulkDeleteAction(Request $request) {
+        $response = new JsonResponse('', 400);
+
+        if (!$request->isXmlHttpRequest()) {
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $objetos = $em->getRepository('AppBundle:ObjetoEncontrado')->findAll();
+
+        // Recorre el array de objetos para eliminar cada objeto
+        foreach ($objetos as $objeto) {
+            $em->remove($objeto);
+        }
+
+        try {
+            $em->flush();
+            $response->setStatusCode(200);
+            $this->addFlash('success', 'Se borraron todos los objetos encontrados con éxito.');
+        } catch (\Exception $e) {}
+
+        return $response;
     }
 }

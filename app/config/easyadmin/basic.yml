@@ -17,9 +17,6 @@ easy_admin:
 
         form_theme: ['horizontal', ':form:fields.html.twig']
 
-        assets:
-            favicon: 'img/favicon.ico'
-
         menu:
             - label: 'Documentos'
               icon: 'file-text'
@@ -73,6 +70,9 @@ easy_admin:
               children:
                 - { label: 'Paz y Salvo', icon: 'check-circle', route: 'paz_salvo'}
 
-            - { label: 'Graficos', icon: 'bar-chart', route: 'practica_libre_mes'}
+            - label: 'Graficos'
+              icon: 'line-chart'
+              children:
+                - { label: 'Práctica libre por mes', icon: 'bar-chart', route: 'practica_libre_mes'}
 
 
