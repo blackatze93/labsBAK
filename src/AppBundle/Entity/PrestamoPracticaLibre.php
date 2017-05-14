@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * PrestamoPracticaLibre.
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PrestamoPracticaLibreRepository")
  * @ORM\Table(name="prestamo_practica_libre")
  */
 class PrestamoPracticaLibre

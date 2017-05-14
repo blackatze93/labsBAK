@@ -56,9 +56,11 @@
             <script src="https://www.google.com/recaptcha/api.js?hl={{ app.request.locale }}"></script>
             <script src="{{ asset('assets/vendor/highcharts/highcharts.js') }}"></script>
             <script src="{{ asset('assets/vendor/highcharts/modules/exporting.js') }}"></script>
+            <script src="{{ asset('assets/vendor/highcharts/js/modules/drilldown.js') }}"></script>
             <script src="{{ asset('js/easy-admin.js') }}"></script>
             <script src="{{ asset('js/noty-settings.js') }}"></script>
             <script src="{{ asset('js/calendar-settings.js') }}"></script>
+            <script src="{{ asset('js/highcharts-options.js') }}"></script>
             <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
             <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         {% endblock head_javascript %}

@@ -4,8 +4,13 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Ob\HighchartsBundle\Highcharts\Highchart;
+use Symfony\Component\Validator\Constraints\Expression;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 /**
  * Class GraficoController.
  *
@@ -16,49 +21,131 @@ class GraficoController extends Controller
     /**
      * Metodo que genera el paz y salvo.
      *
-     * @Route("prueba/", name="prueba")
+     * @Route("practica_libre_mes/", name="practica_libre_mes")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @internal param Request $request
      */
-    public function pruebaAction()
+    public function practicaLibreMesAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $prestamos = $em->getRepository('AppBundle:PrestamoPracticaLibre')
-            ->createQueryBuilder('prestamos')
-            ->select('MONTH(prestamos.fechaPrestamo) AS fechaPrestamo')
-            ->groupBy('fechaPrestamo')
-            ->getQuery()
-            ->getResult();
+        // Se genera el formulario que permite crear el paz y salvo
+        $form = $this->createFormBuilder()
+            ->add('anio', ChoiceType::class, array(
+                'choices' => array_combine(range(date('Y'), Date('Y') - 4), range(date('Y'), Date('Y') - 4)),
+                'constraints' => array(
+                    new NotBlank(),
+                ),
+            ))
+            ->add('mesInicio', ChoiceType::class, array(
+                'choices' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+                'constraints' => array(
+                    new NotBlank(),
+//                    TODO: validar que el mes final sea mayor
+//                    new Expression(array(
+//                        'expression' => 'value["mesFin"] >= value["mesInicio"]',
+//                        'message' => 'count2 must be greater than or equal to count1'
+//                    ))
+                ),
+            ))
+            ->add('mesFin', ChoiceType::class, array(
+                'choices' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+                'constraints' => array(
+                    new NotBlank(),
+                ),
+            ))
+            ->add('generar', SubmitType::class)
+            ->getForm()
+        ;
 
-        var_dump($prestamos);
+        // Dejamos que symfony maneje el Request
+        $form->handleRequest($request);
 
-        // Chart
-        $series = array(
-            array(
-                "name" => "Data Serie Name",
-                "data" => $prestamos
-//                "data" => array(
-////                    1,2,4,5,6,3,8
-////                    array(
-////                        "color" => '#545454',
-////                        "y" => 5
-////                    )
-//                ),
-            )
-        );
+        // Si el formulario se ha enviado y es valido comprobamos el usuario
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $anio = $data['anio'];
 
-        $ob = new Highchart();
-        $ob->chart->renderTo('container');  // The #id of the div where to render the chart
-        $ob->title->text('Prestamos Practica Libre');
-        $ob->chart->type('column');
-        $ob->xAxis->title(array('text'  => "Mes"));
-        $ob->yAxis->title(array('text'  => "Cantidad"));
-        $ob->series($series);
+            $em = $this->getDoctrine()->getManager();
+            $prestamos = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosRango(
+                array(
+                    'anio' => $anio,
+//                    TODO: hacer filtrado por mes
+//                    'mesInicio' => ($data['mesInicio'] + 1),
+//                    'mesFin' => ($data['mesFin'] + 1)
+                ));
 
-        return $this->render(':graficos:prueba.html.twig', array(
-            'chart' => $ob
+            $data = array();
+            $drilldown = array();
+
+            for ($i = 0; $i < count($prestamos); $i++) {
+                $drilldown_data = array();
+                $mes_info = array(
+                    "y" => (int) $prestamos[$i]["total"],
+                    "x" => (int) $prestamos[$i]["mes"],
+                    "drilldown" => $prestamos[$i]["mes"]
+                );
+
+                $prestamosMes = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosMes(array('mes' => $prestamos[$i]["mes"]));
+
+                for ($j = 0; $j < count($prestamosMes); $j++) {
+                    $dia_info = array(
+                        (int) $prestamosMes[$j]["dia"],
+                        (int) $prestamosMes[$j]["total"]
+                    );
+                    array_push($drilldown_data, $dia_info);
+                }
+
+                $drilldown_info = array(
+                    'name' => $prestamos[$i]["mes"],
+                    'id' => $prestamos[$i]["mes"],
+                    'xAxis' => 1,
+                    'colorByPoint' => true,
+                    'data' => $drilldown_data
+                );
+
+                array_push($drilldown, $drilldown_info);
+                array_push($data, $mes_info);
+            }
+
+            $ob = new Highchart();
+            $ob->title->text('Prestamos Practica Libre');
+            $ob->chart->renderTo('container');  // The #id of the div where to render the chart
+            $ob->chart->type('column');
+            $ob->credits->enabled(false);
+            $ob->legend->enabled(false);
+            $ob->yAxis->title(array('text'  => "Cantidad"));
+            $ob->xAxis(array(
+                array(
+                    'id' => 0,
+                    'type' => 'category',
+                    'categories' => array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre')
+                ),
+                array(
+                    'id' => 1,
+                    'type' => 'category'
+                ),
+            ));
+            $ob->series(
+                array(
+                    array(
+                        "name" => "Prestamos por mes",
+                        'xAxis' => 0,
+                        "colorByPoint" => true,
+                        "data" => $data
+                    )
+                )
+            );
+            $ob->drilldown->series($drilldown);
+
+            return $this->render(':graficos:practica_libre_mes.html.twig', array(
+                'form' => $form->createView(),
+                'chart' => $ob
+            ));
+        }
+
+        return $this->render(':graficos:practica_libre_mes.html.twig', array(
+            'form' => $form->createView()
         ));
     }
 }

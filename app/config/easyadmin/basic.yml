@@ -73,6 +73,6 @@ easy_admin:
               children:
                 - { label: 'Paz y Salvo', icon: 'check-circle', route: 'paz_salvo'}
 
-            - { label: 'Graficos', icon: 'line-chart', route: 'prueba'}
+            - { label: 'Graficos', icon: 'bar-chart', route: 'practica_libre_mes'}
 
 
