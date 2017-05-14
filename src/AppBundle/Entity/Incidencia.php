@@ -29,7 +29,31 @@ class Incidencia
      * @Assert\NotBlank()
      * @Assert\Length(max="1020")
      */
-    private $descripcion;
+    private $descripcionProblema;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=1020, nullable=true)
+     * @Assert\Length(max="1020")
+     */
+    private $descripcionSolucion;
+
+    /**
+     * @var Elemento
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
+     * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=true, unique=false)
+     */
+    private $elemento;
+
+    /**
+     * @var Equipo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipo")
+     * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id", nullable=true, unique=false)
+     */
+    private $equipo;
 
     /**
      * @var \DateTime
@@ -62,7 +86,6 @@ class Incidencia
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_registra_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRegistra;
 
@@ -71,7 +94,6 @@ class Incidencia
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_atiende_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioAtiende;
 
@@ -94,17 +116,17 @@ class Incidencia
     /**
      * @return string
      */
-    public function getDescripcion()
+    public function getDescripcionProblema()
     {
-        return $this->descripcion;
+        return $this->descripcionProblema;
     }
 
     /**
-     * @param string $descripcion
+     * @param string $descripcionProblema
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcionProblema($descripcionProblema)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcionProblema = $descripcionProblema;
     }
 
     /**
@@ -186,4 +208,54 @@ class Incidencia
     {
         $this->usuarioAtiende = $usuarioAtiende;
     }
+
+    /**
+     * @return string
+     */
+    public function getDescripcionSolucion()
+    {
+        return $this->descripcionSolucion;
+    }
+
+    /**
+     * @param string $descripcionSolucion
+     */
+    public function setDescripcionSolucion($descripcionSolucion)
+    {
+        $this->descripcionSolucion = $descripcionSolucion;
+    }
+
+    /**
+     * @return Elemento
+     */
+    public function getElemento()
+    {
+        return $this->elemento;
+    }
+
+    /**
+     * @param Elemento $elemento
+     */
+    public function setElemento($elemento)
+    {
+        $this->elemento = $elemento;
+    }
+
+    /**
+     * @return Equipo
+     */
+    public function getEquipo()
+    {
+        return $this->equipo;
+    }
+
+    /**
+     * @param Equipo $equipo
+     */
+    public function setEquipo($equipo)
+    {
+        $this->equipo = $equipo;
+    }
+
+
 }

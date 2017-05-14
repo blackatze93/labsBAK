@@ -51,8 +51,7 @@ easy_admin:
             - label: 'Soporte Salas'
               icon: 'support'
               children:
-                - { entity: 'Incidencia', icon: 'exclamation-triangle', label: 'Incidencias', default: true }
-                - { entity: 'Mantenimiento', icon: 'wrench', label: 'Mantenimientos' }
+                - { entity: 'Incidencia', icon: 'wrench', label: 'Incidencias', default: true }
                 - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
 
             - label: 'Universidad'

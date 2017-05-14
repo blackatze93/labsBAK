@@ -66,8 +66,6 @@ $(function () {
 
     $('#incidencia_fechaAtencion').datetimepicker(opDateTime);
 
-    $('#mantenimiento_fecha').datetimepicker(opDateTime);
-
     $('#mantenimientoexterno_fecha').datetimepicker(opDateTime);
 
     $('#baja_fecha').datetimepicker(opDate);
