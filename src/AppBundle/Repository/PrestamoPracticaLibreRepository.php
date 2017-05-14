@@ -24,7 +24,7 @@ class PrestamoPracticaLibreRepository extends EntityRepository
             ->createQueryBuilder('prestamos')
             ->select('MONTH(prestamos.fechaPrestamo) AS mes, COUNT(prestamos.id) AS total')
             ->where(':anio = YEAR(prestamos.fechaPrestamo)')
-//            ->andWhere('mes BETWEEN :mesInicio AND :mesFin')
+//            ->andWhere(':mesInicio < mes AND mes < :mesFin')
             ->groupBy('mes')
             ->setParameters($criteria)
             ->getQuery()->getResult()

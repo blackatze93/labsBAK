@@ -30,7 +30,16 @@ class GraficoController extends Controller
     public function practicaLibreMesAction(Request $request)
     {
         // Se genera el formulario que permite crear el paz y salvo
-        $form = $this->createFormBuilder()
+        $form = $this->createFormBuilder(null,
+                array(
+                    'constraints' => array(
+                        new Expression(array(
+                            'expression' => 'value["mesFin"] >= value["mesInicio"]',
+                            'message' => 'El mes final debe ser mayor que el mes inicial.',
+                        ))
+                    )
+                )
+            )
             ->add('anio', ChoiceType::class, array(
                 'choices' => array_combine(range(date('Y'), Date('Y') - 4), range(date('Y'), Date('Y') - 4)),
                 'constraints' => array(
@@ -41,11 +50,6 @@ class GraficoController extends Controller
                 'choices' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
                 'constraints' => array(
                     new NotBlank(),
-//                    TODO: validar que el mes final sea mayor
-//                    new Expression(array(
-//                        'expression' => 'value["mesFin"] >= value["mesInicio"]',
-//                        'message' => 'count2 must be greater than or equal to count1'
-//                    ))
                 ),
             ))
             ->add('mesFin', ChoiceType::class, array(
@@ -109,12 +113,13 @@ class GraficoController extends Controller
             }
 
             $ob = new Highchart();
-            $ob->title->text('Prestamos Practica Libre');
+            $ob->title->text('Préstamos Practica Libre');
             $ob->chart->renderTo('container');  // The #id of the div where to render the chart
             $ob->chart->type('column');
             $ob->credits->enabled(false);
             $ob->legend->enabled(false);
             $ob->yAxis->title(array('text'  => "Cantidad"));
+            $ob->yAxis->allowDecimals(false);
             $ob->xAxis(array(
                 array(
                     'id' => 0,
@@ -129,7 +134,7 @@ class GraficoController extends Controller
             $ob->series(
                 array(
                     array(
-                        "name" => "Prestamos por mes",
+                        "name" => "Préstamos por mes",
                         'xAxis' => 0,
                         "colorByPoint" => true,
                         "data" => $data
