@@ -19,7 +19,11 @@ class SolicitudSalaRepository extends EntityRepository
      */
     public function findRangoEvento(array $criteria)
     {
-        return $this
+        $em = $this->getEntityManager()->getRepository('AppBundle:Evento');
+
+
+
+        return $em
             ->createQueryBuilder('eventos')
             ->where(':horaInicio >= eventos.horaInicio AND :horaInicio < eventos.horaFin')
             ->orWhere(':horaFin > eventos.horaInicio AND :horaFin <= eventos.horaFin')

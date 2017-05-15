@@ -3,7 +3,7 @@ easy_admin:
         SolicitudSala:
             class: AppBundle\Entity\SolicitudSala
             controller: AppBundle\Controller\SolicitudSalaController
-            disabled_actions: ['delete', 'edit', 'new']
+            disabled_actions: ['new']
 #
 #            list:
 #                title: 'Incidencias'

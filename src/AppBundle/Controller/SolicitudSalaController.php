@@ -33,8 +33,10 @@ class SolicitudSalaController extends BaseAdminController
      */
     public function solicitudSalaAction(Request $request)
     {
+        $solicitudSala = new SolicitudSala();
+
         // Se genera el formulario que permite crear el paz y salvo
-        $form = $this->createFormBuilder()
+        $form = $this->createFormBuilder($solicitudSala)
             ->add('fecha', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false
@@ -61,17 +63,12 @@ class SolicitudSalaController extends BaseAdminController
 
         // Si el formulario se ha enviado y es valido comprobamos el usuario
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $solicitudSala = new SolicitudSala();
             $em = $this->getDoctrine()->getManager();
+            $solicitudSala = $form->getData();
 
             $solicitudSala->setFechaSolicitud(new \DateTime());
             $solicitudSala->setUsuarioRealiza($this->getUser());
             $solicitudSala->setEstado('Pendiente');
-            $solicitudSala->setFecha($data['fecha']);
-            $solicitudSala->setHoraInicio($data['horaInicio']);
-            $solicitudSala->setHoraFin($data['horaFin']);
-            $solicitudSala->setLugar($data['lugar']);
 
             $em->persist($solicitudSala);
             $em->flush();

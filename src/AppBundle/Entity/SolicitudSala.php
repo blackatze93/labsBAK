@@ -10,10 +10,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 /**
  * SolicitudSala.
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SolicitudSalaRepository")
  * @ORM\Table(name="solicitud_sala")
- * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRango",
- *     message="Ya existe un evento asociado a esa fecha y lugar.", errorPath="fecha", )
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRangoEvento",
+ *     message="Ya existe un evento asociado a esa fecha y lugar. Seleccione otra fecha o lugar.", errorPath="fecha", )
  */
 class SolicitudSala
 {
@@ -117,7 +117,6 @@ class SolicitudSala
      * @Assert\NotBlank()
      */
     private $lugar;
-
 
     /**
      * @return int
