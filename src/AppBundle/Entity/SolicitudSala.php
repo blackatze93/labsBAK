@@ -4,14 +4,18 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
 
 /**
- * SolicitudPrestamoSala.
+ * SolicitudSala.
  *
- * @ORM\Entity()
- * @ORM\Table(name="solicitud_prestamo_sala")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EventoRepository")
+ * @ORM\Table(name="solicitud_sala")
+ * @DoctrineAssert\UniqueEntity(fields={"lugar", "fecha", "horaInicio", "horaFin"}, repositoryMethod="findRango",
+ *     message="Ya existe un evento asociado a esa fecha y lugar.", errorPath="fecha", )
  */
-class SolicitudPrestamoSala
+class SolicitudSala
 {
     /**
      * @var int
@@ -44,8 +48,7 @@ class SolicitudPrestamoSala
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="datetime", nullable=true   )
      * @Assert\DateTime()
      */
     private $fechaRespuesta;
@@ -60,10 +63,31 @@ class SolicitudPrestamoSala
     private $fecha;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hora_inicio", type="time")
+     * @Assert\NotBlank()
+     * @Assert\Time()
+     */
+    private $horaInicio;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="hora_fin", type="time")
+     * @Assert\NotBlank()
+     * @Assert\Time()
+     * @Assert\Expression(
+     *     "this.getHoraInicio() < this.getHoraFin()",
+     *     message="La hora final debe ser mayor a la hora de inicio"
+     * )
+     */
+    private $horaFin;
+
+    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
+     * @ORM\Column(type="string", length=1020, nullable=true)
+     * @Assert\Length(max="1020")
      */
     private $observaciones;
 
@@ -72,7 +96,6 @@ class SolicitudPrestamoSala
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
     private $usuarioRealiza;
@@ -81,11 +104,20 @@ class SolicitudPrestamoSala
      * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="usuario_responde_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
-     * @Assert\NotBlank()
+     * @ORM\JoinColumn(name="usuario_responde_id", referencedColumnName="id", nullable=true)
      */
     private $usuarioResponde;
+
+    /**
+     * @var Lugar
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\Type("AppBundle\Entity\Lugar")
+     * @Assert\NotBlank()
+     */
+    private $lugar;
+
 
     /**
      * @return int
@@ -168,6 +200,38 @@ class SolicitudPrestamoSala
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getHoraInicio()
+    {
+        return $this->horaInicio;
+    }
+
+    /**
+     * @param \DateTime $horaInicio
+     */
+    public function setHoraInicio($horaInicio)
+    {
+        $this->horaInicio = $horaInicio;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHoraFin()
+    {
+        return $this->horaFin;
+    }
+
+    /**
+     * @param \DateTime $horaFin
+     */
+    public function setHoraFin($horaFin)
+    {
+        $this->horaFin = $horaFin;
+    }
+
+    /**
      * @param string $observaciones
      */
     public function setObservaciones($observaciones)
@@ -205,5 +269,21 @@ class SolicitudPrestamoSala
     public function setUsuarioResponde($usuarioResponde)
     {
         $this->usuarioResponde = $usuarioResponde;
+    }
+
+    /**
+     * @return Lugar
+     */
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
+
+    /**
+     * @param Lugar $lugar
+     */
+    public function setLugar($lugar)
+    {
+        $this->lugar = $lugar;
     }
 }

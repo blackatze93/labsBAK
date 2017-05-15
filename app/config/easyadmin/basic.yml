@@ -24,10 +24,11 @@ easy_admin:
                 - { entity: 'Documento', icon: 'file', label: 'Documentos' }
                 - { entity: 'TipoDocumento', icon: 'tag', label: 'Tipos de Documento' }
 
-#            - label: 'PrestamoSemestral'
-#              icon: 'calendar'
-#              children:
-            - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
+            - label: 'Prestamo Salas'
+              icon: 'calendar'
+              children:
+                - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
+                - { entity: 'SolicitudSala', icon: 'calendar-check-o', label: 'Solicitudes' }
 #            - { entity: 'PrestamoSemestral', icon: 'calendar-check-o', label: 'PrestamoSemestral' }
 
             - label: 'Inventario'
