@@ -59,7 +59,6 @@ class Incidencia
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $fechaRegistro;
@@ -68,7 +67,6 @@ class Incidencia
      * @var string
      *
      * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
     private $estado;

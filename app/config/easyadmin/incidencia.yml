@@ -4,32 +4,43 @@ easy_admin:
             class: AppBundle\Entity\Incidencia
             controller: AppBundle\Controller\IncidenciaController
 
-#            list:
-#                title: 'Incidencias'
-#                fields:
-#                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
-#                    - { property: 'descripcionProblema', type: 'raw', css_class: 'col-sm-3'}
-#                    - { property: 'estado' }
-#                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
-#                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
-#                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
-#                sort: 'fechaRegistro'
-#
-#            show:
-#                fields:
-#                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
-#                    - { property: 'descripcionProblema', type: 'raw' }
-#                    - { property: 'estado' }
-#                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
-#                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
-#                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
-            form:
+            list:
+                title: 'Incidencias'
                 fields:
-                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro', type_options: { widget: 'single_text' } }
+                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
+                    - { property: 'descripcionProblema', type: 'raw', css_class: 'col-sm-2'}
+                    - { property: 'estado' }
+                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
+                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+                sort: 'fechaRegistro'
+
+            show:
+                fields:
+                    - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de registro' }
+                    - { property: 'descripcionProblema', type: 'raw' }
+                    - { property: 'usuarioRegistra', label: 'Usuario que registra' }
+                    - { property: 'elemento' }
+                    - { property: 'equipo' }
+                    - { property: 'estado' }
+                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención' }
+                    - { property: 'descripcionSolucion', type: 'raw' }
+                    - { property: 'usuarioAtiende', label: 'Usuario que atiende' }
+
+            new:
+                fields:
                     - { property: 'descripcionProblema', type: 'ckeditor' }
-                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Pendiente': 'Pendiente', 'Atendida': 'Atendida' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'fechaAtencion', type: 'datetime', label: 'Fecha de atención', type_options: { widget: 'single_text' } }
-                    - { property: 'usuarioAtiende', type: 'easyadmin_autocomplete', label: 'Usuario que atiende', type_options: { class: 'AppBundle\Entity\Usuario' } }
-                    - { property: 'descripcionSolucion', type: 'ckeditor' }
                     - { property: 'elemento', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento' } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
+
+            edit:
+                fields:
+                    - { type: 'group', label: 'Problema' }
+                    - { property: 'fechaRegistro', type: 'datetime', type_options: { widget: single_text, read_only: true } }
+                    - { property: 'descripcionProblema', type: 'ckeditor', type_options: { read_only: true } }
+                    - { property: 'elemento', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento' } }
+                    - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
+                    - { type: 'group', label: 'Solución' }
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Pendiente': 'Pendiente', 'Atendida': 'Atendida' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'descripcionSolucion', type: 'ckeditor' }
+

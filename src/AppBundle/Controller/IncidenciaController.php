@@ -16,6 +16,10 @@ class IncidenciaController extends BaseAdminController
     {
         $usuario = $this->getUser();
         $entity->setUsuarioRegistra($usuario);
+
+        $entity->setFechaRegistro(new \DateTime());
+
+        $entity->setEstado('Pendiente');
     }
 
     /**
@@ -24,6 +28,10 @@ class IncidenciaController extends BaseAdminController
     protected function preUpdateEntity($entity)
     {
         $usuario = $this->getUser();
-        $entity->setUsuarioRegistra($usuario);
+
+        if ($entity->getEstado() == 'Atendida') {
+            $entity->setUsuarioAtiende($usuario);
+            $entity->setFechaAtencion(new \DateTime());
+        }
     }
 }
