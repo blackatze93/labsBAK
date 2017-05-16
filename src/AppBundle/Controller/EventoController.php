@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Evento;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use JavierEguiluz\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class EventoController.
@@ -74,8 +73,6 @@ class EventoController extends BaseAdminController
                     }
                 }
             }
-
-
 
             $this->dispatch(EasyAdminEvents::POST_PERSIST, array('entity' => $entity));
 

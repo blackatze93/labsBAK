@@ -36,12 +36,12 @@ class GraficoController extends Controller
                         new Expression(array(
                             'expression' => 'value["mesFin"] >= value["mesInicio"]',
                             'message' => 'El mes final debe ser mayor que el mes inicial.',
-                        ))
-                    )
+                        )),
+                    ),
                 )
             )
             ->add('anio', ChoiceType::class, array(
-                'choices' => array_combine(range(date('Y'), Date('Y') - 4), range(date('Y'), Date('Y') - 4)),
+                'choices' => array_combine(range(date('Y'), date('Y') - 4), range(date('Y'), date('Y') - 4)),
                 'constraints' => array(
                     new NotBlank(),
                 ),
@@ -75,36 +75,36 @@ class GraficoController extends Controller
                 array(
                     'anio' => $anio,
                     'mesInicio' => ($data['mesInicio'] + 1),
-                    'mesFin' => ($data['mesFin'] + 1)
+                    'mesFin' => ($data['mesFin'] + 1),
                 ));
 
             $data = array();
             $drilldown = array();
 
-            for ($i = 0; $i < count($prestamos); $i++) {
+            for ($i = 0; $i < count($prestamos); ++$i) {
                 $drilldown_data = array();
                 $mes_info = array(
-                    "y" => (int) $prestamos[$i]["total"],
-                    "x" => (int) $prestamos[$i]["mes"],
-                    "drilldown" => $prestamos[$i]["mes"]
+                    'y' => (int) $prestamos[$i]['total'],
+                    'x' => (int) $prestamos[$i]['mes'],
+                    'drilldown' => $prestamos[$i]['mes'],
                 );
 
-                $prestamosMes = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosMes(array('mes' => $prestamos[$i]["mes"]));
+                $prestamosMes = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosMes(array('mes' => $prestamos[$i]['mes']));
 
-                for ($j = 0; $j < count($prestamosMes); $j++) {
+                for ($j = 0; $j < count($prestamosMes); ++$j) {
                     $dia_info = array(
-                        (int) $prestamosMes[$j]["dia"],
-                        (int) $prestamosMes[$j]["total"]
+                        (int) $prestamosMes[$j]['dia'],
+                        (int) $prestamosMes[$j]['total'],
                     );
                     array_push($drilldown_data, $dia_info);
                 }
 
                 $drilldown_info = array(
-                    'name' => $prestamos[$i]["mes"],
-                    'id' => $prestamos[$i]["mes"],
+                    'name' => $prestamos[$i]['mes'],
+                    'id' => $prestamos[$i]['mes'],
                     'xAxis' => 1,
                     'colorByPoint' => true,
-                    'data' => $drilldown_data
+                    'data' => $drilldown_data,
                 );
 
                 array_push($drilldown, $drilldown_info);
@@ -117,39 +117,39 @@ class GraficoController extends Controller
             $ob->chart->type('column');
             $ob->credits->enabled(false);
             $ob->legend->enabled(false);
-            $ob->yAxis->title(array('text'  => "Cantidad"));
+            $ob->yAxis->title(array('text' => 'Cantidad'));
             $ob->yAxis->allowDecimals(false);
             $ob->xAxis(array(
                 array(
                     'id' => 0,
                     'type' => 'category',
-                    'categories' => array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre')
+                    'categories' => array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
                 ),
                 array(
                     'id' => 1,
-                    'type' => 'category'
+                    'type' => 'category',
                 ),
             ));
             $ob->series(
                 array(
                     array(
-                        "name" => "Préstamos por mes",
+                        'name' => 'Préstamos por mes',
                         'xAxis' => 0,
-                        "colorByPoint" => true,
-                        "data" => $data
-                    )
+                        'colorByPoint' => true,
+                        'data' => $data,
+                    ),
                 )
             );
             $ob->drilldown->series($drilldown);
 
             return $this->render(':graficos:practica_libre_mes.html.twig', array(
                 'form' => $form->createView(),
-                'chart' => $ob
+                'chart' => $ob,
             ));
         }
 
         return $this->render(':graficos:practica_libre_mes.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 }

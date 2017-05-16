@@ -63,7 +63,8 @@ class ObjetoEncontradoController extends BaseAdminController
      * @Route("/encontrados_bulk_delete/", name="encontrados_bulk_delete")
      * @Method({"POST"})
      */
-    public function bulkDeleteAction(Request $request) {
+    public function bulkDeleteAction(Request $request)
+    {
         $response = new JsonResponse('', 400);
 
         if (!$request->isXmlHttpRequest()) {
@@ -82,7 +83,8 @@ class ObjetoEncontradoController extends BaseAdminController
             $em->flush();
             $response->setStatusCode(200);
             $this->addFlash('success', 'Se borraron todos los objetos encontrados con éxito.');
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         return $response;
     }
