@@ -2,33 +2,30 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Evento;
 use AppBundle\Entity\SolicitudSala;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\Range;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Type;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Doctrine\ORM\EntityRepository;
+
 
 /**
  * Class SolicitudSalaController.
  */
 class SolicitudSalaController extends BaseAdminController
 {
-    //     * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_FUNCIONARIO')")
-
     /**
      * Metodo que lista los objetos encontrados en el sitio web.
      *
+     * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_FUNCIONARIO')")
      * @Route("/solicitud_sala/", name="solicitud_sala")
      */
     public function solicitudSalaAction(Request $request)
@@ -49,10 +46,19 @@ class SolicitudSalaController extends BaseAdminController
                 'widget' => 'single_text',
                 'html5' => false
             ))
-            ->add('lugar', 'easyadmin_autocomplete', array(
-                'class' => 'AppBundle\Entity\Lugar'
+            ->add('lugar', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Lugar',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('lugar')
+                        ->where('lugar.visible = true');
+                },
+                'attr' => array(
+                    'data-widget' => 'select2'
+                )
             ))
-            ->add('observaciones', CKEditorType::class)
+            ->add('observaciones', CKEditorType::class, array(
+                'required' => false
+            ))
             ->add('crear', SubmitType::class)
             ->add('restablecer', ResetType::class)
             ->getForm()
@@ -65,17 +71,27 @@ class SolicitudSalaController extends BaseAdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $solicitudSala = $form->getData();
+            $evento = new Evento();
 
             $solicitudSala->setFechaSolicitud(new \DateTime());
             $solicitudSala->setUsuarioRealiza($this->getUser());
             $solicitudSala->setEstado('Pendiente');
+            $solicitudSala->setEvento($evento);
+            $evento->setTipo('Reserva');
+            $evento->setLugar($solicitudSala->getLugar());
+            $evento->setUsuarioRegistra($this->getUser());
+            $evento->setObservaciones($solicitudSala->getObservaciones());
+            $evento->setFecha($solicitudSala->getFecha());
 
             $em->persist($solicitudSala);
-            $em->flush();
 
-            return $this->render('solicitud_sala.html.twig', array(
-                'form' => $form->createView(),
-            ));
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se registró su solicitud correctamente');
+                return $this->redirectToRoute('index');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo registrar su solicitud');
+            }
         }
 
         return $this->render('solicitud_sala.html.twig', array(

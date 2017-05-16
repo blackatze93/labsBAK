@@ -31,7 +31,6 @@ class SolicitudSala
      * @var string
      *
      * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
     private $estado;
@@ -40,7 +39,6 @@ class SolicitudSala
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $fechaSolicitud;
@@ -96,7 +94,6 @@ class SolicitudSala
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false)
-     * @Assert\NotBlank()
      */
     private $usuarioRealiza;
 
@@ -117,6 +114,14 @@ class SolicitudSala
      * @Assert\NotBlank()
      */
     private $lugar;
+
+    /**
+     * @var Evento
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Evento", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\JoinColumn(name="evento_id", referencedColumnName="id", nullable=false, unique=true)
+     */
+    private $evento;
 
     /**
      * @return int
@@ -284,5 +289,21 @@ class SolicitudSala
     public function setLugar($lugar)
     {
         $this->lugar = $lugar;
+    }
+
+    /**
+     * @return Evento
+     */
+    public function getEvento()
+    {
+        return $this->evento;
+    }
+
+    /**
+     * @param Evento $evento
+     */
+    public function setEvento($evento)
+    {
+        $this->evento = $evento;
     }
 }

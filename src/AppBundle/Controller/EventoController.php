@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Evento;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use JavierEguiluz\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class EventoController.
@@ -34,6 +35,10 @@ class EventoController extends BaseAdminController
 
             $this->prePersistEntity($entity);
 
+            // Crea un nuevo EntityManager para este proceso
+            $em = $this->getDoctrine()->getManager();
+            $validator = $this->get('validator');
+
             // Obtiene el usuario logueado
             $usuario = $this->getUser();
 
@@ -49,23 +54,28 @@ class EventoController extends BaseAdminController
                 $evento->setFecha($fecha);
                 $evento->setHoraInicio($entity->getHoraInicio());
                 $evento->setHoraFin($entity->getHoraFin());
-                $evento->setEstado($entity->getEstado());
+                $evento->setTipo($entity->getTipo());
                 $evento->setAsignatura($entity->getAsignatura());
                 $evento->setGrupo($entity->getGrupo());
                 $evento->setUsuarioRegistra($usuario);
                 $evento->setObservaciones($entity->getObservaciones());
 
-                $this->em->persist($evento);
-
-                // Se tiene que guardar cada objeto en la BD para poder comprobar el constraint valido
-                try {
-                    $this->em->flush();
-                    $this->em->clear();
-                    $this->addFlash('success', 'Se agregó el evento del '.$fecha->format('Y-m-d'));
-                } catch (\Exception $e) {
+                $errors = $validator->validate($evento);
+                if (count($errors) > 0) {
                     $this->addFlash('error', 'No se pudo agregar el evento del '.$fecha->format('Y-m-d'));
+                } else {
+                    $em->persist($evento);
+                    // Se tiene que guardar cada objeto en la BD para poder comprobar el constraint valido
+                    try {
+                        $em->flush();
+                        $this->addFlash('success', 'Se agregó el evento del '.$fecha->format('Y-m-d'));
+                    } catch (\Exception $e) {
+                        $this->addFlash('error', 'No se pudo agregar el evento del '.$fecha->format('Y-m-d'));
+                    }
                 }
             }
+
+
 
             $this->dispatch(EasyAdminEvents::POST_PERSIST, array('entity' => $entity));
 

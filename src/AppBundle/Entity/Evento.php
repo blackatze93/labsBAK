@@ -67,30 +67,29 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", nullable=false, unique=false)
+     * @ORM\Column(name="tipo", type="string", nullable=false, unique=false)
      * @Assert\NotBlank()
      * @Assert\Length(max="45")
      */
-    private $estado;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=false)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="10")
-     */
-    private $grupo;
+    private $tipo;
 
     /**
      * @var Asignatura
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Asignatura")
-     * @ORM\JoinColumn(name="asignatura_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Asignatura")
-     * @Assert\NotBlank()
+     * @ORM\JoinColumn(name="asignatura_id", referencedColumnName="id", nullable=true, unique=false)
+     * @Assert\NotBlank(groups={"New"})
      */
     private $asignatura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="grupo", type="string", length=10, unique=false, nullable=true)
+     * @Assert\NotBlank(groups={"New"})
+     * @Assert\Length(max="10")
+     */
+    private $grupo;
 
     /**
      * @var string
@@ -206,17 +205,17 @@ class Evento
     /**
      * @return string
      */
-    public function getEstado()
+    public function getTipo()
     {
-        return $this->estado;
+        return $this->tipo;
     }
 
     /**
-     * @param string $estado
+     * @param string $tipo
      */
-    public function setEstado($estado)
+    public function setTipo($tipo)
     {
-        $this->estado = $estado;
+        $this->tipo = $tipo;
     }
 
     /**

@@ -11,7 +11,7 @@ easy_admin:
                     - { property: 'fecha', type: 'date' }
                     - { property: 'horaInicio', type: 'time' }
                     - { property: 'horaFin', type: 'time' }
-                    - 'estado'
+                    - 'tipo'
                     - 'asignatura'
                     - 'grupo'
                     - { property: 'observaciones', type: 'raw' }
@@ -22,23 +22,33 @@ easy_admin:
                     - { property: 'fecha', type: 'date' }
                     - { property: 'horaInicio', type: 'time' }
                     - { property: 'horaFin', type: 'time' }
-                    - 'estado'
+                    - 'tipo'
                     - 'asignatura'
                     - 'grupo'
                     - { property: 'observaciones', type: 'raw' }
                     - { property: 'usuarioRegistra', label: 'Usuario que registra' }
 
-            form:
-               fields:
-                   - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
-                   - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
-                   - { property: 'horaInicio', type: 'time', type_options: { widget: 'single_text', html5: false } }
-                   - { property: 'horaFin', type: 'time', type_options: { widget: 'single_text', html5: false } }
-                   - { property: 'semanas', type: 'integer' }
-                   - { property: 'estado', type: 'choice', type_options: { choices:  { 'Activa': 'Activa', 'Cancelada': 'Cancelada', 'Practica Libre': 'Practica Libre','Mantenimiento': 'Mantenimiento', 'Otro': 'Otro', }, attr: { 'data-widget': 'select2' } } }
-                   - { property: 'asignatura', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Asignatura' } }
-                   - { property: 'grupo', type: 'text' }
-                   - { property: 'observaciones', type: 'ckeditor' }
-
             new:
                 form_options: { validation_groups: ['Default', 'New'] }
+                fields:
+                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
+                    - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'horaInicio', type: 'time', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'horaFin', type: 'time', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'semanas', type: 'integer' }
+                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Clase': 'Clase', 'Practica Libre': 'Practica Libre','Mantenimiento': 'Mantenimiento', 'Reserva': 'Reserva', 'Otro': 'Otro', }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'asignatura', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Asignatura' } }
+                    - { property: 'grupo', type: 'text' }
+                    - { property: 'observaciones', type: 'ckeditor' }
+
+            edit:
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
+                    - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'horaInicio', type: 'time', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'horaFin', type: 'time', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'tipo', type: 'choice', type_options: { choices:  { 'Clase': 'Clase', 'Practica Libre': 'Practica Libre','Mantenimiento': 'Mantenimiento', 'Reserva': 'Reserva', 'Otro': 'Otro', }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'asignatura', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Asignatura', required: false } }
+                    - { property: 'grupo', type: 'text', type_options: { required: false } }
+                    - { property: 'observaciones', type: 'ckeditor' }

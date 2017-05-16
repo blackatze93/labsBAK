@@ -48,12 +48,12 @@ $(function () {
             var texto = '';
 
             texto += '<b>Asignatura:</b> ';
-            texto += event.title ? event.title : 'Ninguna';
+            texto += event.asignatura ? event.asignatura : 'Ninguna';
 
             texto +='<br><b>Grupo:</b> ';
             texto += event.grupo ? event.grupo : 'Ninguno';
 
-            texto += '<br><b>Estado:</b> ' + event.estado;
+            texto += '<br><b>Tipo:</b> ' + event.tipo;
 
             texto += '<br><b>Observaciones:</b> ';
             texto += event.observaciones ? event.observaciones : 'Ninguna';

@@ -82,3 +82,14 @@ vich_uploader:
         documentos:
             uri_prefix: '%app.path.documentos%'
             upload_destination: '%kernel.root_dir%/../web/%app.path.documentos%'
+
+ivory_ck_editor:
+    input_sync: true
+    default_config: simple_config
+    configs:
+        simple_config:
+            toolbar:
+                - { name: "styles", items: ['Bold', 'Italic', 'Strike', 'Link'] }
+                - { name: "lists", items: ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent'] }
+                - { name: "clipboard", items: ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo'] }
+                - { name: "advanced", items: ['Source'] }
