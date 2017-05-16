@@ -52,7 +52,7 @@ class ElementoController extends BaseAdminController
             array(
                 'activo' => true,
                 'prestado' => false,
-                'tipoPrestamo' => 'Todos'
+                'tipoPrestamo' => 'Todos',
             ),
             array('nombre' => 'ASC')
         );

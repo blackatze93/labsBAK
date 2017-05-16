@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Doctrine\ORM\EntityRepository;
 
-
 /**
  * Class SolicitudSalaController.
  */
@@ -36,15 +35,15 @@ class SolicitudSalaController extends BaseAdminController
         $form = $this->createFormBuilder($solicitudSala)
             ->add('fecha', DateType::class, array(
                 'widget' => 'single_text',
-                'html5' => false
+                'html5' => false,
             ))
             ->add('horaInicio', TimeType::class, array(
                 'widget' => 'single_text',
-                'html5' => false
+                'html5' => false,
             ))
             ->add('horaFin', TimeType::class, array(
                 'widget' => 'single_text',
-                'html5' => false
+                'html5' => false,
             ))
             ->add('lugar', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Lugar',
@@ -53,11 +52,11 @@ class SolicitudSalaController extends BaseAdminController
                         ->where('lugar.visible = true');
                 },
                 'attr' => array(
-                    'data-widget' => 'select2'
-                )
+                    'data-widget' => 'select2',
+                ),
             ))
             ->add('observaciones', CKEditorType::class, array(
-                'required' => false
+                'required' => false,
             ))
             ->add('crear', SubmitType::class)
             ->add('restablecer', ResetType::class)
@@ -88,6 +87,7 @@ class SolicitudSalaController extends BaseAdminController
             try {
                 $em->flush();
                 $this->addFlash('success', 'Se registró su solicitud correctamente');
+
                 return $this->redirectToRoute('index');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'No se pudo registrar su solicitud');
@@ -95,7 +95,7 @@ class SolicitudSalaController extends BaseAdminController
         }
 
         return $this->render('solicitud_sala.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 }

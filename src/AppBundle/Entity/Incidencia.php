@@ -254,6 +254,4 @@ class Incidencia
     {
         $this->equipo = $equipo;
     }
-
-
 }

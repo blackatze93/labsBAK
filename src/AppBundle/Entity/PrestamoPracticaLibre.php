@@ -94,7 +94,6 @@ class PrestamoPracticaLibre
         $this->horaEntrada = new \DateTime();
     }
 
-
     /**
      * Get id.
      *

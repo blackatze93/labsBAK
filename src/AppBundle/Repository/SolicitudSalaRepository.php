@@ -21,8 +21,6 @@ class SolicitudSalaRepository extends EntityRepository
     {
         $em = $this->getEntityManager()->getRepository('AppBundle:Evento');
 
-
-
         return $em
             ->createQueryBuilder('eventos')
             ->where(':horaInicio >= eventos.horaInicio AND :horaInicio < eventos.horaFin')

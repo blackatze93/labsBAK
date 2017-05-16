@@ -81,7 +81,6 @@ class PrestamoElemento
         $this->fechaPrestamo = new \DateTime();
     }
 
-
     /**
      * Get id.
      *
