@@ -72,7 +72,6 @@ class Elemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
      * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()
      */
     private $lugar;
@@ -131,7 +130,6 @@ class Elemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipo", inversedBy="elementos")
      * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id", nullable=true)
-     * @Assert\Type("AppBundle\Entity\Equipo")
      */
     private $equipo;
 

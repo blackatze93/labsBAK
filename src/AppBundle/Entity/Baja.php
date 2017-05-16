@@ -37,7 +37,6 @@ class Baja
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
     private $usuarioRealiza;

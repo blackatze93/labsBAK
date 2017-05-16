@@ -39,7 +39,6 @@ class Documento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoDocumento", inversedBy="documentos")
      * @ORM\JoinColumn(name="tipo_documento_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\TipoDocumento")
      */
     private $tipoDocumento;
 
@@ -48,7 +47,6 @@ class Documento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_sube_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioSube;
 

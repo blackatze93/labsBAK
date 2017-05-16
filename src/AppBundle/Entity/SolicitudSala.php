@@ -109,7 +109,6 @@ class SolicitudSala
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
      * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()
      */
     private $lugar;

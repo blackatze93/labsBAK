@@ -48,7 +48,6 @@ class ProyectoCurricular
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad", inversedBy="proyectosCurriculares")
      * @ORM\JoinColumn(name="facultad_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Facultad")
      * @Assert\NotBlank()
      */
     private $facultad;

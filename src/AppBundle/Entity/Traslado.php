@@ -37,7 +37,6 @@ class Traslado
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRealiza;
 
@@ -46,7 +45,6 @@ class Traslado
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_recibe_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRecibe;
 
@@ -55,7 +53,6 @@ class Traslado
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
      * @ORM\JoinColumn(name="lugar_destino_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
      */
     private $lugarDestino;
 

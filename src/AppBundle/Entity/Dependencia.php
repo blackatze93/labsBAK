@@ -47,7 +47,6 @@ class Dependencia
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Facultad", inversedBy="dependencias")
      * @ORM\JoinColumn(name="facultad_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Facultad")
      * @Assert\NotBlank()
      */
     private $facultad;

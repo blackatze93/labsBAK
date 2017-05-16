@@ -61,7 +61,6 @@ class PrestamoPracticaLibre
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_solicita_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
     private $usuarioSolicita;
@@ -71,7 +70,6 @@ class PrestamoPracticaLibre
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipo")
      * @ORM\JoinColumn(name="equipo_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Equipo")
      * @Assert\NotBlank()
      */
     private $equipo;
@@ -81,7 +79,6 @@ class PrestamoPracticaLibre
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRealiza;
 

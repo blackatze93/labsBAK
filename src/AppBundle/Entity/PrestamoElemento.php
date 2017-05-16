@@ -52,7 +52,6 @@ class PrestamoElemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_solicita_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
     private $usuarioSolicita;
@@ -62,7 +61,6 @@ class PrestamoElemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Elemento")
      * @ORM\JoinColumn(name="elemento_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Elemento")
      * @Assert\NotBlank()
      */
     private $elemento;
@@ -72,7 +70,6 @@ class PrestamoElemento
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_realiza_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      */
     private $usuarioRealiza;
 

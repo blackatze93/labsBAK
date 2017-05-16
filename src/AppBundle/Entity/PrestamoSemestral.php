@@ -40,7 +40,6 @@ class PrestamoSemestral
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Asignatura")
      * @ORM\JoinColumn(name="asignatura_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Asignatura")
      * @Assert\NotBlank()
      */
     private $asignatura;
@@ -98,7 +97,6 @@ class PrestamoSemestral
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
      * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
-     * @Assert\Type("AppBundle\Entity\Lugar")
      * @Assert\NotBlank()
      */
     private $lugar;
@@ -108,7 +106,6 @@ class PrestamoSemestral
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="usuario_registra_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\Usuario")
      * @Assert\NotBlank()
      */
     private $usuarioRegistra;
@@ -118,7 +115,6 @@ class PrestamoSemestral
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProyectoCurricular")
      * @ORM\JoinColumn(name="proyecto_curricular_id", referencedColumnName="id", nullable=false)
-     * @Assert\Type("AppBundle\Entity\ProyectoCurricular")
      */
     private $proyectoCurricular;
 
