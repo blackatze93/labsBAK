@@ -25,7 +25,7 @@ easy_admin:
                     - { property: 'fecha', type: 'date', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'usuarioRealiza', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Realizado por' }
                     - { type: 'group', label: '' }
-                    - { property: 'lugarDestino', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' }, label: 'Lugar de destino' }
+                    - { property: 'lugarDestino', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' } }, label: 'Lugar de destino' }
                     - { property: 'usuarioRecibe', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Usuario' }, label: 'Recibido por' }
                     - { type: 'group', label: 'Elementos' }
                     - { property: 'trasladoElementos', label: ' ', type: 'collection', type_options: { entry_type: 'AppBundle\Form\Type\TrasladoElementoType', by_reference: false } }

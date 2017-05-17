@@ -23,11 +23,11 @@ easy_admin:
             new:
                 fields:
                     - 'nombre'
-                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
-                    - { property: 'elementos', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false } }
+                    - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' } } }
+                    - { property: 'elementos', type: 'entity', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false, attr: { 'data-widget': 'select2' } } }
 
             edit:
                 fields:
                     - { property: 'nombre', type: 'text', type_options: { read_only: true } }
-                    - { property: 'lugar', type: 'text', type_options: { read_only: true } }
-                    - { property: 'elementos', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false } }
+                    - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', disabled: true, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'elementos', type: 'entity', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false, attr: { 'data-widget': 'select2' } } }

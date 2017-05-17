@@ -152,8 +152,6 @@ class UsuarioController extends BaseAdminController
     public function loginAction()
     {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $this->addFlash('error', 'Ya está logueado');
-
             return $this->redirectToRoute('index');
         }
 

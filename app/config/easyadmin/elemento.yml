@@ -41,7 +41,7 @@ easy_admin:
                     - 'marca'
                     - 'descripcion'
                     - 'serial'
-                    - { property: 'lugar', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Lugar' } }
+                    - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' } } }
                     - { property: 'fechaIngreso', type: 'date', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'tipoPrestamo', type: 'choice', type_options: { choices:  { 'Todos': 'Todos', 'Funcionarios': 'Funcionarios', 'Nadie': 'Nadie' }, attr: { 'data-widget': 'select2' } } }

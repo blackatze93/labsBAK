@@ -58,6 +58,11 @@ class Lugar
     private $equipos;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Elemento", mappedBy="lugar")
+     */
+    private $elementos;
+
+    /**
      * @var bool
      *
      * @ORM\Column(type="boolean")
@@ -73,6 +78,7 @@ class Lugar
     public function __construct()
     {
         $this->equipos = new ArrayCollection();
+        $this->elementos = new ArrayCollection();
     }
 
     /**
@@ -169,6 +175,14 @@ class Lugar
     public function getEquipos()
     {
         return $this->equipos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getElementos()
+    {
+        return $this->elementos;
     }
 
     /**
