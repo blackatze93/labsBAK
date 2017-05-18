@@ -15,12 +15,29 @@ use AppBundle\Entity\Lugar;
  */
 class EquipoController extends BaseAdminController
 {
+    protected function preRemoveEntity($entity)
+    {
+        foreach ($entity->getElementos() as $elemento) {
+            $entity->removeElemento($elemento);
+        }
+    }
+
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
 
         $formModifier = function (FormInterface $form, Lugar $lugar = null) {
-            $elementos = null === $lugar ? array() : $lugar->getElementos();
+            $em = $this->getDoctrine()->getManager()->getRepository('AppBundle:Elemento');
+
+            $elementos = null === $lugar ? array() : $em->findBy(
+                array(
+                    'lugar' => $lugar,
+                    'activo' => true,
+                ),
+                array(
+                    'nombre' => 'ASC',
+                )
+            );
 
             $form->add('elementos', EntityType::class, array(
                 'class'       => 'AppBundle\Entity\Elemento',

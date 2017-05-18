@@ -121,7 +121,7 @@ class Equipo
      *
      * @return $this
      */
-    public function addElemento(Elemento $elemento)
+    public function addElemento($elemento)
     {
         $this->elementos[] = $elemento;
         $elemento->setEquipo($this);
@@ -134,7 +134,7 @@ class Equipo
      *
      * @return $this
      */
-    public function removeElemento(Elemento $elemento)
+    public function removeElemento($elemento)
     {
         $this->elementos->removeElement($elemento);
         $elemento->setEquipo(null);

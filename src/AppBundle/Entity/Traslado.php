@@ -172,7 +172,7 @@ class Traslado
      *
      * @internal param $elemento
      */
-    public function removeTrasladoElemento(TrasladoElemento $elementoTraslado)
+    public function removeTrasladoElemento($elementoTraslado)
     {
         $this->trasladoElementos->removeElement($elementoTraslado);
 

@@ -175,7 +175,7 @@ class Baja
      *
      * @internal param $elemento
      */
-    public function removeBajaElemento(BajaElemento $elementoBaja)
+    public function removeBajaElemento($elementoBaja)
     {
         $elementoBaja->getElemento()->setActivo(true);
 

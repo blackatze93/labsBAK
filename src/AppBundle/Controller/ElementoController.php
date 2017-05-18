@@ -18,13 +18,10 @@ class ElementoController extends BaseAdminController
     {
         $referer = $this->request->headers->get('referer');
         $isPrestamo = strpos($referer, 'PrestamoElemento');
-        $isEquipo = strpos($referer, 'Equipo');
         $dqlFilter = null;
 
         if ($isPrestamo) {
             $dqlFilter = 'entity.activo = true and entity.prestado = false and entity.tipoPrestamo != \'Nadie\'';
-        } elseif ($isEquipo) {
-            $dqlFilter = 'entity.activo = true';
         } else {
             $dqlFilter = 'entity.activo = true and entity.prestado = false';
         }

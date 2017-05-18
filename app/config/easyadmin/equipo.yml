@@ -24,10 +24,10 @@ easy_admin:
                 fields:
                     - { property: 'nombre' }
                     - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguno' } }
-                    - { property: 'elementos', type: 'entity', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'elementos' }
 
             edit:
                 fields:
                     - { property: 'nombre', type: 'text', type_options: { disabled: true } }
                     - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', disabled: true, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'elementos', type: 'entity', type_options: { class: 'AppBundle\Entity\Elemento', by_reference: false, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'elementos' }
