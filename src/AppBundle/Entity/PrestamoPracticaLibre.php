@@ -83,6 +83,15 @@ class PrestamoPracticaLibre
     private $usuarioRealiza;
 
     /**
+     * @var Lugar
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\JoinColumn(name="lugar_id", referencedColumnName="id", nullable=false, unique=false)
+     * @Assert\NotBlank()
+     */
+    private $lugar;
+
+    /**
      * PrestamoPracticaLibre constructor.
      */
     public function __construct()
@@ -166,6 +175,22 @@ class PrestamoPracticaLibre
     }
 
     /**
+     * @return Lugar
+     */
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
+
+    /**
+     * @param Lugar $lugar
+     */
+    public function setLugar($lugar)
+    {
+        $this->lugar = $lugar;
+    }
+
+    /**
      * @return Usuario
      */
     public function getUsuarioSolicita()
@@ -220,16 +245,38 @@ class PrestamoPracticaLibre
      */
     public function validarHoras(ExecutionContextInterface $context)
     {
-        $horaEntrada = $this->getHoraEntrada()->format('H:i');
+        if ($this->getHoraEntrada()) {
+            $horaEntrada = $this->getHoraEntrada()->format('H:i');
 
-        if ($this->getHoraSalida()) {
-            $horaSalida = $this->getHoraSalida()->format('H:i');
+            $horaMin = new \DateTime('06:00');
+            $horaMin = $horaMin->format('H:i');
 
-            if ($horaEntrada > $horaSalida) {
-                $context->buildViolation('La hora de salida debe ser mayor a la hora de entrada')
-                    ->atPath('horaSalida')
+            $horaMax = new \DateTime('22:00');
+            $horaMax = $horaMax->format('H:i');
+
+            if ($horaEntrada < $horaMin || $horaEntrada > $horaMax) {
+                $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
+                    ->atPath('horaEntrada')
                     ->addViolation()
                 ;
+            }
+
+            if ($this->getHoraSalida()) {
+                $horaSalida = $this->getHoraSalida()->format('H:i');
+
+                if ($horaEntrada > $horaSalida) {
+                    $context->buildViolation('La hora de salida debe ser mayor a la hora de entrada')
+                        ->atPath('horaSalida')
+                        ->addViolation()
+                    ;
+                }
+
+                if ($horaSalida < $horaMin || $horaSalida > $horaMax) {
+                    $context->buildViolation('La hora debería estar entre las 6am y 10pm.')
+                        ->atPath('horaSalida')
+                        ->addViolation()
+                    ;
+                }
             }
         }
     }

@@ -314,7 +314,6 @@ class SolicitudSala
     public function validarHoras(ExecutionContextInterface $context)
     {
         $horaInicio = $this->getHoraInicio()->format('H:i');
-
         $horaFin = $this->getHoraFin()->format('H:i');
 
         $horaMin = new \DateTime('06:00');

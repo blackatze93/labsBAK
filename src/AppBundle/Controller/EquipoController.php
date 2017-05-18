@@ -3,9 +3,7 @@
 namespace AppBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
-use JavierEguiluz\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
@@ -17,29 +15,6 @@ use AppBundle\Entity\Lugar;
  */
 class EquipoController extends BaseAdminController
 {
-    /**
-     * @return JsonResponse
-     */
-    protected function autocompleteAction()
-    {
-        $referer = $this->request->headers->get('referer');
-        $isPrestamo = strpos($referer, 'PrestamoPracticaLibre');
-        $dqlFilter = null;
-
-        if ($isPrestamo) {
-            $dqlFilter = 'entity.prestado = false';
-        }
-
-        $results = $this->get('easyadmin.autocomplete')->find(
-            $this->request->query->get('entity'),
-            $this->request->query->get('query'),
-            $this->request->query->get('page', 1),
-            $dqlFilter
-        );
-
-        return new JsonResponse($results);
-    }
-
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
@@ -87,6 +62,4 @@ class EquipoController extends BaseAdminController
 
         return $builder;
     }
-
-
 }

@@ -30,17 +30,23 @@ easy_admin:
                       - { property: 'observaciones' }
                       - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
 
-            form:
+            new:
+                title: 'Crear Préstamo Práctica Libre'
                 fields:
                     - { property: 'fechaPrestamo', type: 'date', label: 'Fecha de prestamo', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'horaEntrada', type: 'time', label: 'Hora de entrada', type_options: { widget: 'single_text', html5: false } }
-                    - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
+                    - { property: 'lugar' }
+                    - { property: 'equipo' }
                     - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario' } }
-                    - { property: 'horaSalida', type: 'time', label: 'Hora de salida', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'observaciones' }
-
-            new:
-                title: 'Crear Préstamo Práctica Libre'
 
             edit:
                 title: 'Modificar Préstamo Práctica Libre'
+                fields:
+                    - { property: 'fechaPrestamo', type: 'date', label: 'Fecha de prestamo', type_options: { widget: 'single_text', html5: false, disabled: true } }
+                    - { property: 'horaEntrada', type: 'time', label: 'Hora de entrada', type_options: { widget: 'single_text', html5: false, disabled: true } }
+                    - { property: 'lugar' }
+                    - { property: 'equipo' }
+                    - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario', disabled: true } }
+                    - { property: 'horaSalida', type: 'time', label: 'Hora de salida', type_options: { widget: 'single_text', html5: false } }
+                    - { property: 'observaciones' }

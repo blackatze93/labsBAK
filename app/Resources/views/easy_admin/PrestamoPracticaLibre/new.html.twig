@@ -1,10 +1,10 @@
-{% extends '@EasyAdmin/default/edit.html.twig' %}
+{% extends '@EasyAdmin/default/new.html.twig' %}
 
 {% block body_javascript %}
     {{ parent() }}
 
     <script type="text/javascript">
-        var $lugar = $('#equipo_lugar');
+        var $lugar = $('#prestamopracticalibre_lugar');
         // When sport gets selected ...
         $lugar.change(function() {
             // ... retrieve the corresponding form.
@@ -18,13 +18,13 @@
                 type: $form.attr('method'),
                 data : data,
                 success: function(html) {
-                    $('#equipo_elementos').select2('destroy');
+                    $('#prestamopracticalibre_equipo').select2('destroy');
                     // Replace current position field ...
-                    $('#equipo_elementos').replaceWith(
+                    $('#prestamopracticalibre_equipo').replaceWith(
                         // ... with the returned one from the AJAX response.
-                        $(html).find('#equipo_elementos')
+                        $(html).find('#prestamopracticalibre_equipo')
                     );
-                    $('#equipo_elementos').select2({
+                    $('#prestamopracticalibre_equipo').select2({
                         theme: 'bootstrap'
                     });
                     // Position field now displays the appropriate positions.
