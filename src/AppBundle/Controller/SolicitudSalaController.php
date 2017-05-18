@@ -21,6 +21,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class SolicitudSalaController extends BaseAdminController
 {
+    protected function preUpdateEntity($entity)
+    {
+        if ($entity->getEstado() == 'Aprobada') {
+            $entity->setFechaRespuesta(new \DateTime());
+            $entity->setUsuarioResponde($this->getUser());
+        }
+    }
+
     /**
      * Metodo que lista los objetos encontrados en el sitio web.
      *
