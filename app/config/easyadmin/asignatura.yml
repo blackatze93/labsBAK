@@ -7,10 +7,10 @@ easy_admin:
                 title: 'Asignaturas'
                 sort: ['codigo', 'ASC']
                 fields:
-                    - 'codigo'
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
 
             show:
                 fields:
-                    - 'codigo'
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
