@@ -90,6 +90,13 @@ $(function () {
 
     $('#prestamoelemento_fechaDevolucion').datetimepicker(opDateTime);
 
+    $('#solicitudsala_fecha').datetimepicker(opDate);
+
+    $('#solicitudsala_fechaSolicitud').datetimepicker(opDateTime);
+
+    $('#solicitudsala_horaInicio').datetimepicker(opTime);
+
+    $('#solicitudsala_horaFin').datetimepicker(opTime);
 
 
 });
