@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new TFox\MpdfPortBundle\TFoxMpdfPortBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
         );
 

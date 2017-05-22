@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -23,7 +24,53 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $pagina = $em->getRepository('AppBundle:Pagina')->findOneBy(array(
+            'id' => '1'
+        ));
+
+        return $this->render('index.html.twig', array(
+            'pagina' => $pagina
+        ));
+    }
+
+    /**
+     * Metodo que genera el paz y salvo.
+     *
+     * @Route("admin/editar_inicio/", name="editar_inicio")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @internal param Request $request
+     */
+    public function editarInicioAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pagina = $em->getRepository('AppBundle:Pagina')->findOneBy(array(
+            'id' => '1'
+        ));
+
+        // Se genera el formulario que permite crear el paz y salvo
+        $form = $this->createForm('AppBundle\Form\Type\PaginaType', $pagina);
+
+        // Dejamos que symfony maneje el Request
+        $form->handleRequest($request);
+
+        // Si el formulario se ha enviado y es valido comprobamos el usuario
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($pagina);
+            try {
+                $em->flush();
+                $this->addFlash('success', 'Se actualizó la página de inicio correctamente');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'No se pudo actualizar la página de inicio');
+            }
+        }
+
+        return $this->render('editar_inicio.html.twig', array(
+            'form' => $form->createView(),
+            'pagina' => $pagina
+        ));
     }
 
     /**

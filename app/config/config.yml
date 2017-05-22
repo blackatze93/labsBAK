@@ -84,12 +84,53 @@ vich_uploader:
             upload_destination: '%kernel.root_dir%/../web/%app.path.documentos%'
 
 ivory_ck_editor:
+    jquery: true
     input_sync: true
     default_config: simple_config
     configs:
+        full_config:
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            toolbar:
+                - { name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] }
+                - { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] }
+                - { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] }
+                - { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] }
+                - { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv', '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] }
+                - { name: 'links', items : [ 'Link','Unlink','Anchor' ] }
+                - { name: 'insert', items : [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] }
+                - { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] }
+                - { name: 'colors', items : [ 'TextColor','BGColor' ] }
+                - { name: 'tools', items : [ 'Maximize', 'ShowBlocks' ] }
+
         simple_config:
             toolbar:
                 - { name: "styles", items: ['Bold', 'Italic', 'Strike', 'Link'] }
                 - { name: "lists", items: ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent'] }
                 - { name: "clipboard", items: ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo'] }
                 - { name: "advanced", items: ['Source'] }
+
+fm_elfinder:
+    assets_path: assets # default is /assets, this is where css/js elfinder files are
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        path: uploads
+#                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_allow: ['all']
+#                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
