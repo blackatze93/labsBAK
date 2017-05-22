@@ -10,13 +10,13 @@ easy_admin:
                     - { name: 'new', label: 'Crear Proyecto Curricular' }
                 sort: ['codigo', 'ASC']
                 fields:
-                    - 'codigo'
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'facultad'
 
             form:
                 fields:
-                    - 'codigo'
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'facultad'
 
