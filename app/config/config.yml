@@ -87,10 +87,15 @@ ivory_ck_editor:
     jquery: true
     input_sync: true
     default_config: simple_config
+    plugins:
+        wordcount:
+            path:     "plugins/wordcount/"
+            filename: "plugin.js"
     configs:
         full_config:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+            extraPlugins: "wordcount"
             toolbar:
                 - { name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] }
                 - { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] }
@@ -104,11 +109,14 @@ ivory_ck_editor:
                 - { name: 'tools', items : [ 'Maximize', 'ShowBlocks' ] }
 
         simple_config:
+            extraPlugins: "wordcount"
             toolbar:
                 - { name: "styles", items: ['Bold', 'Italic', 'Strike', 'Link'] }
                 - { name: "lists", items: ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent'] }
                 - { name: "clipboard", items: ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo'] }
                 - { name: "advanced", items: ['Source'] }
+
+
 
 fm_elfinder:
     assets_path: assets # default is /assets, this is where css/js elfinder files are
