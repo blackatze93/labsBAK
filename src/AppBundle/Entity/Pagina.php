@@ -27,9 +27,7 @@ class Pagina
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=12750, nullable=false)
-     * @Assert\Length(max="12750")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text", nullable=true)
      */
     private $contenido;
 
