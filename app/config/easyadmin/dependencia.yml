@@ -11,7 +11,11 @@ easy_admin:
                     - 'nombre'
                     - 'facultad'
 
+            edit:
+                title: 'Modificar Dependencia'
+
             show:
+                title: 'Dependencia'
                 fields:
                     - 'codigo'
                     - 'nombre'

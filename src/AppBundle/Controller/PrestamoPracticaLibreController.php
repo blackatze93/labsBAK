@@ -42,11 +42,19 @@ class PrestamoPracticaLibreController extends BaseAdminController
         }
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preRemoveEntity($entity)
     {
         $entity->getEquipo()->setPrestado(false);
     }
 
+    /**
+     * @param object $entity
+     * @param array $entityProperties
+     * @return \Symfony\Component\Form\Form
+     */
     protected function createEditForm($entity, array $entityProperties)
     {
         $builder = parent::createEditForm($entity, $entityProperties);
@@ -70,6 +78,11 @@ class PrestamoPracticaLibreController extends BaseAdminController
         return $builder;
     }
 
+    /**
+     * @param object $entity
+     * @param string $view
+     * @return \Symfony\Component\Form\FormBuilder
+     */
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);

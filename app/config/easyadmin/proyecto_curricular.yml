@@ -27,4 +27,8 @@ easy_admin:
                 title: 'Modificar Proyecto Curricular'
 
             show:
-                title: 'Proyecto Curricular (#%%entity_id%%)'
+                title: 'Proyecto Curricular'
+                fields:
+                    - 'codigo'
+                    - 'nombre'
+                    - 'facultad'

@@ -217,7 +217,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function setNombre($nombre)
     {
-        $this->nombre = $nombre;
+        $this->nombre = mb_convert_case($nombre, MB_CASE_TITLE, "UTF-8");
     }
 
     /**
@@ -233,7 +233,7 @@ class Usuario implements AdvancedUserInterface
      */
     public function setApellido($apellido)
     {
-        $this->apellido = $apellido;
+        $this->apellido = mb_convert_case($apellido, MB_CASE_TITLE, "UTF-8");
     }
 
     /**

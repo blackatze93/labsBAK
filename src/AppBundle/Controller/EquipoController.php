@@ -7,7 +7,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 use AppBundle\Entity\Lugar;
 
 /**
@@ -15,6 +15,9 @@ use AppBundle\Entity\Lugar;
  */
 class EquipoController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function preRemoveEntity($entity)
     {
         foreach ($entity->getElementos() as $elemento) {
@@ -22,6 +25,11 @@ class EquipoController extends BaseAdminController
         }
     }
 
+    /**
+     * @param object $entity
+     * @param string $view
+     * @return \Symfony\Component\Form\FormBuilder
+     */
     protected function createEntityFormBuilder($entity, $view)
     {
         $builder = parent::createEntityFormBuilder($entity, $view);

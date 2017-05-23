@@ -36,6 +36,9 @@ class PrestamoElementoController extends BaseAdminController
         }
     }
 
+    /**
+     * @param object $entity
+     */
     protected function preRemoveEntity($entity)
     {
         $entity->getElemento()->setPrestado(false);

@@ -21,6 +21,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class SolicitudSalaController extends BaseAdminController
 {
+    /**
+     * @param object $entity
+     */
     protected function preUpdateEntity($entity)
     {
         if ($entity->getEstado() == 'Aprobada') {
@@ -34,6 +37,8 @@ class SolicitudSalaController extends BaseAdminController
      *
      * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_FUNCIONARIO')")
      * @Route("/solicitud_sala/", name="solicitud_sala")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function solicitudSalaAction(Request $request)
     {

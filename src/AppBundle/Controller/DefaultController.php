@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -39,8 +39,8 @@ class DefaultController extends Controller
      *
      * @Route("admin/editar_inicio/", name="editar_inicio")
      *
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
-     *
      * @internal param Request $request
      */
     public function editarInicioAction(Request $request)

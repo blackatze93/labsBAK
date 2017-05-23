@@ -47,8 +47,9 @@ class Lugar
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=false)
      * @Assert\Length(max="100")
+     * @Assert\NotBlank()
      */
     private $descripcion;
 
@@ -118,7 +119,7 @@ class Lugar
      */
     public function setNombre($nombre)
     {
-        $this->nombre = $nombre;
+        $this->nombre = mb_convert_case($nombre, MB_CASE_TITLE, "UTF-8");
     }
 
     /**
