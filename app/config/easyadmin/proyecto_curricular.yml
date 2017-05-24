@@ -8,15 +8,14 @@ easy_admin:
                 actions:
                     - { name: 'show', icon: 'eye' }
                     - { name: 'new', label: 'Crear Proyecto Curricular' }
-                sort: ['codigo', 'ASC']
                 fields:
-                    - { property: 'codigo', type: 'text' }
+                    - { property: 'id', type: 'text' }
                     - 'nombre'
                     - 'facultad'
 
             form:
                 fields:
-                    - { property: 'codigo', type: 'text' }
+                    - { property: 'id', type: 'integer' }
                     - 'nombre'
                     - 'facultad'
 
@@ -29,6 +28,6 @@ easy_admin:
             show:
                 title: 'Proyecto Curricular'
                 fields:
-                    - 'codigo'
+                    - 'id'
                     - 'nombre'
                     - 'facultad'

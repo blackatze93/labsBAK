@@ -19,20 +19,12 @@ class ProyectoCurricular
     /**
      * @var int
      *
-     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(type="integer", unique=true)
      * @Assert\NotBlank()
      * @Assert\Range(min="0")
      */
-    private $codigo;
+    private $id;
 
     /**
      * @var string
@@ -61,19 +53,11 @@ class ProyectoCurricular
     }
 
     /**
-     * @return int
+     * @param int $id
      */
-    public function getCodigo()
+    public function setId($id)
     {
-        return $this->codigo;
-    }
-
-    /**
-     * @param int $codigo
-     */
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
+        $this->id = $id;
     }
 
     /**

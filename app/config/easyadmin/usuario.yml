@@ -6,6 +6,7 @@ easy_admin:
             list:
                 title: 'Usuarios'
                 fields:
+                    - { property: 'tipoDocumento' }
                     - { property: 'documento', type: 'text' }
                     - { property: 'codigo', type: 'text' }
                     - 'nombre'
@@ -15,8 +16,10 @@ easy_admin:
                     - 'activo'
                     - 'fechaCreacion'
                 sort: 'fechaCreacion'
+
             show:
                 fields:
+                    - { property: 'tipoDocumento' }
                     - { property: 'documento', type: 'text' }
                     - { property: 'codigo', type: 'text' }
                     - 'nombre'
@@ -31,8 +34,9 @@ easy_admin:
                     - 'fechaCreacion'
             form:
                 fields:
-                    - 'documento'
-                    - 'codigo'
+                    - { property: 'tipoDocumento', type: 'choice', type_options: { choices:  { 'C.C.': 'Cédula de Ciudadanía', 'T.I.': 'Tarjeta de Identidad', 'C.E.': 'Cédula de Extranjería' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'documento', type: 'integer' }
+                    - { property: 'codigo', type: 'integer' }
                     - 'nombre'
                     - 'apellido'
                     - 'email'

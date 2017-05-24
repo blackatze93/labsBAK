@@ -28,6 +28,15 @@ class Usuario implements AdvancedUserInterface
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="5")
+     */
+    private $tipoDocumento;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="string", unique=true, length=20)
@@ -170,6 +179,22 @@ class Usuario implements AdvancedUserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipoDocumento()
+    {
+        return $this->tipoDocumento;
+    }
+
+    /**
+     * @param string $tipoDocumento
+     */
+    public function setTipoDocumento($tipoDocumento)
+    {
+        $this->tipoDocumento = $tipoDocumento;
     }
 
     /**
