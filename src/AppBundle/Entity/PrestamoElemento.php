@@ -42,8 +42,7 @@ class PrestamoElemento
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
 

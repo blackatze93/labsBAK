@@ -14,7 +14,7 @@ easy_admin:
                     - { property: 'elemento' }
                     - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
                     - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución' }
-                    - { property: 'observaciones' }
+                    - { property: 'observaciones', type: 'raw' }
                     - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
                 sort: 'fechaPrestamo'
 
@@ -25,7 +25,7 @@ easy_admin:
                     - { property: 'elemento' }
                     - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
                     - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución' }
-                    - { property: 'observaciones' }
+                    - { property: 'observaciones', type: 'raw' }
                     - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
 
             form:
@@ -34,7 +34,7 @@ easy_admin:
                     - { property: 'elemento', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Elemento' } }
                     - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario' } }
                     - { property: 'fechaDevolucion', type: 'datetime', label: 'Fecha de devolución', type_options: { widget: 'single_text', html5: false } }
-                    - { property: 'observaciones' }
+                    - { property: 'observaciones', type: 'ckeditor' }
 
             new:
                 title: 'Crear Préstamo Elemento'

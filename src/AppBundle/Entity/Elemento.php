@@ -37,11 +37,18 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=60)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=60, nullable=true)
      * @Assert\Length(max="60")
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100")
+     */
+    private $modelo;
 
     /**
      * @var string
@@ -87,11 +94,18 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=45, nullable=true)
      * @Assert\Length(max="45")
      */
     private $estado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=45, nullable=true)
+     * @Assert\Length(max="45")
+     */
+    private $tipo;
 
     /**
      * @var string
@@ -104,8 +118,7 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $observaciones;
 
@@ -140,6 +153,8 @@ class Elemento
     {
         $this->setActivo(true);
         $this->setPrestado(false);
+        $this->setTipoPrestamo('Nadie');
+        $this->setEstado('Bueno');
     }
 
     /**
@@ -193,6 +208,22 @@ class Elemento
     /**
      * @return string
      */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * @param string $modelo
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+    }
+
+    /**
+     * @return string
+     */
     public function getMarca()
     {
         return $this->marca;
@@ -204,6 +235,22 @@ class Elemento
     public function setMarca($marca)
     {
         $this->marca = $marca;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param string $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
     }
 
     /**

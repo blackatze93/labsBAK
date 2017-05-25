@@ -94,8 +94,7 @@ class Evento
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=1020, nullable=true)
-     * @Assert\Length(max="1020")
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
 

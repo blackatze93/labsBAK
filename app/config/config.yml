@@ -86,7 +86,7 @@ vich_uploader:
 ivory_ck_editor:
     jquery: true
     input_sync: true
-    default_config: simple_config
+    default_config: full_config
     plugins:
         wordcount:
             path:     "plugins/wordcount/"

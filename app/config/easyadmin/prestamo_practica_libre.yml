@@ -15,7 +15,7 @@ easy_admin:
                     - { property: 'equipo' }
                     - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
                     - { property: 'horaSalida', type: 'time', label: 'Hora de salida' }
-                    - { property: 'observaciones' }
+                    - { property: 'observaciones', type: 'raw' }
                     - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
                 sort: 'fechaPrestamo'
 
@@ -27,7 +27,7 @@ easy_admin:
                       - { property: 'equipo' }
                       - { property: 'usuarioSolicita', label: 'Usuario que solicita' }
                       - { property: 'horaSalida', type: 'time', label: 'Hora de salida' }
-                      - { property: 'observaciones' }
+                      - { property: 'observaciones', type: 'raw' }
                       - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
 
             new:
@@ -38,7 +38,7 @@ easy_admin:
                     - { property: 'lugar' }
                     - { property: 'equipo' }
                     - { property: 'usuarioSolicita', type: 'easyadmin_autocomplete', label: 'Usuario que solicita', type_options: { class: 'AppBundle\Entity\Usuario' } }
-                    - { property: 'observaciones' }
+                    - { property: 'observaciones', type: 'ckeditor' }
 
             edit:
                 title: 'Modificar Préstamo Práctica Libre'

@@ -84,8 +84,7 @@ class SolicitudSala
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1020, nullable=true)
-     * @Assert\Length(max="1020")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $observaciones;
 

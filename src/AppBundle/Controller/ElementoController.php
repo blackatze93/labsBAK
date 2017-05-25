@@ -2,15 +2,66 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Elemento;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ElementoController.
  */
 class ElementoController extends BaseAdminController
 {
+    /**
+     * @Route("/elementos/", name="elementos")
+     *
+     * @return Response
+     */
+    public function elementosAction() {
+        $em = $this->getDoctrine()->getManager();
+        $conn = $em->getConnection();
+        $sql = "SELECT * FROM elementoslaboratorio";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+
+        var_dump($result[0]);
+
+        $lugarRepository = $em->getRepository('AppBundle:Lugar');
+        $equipoRepository = $em->getRepository('AppBundle:Equipo');
+
+        $lugar = $lugarRepository->findOneBy(array(
+            'nombre' => $result[0]['Ubicacion_EL']
+        ));
+        $equipo = $equipoRepository->findOneBy(array(
+            'nombre' => $result[0]['RelacionEquipo_EL']
+        ));
+
+        $elemento = new Elemento();
+        $elemento->setSerial($result[0]['Serial_EL']);
+        $elemento->setPlaca($result[0]['Plaqueta_EL']);
+        $elemento->setLugar($lugar);
+        $elemento->setEquipo($equipo);
+        // modelo
+        $elemento->setMarca($result[0]['Marca_EL']);
+        $elemento->setDescripcion($result[0]['Descripcion_EL']);
+        // tipo
+        // fechaingreso
+        $elemento->setEstado($result[0]['Estado_EL']);
+        $elemento->setObservaciones($result[0]['Observaciones_EL']);
+
+        $elemento->setNombre($result[0]['']);
+
+        $em->persist($elemento);
+        $em->flush();
+        var_dump($elemento);
+
+        return new Response("correcto");
+    }
+
     /**
      * @return JsonResponse
      */

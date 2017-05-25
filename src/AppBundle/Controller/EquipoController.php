@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipo;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
@@ -34,13 +35,14 @@ class EquipoController extends BaseAdminController
     {
         $builder = parent::createEntityFormBuilder($entity, $view);
 
-        $formModifier = function (FormInterface $form, Lugar $lugar = null) {
+        $formModifier = function (FormInterface $form, Lugar $lugar = null, Equipo $equipo = null) {
             $em = $this->getDoctrine()->getManager()->getRepository('AppBundle:Elemento');
 
             $elementos = null === $lugar ? array() : $em->findBy(
                 array(
                     'lugar' => $lugar,
                     'activo' => true,
+                    'equipo' => array(null, $equipo),
                 ),
                 array(
                     'nombre' => 'ASC',
@@ -67,7 +69,7 @@ class EquipoController extends BaseAdminController
                 // this would be your entity, i.e. SportMeetup
                 $data = $event->getData();
 
-                $formModifier($event->getForm(), $data->getLugar());
+                $formModifier($event->getForm(), $data->getLugar(), $data);
             }
         );
 

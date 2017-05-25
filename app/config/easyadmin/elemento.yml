@@ -10,10 +10,10 @@ easy_admin:
                     - 'placa'
                     - 'nombre'
                     - 'serial'
-                    - { property: 'fechaIngreso', type: 'date' }
                     - 'estado'
                     - 'tipoPrestamo'
                     - 'lugar'
+                    - 'equipo'
                     - { property: 'prestado', type: 'boolean' }
                     - { property: 'activo', type: 'boolean' }
                 sort: 'placa'
@@ -28,7 +28,7 @@ easy_admin:
                     - { property: 'fechaIngreso', type: 'date' }
                     - 'estado'
                     - 'tipoPrestamo'
-                    - 'observaciones'
+                    - { property: 'observaciones', type: 'raw' }
                     - 'lugar'
                     - 'prestado'
                     - 'activo'
@@ -43,8 +43,8 @@ easy_admin:
                     - 'serial'
                     - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' } } }
                     - { property: 'fechaIngreso', type: 'date', type_options: { widget: 'single_text', html5: false } }
-                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Malo': 'Malo', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'tipoPrestamo', type: 'choice', type_options: { choices:  {  'Nadie': 'Nadie', 'Funcionarios': 'Funcionarios', 'Todos': 'Todos' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
-                    - 'observaciones'
+                    - { property: 'observaciones', type: 'ckeditor' }
                     - { property: 'activo', type: 'checkbox' }
