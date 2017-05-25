@@ -9,6 +9,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-group">
+                    {{ form_label(form.tipoDocumento, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.tipoDocumento, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
+                        <span class="text-danger">{{ form_errors(form.tipoDocumento) }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
                     {{ form_label(form.documento, null, {'label_attr' : {'class' : 'col-sm-2 control-label'}}) }}
                     <div class="col-sm-10">
                         {{ form_widget(form.documento, {'attr' : {'class' : 'form-control', 'readonly' : 'readonly'}}) }}
@@ -122,6 +131,11 @@
     <script>
         // Funciones para hacer los selects y el checkbox readonly
         $(function(){
+            $('#usuario_tipoDocumento').each(function(){
+                $(this)
+                    .hide()
+                    .parent().append('<input type="text" class="form-control" value="' + $(this).find(":selected").text() + '" readonly>')
+            });
             $('#usuario_rol').each(function(){
                 $(this)
                     .hide()

@@ -122,7 +122,7 @@ class DefaultController extends Controller
                 $pazSalvo = 'no';
 
                 // Usamos una variable bandera para saber si el usuario esta en paz y salvo
-                if ($usuario->getEstado() == 'Paz y Salvo' && $usuario->isActivo()) {
+                if ($usuario->getEstado() == 'Paz y Salvo') {
                     $pazSalvo = 'si';
                 }
 

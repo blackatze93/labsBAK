@@ -25,6 +25,13 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('tipoDocumento', ChoiceType::class, array(
+                'choices' => array(
+                    'C.C.' => 'Cédula de Ciudadanía',
+                    'T.I.' => 'Tarjeta de Identidad',
+                    'C.E.' => 'Cédula de Extranjería'
+                ),
+            ))
             ->add('documento')
             ->add('codigo')
             ->add('nombre')

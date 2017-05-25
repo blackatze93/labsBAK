@@ -6,7 +6,7 @@ function notificacion(text, type) {
 }
 
 Noty.overrideDefaults({
-    layout   : 'bottomCenter',
-    theme    : 'mint',
+    layout   : 'topCenter',
+    theme    : 'sunset',
     timeout     : 5000
 });
