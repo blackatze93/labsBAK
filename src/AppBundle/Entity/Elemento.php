@@ -28,19 +28,10 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=45, nullable=true, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="45")
+     * @ORM\Column(type="string", length=100, nullable=true, unique=true)
+     * @Assert\Length(max="100")
      */
     private $placa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=60, nullable=true)
-     * @Assert\Length(max="60")
-     */
-    private $nombre;
 
     /**
      * @var string
@@ -53,24 +44,24 @@ class Elemento
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=60, nullable=true)
-     * @Assert\Length(max="60")
+     * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100")
      */
     private $marca;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max="255")
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(max="1000")
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=60, nullable=true, unique=true)
-     * @Assert\Length(max="60")
+     * @ORM\Column(type="string", length=100, nullable=true, unique=true)
+     * @Assert\Length(max="100")
      */
     private $serial;
 
@@ -162,7 +153,7 @@ class Elemento
      */
     public function __toString()
     {
-        return 'Nombre: '.$this->getNombre().', Placa: '.$this->getPlaca();
+        return 'Tipo: '.$this->getTipo().', Placa: '.$this->getPlaca();
     }
 
     /**
@@ -187,22 +178,6 @@ class Elemento
     public function setPlaca($placa)
     {
         $this->placa = $placa;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * @param string $nombre
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
     }
 
     /**

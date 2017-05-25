@@ -25,17 +25,15 @@ class Incidencia
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1020)
+     * @ORM\Column(type="text")
      * @Assert\NotBlank()
-     * @Assert\Length(max="1020")
      */
     private $descripcionProblema;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1020, nullable=true)
-     * @Assert\Length(max="1020")
+     * @ORM\Column(type="text")
      */
     private $descripcionSolucion;
 

@@ -27,9 +27,6 @@ class ElementoController extends BaseAdminController
         $stmt->execute();
         $result = $stmt->fetchAll();
 
-
-        var_dump($result[0]);
-
         $lugarRepository = $em->getRepository('AppBundle:Lugar');
         $equipoRepository = $em->getRepository('AppBundle:Equipo');
 
@@ -45,19 +42,15 @@ class ElementoController extends BaseAdminController
         $elemento->setPlaca($result[0]['Plaqueta_EL']);
         $elemento->setLugar($lugar);
         $elemento->setEquipo($equipo);
-        // modelo
+        $elemento->setModelo($result[0]['Modelo_EL']);
         $elemento->setMarca($result[0]['Marca_EL']);
         $elemento->setDescripcion($result[0]['Descripcion_EL']);
-        // tipo
-        // fechaingreso
+        $elemento->setTipo($result[0]['Tipo_EL']);
         $elemento->setEstado($result[0]['Estado_EL']);
         $elemento->setObservaciones($result[0]['Observaciones_EL']);
 
-        $elemento->setNombre($result[0]['']);
-
         $em->persist($elemento);
         $em->flush();
-        var_dump($elemento);
 
         return new Response("correcto");
     }
