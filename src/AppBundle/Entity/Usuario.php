@@ -163,6 +163,7 @@ class Usuario implements AdvancedUserInterface
     public function __construct()
     {
         $this->fechaCreacion = new \DateTime();
+        $this->activo = true;
     }
 
     /**
