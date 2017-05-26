@@ -106,6 +106,7 @@ class PrestamoPracticaLibreController extends BaseAdminController
                 array(
                     'lugar' => $lugar,
                     'prestado' => false,
+                    'activo' => true,
                 ),
                 array(
                     'nombre' => 'ASC',

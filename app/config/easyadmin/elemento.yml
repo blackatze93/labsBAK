@@ -10,6 +10,7 @@ easy_admin:
                     - 'placa'
                     - 'serial'
                     - 'estado'
+                    - 'tipo'
                     - 'tipoPrestamo'
                     - 'lugar'
                     - 'equipo'
@@ -24,13 +25,13 @@ easy_admin:
                     - 'marca'
                     - 'descripcion'
                     - 'serial'
+                    - 'tipo'
                     - 'lugar'
+                    - 'equipo'
                     - { property: 'fechaIngreso', type: 'date' }
                     - 'estado'
-                    - 'tipo'
                     - 'tipoPrestamo'
                     - { property: 'observaciones', type: 'raw' }
-                    - 'equipo'
                     - 'prestado'
                     - 'activo'
 
@@ -42,10 +43,10 @@ easy_admin:
                     - 'descripcion'
                     - 'serial'
                     - { property: 'lugar', type: 'entity', type_options: { class: 'AppBundle\Entity\Lugar', attr: { 'data-widget': 'select2' } } }
+                    - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
                     - { property: 'fechaIngreso', type: 'date', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Bueno': 'Bueno', 'Mantenimiento': 'Mantenimiento', Dañado': 'Dañado', 'Malo': 'Malo', 'Otro': 'Otro' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'tipo', type_options: { attr: { placeholder: 'CPU, Teclado, Monitor' } } }
                     - { property: 'tipoPrestamo', type: 'choice', type_options: { choices:  {  'Nadie': 'Nadie', 'Funcionarios': 'Funcionarios', 'Todos': 'Todos' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'equipo', type: 'easyadmin_autocomplete', type_options: { class: 'AppBundle\Entity\Equipo' } }
                     - { property: 'observaciones', type: 'ckeditor' }
                     - { property: 'activo', type: 'checkbox' }

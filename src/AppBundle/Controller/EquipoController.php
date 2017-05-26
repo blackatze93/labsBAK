@@ -45,7 +45,8 @@ class EquipoController extends BaseAdminController
                     'equipo' => array(null, $equipo),
                 ),
                 array(
-                    'nombre' => 'ASC',
+                    'tipo' => 'ASC',
+                    'placa' => 'ASC',
                 )
             );
 

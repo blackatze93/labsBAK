@@ -2,11 +2,15 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Elemento;
+use AppBundle\Entity\Lugar;
+use Doctrine\ORM\EntityRepository;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Class ElementoController.
@@ -14,45 +18,63 @@ use Symfony\Component\HttpFoundation\Response;
 class ElementoController extends BaseAdminController
 {
     /**
-     * @Route("/elementos/", name="elementos")
-     *
-     * @return Response
+     * @param object $entity
+     * @param string $view
+     * @return \Symfony\Component\Form\FormBuilder
      */
-    public function elementosAction() {
-        $em = $this->getDoctrine()->getManager();
-        $conn = $em->getConnection();
-        $sql = "SELECT * FROM elementoslaboratorio";
+    protected function createEntityFormBuilder($entity, $view)
+    {
+        $builder = parent::createEntityFormBuilder($entity, $view);
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+        $formModifier = function (FormInterface $form, Lugar $lugar = null) {
+            $em = $this->getDoctrine()->getManager()->getRepository('AppBundle:Equipo');
 
-        $lugarRepository = $em->getRepository('AppBundle:Lugar');
-        $equipoRepository = $em->getRepository('AppBundle:Equipo');
+            $equipos = null === $lugar ? array() : $em->findBy(
+                array(
+                    'lugar' => $lugar,
+                ),
+                array(
+                    'nombre' => 'ASC',
+                )
+            );
 
-        $lugar = $lugarRepository->findOneBy(array(
-            'nombre' => $result[0]['Ubicacion_EL']
-        ));
-        $equipo = $equipoRepository->findOneBy(array(
-            'nombre' => $result[0]['RelacionEquipo_EL']
-        ));
+            $form->add('equipo', EntityType::class, array(
+                'class'       => 'AppBundle\Entity\Equipo',
+                'placeholder' => 'Ninguno',
+                'choices'     => $equipos,
+                'required' => false,
+                'attr' => array(
+                    'data-widget' => 'select2'
+                ),
+            ));
+        };
 
-        $elemento = new Elemento();
-        $elemento->setSerial($result[0]['Serial_EL']);
-        $elemento->setPlaca($result[0]['Plaqueta_EL']);
-        $elemento->setLugar($lugar);
-        $elemento->setEquipo($equipo);
-        $elemento->setModelo($result[0]['Modelo_EL']);
-        $elemento->setMarca($result[0]['Marca_EL']);
-        $elemento->setDescripcion($result[0]['Descripcion_EL']);
-        $elemento->setTipo($result[0]['Tipo_EL']);
-        $elemento->setEstado($result[0]['Estado_EL']);
-        $elemento->setObservaciones($result[0]['Observaciones_EL']);
+        // Listener para edición
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) use ($formModifier) {
+                // this would be your entity, i.e. SportMeetup
+                $data = $event->getData();
 
-        $em->persist($elemento);
-        $em->flush();
+                $formModifier($event->getForm(), $data->getLugar());
+            }
+        );
 
-        return new Response("correcto");
+        // Listener para nuevo
+        $builder->get('lugar')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier) {
+                // It's important here to fetch $event->getForm()->getData(), as
+                // $event->getData() will get you the client data (that is, the ID)
+                $lugar = $event->getForm()->getData();
+
+                // since we've added the listener to the child, we'll have to pass on
+                // the parent to the callback functions!
+                $formModifier($event->getForm()->getParent(), $lugar);
+            }
+        );
+
+        return $builder;
     }
 
     /**
