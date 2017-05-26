@@ -14,9 +14,7 @@ easy_admin:
                     - 'tipoPrestamo'
                     - 'lugar'
                     - 'equipo'
-                    - { property: 'prestado', type: 'boolean' }
-                    - { property: 'activo', type: 'boolean' }
-                sort: 'placa'
+                sort: 'lugar'
 
             show:
                 fields:

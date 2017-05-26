@@ -107,7 +107,7 @@ class ElementoController extends BaseAdminController
      *
      * @Route("/elementos_prestamo/", name="elementos_prestamo")
      */
-    public function objetosEncontradosAction()
+    public function elementosPrestamoAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -117,7 +117,7 @@ class ElementoController extends BaseAdminController
                 'prestado' => false,
                 'tipoPrestamo' => 'Todos',
             ),
-            array('nombre' => 'ASC')
+            array('tipo' => 'ASC')
         );
 
         return $this->render('elementos_prestamo.html.twig', array(
