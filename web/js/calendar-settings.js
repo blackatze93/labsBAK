@@ -13,8 +13,15 @@ $(function () {
         allDaySlot: false,
         views: {
             timeline: {
-                resourceAreaWidth: '15%',
-                resourceLabelText: 'Lugares'
+                resourceAreaWidth: '10%',
+                resourceLabelText: 'Lugares',
+                slotWidth: 50
+            },
+            timelineMonth: {
+                slotWidth: 100
+            },
+            agenda: {
+                slotDuration: '01:00:00'
             }
         },
         // Agenda options
@@ -25,24 +32,23 @@ $(function () {
         // Clicking & Hovering
         navLinks: true,
         // Event Data options
-        eventSources: [
-            {
-                url: Routing.generate('fullcalendar_loader'),
-                type: 'POST',
-                // A way to add custom filters to your event listeners
-                data: {
-                    filter: 'my_custom_filter_param'
-                },
-                error: function() {
-                    //alert('There was an error while fetching Google Calendar!');
-                }
-            }
-        ],
+        eventSources: {
+            url: Routing.generate('fullcalendar_loader'),
+            type: 'POST'
+        },
         // Resource Data options
         resources: {
             url: Routing.generate('fullcalendar_lugares'),
             type: 'POST'
         },
+
+        eventClick: function(event) {
+            if (event.url) {
+                window.open(event.url);
+                return false;
+            }
+        },
+
         // Eventos
         eventRender: function(event, element) {
             var texto = '';
