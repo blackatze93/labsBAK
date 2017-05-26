@@ -22,6 +22,7 @@
     "fullcalendar": "^3.4.0",
     "fullcalendar-scheduler": "^1.6.2",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
-    "highcharts": "^5.0.12"
+    "highcharts": "^5.0.12",
+    "qtip2": "^2.2.1"
   }
 }

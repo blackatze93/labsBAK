@@ -64,16 +64,10 @@ $(function () {
             texto += '<br><b>Observaciones:</b> ';
             texto += event.observaciones ? event.observaciones : 'Ninguna';
 
-            var n = new Noty({
-                text        : texto,
-                type        : 'information',
-                layout      : 'center'
-            });
+            // texto += '<br><a style="color: white;" target="_blank" href="' + event.url + '"<b>Editar</b></a>';
 
-            $(element).mouseenter(function() {
-                n.show();
-            }).mouseleave(function () {
-                n.close(); // Close all notifications
+            element.qtip({
+                content: texto
             });
         }
     });
