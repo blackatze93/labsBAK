@@ -1,4 +1,24 @@
 $(function () {
+    var tooltip = $('<div/>').qtip({
+        id: 'fullcalendar',
+        prerender: true,
+        overwrite: true,
+        content: {
+            text: ' ',
+            title: {
+                button: true
+            }
+        },
+        position: {
+            target: 'event',
+            viewport: $('#fullcalendar'),
+        },
+        hide: false,
+        style: {
+            classes: 'qtip-bootstrap'
+        }
+    }).qtip('api');
+
     $('#calendar-holder').fullCalendar({
         locale: 'es',
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
@@ -44,14 +64,15 @@ $(function () {
 
         eventClick: function(event) {
             if (event.url) {
-                window.open(event.url);
                 return false;
             }
         },
 
         // Eventos
-        eventRender: function(event, element) {
+        eventMouseover: function(event, element) {
             var texto = '';
+
+            var titulo = '<b>' + event.tipo + '</b>';
 
             texto += '<b>Asignatura:</b> ';
             texto += event.asignatura ? event.asignatura : 'Ninguna';
@@ -59,16 +80,21 @@ $(function () {
             texto +='<br><b>Grupo:</b> ';
             texto += event.grupo ? event.grupo : 'Ninguno';
 
-            texto += '<br><b>Tipo:</b> ' + event.tipo;
-
             texto += '<br><b>Observaciones:</b> ';
             texto += event.observaciones ? event.observaciones : 'Ninguna';
 
-            // texto += '<br><a style="color: white;" target="_blank" href="' + event.url + '"<b>Editar</b></a>';
+            texto += event.url ? '<br><b>Edición: </b><a target="_blank" href="' + event.url + '"<b>Editar</b></a>' : '';
 
-            element.qtip({
-                content: texto
-            });
-        }
+            tooltip.set({
+                'content.text': texto,
+                'content.title' : titulo
+            }).reposition(element).show(element);
+
+        },
+
+        dayClick: function() { tooltip.hide(); },
+        eventResizeStart: function() { tooltip.hide(); },
+        eventDragStart: function() { tooltip.hide(); },
+        viewDisplay: function() { tooltip.hide(); }
     });
 });
