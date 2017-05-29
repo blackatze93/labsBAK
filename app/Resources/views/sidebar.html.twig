@@ -28,9 +28,9 @@
                     </a>
                 </li>
                 {% if is_granted('ROLE_DOCENTE') or is_granted('ROLE_FUNCIONARIO') %}
-                    <li class="{{ route == 'solicitud_sala' ? 'active' }}">
-                        <a href="{{ path('solicitud_sala') }}">
-                            <i class="fa fa-map-marker"></i><span>Solicitud de Sala</span>
+                    <li class="{{ route == 'mis_solicitudes' ? 'active' }}">
+                        <a href="{{ path('mis_solicitudes') }}">
+                            <i class="fa fa-map-marker"></i><span>Mis Solicitudes</span>
                         </a>
                     </li>
                 {% endif %}

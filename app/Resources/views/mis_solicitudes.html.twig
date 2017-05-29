@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_title %}Mis Solicitudes{% endblock %}
+{% block content_title %}Mis Solicitudes{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>Solicitudes de Sala</h4>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-primary" href="{{ path('solicitud_sala') }}" target="_blank">Crear solicitud</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora Inicial</th>
+                <th>Hora Final</th>
+                <th>Estado</th>
+                <th>Lugar</th>
+                <th>Fecha de Solicitud</th>
+                <th>Fecha de Respuesta</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for solicitudSala in solicitudesSala %}
+                <tr>
+                    <td>{{ solicitudSala.fecha|date('Y-m-d') }}</td>
+                    <td>{{ solicitudSala.horaInicio|date('H:i') }}</td>
+                    <td>{{ solicitudSala.horaFin|date('H:i') }}</td>
+                    <td>{{ solicitudSala.estado }}</td>
+                    <td>{{ solicitudSala.lugar  }}</td>
+                    <td>{{ solicitudSala.fechaSolicitud|date('Y-m-d H:i') }}</td>
+                    <td>{{ solicitudSala.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="table-responsive">
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>Solicitudes de Software</h4>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-primary" href="{{ path('solicitud_sala') }}" target="_blank">Crear solicitud</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora Inicial</th>
+                <th>Hora Final</th>
+                <th>Estado</th>
+                <th>Lugar</th>
+                <th>Fecha de Solicitud</th>
+                <th>Fecha de Respuesta</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for solicitudSala in solicitudesSala %}
+                <tr>
+                    <td>{{ solicitudSala.fecha|date('Y-m-d') }}</td>
+                    <td>{{ solicitudSala.horaInicio|date('H:i') }}</td>
+                    <td>{{ solicitudSala.horaFin|date('H:i') }}</td>
+                    <td>{{ solicitudSala.estado }}</td>
+                    <td>{{ solicitudSala.lugar  }}</td>
+                    <td>{{ solicitudSala.fechaSolicitud|date('Y-m-d H:i') }}</td>
+                    <td>{{ solicitudSala.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

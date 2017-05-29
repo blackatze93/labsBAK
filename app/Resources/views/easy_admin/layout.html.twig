@@ -117,6 +117,7 @@
                     <div id="header-logo">
                         {% block header_logo %}
                             <a class="logo {{ easyadmin_config('site_name')|length > 14 ? 'logo-long' }}" title="{{ easyadmin_config('site_name')|striptags }}" href="{{ path('index') }}">
+                                <img src="{{ asset('img/escudo.png') }}">
                                 {{ easyadmin_config('site_name')|raw }}
                             </a>
                         {% endblock header_logo %}
