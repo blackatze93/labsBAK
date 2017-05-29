@@ -34,7 +34,11 @@
                     <td>{{ solicitudSala.estado }}</td>
                     <td>{{ solicitudSala.lugar  }}</td>
                     <td>{{ solicitudSala.fechaSolicitud|date('Y-m-d H:i') }}</td>
-                    <td>{{ solicitudSala.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                    {% if solicitudSala.fechaRespuesta %}
+                        <td>{{ solicitudSala.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
@@ -47,15 +51,13 @@
                 <h4>Solicitudes de Software</h4>
             </div>
             <div class="col-sm-2">
-                <a class="btn btn-primary" href="{{ path('solicitud_sala') }}" target="_blank">Crear solicitud</a>
+                <a class="btn btn-primary" href="{{ path('solicitud_software') }}" target="_blank">Crear solicitud</a>
             </div>
         </div>
         <table class="table">
             <thead>
             <tr>
-                <th>Fecha</th>
-                <th>Hora Inicial</th>
-                <th>Hora Final</th>
+                <th>Nombre</th>
                 <th>Estado</th>
                 <th>Lugar</th>
                 <th>Fecha de Solicitud</th>
@@ -63,15 +65,17 @@
             </tr>
             </thead>
             <tbody>
-            {% for solicitudSala in solicitudesSala %}
+            {% for solicitudSoftware in solicitudesSoftware %}
                 <tr>
-                    <td>{{ solicitudSala.fecha|date('Y-m-d') }}</td>
-                    <td>{{ solicitudSala.horaInicio|date('H:i') }}</td>
-                    <td>{{ solicitudSala.horaFin|date('H:i') }}</td>
-                    <td>{{ solicitudSala.estado }}</td>
-                    <td>{{ solicitudSala.lugar  }}</td>
-                    <td>{{ solicitudSala.fechaSolicitud|date('Y-m-d H:i') }}</td>
-                    <td>{{ solicitudSala.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                    <td>{{ solicitudSoftware.nombre }}</td>
+                    <td>{{ solicitudSoftware.estado }}</td>
+                    <td>{{ solicitudSoftware.lugar  }}</td>
+                    <td>{{ solicitudSoftware.fechaSolicitud|date('Y-m-d H:i') }}</td>
+                    {% if solicitudSoftware.fechaRespuesta %}
+                        <td>{{ solicitudSoftware.fechaRespuesta|date('Y-m-d H:i') }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

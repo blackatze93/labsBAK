@@ -161,9 +161,14 @@ class UsuarioController extends BaseAdminController
             'usuarioRealiza' => $this->getUser()
         ));
 
+        $solicitudesSoftware = $em->getRepository('AppBundle:SolicitudSoftware')->findBy(array(
+            'usuarioRealiza' => $this->getUser()
+        ));
+
 
         return $this->render('mis_solicitudes.html.twig', array(
-            'solicitudesSala' => $solicitudesSala
+            'solicitudesSala' => $solicitudesSala,
+            'solicitudesSoftware' => $solicitudesSoftware
         ));
     }
 

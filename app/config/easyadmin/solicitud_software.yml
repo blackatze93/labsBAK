@@ -1,0 +1,38 @@
+easy_admin:
+    entities:
+        SolicitudSoftware:
+            class: AppBundle\Entity\SolicitudSoftware
+            controller: AppBundle\Controller\SolicitudSoftwareController
+            disabled_actions: ['new']
+
+            list:
+                title: 'Solicitudes de Software'
+                fields:
+                    - { property: 'nombre' }
+                    - { property: 'fechaSolicitud', type: 'datetime', label: 'Fecha de solicitud' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+                    - { property: 'estado' }
+                    - { property: 'fechaRespuesta', type: 'datetime', label: 'Fecha de respuesta' }
+                sort: 'fechaSolicitud'
+
+            show:
+                title: 'Solicitud de Software'
+                fields:
+                    - { property: 'nombre' }
+                    - { property: 'fechaSolicitud', type: 'datetime', label: 'Fecha de solicitud' }
+                    - { property: 'estado' }
+                    - { property: 'lugar' }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza' }
+                    - { property: 'observaciones', type: 'raw' }
+                    - { property: 'fechaRespuesta', type: 'datetime', label: 'Fecha de respuesta' }
+                    - { property: 'usuarioResponde', label: 'Usuario que responde' }
+
+            edit:
+                title: 'Modificar Solicitud de Software'
+                fields:
+                    - { property: 'nombre' }
+                    - { property: 'fechaSolicitud', type: 'datetime', label: 'Fecha de solicitud', type_options: { widget: 'single_text', disabled: true } }
+                    - { property: 'estado', type: 'choice', type_options: { choices:  { 'Pendiente': 'Pendiente', 'Aprobada': 'Aprobada' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'lugar',  type_options: { disabled: true } }
+                    - { property: 'usuarioRealiza', label: 'Usuario que realiza', type_options: { disabled: true } }
+                    - { property: 'observaciones', type: 'ckeditor', type_options: { disabled: true } }

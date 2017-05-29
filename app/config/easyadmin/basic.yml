@@ -28,7 +28,8 @@ easy_admin:
               icon: 'calendar'
               children:
                 - { entity: 'Evento', icon: 'calendar-o', label: 'Eventos' }
-                - { entity: 'SolicitudSala', icon: 'calendar-check-o', label: 'Solicitudes' }
+                - { entity: 'SolicitudSala', icon: 'calendar-check-o', label: 'Solicitudes de Sala' }
+                - { entity: 'SolicitudSoftware', icon: 'windows', label: 'Solicitudes de Software' }
 #            - { entity: 'PrestamoSemestral', icon: 'calendar-check-o', label: 'PrestamoSemestral' }
 
             - label: 'Inventario'
