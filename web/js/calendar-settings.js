@@ -10,8 +10,14 @@ $(function () {
             }
         },
         position: {
+            my: 'bottom center',
+            at: 'top center',
             target: 'event',
             viewport: $('#fullcalendar'),
+            adjust: {
+                mouse: false,
+                scroll: false
+            }
         },
         hide: false,
         style: {
