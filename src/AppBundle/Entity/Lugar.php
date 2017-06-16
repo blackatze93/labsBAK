@@ -119,7 +119,7 @@ class Lugar
      */
     public function setNombre($nombre)
     {
-        $this->nombre = mb_convert_case($nombre, MB_CASE_TITLE, "UTF-8");
+        $this->nombre = mb_convert_case($nombre, MB_CASE_TITLE, 'UTF-8');
     }
 
     /**

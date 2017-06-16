@@ -150,7 +150,9 @@ class UsuarioController extends BaseAdminController
      *
      * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_FUNCIONARIO')")
      * @Route("/mis_solicitudes/", name="mis_solicitudes")
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function misSolicitudesAction(Request $request)
@@ -158,17 +160,16 @@ class UsuarioController extends BaseAdminController
         $em = $this->getDoctrine()->getManager();
 
         $solicitudesSala = $em->getRepository('AppBundle:SolicitudSala')->findBy(array(
-            'usuarioRealiza' => $this->getUser()
+            'usuarioRealiza' => $this->getUser(),
         ));
 
         $solicitudesSoftware = $em->getRepository('AppBundle:SolicitudSoftware')->findBy(array(
-            'usuarioRealiza' => $this->getUser()
+            'usuarioRealiza' => $this->getUser(),
         ));
-
 
         return $this->render('mis_solicitudes.html.twig', array(
             'solicitudesSala' => $solicitudesSala,
-            'solicitudesSoftware' => $solicitudesSoftware
+            'solicitudesSoftware' => $solicitudesSoftware,
         ));
     }
 

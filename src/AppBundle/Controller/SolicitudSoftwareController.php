@@ -2,16 +2,13 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Evento;
 use AppBundle\Entity\SolicitudSoftware;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Doctrine\ORM\EntityRepository;
@@ -37,7 +34,9 @@ class SolicitudSoftwareController extends BaseAdminController
      *
      * @Security("has_role('ROLE_DOCENTE') or has_role('ROLE_FUNCIONARIO')")
      * @Route("/solicitud_software/", name="solicitud_software")
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function solicitudSoftwareAction(Request $request)

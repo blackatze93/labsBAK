@@ -8,7 +8,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-
 use AppBundle\Entity\Lugar;
 
 /**
@@ -29,6 +28,7 @@ class EquipoController extends BaseAdminController
     /**
      * @param object $entity
      * @param string $view
+     *
      * @return \Symfony\Component\Form\FormBuilder
      */
     protected function createEntityFormBuilder($entity, $view)
@@ -51,15 +51,15 @@ class EquipoController extends BaseAdminController
             );
 
             $form->add('elementos', EntityType::class, array(
-                'class'       => 'AppBundle\Entity\Elemento',
+                'class' => 'AppBundle\Entity\Elemento',
                 'placeholder' => 'Ninguno',
                 'required' => false,
-                'choices'     => $elementos,
+                'choices' => $elementos,
                 'multiple' => true,
                 'by_reference' => false,
                 'attr' => array(
-                    'data-widget' => 'select2'
-                )
+                    'data-widget' => 'select2',
+                ),
             ));
         };
 
