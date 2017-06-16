@@ -29,7 +29,7 @@ class UsuarioType extends AbstractType
                 'choices' => array(
                     'C.C.' => 'Cédula de Ciudadanía',
                     'T.I.' => 'Tarjeta de Identidad',
-                    'C.E.' => 'Cédula de Extranjería'
+                    'C.E.' => 'Cédula de Extranjería',
                 ),
             ))
             ->add('documento')

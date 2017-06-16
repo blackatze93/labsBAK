@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Lugar;
-use Doctrine\ORM\EntityRepository;
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
@@ -20,6 +19,7 @@ class ElementoController extends BaseAdminController
     /**
      * @param object $entity
      * @param string $view
+     *
      * @return \Symfony\Component\Form\FormBuilder
      */
     protected function createEntityFormBuilder($entity, $view)
@@ -39,12 +39,12 @@ class ElementoController extends BaseAdminController
             );
 
             $form->add('equipo', EntityType::class, array(
-                'class'       => 'AppBundle\Entity\Equipo',
+                'class' => 'AppBundle\Entity\Equipo',
                 'placeholder' => 'Ninguno',
-                'choices'     => $equipos,
+                'choices' => $equipos,
                 'required' => false,
                 'attr' => array(
-                    'data-widget' => 'select2'
+                    'data-widget' => 'select2',
                 ),
             ));
         };

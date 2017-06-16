@@ -62,7 +62,9 @@ class ObjetoEncontradoController extends BaseAdminController
     /**
      * @Route("/encontrados_bulk_delete/", name="encontrados_bulk_delete")
      * @Method({"POST"})
+     *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function bulkDeleteAction(Request $request)

@@ -52,7 +52,8 @@ class PrestamoPracticaLibreController extends BaseAdminController
 
     /**
      * @param object $entity
-     * @param array $entityProperties
+     * @param array  $entityProperties
+     *
      * @return \Symfony\Component\Form\Form
      */
     protected function createEditForm($entity, array $entityProperties)
@@ -63,15 +64,15 @@ class PrestamoPracticaLibreController extends BaseAdminController
             'class' => 'AppBundle\Entity\Lugar',
             'disabled' => true,
             'attr' => array(
-                'data-widget' => 'select2'
+                'data-widget' => 'select2',
             ),
         ));
 
         $builder->add('equipo', EntityType::class, array(
-            'class'       => 'AppBundle\Entity\Equipo',
+            'class' => 'AppBundle\Entity\Equipo',
             'disabled' => true,
             'attr' => array(
-                'data-widget' => 'select2'
+                'data-widget' => 'select2',
             ),
         ));
 
@@ -81,6 +82,7 @@ class PrestamoPracticaLibreController extends BaseAdminController
     /**
      * @param object $entity
      * @param string $view
+     *
      * @return \Symfony\Component\Form\FormBuilder
      */
     protected function createEntityFormBuilder($entity, $view)
@@ -91,7 +93,7 @@ class PrestamoPracticaLibreController extends BaseAdminController
             'class' => 'AppBundle\Entity\Lugar',
             'placeholder' => 'Ninguno',
             'attr' => array(
-                'data-widget' => 'select2'
+                'data-widget' => 'select2',
             ),
             'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('lugar')
@@ -114,11 +116,11 @@ class PrestamoPracticaLibreController extends BaseAdminController
             );
 
             $form->add('equipo', EntityType::class, array(
-                'class'       => 'AppBundle\Entity\Equipo',
+                'class' => 'AppBundle\Entity\Equipo',
                 'placeholder' => 'Ninguno',
-                'choices'     => $equipos,
+                'choices' => $equipos,
                 'attr' => array(
-                    'data-widget' => 'select2'
+                    'data-widget' => 'select2',
                 ),
             ));
         };

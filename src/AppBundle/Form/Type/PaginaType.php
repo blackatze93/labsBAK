@@ -10,8 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class PaginaType
- * @package AppBundle\Form\Type
+ * Class PaginaType.
  */
 class PaginaType extends AbstractType
 {
@@ -26,7 +25,7 @@ class PaginaType extends AbstractType
         $builder
             ->add('contenido', CKEditorType::class, array(
                 'config_name' => 'full_config',
-                'required' => false
+                'required' => false,
             ))
             ->add('guardar', SubmitType::class)
             ->add('restablecer', ResetType::class)

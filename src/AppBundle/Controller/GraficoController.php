@@ -24,7 +24,9 @@ class GraficoController extends Controller
      * @Route("practica_libre_mes/", name="practica_libre_mes")
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @internal param Request $request
      */
     public function practicaLibreMesAction(Request $request)

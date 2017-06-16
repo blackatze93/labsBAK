@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -26,11 +25,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $pagina = $em->getRepository('AppBundle:Pagina')->findOneBy(array(
-            'id' => '1'
+            'id' => '1',
         ));
 
         return $this->render('index.html.twig', array(
-            'pagina' => $pagina
+            'pagina' => $pagina,
         ));
     }
 
@@ -40,14 +39,16 @@ class DefaultController extends Controller
      * @Route("admin/editar_inicio/", name="editar_inicio")
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @internal param Request $request
      */
     public function editarInicioAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $pagina = $em->getRepository('AppBundle:Pagina')->findOneBy(array(
-            'id' => '1'
+            'id' => '1',
         ));
 
         // Se genera el formulario que permite crear el paz y salvo
@@ -69,7 +70,7 @@ class DefaultController extends Controller
 
         return $this->render('editar_inicio.html.twig', array(
             'form' => $form->createView(),
-            'pagina' => $pagina
+            'pagina' => $pagina,
         ));
     }
 
