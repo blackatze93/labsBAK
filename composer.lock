@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d840cbb57ea531c39f0409f2a1a77bbd",
-    "content-hash": "40c61a4d243ecfeb5c023e62325682e1",
+    "hash": "ac53349fc462045b80a3b10490432eb7",
+    "content-hash": "8fd0ca9213a49eb5908cd26eb68b2716",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
@@ -1181,16 +1181,16 @@
         },
         {
             "name": "egeloen/ckeditor-bundle",
-            "version": "5.0.3",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "433b4bf1fe0731d3ad88ed27f359b20cc2e30d28"
+                "reference": "5b56a9812c484894b50edef95dd613929f1f3518"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/433b4bf1fe0731d3ad88ed27f359b20cc2e30d28",
-                "reference": "433b4bf1fe0731d3ad88ed27f359b20cc2e30d28",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/5b56a9812c484894b50edef95dd613929f1f3518",
+                "reference": "5b56a9812c484894b50edef95dd613929f1f3518",
                 "shasum": ""
             },
             "require": {
@@ -1201,9 +1201,12 @@
                 "symfony/framework-bundle": "^2.7|^3.0"
             },
             "require-dev": {
+                "composer/composer": "^1.0",
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^5.0",
+                "phpunit/phpunit": "^5.0|^6.0",
+                "sensio/distribution-bundle": "^3.0.12|^4.0|^5.0",
                 "symfony/asset": "^2.7|^3.0",
+                "symfony/console": "^2.7|^3.0",
                 "symfony/phpunit-bridge": "^2.7|^3.0",
                 "symfony/templating": "^2.7|^3.0",
                 "symfony/twig-bridge": "^2.7|^3.0",
@@ -1212,6 +1215,7 @@
             },
             "suggest": {
                 "egeloen/form-extra-bundle": "Allows to load CKEditor asynchronously",
+                "sensio/distribution-bundle": "Allows to install CKEditor via a script handler",
                 "symfony/asset": "Allows to rewrite/version assets",
                 "symfony/templating": "Allows to use PHP templates",
                 "symfony/twig-bridge": "Allows to use Twig templates",
@@ -1220,7 +1224,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "6.0-dev"
                 }
             },
             "autoload": {
@@ -1242,7 +1246,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2017-06-05 12:35:35"
+            "time": "2017-07-14 19:53:56"
         },
         {
             "name": "egeloen/json-builder",
@@ -2955,6 +2959,68 @@
             "time": "2017-01-02 19:04:26"
         },
         {
+            "name": "symfony/phpunit-bridge",
+            "version": "v3.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "c2c124b7f9de79f4a64dc011f041a3a2c768b913"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/c2c124b7f9de79f4a64dc011f041a3a2c768b913",
+                "reference": "c2c124b7f9de79f4a64dc011f041a3a2c768b913",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
+            "suggest": {
+                "ext-zip": "Zip support is required when using bin/simple-phpunit",
+                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
+            },
+            "bin": [
+                "bin/simple-phpunit"
+            ],
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Bridge\\PhpUnit\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PHPUnit Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2017-06-12 13:35:45"
+        },
+        {
             "name": "symfony/polyfill-intl-icu",
             "version": "v1.4.0",
             "source": {
@@ -3857,64 +3923,6 @@
             ],
             "description": "This bundle generates code for you",
             "time": "2017-07-18 07:57:44"
-        },
-        {
-            "name": "symfony/phpunit-bridge",
-            "version": "v2.8.26",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "34bfa4fe0439440323aab0982a77246b6b6dfd83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/34bfa4fe0439440323aab0982a77246b6b6dfd83",
-                "reference": "34bfa4fe0439440323aab0982a77246b6b6dfd83",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "conflict": {
-                "phpunit/phpunit": ">=6.0"
-            },
-            "suggest": {
-                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
-            },
-            "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Bridge\\PhpUnit\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony PHPUnit Bridge",
-            "homepage": "https://symfony.com",
-            "time": "2017-05-21 09:46:38"
         }
     ],
     "aliases": [],

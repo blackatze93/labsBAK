@@ -44,8 +44,8 @@ easy_admin:
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Paz y Salvo': 'Paz y Salvo', 'En Mora': 'En Mora' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'dependencia', type: 'entity', type_options: { class: 'AppBundle\Entity\Dependencia', attr: { 'data-widget': 'select2' }, empty_value: 'Ninguna' } }
-                    - { property: 'proyectoCurricular', type: 'entity', type_options: { class: 'AppBundle\Entity\ProyectoCurricular', attr: { 'data-widget': 'select2' }, empty_value: 'Ninguno' } }
+                    - { property: 'dependencia', type: 'entity', type_options: { class: 'AppBundle\Entity\Dependencia', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguna' } }
+                    - { property: 'proyectoCurricular', type: 'entity', type_options: { class: 'AppBundle\Entity\ProyectoCurricular', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguno' } }
                     - 'activo'
             edit:
                 fields:
