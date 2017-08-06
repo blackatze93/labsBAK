@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b8d8cbd5f9c7074b666c5a30ef0caf5c",
-    "content-hash": "1323014cc01eab648d6dc8dd1a9be557",
+    "hash": "4c17d40762fa7357707976ba62662dcf",
+    "content-hash": "a5e335a1ad880e080e96e9143369eb8f",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
@@ -1781,16 +1781,16 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "v1.16.10",
+            "version": "v1.16.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "ce8b7e7549673be06b11154b4a24720b21389db2"
+                "reference": "58c241000610f90b37289e4bc16c3af7e4838a4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/ce8b7e7549673be06b11154b4a24720b21389db2",
-                "reference": "ce8b7e7549673be06b11154b4a24720b21389db2",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/58c241000610f90b37289e4bc16c3af7e4838a4d",
+                "reference": "58c241000610f90b37289e4bc16c3af7e4838a4d",
                 "shasum": ""
             },
             "require": {
@@ -1801,22 +1801,22 @@
                 "pagerfanta/pagerfanta": "~1.0,>=1.0.1",
                 "php": ">=5.3.0",
                 "sensio/framework-extra-bundle": "~2.3|~3.0,>=3.0.2",
-                "symfony/asset": "~2.3|~3.0",
-                "symfony/config": "~2.3|~3.0",
-                "symfony/dependency-injection": "~2.3|~3.0",
-                "symfony/doctrine-bridge": "~2.3|~3.0",
-                "symfony/event-dispatcher": "~2.3|~3.0",
-                "symfony/form": "~2.3|~3.0",
-                "symfony/framework-bundle": "~2.3|~3.0",
-                "symfony/http-foundation": "~2.3|~3.0",
-                "symfony/http-kernel": "~2.3|~3.0",
+                "symfony/asset": "~2.3|~3.0|~4.0",
+                "symfony/config": "~2.3|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.3|~3.0|~4.0",
+                "symfony/doctrine-bridge": "~2.3|~3.0|~4.0",
+                "symfony/event-dispatcher": "~2.3|~3.0|~4.0",
+                "symfony/form": "~2.3|~3.0|~4.0",
+                "symfony/framework-bundle": "~2.3|~3.0|~4.0",
+                "symfony/http-foundation": "~2.3|~3.0|~4.0",
+                "symfony/http-kernel": "~2.3|~3.0|~4.0",
                 "symfony/polyfill-mbstring": "^1.0",
-                "symfony/property-access": "~2.3|~3.0",
-                "symfony/security-bundle": "~2.3|~3.0",
-                "symfony/translation": "~2.3|~3.0",
-                "symfony/twig-bridge": "^2.3.4|~3.0",
-                "symfony/twig-bundle": "~2.3|~3.0",
-                "symfony/validator": "~2.3|~3.0",
+                "symfony/property-access": "~2.3|~3.0|~4.0",
+                "symfony/security-bundle": "~2.3|~3.0|~4.0",
+                "symfony/translation": "~2.3|~3.0|~4.0",
+                "symfony/twig-bridge": "^2.3.4|~3.0|~4.0",
+                "symfony/twig-bundle": "~2.3|~3.0|~4.0",
+                "symfony/validator": "~2.3|~3.0|~4.0",
                 "twig/extensions": "~1.0",
                 "twig/twig": "~1.14,>=1.14.2|~2.0"
             },
@@ -1868,7 +1868,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2017-05-29 19:24:46"
+            "time": "2017-08-05 14:14:12"
         },
         {
             "name": "jdorn/sql-formatter",
