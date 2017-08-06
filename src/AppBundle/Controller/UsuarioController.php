@@ -242,8 +242,8 @@ class UsuarioController extends BaseAdminController
             'first_options' => array(
                 'label' => 'Contraseña',
                 'attr' => array(
-                    'placeholder' => 'Ingrese una nueva contraseña para modificar la actual.'
-                )
+                    'placeholder' => 'Ingrese una nueva contraseña para modificar la actual.',
+                ),
             ),
             'second_options' => array('label' => 'Confirmar Contraseña'),
             'required' => false,
@@ -251,6 +251,4 @@ class UsuarioController extends BaseAdminController
 
         return $builder;
     }
-
-
 }
