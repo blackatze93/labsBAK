@@ -34,13 +34,13 @@ easy_admin:
                     - 'fechaCreacion'
             form:
                 fields:
-                    - { property: 'tipoDocumento', type: 'choice', type_options: { choices:  { 'C.C.': 'Cédula de Ciudadanía', 'T.I.': 'Tarjeta de Identidad', 'C.E.': 'Cédula de Extranjería' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'tipoDocumento', type: 'choice', type_options: { choices:  { 'Cédula de Ciudadanía': 'C.C.' , 'Tarjeta de Identidad': 'T.I.', 'Cédula de Extranjería': 'C.E.' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'documento', type: 'integer' }
                     - { property: 'codigo', type: 'integer' }
                     - 'nombre'
                     - 'apellido'
                     - 'email'
-                    - { property: 'passwordEnClaro', type: 'repeated', type_options: { type: 'password', invalid_message: 'Las dos contraseñas deben coincidir', first_options: { label: 'Contraseña' }, second_options: { label: 'Confirmar Contraseña' }, required: false } }
+                    - { property: 'passwordEnClaro' }
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Paz y Salvo': 'Paz y Salvo', 'En Mora': 'En Mora' }, attr: { 'data-widget': 'select2' } } }
@@ -49,4 +49,4 @@ easy_admin:
                     - 'activo'
             edit:
                 fields:
-                    - { property: 'passwordEnClaro', type: 'repeated', type_options: { type: 'password', invalid_message: 'Las dos contraseñas deben coincidir', first_options: { label: 'Contraseña', attr: { placeholder: 'Ingrese una nueva contraseña para modificar la actual.' }, }, second_options: { label: 'Confirmar Contraseña' }, required: false } }
+                    - { property: 'passwordEnClaro' }

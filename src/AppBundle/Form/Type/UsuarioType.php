@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,7 +39,7 @@ class UsuarioType extends AbstractType
             ->add('apellido')
             ->add('email', EmailType::class)
             ->add('passwordEnClaro', RepeatedType::class, array(
-                'type' => 'password',
+                'type' => PasswordType::class,
                 'invalid_message' => 'Las dos contraseñas deben coincidir',
                 'first_options' => array('label' => 'Contraseña'),
                 'second_options' => array('label' => 'Confirmar Contraseña'),
