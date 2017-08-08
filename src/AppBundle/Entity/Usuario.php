@@ -37,7 +37,7 @@ class Usuario implements AdvancedUserInterface
     private $tipoDocumento;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(type="string", unique=true, length=20)
      * @Assert\NotBlank()
@@ -47,7 +47,7 @@ class Usuario implements AdvancedUserInterface
     private $documento;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(type="string", unique=true, length=20)
      * @Assert\NotBlank()
@@ -198,33 +198,33 @@ class Usuario implements AdvancedUserInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getDocumento()
+    public function getDocumento(): string
     {
         return $this->documento;
     }
 
     /**
-     * @param int $documento
+     * @param string $documento
      */
-    public function setDocumento($documento)
+    public function setDocumento(string $documento)
     {
         $this->documento = $documento;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getCodigo()
+    public function getCodigo(): string
     {
         return $this->codigo;
     }
 
     /**
-     * @param int $codigo
+     * @param string $codigo
      */
-    public function setCodigo($codigo)
+    public function setCodigo(string $codigo)
     {
         $this->codigo = $codigo;
     }

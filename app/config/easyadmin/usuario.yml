@@ -35,8 +35,8 @@ easy_admin:
             form:
                 fields:
                     - { property: 'tipoDocumento', type: 'choice', type_options: { choices:  { 'Cédula de Ciudadanía': 'C.C.' , 'Tarjeta de Identidad': 'T.I.', 'Cédula de Extranjería': 'C.E.' }, attr: { 'data-widget': 'select2' } } }
-                    - { property: 'documento', type: 'integer' }
-                    - { property: 'codigo', type: 'integer' }
+                    - { property: 'documento', type: 'text' }
+                    - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'apellido'
                     - 'email'
