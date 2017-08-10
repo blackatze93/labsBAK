@@ -41,7 +41,7 @@ easy_admin:
                     - 'apellido'
                     - 'email'
                     - { property: 'passwordEnClaro' }
-                    - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': 'ROLE_ADMIN', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE' }, attr: { 'data-widget': 'select2' } } }
+                    - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ADMIN': 'ROLE_ADMIN' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'
                     - { property: 'estado', type: 'choice', type_options: { choices:  { 'Paz y Salvo': 'Paz y Salvo', 'En Mora': 'En Mora' }, attr: { 'data-widget': 'select2' } } }
                     - { property: 'dependencia', type: 'entity', type_options: { class: 'AppBundle\Entity\Dependencia', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguna' } }
