@@ -49,13 +49,39 @@ class GraficoController extends Controller
                 ),
             ))
             ->add('mesInicio', ChoiceType::class, array(
-                'choices' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+                'choices' => array(
+                    'Enero' => 0,
+                    'Febrero' => 1,
+                    'Marzo' => 2,
+                    'Abril' => 3,
+                    'Mayo' => 4,
+                    'Junio' => 5,
+                    'Julio' => 6,
+                    'Agosto' => 7,
+                    'Septiembre' => 8,
+                    'Octubre' => 9,
+                    'Noviembre' => 10,
+                    'Diciembre' => 11
+                ),
                 'constraints' => array(
                     new NotBlank(),
                 ),
             ))
             ->add('mesFin', ChoiceType::class, array(
-                'choices' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+                'choices' => array(
+                    'Enero' => 0,
+                    'Febrero' => 1,
+                    'Marzo' => 2,
+                    'Abril' => 3,
+                    'Mayo' => 4,
+                    'Junio' => 5,
+                    'Julio' => 6,
+                    'Agosto' => 7,
+                    'Septiembre' => 8,
+                    'Octubre' => 9,
+                    'Noviembre' => 10,
+                    'Diciembre' => 11
+                ),
                 'constraints' => array(
                     new NotBlank(),
                 ),

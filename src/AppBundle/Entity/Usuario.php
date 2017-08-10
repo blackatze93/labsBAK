@@ -200,7 +200,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @return string
      */
-    public function getDocumento(): string
+    public function getDocumento()
     {
         return $this->documento;
     }
@@ -208,7 +208,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @param string $documento
      */
-    public function setDocumento(string $documento)
+    public function setDocumento($documento)
     {
         $this->documento = $documento;
     }
@@ -216,7 +216,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @return string
      */
-    public function getCodigo(): string
+    public function getCodigo()
     {
         return $this->codigo;
     }
@@ -224,7 +224,7 @@ class Usuario implements AdvancedUserInterface
     /**
      * @param string $codigo
      */
-    public function setCodigo(string $codigo)
+    public function setCodigo($codigo)
     {
         $this->codigo = $codigo;
     }
