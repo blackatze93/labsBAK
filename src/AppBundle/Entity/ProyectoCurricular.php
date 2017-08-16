@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="proyecto_curricular")
- * @DoctrineAssert\UniqueEntity("codigo")
+ * @DoctrineAssert\UniqueEntity("id")
  * @DoctrineAssert\UniqueEntity(fields={"nombre", "facultad"})
  */
 class ProyectoCurricular
