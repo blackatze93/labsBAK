@@ -67,6 +67,8 @@ class PrestamoPracticaLibreController extends BaseAdminController
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'list',
             'entity' => $this->request->query->get('entity'),
+            'sortField' => 'horaSalida',
+            'sortDirection' => 'ASC',
         ));
     }
 
