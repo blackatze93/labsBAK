@@ -61,6 +61,7 @@ class PrestamoPracticaLibreController extends BaseAdminController
         $id = $this->request->query->get('id');
         $entity = $this->em->getRepository('AppBundle:PrestamoPracticaLibre')->find($id);
         $entity->setHoraSalida(new \DateTime());
+        $entity->getEquipo()->setPrestado(false);
         $this->em->flush();
 
         // redirect to the 'list' view of the given entity
