@@ -50,6 +50,26 @@ class PrestamoPracticaLibreController extends BaseAdminController
         $entity->getEquipo()->setPrestado(false);
     }
 
+    public function salirAction()
+    {
+        // controllers extending the base AdminController can access to the
+        // following variables:
+        //   $this->request, stores the current request
+        //   $this->em, stores the Entity Manager for this Doctrine entity
+
+        // change the properties of the given entity and save the changes
+        $id = $this->request->query->get('id');
+        $entity = $this->em->getRepository('AppBundle:PrestamoPracticaLibre')->find($id);
+        $entity->setHoraSalida(new \DateTime());
+        $this->em->flush();
+
+        // redirect to the 'list' view of the given entity
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'list',
+            'entity' => $this->request->query->get('entity'),
+        ));
+    }
+
     /**
      * @param object $entity
      * @param array  $entityProperties
