@@ -27,13 +27,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
-                    </div>
-                </div>
-            </div>
+            {#<div class="col-xs-12">#}
+                {#<div class="form-group">#}
+                    {#<div class="col-sm-offset-2 col-sm-10">#}
+                        {#<div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
             <div class="col-xs-12">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -59,17 +59,17 @@
     </form>
 {% endblock %}
 
-{% block body_javascript %}
-    <script type="text/javascript">
-        $(function(){
-            $('#submit').click(function( event ) {
-                if (grecaptcha.getResponse()) {
-                    return true;
-                } else {
-                    event.preventDefault();
-                    notificacion('Complete el reCAPTCHA antes de continuar.', 'error');
-                }
-            });
-        })
-    </script>
-{% endblock %}
+{#{% block body_javascript %}#}
+    {#<script type="text/javascript">#}
+        {#$(function(){#}
+            {#$('#submit').click(function( event ) {#}
+                {#if (grecaptcha.getResponse()) {#}
+                    {#return true;#}
+                {#} else {#}
+                    {#event.preventDefault();#}
+                    {#notificacion('Complete el reCAPTCHA antes de continuar.', 'error');#}
+                {#}#}
+            {#});#}
+        {#})#}
+    {#</script>#}
+{#{% endblock %}#}

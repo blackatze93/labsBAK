@@ -30,7 +30,8 @@
         "doctrine/common": "^2.7",
         "swiftmailer/swiftmailer": "^6.0",
         "doctrine/dbal": "^2.5",
-        "doctrine/instantiator": "^1.0"
+        "doctrine/instantiator": "^1.0",
+        "liuggio/excelbundle": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0"
