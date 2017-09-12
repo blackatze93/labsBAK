@@ -54,6 +54,7 @@ easy_admin:
               icon: 'support'
               children:
                 - { entity: 'Incidencia', icon: 'wrench', label: 'Incidencias', default: true }
+                - { entity: 'SoporteFacultad', icon: 'ticket', label: 'Soportes Facultad' }
                 - { entity: 'MantenimientoExterno', icon: 'bug', label: 'Mantenimientos Externos' }
 
             - label: 'Universidad'

@@ -98,5 +98,7 @@ $(function () {
 
     $('#solicitudsala_horaFin').datetimepicker(opTime);
 
+    $('#soportefacultad_fechaRegistro').datetimepicker(opDateTime);
+
 
 });
