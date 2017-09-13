@@ -30,7 +30,6 @@ easy_admin:
                     - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro', type_options: { widget: 'single_text', html5: false } }
                     - { property: 'dependencia' }
                     - { property: 'descripcionProblema', type: 'ckeditor' }
-                    - { property: 'usuarioRegistra', label: 'Usuario que Registra' }
 
             new:
                 title: 'Nuevo Soporte Facultad'
