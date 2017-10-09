@@ -8,7 +8,7 @@ easy_admin:
                 title: 'Soportes Facultad'
                 actions:
                     - { name: 'show', icon: 'eye' }
-                    - { name: 'new', label: 'Crear Préstamo Elemento' }
+                    - { name: 'new', label: 'Crear Soporte Facultad' }
                 fields:
                     - { property: 'fechaRegistro', type: 'datetime', label: 'Fecha de Registro' }
                     - { property: 'dependencia' }

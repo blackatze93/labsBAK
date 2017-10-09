@@ -109,23 +109,22 @@ class ReporteController extends Controller
                         <tr>
                             <td rowspan="3"><img src="'.$escudo.'" alt="Logo UD" ></td>
                             <td class="titulo">FORMATO DE PAZ Y SALVO</td>
-                            <td class="Cod">Código:</td>
+                            <td class="Cod">Código: GL-PR008-FR-010</td>
                             <td rowspan="3"><img class="logoSIGUD" src="'.$sigud.'" alt="Logo SIGUD" ></td>
                         </tr>
                         <tr>
                             <td class="MP">Macro proceso: Apoyo a lo misional</td>
-                            <td class="Cod">Versión: </td>
+                            <td class="Cod">Versión: 02</td>
                         </tr>
                         <tr>
                             <td class="PG">Proceso: Gestión de Laboratorios de Informática</td>
-                            <td class="Cod">Fecha de aprobación: __/__/____</td>
+                            <td class="Cod">Fecha de aprobación: 03/09/2014</td>
                         </tr>
                     </table> 
                     <br><br><br><br><br>
-                    <p align="justify">Los <b>Laboratorios de Informática</b> de la Facultad Tecnológica, hacen constar que el (la) 
-                        estudiante '.$usuario->getNombre().' '.$usuario->getApellido().' con documento de identificación <b>'
-                        .$usuario->getDocumento().'</b> y código estudiantil <b>'.$usuario->getCodigo().'</b>, del proyecto curricular <b>'
-                        .$usuario->getProyectoCurricular().'</b> se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
+                    <p align="justify">Los <b>Laboratorios de Informática</b> de la Facultad Tecnológica, hacen constar que el 
+                        estudiante <b>'.$usuario->getNombre().' '.$usuario->getApellido().'</b> identificado con código <b>'
+                        .$usuario->getCodigo().'</b>, se encuentra a paz y salvo por todo concepto en el mencionado laboratorio.
                         <br><br><br><br><br>El presente certificado se expide por solicitud del interesado a los '
                         .$dia.' día(s) del mes de '.$mes.' de '.$anio
                         .'.<br><br><br><br><br><br><br>

@@ -1,12 +1,13 @@
 easy_admin:
     site_name: 'Laboratorios de Informática'
-
+    
     formats:
         date:     'Y-m-d'
         time:     'H:i'
         datetime: 'Y-m-d H:i'
 
     list:
+        max_results: 40
         actions:
             - { name: 'show', icon: 'eye', label: 'Ver' }
             - { name: 'edit', icon: 'edit', label: 'Editar' }

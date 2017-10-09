@@ -4,6 +4,9 @@ easy_admin:
             class: AppBundle\Entity\PrestamoPracticaLibre
             controller: AppBundle\Controller\PrestamoPracticaLibreController
 
+            search:
+                fields: ['usuarioSolicita', 'equipo']
+
             list:
                 title: 'Préstamo Práctica Libre'
                 actions:
