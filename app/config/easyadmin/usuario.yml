@@ -39,7 +39,7 @@ easy_admin:
                     - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'apellido'
-                    - 'email'
+                    - { property: 'email', type_options: { data: '@correo.udistrital.edu.co' } }
                     - { property: 'passwordEnClaro' }
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ADMIN': 'ROLE_ADMIN' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'

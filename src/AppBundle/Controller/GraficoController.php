@@ -117,7 +117,11 @@ class GraficoController extends Controller
                     'drilldown' => $prestamos[$i]['mes'],
                 );
 
-                $prestamosMes = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosMes(array('mes' => $prestamos[$i]['mes']));
+                $prestamosMes = $em->getRepository('AppBundle:PrestamoPracticaLibre')->findPrestamosMes(
+                    array(
+                        'mes' => $prestamos[$i]['mes'],
+                        'anio' => $anio
+                    ));
 
                 for ($j = 0; $j < count($prestamosMes); ++$j) {
                     $dia_info = array(

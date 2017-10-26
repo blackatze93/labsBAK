@@ -41,9 +41,10 @@ class PrestamoPracticaLibreRepository extends EntityRepository
             ->createQueryBuilder('prestamos')
             ->select('DAY(prestamos.fechaPrestamo) AS dia, COUNT(prestamos.id) AS total')
             ->where(':mes = MONTH(prestamos.fechaPrestamo)')
+            ->andWhere(':anio = YEAR(prestamos.fechaPrestamo)')
             ->groupBy('dia')
             ->setParameters($criteria)
             ->getQuery()->getResult()
-            ;
+        ;
     }
 }
