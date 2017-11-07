@@ -39,7 +39,7 @@ easy_admin:
                     - { property: 'codigo', type: 'text' }
                     - 'nombre'
                     - 'apellido'
-                    - { property: 'email', type_options: { data: '@correo.udistrital.edu.co' } }
+                    - 'email'
                     - { property: 'passwordEnClaro' }
                     - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ESTUDIANTE': 'ROLE_ESTUDIANTE', 'ROLE_FUNCIONARIO': 'ROLE_FUNCIONARIO', 'ROLE_DOCENTE': 'ROLE_DOCENTE', 'ROLE_ADMIN': 'ROLE_ADMIN' }, attr: { 'data-widget': 'select2' } } }
                     - 'cargo'
@@ -47,6 +47,11 @@ easy_admin:
                     - { property: 'dependencia', type: 'entity', type_options: { class: 'AppBundle\Entity\Dependencia', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguna' } }
                     - { property: 'proyectoCurricular', type: 'entity', type_options: { class: 'AppBundle\Entity\ProyectoCurricular', attr: { 'data-widget': 'select2' }, placeholder: 'Ninguno' } }
                     - 'activo'
+            
+            new:
+                fields:
+                    - { property: 'email', type_options: { data: '@correo.udistrital.edu.co' } }
+            
             edit:
                 fields:
                     - { property: 'passwordEnClaro' }
